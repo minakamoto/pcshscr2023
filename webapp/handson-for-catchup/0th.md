@@ -2,7 +2,6 @@
 
 - This is a session to look at the differences between modern and traditional web app architecture and the technology stack required for modern web app development.
   - Please take a look at the information listed, talk to other attendees, and find out what you're interested in. Try to get a feel for what modern web app development is like.
-- This session is expected to last about 2 hours.
   - You may not know what it is the first time you see it, but that's okay. It is enough to know that web development in the past and today are very different, and that the amount and breadth of the technology stack for modern web development is broad.
   - You may find this helpful to come back and look at it again after you've done some hands-on activities, etc.
 
@@ -13,11 +12,13 @@
 
 ### Focus on multiple HTML pages vs. single-page apps:
 
+Have a look at the following diagram to get an idea of how this works. More details will be explained in the next chapter.
+
 ![multiple HTML pages vs. single-page apps](./mpa_vs_spa.jpg)
 
 ### All differences between web app technology stacks from 20 years ago and today.
 
-This diagram that illustrates some of the key differences between web app development about 20 years ago and modern web app development from chatGPT:
+This diagram that illustrates some of the key differences between web app development about 20 years ago and modern web app development:
 ```
                    +---------------------------------------------+
                    |                 20 Years Ago                  |
@@ -80,7 +81,7 @@ This diagram that illustrates some of the key differences between web app develo
     +----------------+------+  +-----------+-----------+  +------+-----------------+
 ```
 
-This diagram provides an overview of some of the key differences between web app development about 20 years ago and modern web app development. Some of the notable differences include:
+Some of the notable differences include:
 
 - multiple HTML pages vs. single-page apps:
   - The standard for web app development about 20 years ago involved using multiple HTML pages, where each page was a separate HTML file and the user had to reload the entire page to navigate between pages. This resulted in slower load times and a less fluid user experience. In contrast, single-page apps (SPAs) have become increasingly popular in modern web app development. SPAs are faster, offer a more seamless user experience, and better performance, but can be more complex to develop and require more advanced technologies like React, Vue, or Angular. SPAs may also have issues with SEO. The shift towards SPAs reflects a larger trend towards building web apps that prioritize user experience and performance, but also require more sophisticated development skills and considerations.
@@ -102,29 +103,33 @@ This diagram provides an overview of some of the key differences between web app
 
 # 2. Modern Web App Technology Stack
 
-## Provide an overview and correlation diagram of the technology stack required for modern web apps.
+## a brief overview and correlation of the technology stack required to build modern web applications.
 
-TODO
-```
-The technology stack required for modern web apps is a combination of frontend, backend, mobile, UI/UX, and infrastructure technologies that work together to create a seamless user experience. These technologies are often interdependent and require collaboration between different teams to ensure successful development and deployment of the application.
+The technology stack required for modern web apps is composed of different layers, including frontend, backend, mobile, UI/UX, and infrastructure technologies, which work together to create a seamless user experience. Although the composition of the team may vary depending on the size of the organization and other factors, successful development and deployment of the application require effective collaboration and communication between team members and external stakeholders, such as clients and users. Agile, XP, TDD, Git, and various project management tools such as Jira, Asana, and Trello can aid in this collaboration and management.
 
-At a high level, the technology stack can be visualized as a series of layers, with frontend technologies at the top and infrastructure technologies at the bottom. The layers are:
+<div align="center">
+<img src="./correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
+</div>
 
-Frontend: This layer consists of the technologies that make up the user interface, including HTML, CSS, JavaScript, and various frontend frameworks/libraries such as React, Vue, Angular, etc.
+### a brief description of each technology layer in the modern web app development stack:
 
-Backend: This layer consists of the server-side technologies that handle the business logic and data storage of the application, such as programming languages like Python, Ruby, Java, and various frameworks such as Django, Ruby on Rails, Spring, etc.
+- Frontend: 
+  - This layer is responsible for creating the user interface and user experience of the application, using technologies such as HTML, CSS, JavaScript, and various frontend frameworks like React, Vue, and Angular.
+- Backend: 
+  - This layer is responsible for handling the business logic and data storage of the application. It uses server-side technologies such as programming languages like Node.js, Python, Ruby, and Java, and various frameworks like Express.js, Nest.js, Django, FastAPI, Spring, Ruby on Rails.
+- Mobile: 
+  - This layer is responsible for developing mobile applications that work in tandem with the web app. It uses native app development frameworks like Swift, Kotlin, and Java, or cross-platform development frameworks like React Native and Flutter.
+- UI/UX: 
+  - This layer is responsible for creating a visually appealing and seamless user experience for the application. It uses design tools like Sketch, Figma, and Adobe XD, and user testing tools like UserTesting and Hotjar.
+- Infrastructure: 
+  - This layer is responsible for the deployment, scaling, and management of the application. It uses cloud platforms like AWS, Azure, and GCP, and DevOps tools like Docker, Kubernetes, Ansible, and Terraform.
 
-Mobile: This layer consists of the technologies used for mobile app development, including native app development frameworks like Swift, Kotlin, Java, or cross-platform development frameworks like React Native, Flutter, etc.
+Each layer requires a different set of skills and expertise, and collaboration between different teams is essential to ensure successful development and deployment of the application.
 
-UI/UX: This layer consists of the technologies that help create a seamless and visually appealing user experience, including design tools like Sketch, Figma, Adobe XD, and user testing tools like UserTesting, Hotjar, etc.
+## a diagram with detailed names (as examples only) of technology stacks required for modern web apps as sticky notes.
 
-Infrastructure: This layer consists of the technologies that support the application's deployment, scaling, and management, including cloud platforms like AWS, Azure, GCP, DevOps tools like Docker, Kubernetes, Ansible, Terraform, etc.
 
-Additionally, to ensure successful development and deployment of the application, there is a need for team collaboration and project management. This includes Agile, XP, TDD, Git, and various project management tools such as Jira, Asana, Trello, etc.
+The detailed names of the technology stacks required for modern web application development are shown in the examples on the sticky notes. Please note that these are just examples. These are just examples; the author has posted stickies with the names of technology stacks that came to mind quickly at the time of writing. Please note that technology is constantly evolving and this information may become outdated at any time.
 
-Overall, the technology stack required for modern web apps is complex and constantly evolving, but understanding how the different technologies work together can help developers build better applications and deliver better user experiences.
-```
 
-## Create a diagram showing the correlation between team collaboration, frontend, backend, mobile, UI/UX, and infra at a granular level.
-
-## Create a diagram with detailed names of technology stacks required for modern web apps as sticky notes.
+![the detailed names of the technology stacks examples](./technology_stack_name_examples.jpg)
