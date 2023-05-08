@@ -86,7 +86,7 @@ Some of the notable differences include:
 - multiple HTML pages vs. single-page apps:
   - The standard for web app development about 20 years ago involved using multiple HTML pages, where each page was a separate HTML file and the user had to reload the entire page to navigate between pages. This resulted in slower load times and a less fluid user experience. In contrast, single-page apps (SPAs) have become increasingly popular in modern web app development. SPAs are faster, offer a more seamless user experience, and better performance, but can be more complex to develop and require more advanced technologies like React, Vue, or Angular. SPAs may also have issues with SEO. The shift towards SPAs reflects a larger trend towards building web apps that prioritize user experience and performance, but also require more sophisticated development skills and considerations.
 - AJAX: 
-  - In the past, AJAX was a new technology that allowed web applications to dynamically update content without requiring a page refresh. Today, AJAX is widely used and is considered a standard part of web development.
+  - In the past, AJAX(Asynchronous JavaScript and XML) was a new technology that allowed web applications to dynamically update content without requiring a page refresh. Today, AJAX is widely used and is considered a standard part of web development.
 - Responsive design: 
   - In the past, web applications were typically designed with a fixed layout that did not adjust to different screen sizes. Today, responsive design is the norm, and web applications are expected to look good and work well on a variety of devices, including desktops, tablets, and smartphones.
 - Mobile-first design: 
@@ -133,3 +133,7 @@ The detailed names of the technology stacks required for modern web application 
 
 
 ![the detailed names of the technology stacks examples](./technology_stack_name_examples.jpg)
+
+### Links
+- [Developer Roadmaps](https://roadmap.sh/)
+  - It provides a collection of roadmaps that guide learners through different paths of web development and includes resources and tools for each topic. Additionally, the roadmaps are updated regularly to keep up with the latest trends and technologies in the field.
