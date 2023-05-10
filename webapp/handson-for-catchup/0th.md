@@ -1,6 +1,6 @@
-# Introduction
+# 0. Introduction
 
-- This is a session to look at the differences between modern and traditional web app architecture and the technology stack required for modern web app development.
+This is a session to look at the differences between modern and traditional web app architecture and the technology stack required for modern web app development.
   - Please take a look at the information listed, talk to other attendees, and find out what you're interested in. Try to get a feel for what modern web app development is like.
   - You may not know what it is the first time you see it, but that's okay. It is enough to know that web development in the past and today are very different, and that the amount and breadth of the technology stack for modern web development is broad.
   - You may find this helpful to come back and look at it again after you've done some hands-on activities, etc.
@@ -16,70 +16,28 @@ Have a look at the following diagram to get an idea of how this works. More deta
 
 ![multiple HTML pages vs. single-page apps](./mpa_vs_spa.jpg)
 
-### All differences between web app technology stacks from 20 years ago and today.
+### Overall differences between web app technology stacks from 20 years ago and today.
 
-This diagram that illustrates some of the key differences between web app development about 20 years ago and modern web app development:
-```
-                   +---------------------------------------------+
-                   |                 20 Years Ago                  |
-                   +---------------------------------------------+
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |  Multiple HTML pages  |  | Heavy reliance on server |  |   Basic JavaScript   |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |   Simple HTML and CSS  |  |           Limited           |  |    Basic CSS     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |  Manual DOM manipulation  |  |   Limited interactivity   |  | Limited data transfer|
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |     No frameworks      |  | Limited code organization |  |     Basic forms      |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
+This table summarizes the key differences between web app development 20 years ago and today:
 
-                   +---------------------------------------------+
-                   |                   Today                       |
-                   +---------------------------------------------+
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |   Single-page apps     |  |     Serverless architecture      |  |  Advanced JavaScript |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |       React & JSX      |  |      GraphQL and REST APIs      |  |  Advanced CSS/SCSS  |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |  Declarative programming  |  |          Real-time           |  |      Data APIs      |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-                     |                     |                     |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-    |  Frameworks and libraries |  |  Advanced code organization  |  | Advanced form libraries |
-    +----------------+------+  +-----------+-----------+  +------+-----------------+
-```
+|          Aspect         | 20 Years Ago | Today                      |
+|:-----------------------:|:------------:|:--------------------------:|
+|    Application Architecture | Multiple HTML pages | Single-page apps |
+|       Backend Architecture | Monolithic	| Monolithic, Microservices|
+|    Frontend Technology Stack | Simple HTML, CSS, JavaScript | Advanced HTML, CSS, JavaScript(include library/framework like React, Angular, Vue.js, etc.) |
+|       Backend Technology Stack | PHP, Perl, etc. |  JavaScript(Node.js), Python, Go, Rust, etc.|
+|         Database           | RDB	| RDB, NoSQL| 
+|        User Interface     | Static, page-based | Dynamic, interactive |
+|        User Experience    | Not a priority | Responsive, intuitive, user-friendly |
+|     Mobile-first approach | Not common | Optimized for mobile devices first |
+|         Data Handling     | Server-side rendering | Client-side rendering |
+|         Data Transfer     | Limited | GraphQL, RestAPI |
+|          Performance      | Slow load times, page refreshes | Fast load times, smooth transitions |
+|         Collaboration     | Mostly solo | Team-based using Git, Jira, Slack, etc. |
+|   Development Process     | Waterfall model | Agile development methodologies |
+|       Cloud Computing     | Physical servers | AWS, Azure, Google Cloud, etc. |
+|          Deployment       | Manual deployment | Continuous deployment and delivery |
+
 
 Some of the notable differences include:
 
@@ -134,6 +92,6 @@ The detailed names of the technology stacks required for modern web application 
 
 ![the detailed names of the technology stacks examples](./technology_stack_name_examples.jpg)
 
-### Links
+# 3. Links
 - [Developer Roadmaps](https://roadmap.sh/)
   - It provides a collection of roadmaps that guide learners through different paths of web development and includes resources and tools for each topic. Additionally, the roadmaps are updated regularly to keep up with the latest trends and technologies in the field.
