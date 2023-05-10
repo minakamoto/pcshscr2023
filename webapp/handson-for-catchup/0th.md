@@ -93,5 +93,17 @@ The detailed names of the technology stacks required for modern web application 
 ![the detailed names of the technology stacks examples](./technology_stack_name_examples.jpg)
 
 # 3. Links
+- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn)
+  - Information about web technologies is collected. There are also tutorials for beginners.
+- [microsoft/Web-Dev-For-Beginners](https://microsoft.github.io/Web-Dev-For-Beginners/#/)
+  - A curriculum for beginners in Web development offered by Microsoft.
+    - [Additional content](https://learn.microsoft.com/en-us/users/wirelesslife/collections/p1ddcy5jwy0jkm) to the above curriculum
+      - In addition to the above content, there is a variety of content available on [Microsoft Learn](https://learn.microsoft.com/en-us/training/).
+- [web.dev](https://web.dev/)
+  - Guidance for modern web development, provided by Google.
 - [Developer Roadmaps](https://roadmap.sh/)
   - It provides a collection of roadmaps that guide learners through different paths of web development and includes resources and tools for each topic. Additionally, the roadmaps are updated regularly to keep up with the latest trends and technologies in the field.
+- [The State of JS](https://2022.stateofjs.com/en-US/)
+  - This website is a compilation of surveys collected from web developers around the world every year.
+It is a good reference to see the trends and status around JavaScript.
+Note that the URL changes every year.
