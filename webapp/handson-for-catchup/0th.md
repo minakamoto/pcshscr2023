@@ -104,6 +104,4 @@ The detailed names of the technology stacks required for modern web application 
 - [Developer Roadmaps](https://roadmap.sh/)
   - It provides a collection of roadmaps that guide learners through different paths of web development and includes resources and tools for each topic. Additionally, the roadmaps are updated regularly to keep up with the latest trends and technologies in the field.
 - [The State of JS](https://2022.stateofjs.com/en-US/)
-  - This website is a compilation of surveys collected from web developers around the world every year.
-It is a good reference to see the trends and status around JavaScript.
-Note that the URL changes every year.
+  - This website is a compilation of surveys collected from web developers around the world every year.It is a good reference to see the trends and status around JavaScript.Note that the URL changes every year.
