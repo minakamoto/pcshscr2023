@@ -49,8 +49,6 @@ Some of the notable differences include:
   - In the past, web applications were typically designed with a fixed layout that did not adjust to different screen sizes. Today, responsive design is the norm, and web applications are expected to look good and work well on a variety of devices, including desktops, tablets, and smartphones.
 - Mobile-first design: 
   - With the rise of smartphones and tablets, many web applications today are designed with a mobile-first approach. This means that the design is optimized for mobile devices, with desktop and tablet layouts being built on top of the mobile design.
-- Accessibility: 
-  - In the past, web applications often lacked accessibility features, making them difficult or impossible to use for people with disabilities. Today, accessibility is considered a critical part of web development, and web applications are expected to be designed with accessibility in mind.
 - Security: 
   - With the rise of cyber threats, security is now a top concern for web applications. Today, web applications are designed with security features such as SSL encryption, two-factor authentication, and cross-site scripting (XSS) protection.
 - Cloud computing: 
