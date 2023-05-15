@@ -55,8 +55,6 @@ Some of the notable differences include:
   - With the rise of cyber threats, security is now a top concern for web applications. Today, web applications are designed with security features such as SSL encryption, two-factor authentication, and cross-site scripting (XSS) protection.
 - Cloud computing: 
   - In the past, web applications were typically hosted on physical servers that had to be maintained and updated by the development team. Today, cloud computing has revolutionized web hosting, making it easier and more affordable to host web applications in the cloud.
-- DevOps: 
-  - DevOps is a relatively new concept that combines development and operations into a single, cohesive team. In the past, development and operations were often separate teams with different goals and priorities. Today, DevOps is considered a best practice for web development, with development and operations teams working closely together to build, deploy, and maintain web applications.
 
 
 # 2. Modern Web App Technology Stack
