@@ -74,7 +74,7 @@ The technology stack required for modern web apps is composed of different layer
 - Mobile: 
   - This layer is responsible for developing mobile applications that work in tandem with the web app. It uses native app development frameworks like Swift, Kotlin, and Java, or cross-platform development frameworks like React Native and Flutter.
 - UI/UX: 
-  - This layer is responsible for creating a visually appealing and seamless user experience for the application. It uses design tools like Sketch, Figma, and Adobe XD, and user testing tools like UserTesting and Hotjar.
+  - This layer is responsible for creating a visually appealing and seamless user experience for the application. It uses design tools like Sketch, Figma, and Adobe XD.
 - Infrastructure: 
   - This layer is responsible for the deployment, scaling, and management of the application. It uses cloud platforms like AWS, Azure, and GCP, and DevOps tools like Docker, Kubernetes, Ansible, and Terraform.
 
@@ -83,8 +83,7 @@ Each layer requires a different set of skills and expertise, and collaboration b
 ## a diagram with detailed names (as examples only) of technology stacks required for modern web apps as sticky notes.
 
 
-The detailed names of the technology stacks required for modern web application development are shown in the examples on the sticky notes. Please note that these are just examples. These are just examples; the author has posted stickies with the names of technology stacks that came to mind quickly at the time of writing. Please note that technology is constantly evolving and this information may become outdated at any time.
-
+The detailed names of the technology stacks required for modern web application development are shown in the examples on the sticky notes. These are just examples; the author has posted stickies with the names of technology stacks that came to mind quickly at the time of writing. Please note that technology is constantly evolving and this information may become outdated at any time.
 
 ![the detailed names of the technology stacks examples](./img/technology_stack_name_examples.jpg)
 
@@ -98,6 +97,6 @@ The detailed names of the technology stacks required for modern web application 
 - [web.dev](https://web.dev/)
   - Guidance for modern web development, provided by Google.
 - [Developer Roadmaps](https://roadmap.sh/)
-  - It provides a collection of roadmaps that guide learners through different paths of web development and includes resources and tools for each topic. Additionally, the roadmaps are updated regularly to keep up with the latest trends and technologies in the field.
+  - It provides a collection of roadmaps that guide learners through different paths of web development. Additionally, the roadmaps are updated regularly to keep up with the latest trends and technologies in the field.
 - [The State of JS](https://2022.stateofjs.com/en-US/)
   - This website is a compilation of surveys collected from web developers around the world every year.It is a good reference to see the trends and status around JavaScript.Note that the URL changes every year.
