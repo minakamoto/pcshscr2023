@@ -4,14 +4,23 @@ This hands-on course is designed for beginners in modern web application develop
 For this reason, we will not explain much about the programming language, tools, libraries, or code. Our priority is to give you the experience of developing a working WebApp as described.
 Links to websites that can be used as references will be provided as necessary.
 
+## What we make
+Build a simple UI that calls an external API and displays that information on the screen.
+
+## Main Technology Stack
+  - Javascript/Typescript
+  - React
+
+
 # 1. Setup
 
 ## Prerequisites
 - Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
 
-<p class="warn">**Warning** The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.
-This is because the first target users of this hands-on are Windows users who do not use Powershell or WSL. Please follow the installation procedure for your environment when actually installing the software.</p>
+**Information**<br>
+The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.
+This is because the first target users of this hands-on are Windows users who do not use Powershell or WSL. Please follow the installation procedure for your environment when actually installing the software.
 
 ## Detailed procedure for windows users
 - Install Node.js
@@ -35,8 +44,40 @@ This is because the first target users of this hands-on are Windows users who do
     - JavaScript (ES6) code snippets
     - **Please note that technology is constantly evolving and this information may become outdated at any time.**
 
+# 2. Main Part(Create UI)
 
-# 2. Create UI
+## Initialize a new React project
+
+### 1. Create a new React project using the create-react-app command
+
+run the following command to initialize a new React project using the Create React App tool:
+
+```sh
+npx create-react-app first-app --template typescript
+```
+
+### 2. Wait for the installation to complete. This may take a few minutes.
+
+### 3. Once the installation is finished, your project will be set up with the basic React template.
+
+run the following command start it up and check it out.
+
+```sh
+cd first-app
+npm start
+```
+
+This command will start up the Node.js server and launch a new browser window displaying your app. 
+
+You can use Ctrl + c to stop running the React app in your command line.
+
+
+### Install the axios library for making HTTP requests:
+
+```sh
+npm install axios
+```
+
 
 
 <p class="info">**Note** I originally intended to build the UI using only React, but I decided to introduce Vite to make it more fun.</p>
