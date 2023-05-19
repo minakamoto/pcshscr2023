@@ -1,11 +1,13 @@
 # 0. Introduction
 
-This hands-on course is designed for beginners in modern web application development. The goal is not to learn knowledge from this material, but to get you interested in modern web application development and the skills and knowledge required for it through actual hands-on development experience.
+This hands-on course is designed for beginners in modern web application development. The goal is not to learn knowledge from this material, but to get you interested in modern web application development and the skills and knowledge required for it through actual hands-on development experience.<br>
+For this reason, we will not explain much about the programming language, tools, libraries, or code. Our priority is to give you the experience of developing a working WebApp as described.
+Links to websites that can be used as references will be provided as necessary.
 
 # 1. Setup
 
 ## Prerequisites
-- Node.js 16+
+- Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
 
 <p class="warn">**Warning** The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.
