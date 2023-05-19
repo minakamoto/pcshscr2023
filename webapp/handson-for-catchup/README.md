@@ -14,3 +14,6 @@
 - [1st](1st.md)
   - Hands-on to develop simple & easy UI
     - Develop a simple UI that calls an external public free API(e.g., an API can call random animal images, etc.) and displays the results on the screen.
+    - Main Technology Stack
+      - Javascript/Typescript
+      - React
