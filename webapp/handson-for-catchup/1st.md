@@ -46,6 +46,15 @@ This is because the first target users of this hands-on are Windows users who do
     - ES7 React/Redux/GraphQL
     - JavaScript (ES6) code snippets
     - **Please note that technology is constantly evolving and this information may become outdated at any time.**
+- (Option)Enable auto-formatting in VSCode
+  - **Note**: You can use Prettier to automatically format files when saving to VSCode. It does the annoying formatting automatically.
+  - Change the "Default Formatter"("defaultFormatter") setting
+    - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
+    - In the settings, search for "Default Formatter" or "defaultformatter" and select "Prettier - Code formatter" as the default formatter.
+  - Change the "Editor: Format On Save" setting
+    - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
+    - In the settings, search for "Editor: Format On Save" or "save" and enable "Editor: Format On Save" option. This option automatically formats the code when you save the file.
+  - You can configure Prettier to format your code according to your own preferences. [Please click here for more information.](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 # 2. Main Part(Create UI)
 
