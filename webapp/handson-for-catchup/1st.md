@@ -11,6 +11,8 @@ Build a simple UI that calls an external API and displays that information on th
 ## Main Technology Stack
 
 - Javascript/Typescript
+  - (TODO)TIPS:
+    - Why Typescript was chosen for the hands-on for beginners, and why even JavaScript beginners should do Typescript.
 - React
 
 # 1. Setup
@@ -142,5 +144,20 @@ export default App;
 
 ### 3. Open your browser and go to http://localhost:3000 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
 
-**Note**<br>
-I originally intended to build the UI using only React, but I decided to introduce Vite to make it more fun.
+## Refactoring
+
+When writing code, it's important to keep it organized and easy to read. Refactoring is the process of improving the structure of existing code without changing its behavior. This can make the code easier to understand, maintain, and extend in the future.
+
+In our case, we started by writing the Pokémon image process and content directly into App.tsx. However, as the app becomes more complex, it is a good idea to extract it into its own file as a separate component to keep the code organized and modular.
+
+- TIPS
+  - Brief explanation of refactoring
+    - TODO
+
+## Apply design
+
+TODO: Use the css library(e.g tailwind) to improve the design a bit.
+
+## More SPA like
+
+TODO: Apply Router?
