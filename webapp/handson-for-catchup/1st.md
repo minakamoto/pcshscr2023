@@ -89,6 +89,58 @@ You can use Ctrl + c to stop running the React app in your command line.
 npm install axios
 ```
 
+## Create a component to display a random Pokemon
 
+### 1. Open the src/App.tsx file and replace its contents with the following code:
 
-<p class="info">**Note** I originally intended to build the UI using only React, but I decided to introduce Vite to make it more fun.</p>
+```jsx
+import React, { useState } from "react";
+import axios from "axios";
+
+interface Pokemon {
+  name: string;
+  sprites: {
+    front_default: string,
+  };
+}
+
+function App() {
+  const [pokemon, setPokemon] = (useState < Pokemon) | (null > null);
+
+  const handleClick = async () => {
+    try {
+      // Get a random number from 1~1000, since there seem to be about 1000 Pokémon now.
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon(response.data);
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  // Display the Pokémon's image and name by pressing the button.
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      {pokemon && (
+        <div>
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          {pokemon.sprites.front_default && <p>{pokemon.name}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
+
+### 2. Save the file, and start the development server by running the command npm start in your terminal.
+
+### 3. Open your browser and go to http://localhost:3000 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
+
+**Note**<br>
+I originally intended to build the UI using only React, but I decided to introduce Vite to make it more fun.
