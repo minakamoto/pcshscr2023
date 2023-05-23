@@ -5,16 +5,18 @@ For this reason, we will not explain much about the programming language, tools,
 Links to websites that can be used as references will be provided as necessary.
 
 ## What we make
+
 Build a simple UI that calls an external API and displays that information on the screen.
 
 ## Main Technology Stack
-  - Javascript/Typescript
-  - React
 
+- Javascript/Typescript
+- React
 
 # 1. Setup
 
 ## Prerequisites
+
 - Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
 
@@ -23,6 +25,7 @@ The required software installation instructions listed here are intended for Win
 This is because the first target users of this hands-on are Windows users who do not use Powershell or WSL. Please follow the installation procedure for your environment when actually installing the software.
 
 ## Detailed procedure for windows users
+
 - Install Node.js
   - Go to [the Node.js website](https://nodejs.org/en/) and download the latest LTS(Long-Term Support) version of Node.js for Windows. Run the installer and follow the prompts to install Node.js on your system.
   - Open a command prompt and verify that Node.js and npm (Node Package Manager) are correctly installed by running the following commands:
@@ -30,7 +33,7 @@ This is because the first target users of this hands-on are Windows users who do
   node --version
   npm --version
   ```
-    - Both commands should display the respective versions installed on your system.
+  - Both commands should display the respective versions installed on your system.
 - Install Visual Studio Code(VS Code)
   - Go to [the Visual Studio Code website](https://code.visualstudio.com/) and download the latest version of Visual Studio Code for Windows. Run the installer and follow the prompts to install Visual Studio Code on your system.
 - Install VS Code Extensions
@@ -67,12 +70,11 @@ cd first-app
 npm start
 ```
 
-This command will start up the Node.js server and launch a new browser window displaying your app. 
+This command will start up the Node.js server and launch a new browser window displaying your app.
 
 You can use Ctrl + c to stop running the React app in your command line.
 
-
-### Install the axios library for making HTTP requests:
+### 4. Install the axios library for making HTTP requests:
 
 ```sh
 npm install axios
