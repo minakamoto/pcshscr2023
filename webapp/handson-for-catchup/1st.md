@@ -99,6 +99,7 @@ npm install axios
 import React, { useState } from "react";
 import axios from "axios";
 
+// define the Pokemon interface, which describes the shape of the Pokemon object returned by the API. 
 interface Pokemon {
   name: string;
   sprites: {
@@ -107,22 +108,27 @@ interface Pokemon {
 }
 
 function App() {
-  const [pokemon, setPokemon] = (useState < Pokemon) | (null > null);
-
+  // define the pokemon state variable using the useState hook.
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  // define the handleClick function that is called when the "Generate Image" button is clicked.
   const handleClick = async () => {
     try {
-      // Get a random number from 1~1000, since there seem to be about 1000 Pokémon now.
+      // generate a random Pokemon ID from 1~1000, since there seem to be about 1000 Pokémon now.
       const randomId = Math.floor(Math.random() * 1000) + 1;
+      // uses the axios library to make a GET request to the external API that returns the Pokemon data for that ID.
       const response = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/${randomId}`
       );
+      // the response data is stored in the pokemon state variable using the setPokemon function.
       setPokemon(response.data);
     } catch (error) {
       console.error("Error fetching Pokemon:", error);
     }
   };
 
-  // Display the Pokémon's image and name by pressing the button.
+  // The UI of the app consists of a heading, a "Generate Image" button, and a Pokemon image and name (if available) that are displayed when the button is clicked.
+  // The pokemon state variable is used to conditionally render the Pokemon image and name using the && operator.If pokemon is not null, the image and name are displayed using the img and p elements.
   return (
     <div>
       <h1>Random Pokemon Image Generator</h1>
@@ -140,9 +146,22 @@ function App() {
 export default App;
 ```
 
+- Note:
+  - I wrote the explanation of the code in the comments of the code. It's okay if you don't understand the code description well for now.
+- TIPS
+  - Brief Description of Component
+    - TODO:
+
 ### 2. Save the file, and start the development server by running the command npm start in your terminal.
 
+Make sure the current directory is directly under the React project you created, and run the following command
+```sh
+npm start
+```
+
 ### 3. Open your browser and go to http://localhost:3000 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
+
+You can use Ctrl + c to stop running the React app in your command line.
 
 ## Refactoring
 
