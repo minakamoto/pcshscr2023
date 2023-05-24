@@ -105,9 +105,7 @@ import axios from "axios";
 // define the Pokemon interface, which describes the shape of the Pokemon object returned by the API. 
 interface Pokemon {
   name: string;
-  sprites: {
-    front_default: string,
-  };
+  imageUrl: string;
 }
 
 function App() {
@@ -124,7 +122,10 @@ function App() {
         `https://pokeapi.co/api/v2/pokemon/${randomId}`
       );
       // the response data is stored in the pokemon state variable using the setPokemon function.
-      setPokemon(response.data);
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
     } catch (error) {
       console.error("Error fetching Pokemon:", error);
     }
@@ -138,8 +139,8 @@ function App() {
       <button onClick={handleClick}>Generate Image</button>
       {pokemon && (
         <div>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-          {pokemon.sprites.front_default && <p>{pokemon.name}</p>}
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
         </div>
       )}
     </div>
