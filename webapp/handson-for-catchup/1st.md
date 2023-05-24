@@ -8,8 +8,8 @@ Links to websites that can be used as references will be provided as necessary.
 
 Build a simple UI that calls an external API and displays that information on the screen.
 
-**Note**:
-The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is available at the time of this writing, but I cannot compensate for its availability when doing hands-on sessions. In this case, please replace it with another API and implement it.
+**Note**:<br>
+The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is available at the time of this writing, but cannot compensate for its availability when doing hands-on sessions. In this case, please replace it with another API and implement it.
 
 ## Main Technology Stack
 
@@ -25,7 +25,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 - Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
 
-**Information**<br>
+**Note**:<br>
 The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.
 This is because the first target users of this hands-on are Windows users who do not use Powershell or WSL. Please follow the installation procedure for your environment when actually installing the software.
 
