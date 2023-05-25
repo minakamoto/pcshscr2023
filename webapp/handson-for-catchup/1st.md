@@ -151,7 +151,7 @@ export default App;
 ```
 - **Note**:
   - I wrote the explanation of the code in the comments of the code. It's okay if you don't understand the code description well for now.
-- TIPS
+- TIPS:
   - Brief Description of Component
     - TODO:
 
@@ -172,10 +172,9 @@ When writing code, it's important to keep it organized and easy to read. Refacto
 
 In our case, we started by writing the Pokémon image process and content directly into App.tsx. However, as the app becomes more complex, it is a good idea to extract it into its own file as a separate component to keep the code organized and modular.
 
-- TIPS
-  - Brief explanation of refactoring
-    - TODO
-
+- TIPS:
+  - About refactoring of component
+    - Componentizing individual parts of the code promotes reusability, separation of concerns, and maintainability. However, it comes with increased complexity and potential overhead. Deciding on the level of componentization depends on the size, complexity, and specific requirements of your application.
 
 ### 1. Define everything related to the random image display process in App.tsx as a separate function in App.tsx.
 
@@ -191,8 +190,8 @@ This step can be skipped for the next step.
 import React, { useState } from "react";
 import axios from "axios";
 
-// define PokemonContainer function
-// Everything that is related to the processing of the random image display in App.tsx is defined in this function.
+// define PokemonContainer component
+// Everything that is related to the processing of the random image display in App.tsx is defined in this component.
 function PokemonContainer() {
   interface Pokemon {
     name: string;
@@ -230,6 +229,7 @@ function PokemonContainer() {
   );
 }
 
+// use the PokemonContainer component
 function App() {
   return (
     <div>
