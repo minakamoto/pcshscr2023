@@ -323,8 +323,6 @@ export default App;
 This Refactoring is also performed once in the same file to make the code easier to follow.<br>
 This step can be skipped for the next step.
 
-Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
-
 #### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
 ```jsx
@@ -391,10 +389,90 @@ export default PokemonContainer;
 
 #### Open your browser and check the application for any changes in behavior.
 
+- **Note**:
+  - Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
 - TIPS:
   - about props
     - TODO: Props are arguments passed into React components.Props are passed to components via HTML attributes.
 
+### 4. Separate PokemonDisplay component from PokemonContainer.tsx
+
+#### Create the src/PokemonDisplay.tsx file and replace its contents with the following code:
+
+```jsx
+// PokemonDisplay.tsx
+
+// Move all the parts of PokemonContainer.tsx related to the PokemonDisplay component to this file.
+import React from "react";
+
+// It can be called from other components by adding "export".
+// This is because the Pokemon interface is also used in PokemonContainer.
+export interface Pokemon {
+    name: string;
+    imageUrl: string;
+}
+
+interface PokemonDisplayProps {
+    pokemon: Pokemon | null;
+}
+
+function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
+    return (
+        <div>
+            {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+        </div>
+    )
+}
+
+// It can be called from other components.
+export default PokemonDisplay;
+```
+
+#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+
+```jsx
+// PokemonContainer.tsx
+import React, { useState } from "react";
+import axios from "axios";
+import PokemonDisplay, { Pokemon } from "./PokemonDisplay";
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      <PokemonDisplay pokemon={pokemon} />
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+#### Open your browser and check the application for any changes in behavior.
 
 ## Apply design
 
