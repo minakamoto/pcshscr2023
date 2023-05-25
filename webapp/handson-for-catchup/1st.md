@@ -319,9 +319,12 @@ export default App;
 
 ### 3. Separate the processes related to the display of the image and the name from the PokemonContainer.tsx as a separate component.
 
-**Note**:<br>
-This Refactoring is also performed once in the same file to make the code easier to follow.<br>
-This step can be skipped for the next step.
+- **Note**:
+  - This Refactoring is also performed once in the same file to make the code easier to follow.This step can be skipped for the next step.
+  - Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
+- TIPS:
+  - about props
+    - TODO: Props are arguments passed into React components.Props are passed to components via HTML attributes.
 
 #### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
@@ -388,12 +391,6 @@ export default PokemonContainer;
 ```
 
 #### Open your browser and check the application for any changes in behavior.
-
-- **Note**:
-  - Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
-- TIPS:
-  - about props
-    - TODO: Props are arguments passed into React components.Props are passed to components via HTML attributes.
 
 ### 4. Separate PokemonDisplay component from PokemonContainer.tsx
 
@@ -465,6 +462,84 @@ function PokemonContainer() {
       <h1>Random Pokemon Image Generator</h1>
       <button onClick={handleClick}>Generate Image</button>
       <PokemonDisplay pokemon={pokemon} />
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+#### Open your browser and check the application for any changes in behavior.
+
+### 5. Rename the PokemonDisplay component to a generic name
+
+
+The PokemonDisplay component can be used by other characters except for Pokémon, so we will make the name more generic.
+
+#### Rename the file src/PokemonDisplay.tx to src/ItemDisplay.tx and change its contents to the following code:
+
+```jsx
+// ItemDisplay.tsx
+
+import React from "react";
+
+export interface Item {
+    name: string;
+    imageUrl: string;
+}
+
+interface ItemDisplayProps {
+    item: Item | null;
+}
+
+function ItemDisplay({item}: ItemDisplayProps ) {
+    return (
+        <div>
+            {item && (
+        <div>
+          <img src={item.imageUrl} alt={item.name} />
+          {item.imageUrl && <p>{item.name}</p>}
+        </div>
+      )}
+        </div>
+    )
+}
+
+export default ItemDisplay;
+```
+
+#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+
+```jsx
+// PokemonContainer.tsx
+import React, { useState } from "react";
+import axios from "axios";
+import ItemDisplay, { Item } from "./ItemDisplay";
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Item | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      <ItemDisplay item={pokemon} />
     </div>
   );
 }
