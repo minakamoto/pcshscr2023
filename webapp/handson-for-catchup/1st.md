@@ -190,7 +190,7 @@ This step can be skipped for the next step.
 import React, { useState } from "react";
 import axios from "axios";
 
-// define PokemonContainer component
+// Define PokemonContainer component
 // Everything that is related to the processing of the random image display in App.tsx is defined in this component.
 function PokemonContainer() {
   interface Pokemon {
@@ -316,6 +316,85 @@ export default App;
 ```
 
 #### Open your browser and check the application for any changes in behavior.
+
+### 3. Separate the processes related to the display of the image and the name from the PokemonContainer.tsx as a separate component.
+
+**Note**:<br>
+This Refactoring is also performed once in the same file to make the code easier to follow.<br>
+This step can be skipped for the next step.
+
+Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
+
+#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+
+```jsx
+// PokemonContainer.tsx
+import React, { useState } from "react";
+import axios from "axios";
+
+interface Pokemon {
+    name: string;
+    imageUrl: string;
+}
+
+// Define the PokemonDisplayProps interface. These are the props to pass to the PokemonDisplay component.
+interface PokemonDisplayProps {
+    pokemon: Pokemon | null;
+}
+
+// Define PokemonDisplay component.
+// Extract the processing related to displaying the Pokemon image and name from the PokemonContainer component and define it in this component.
+function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
+    return (
+        <div>
+            {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+        </div>
+    )
+}
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  // use the PokemonDisplay component
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      <PokemonDisplay pokemon={pokemon} />
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+#### Open your browser and check the application for any changes in behavior.
+
+- TIPS:
+  - about props
+    - TODO: Props are arguments passed into React components.Props are passed to components via HTML attributes.
+
 
 ## Apply design
 
