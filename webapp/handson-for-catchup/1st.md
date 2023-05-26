@@ -552,6 +552,56 @@ export default PokemonContainer;
 
 ## Apply design
 
+We'll install a CSS library to make it look a little better.
+
+### 1. Set up Tailwind CSS
+
+#### Install Tailwind CSS
+
+Make sure the current directory is directly under the React project you created, and run the following command:
+
+```sh
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+#### Add the paths to all of your template files in your tailwind.config.js file.
+
+Open the src/tailwind.config.js file and replace its contents with the following code:
+
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+#### Add the Tailwind directives to your CSS
+
+Open src/index.css file and Add the following code to the top of the file:
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+#### Run your build process with npm run start.
+
+Make sure the current directory is directly under the React project you created, and run the following command:
+
+```sh
+npm start
+```
+
+**Note:** If you haven't stopped the process, use Ctrl + c to stop running
+
 TODO: Use the css library(e.g tailwind) to improve the design a bit.
 
 ## More SPA like
