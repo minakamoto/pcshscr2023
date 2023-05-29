@@ -13,10 +13,21 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 
 ## Main Technology Stack
 
-- Javascript/Typescript
-  - (TODO)TIPS:
-    - Why Typescript was chosen for the hands-on for beginners, and why even JavaScript beginners should do Typescript.
-- React
+- [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
+- [React](https://react.dev/)
+
+---
+- TIPS:
+  - Why Typescript was chosen for the hands-on for beginners, and why even JavaScript beginners should do Typescript.
+    - There are several reasons why JavaScript beginners should learn TypeScript along with JavaScript.
+      - TypeScript is a superset of JavaScript, so if you have knowledge of JavaScript, you can quickly learn TypeScript.
+      - TypeScript is a statically typed language, so it is easier to detect errors than JavaScript. This can improve development efficiency and prevent bugs.
+      - TypeScript can make code reuse easier by using type definition files. This can improve code maintainability.
+    - In this way, TypeScript is a great language that has a low learning cost, improves development efficiency and maintainability, and is suitable for JavaScript beginners. Additionally, TypeScript is now the de facto standard in the development world.
+    - If you are learning JavaScript, please also learn TypeScript.
+  - UI frameworks/libraries
+    - React is one of the UI frameworks/libraries. There are also [Vue.js](https://vuejs.org/), [Svelte](https://svelte.dev/), and [Angular](https://angular.io/).
+    - Next.js, Nuxt.js, and SvelteKit are also UI frameworks/libraries. These are based on React, Vue, and Svelte, respectively, and package additional features such as SSR and convenient tools.
 
 # 1. Setup
 
