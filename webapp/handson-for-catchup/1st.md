@@ -163,8 +163,9 @@ export default App;
 - **Note**:
   - I wrote the explanation of the code in the comments of the code. It's okay if you don't understand the code description well for now.
 - TIPS:
-  - Brief Description of Component
-    - TODO:
+  - About Component
+    - A straightforward description of a React component is a reusable UI element.
+    - The concept of components is a common concept in other modern UI frameworks and libraries such as Vue.js, Svelte, Angular, and so on.
 
 ### 2. Save the file, and start the development server by running the command npm start in your terminal.
 
@@ -333,9 +334,6 @@ export default App;
 - **Note**:
   - This Refactoring is also performed once in the same file to make the code easier to follow.This step can be skipped for the next step.
   - Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
-- TIPS:
-  - about props
-    - TODO: Props are arguments passed into React components.Props are passed to components via HTML attributes.
 
 #### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
@@ -565,6 +563,13 @@ export default PokemonContainer;
 
 We'll install a CSS library to make it look a little better.
 
+- TIPS:
+  - About CSS/Component library
+    - In general, CSS libraries and component libraries serve different purposes in frontend development.
+    - CSS libraries, like Tailwind CSS, provide pre-built styles and classes that can be used to style HTML elements.
+    - Component libraries, like Bootstrap, provide pre-built UI components that can be used to create a consistent and professional-looking user interface. 
+    - The choice between the two depends on the project requirements, personal preferences, and the level of customization needed.
+
 ### 1. Set up Tailwind CSS
 
 #### Install Tailwind CSS
@@ -723,8 +728,6 @@ Do not copy and paste the code.<br>
 +          <img className="w-32 h-32 rounded-full mx-auto mb-2" src={item.imageUrl} alt={item.name} />
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
 ```
-
-TODO: Use the css library(e.g tailwind) to improve the design a bit.
 
 ## More SPA like
 
