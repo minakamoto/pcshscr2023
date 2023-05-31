@@ -731,4 +731,59 @@ Do not copy and paste the code.<br>
 
 ## More SPA like
 
-TODO: Apply Router?
+TODO: add description
+
+### 1. Set up react-router
+Install react-router
+Make sure the current directory is directly under the React project you created, and run the following command:
+
+**Note:** If you haven't stopped the process, use Ctrl + c to stop running
+
+```sh
+npm install react-router-dom
+```
+
+### 2. implementation of a navbar
+
+The menu only has Pokémon for now, but we will introduce a navbar.
+
+#### Open the src/App.tsx file and replace its contents with the following code:
+
+```jsx
+// App.tsx
+import React from "react";
+import PokemonContainer from "./PokemonContainer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav className="bg-gray-200 p-4">
+          <ul className="flex">
+            <li className="mr-4">
+              <Link to="/pokemon">Pokemon</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/pokemon" element={<PokemonContainer />} />
+        </Routes>
+        
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+#### Save the file, and start the development server by running the command npm start in your terminal.
+
+Make sure the current directory is directly under the React project you created, and run the following command
+```sh
+npm start
+```
+
+#### Open your browser and go to http://localhost:3000 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
