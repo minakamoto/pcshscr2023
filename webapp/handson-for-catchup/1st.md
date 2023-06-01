@@ -743,6 +743,9 @@ Make sure the current directory is directly under the React project you created,
 npm install react-router-dom
 ```
 
+**NOTE:** <br>
+At the time of writing, the React route version is v6. If you install as described above, you should be able to use v6. If you install by specifying the version, note that the settings are different between v5 and v6.
+
 ### 2. implementation of a navbar
 
 The menu only has Pokémon for now, but we will introduce a navbar.
@@ -787,3 +790,8 @@ npm start
 ```
 
 #### Open your browser and go to http://localhost:3000 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
+
+### 3. Add dog menu
+
+Add a menu that displays a random image of a dog as well as Pokémon
+
