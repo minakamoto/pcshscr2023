@@ -793,5 +793,88 @@ npm start
 
 ### 3. Add dog menu
 
-Add a menu that displays a random image of a dog as well as Pokémon
+Add a menu that displays a random image of a dog as well as Pokémon.
 
+#### Create the src/DogContainer.tsx file and replace its contents with the following code:
+
+In DogContainer.tsx, the dog image is retrieved randomly, similar to PokemonContainer.tsx.
+The design is also the same.<br>
+The refactored and componentized ItemDisplay.tsx is used in both DogContainer.tsx and PokemonContainer.tsx.
+
+```jsx
+// DogContainer
+import React, { useState } from "react";
+import axios from "axios";
+import ItemDisplay, { Item } from "./ItemDisplay";
+
+function DogContainer() {
+  const [dog, setDog] = useState<Item | null>(null);
+
+  const handleClick = async () => {
+    try {
+      const response = await axios.get(
+        "https://dog.ceo/api/breeds/image/random"
+      );
+      setDog({
+        name: "dog image",
+        imageUrl: response.data.message,
+      });
+    } catch (error) {
+      console.error("Error fetching dog:", error);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex flex-col items-center justify-start h-screen bg-gray-100 my-2">
+        <h1 className="text-4xl font-bold mb-4">Random Dog Image Generator</h1>
+        <button
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer"
+          onClick={handleClick}
+        >
+          Generate Image
+        </button>
+        {dog && <ItemDisplay item={dog} />}
+      </div>
+    </div>
+  );
+}
+
+export default DogContainer;
+```
+
+#### Open the src/App.tsx file and replace its contents with the following code:
+
+```jsx
+// App.tsx
+import React from "react";
+import PokemonContainer from "./PokemonContainer";
+import DogContainer from "./DogContainer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav className="bg-gray-200 p-4">
+          <ul className="flex">
+            <li className="mr-4">
+              <Link to="/pokemon">Pokemon</Link>
+            </li>
+            <li className="mr-4">
+              <Link to="/dog">Dog</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/pokemon" element={<PokemonContainer />} />
+          <Route path="/dog" element={<DogContainer />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+```
