@@ -608,14 +608,6 @@ Open src/index.css file and Add the following code to the top of the file:
 @tailwind utilities;
 ```
 
-#### Run your build process with npm run start.
-
-Make sure the current directory is directly under the React project you created, and run the following command:
-
-```sh
-npm start
-```
-
 **Note:** If you haven't stopped the process, use Ctrl + c to stop running
 
 ### 2. Apply CSS
@@ -727,6 +719,14 @@ Do not copy and paste the code.<br>
 +        <div className="mt-4">
 +          <img className="w-32 h-32 rounded-full mx-auto mb-2" src={item.imageUrl} alt={item.name} />
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
+```
+
+#### Run your build process with npm run start.
+
+Make sure the current directory is directly under the React project you created, and run the following command:
+
+```sh
+npm start
 ```
 
 ## (Option)More SPA like
