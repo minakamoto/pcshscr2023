@@ -559,7 +559,7 @@ export default PokemonContainer;
 
 #### Open your browser and check the application for any changes in behavior.
 
-## Apply design
+## (Option)Apply design
 
 We'll install a CSS library to make it look a little better.
 
@@ -729,7 +729,7 @@ Do not copy and paste the code.<br>
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
 ```
 
-## More SPA like
+## (Option)More SPA like
 
 Let's introduce the navbar and add a dog menu as well as Pokemon to make it a little more SPA-like.
 
@@ -885,3 +885,7 @@ function App() {
 
 export default App;
 ```
+
+This concludes the hands-on. Thank you for your hard work.<br>
+There are many things that need to be fixed, such as the lack of a TOP screen and poor design. Please try to improve this UI with your ideas.
+
