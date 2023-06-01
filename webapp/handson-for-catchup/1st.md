@@ -731,13 +731,20 @@ Do not copy and paste the code.<br>
 
 ## More SPA like
 
-TODO: add description
+Let's introduce the navbar and add a dog menu as well as Pokemon to make it a little more SPA-like.
 
 ### 1. Set up react-router
 Install react-router
 Make sure the current directory is directly under the React project you created, and run the following command:
 
-**Note:** If you haven't stopped the process, use Ctrl + c to stop running
+
+- **Note:** If you haven't stopped the process, use Ctrl + c to stop running
+- TIPS:
+  - About react-router, routing
+    - React Router is a popular routing library for React applications.
+      - Other libraries and frameworks have their own routing solutions. For example, Angular has Angular Router, Vue has Vue Router, and so on
+    - Routing is a concept that applies to various libraries and frameworks beyond React.
+      - In the context of web development, routing involves handling different URLs or paths and mapping them to specific components or actions within your application. It allows you to navigate between different views or pages and maintain the state of the application based on the current URL.
 
 ```sh
 npm install react-router-dom
