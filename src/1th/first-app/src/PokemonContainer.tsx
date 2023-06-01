@@ -1,11 +1,11 @@
 // PokemonContainer.tsx
 import React, { useState } from "react";
 import axios from "axios";
-import PokemonDisplay, { Pokemon } from "./PokemonDisplay";
+import ItemDisplay, { Item } from "./ItemDisplay";
 
 function PokemonContainer() {
   
-  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  const [pokemon, setPokemon] = useState<Item | null>(null);
   
   const handleClick = async () => {
     try {
@@ -26,7 +26,7 @@ function PokemonContainer() {
     <div>
       <h1>Random Pokemon Image Generator</h1>
       <button onClick={handleClick}>Generate Image</button>
-      <PokemonDisplay pokemon={pokemon} />
+      <ItemDisplay item={pokemon} />
     </div>
   );
 }
