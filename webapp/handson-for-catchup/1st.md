@@ -887,14 +887,18 @@ export default App;
 ```
 
 
-## Wrap up
+# 3. Wrap up
 This concludes the hands-on. Thank you for your hard work.<br>
 There are many things that need to be fixed, such as the lack of a TOP screen and poor design. Please try to improve this UI with your ideas.
 
-### Advice for those interested in frontend development
+## Advice for those interested in frontend development
 
 In my opinion, to improve your frontend technical skills,
 1. learn the basics of Javascript/Typescript, HTML, CSS
 1. think of an application you want to make and try to develop it yourself
 1. (If you can't think of an application you want to make) find a UI or application that you want to learn hands-on or copy from the web, imitate it, and implement it
 1. figure out what knowledge and skills you lack in 2. and/or 3. and dig deeper.
+
+# 4. Links
+
+see [0th's Links](0th.md#3-links)
