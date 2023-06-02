@@ -485,7 +485,7 @@ export default PokemonContainer;
 
 The PokemonDisplay component can be used by other characters except for Pokémon, so we will make the name more generic.
 
-#### Rename the file src/PokemonDisplay.tx to src/ItemDisplay.tx and change its contents to the following code:
+#### Rename the file src/PokemonDisplay.tsx to src/ItemDisplay.tsx and change its contents to the following code:
 
 ```jsx
 // ItemDisplay.tsx
@@ -657,7 +657,7 @@ export default PokemonContainer;
 ```
 
 Below are the differences before and after setting CSS. For reference only.<br>
-Do not copy and paste the code.<br>
+**Do not copy and paste the code.**<br>
 "-" means before, "+" means after
 
 ```jsx
@@ -709,7 +709,7 @@ export default ItemDisplay;
 ```
 
 Below are the differences before and after setting CSS. For reference only.<br>
-Do not copy and paste the code.<br>
+**Do not copy and paste the code.**<br>
 "-" means before, "+" means after
 
 ```jsx
@@ -734,7 +734,7 @@ npm start
 Let's introduce the navbar and add a dog menu as well as Pokemon to make it a little more SPA-like.
 
 ### 1. Set up react-router
-Install react-router
+#### Install react-router
 Make sure the current directory is directly under the React project you created, and run the following command:
 
 
