@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import axios from "axios";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+// define the Pokemon interface, which describes the shape of the Pokemon object returned by the API. 
+interface Pokemon {
+  name: string;
+  imageUrl: string;
 }
 
-export default App
+function App() {
+  // define the pokemon state variable using the useState hook.
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  // define the handleClick function that is called when the "Generate Image" button is clicked.
+  const handleClick = async () => {
+    try {
+      // generate a random Pokemon ID from 1~1000, since there seem to be about 1000 Pokémon now.
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      // uses the axios library to make a GET request to the external API that returns the Pokemon data for that ID.
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      // the response data is stored in the pokemon state variable using the setPokemon function.
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  // The UI of the app consists of a heading, a "Generate Image" button, and a Pokemon image and name (if available) that are displayed when the button is clicked.
+  // The pokemon state variable is used to conditionally render the Pokemon image and name using the && operator.If pokemon is not null, the image and name are displayed using the img and p elements.
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
