@@ -1,14 +1,34 @@
 // PokemonContainer.tsx
-
-// Move all the parts of App.tsx related to the PokemonContainer component to this file.
 import { useState } from "react";
 import axios from "axios";
 
-function PokemonContainer() {
-  interface Pokemon {
+interface Pokemon {
     name: string;
     imageUrl: string;
-  }
+}
+
+// Define the PokemonDisplayProps interface. These are the props to pass to the PokemonDisplay component.
+interface PokemonDisplayProps {
+    pokemon: Pokemon | null;
+}
+
+// Define PokemonDisplay component.
+// Extract the processing related to displaying the Pokemon image and name from the PokemonContainer component and define it in this component.
+function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
+    return (
+        <div>
+            {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+        </div>
+    )
+}
+
+function PokemonContainer() {
+  
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   
   const handleClick = async () => {
@@ -26,19 +46,14 @@ function PokemonContainer() {
     }
   };
 
+  // use the PokemonDisplay component
   return (
     <div>
       <h1>Random Pokemon Image Generator</h1>
       <button onClick={handleClick}>Generate Image</button>
-      {pokemon && (
-        <div>
-          <img src={pokemon.imageUrl} alt={pokemon.name} />
-          {pokemon.imageUrl && <p>{pokemon.name}</p>}
-        </div>
-      )}
+      <PokemonDisplay pokemon={pokemon} />
     </div>
   );
 }
 
-// It can be called from other components.
 export default PokemonContainer;
