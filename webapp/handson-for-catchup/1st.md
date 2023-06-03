@@ -15,6 +15,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
 - [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
 
 ---
 - TIPS:
@@ -28,6 +29,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
   - UI frameworks/libraries
     - React is one of the UI frameworks/libraries. There are also [Vue.js](https://vuejs.org/), [Svelte](https://svelte.dev/), and [Angular](https://angular.io/).
     - Next.js, Nuxt.js, and SvelteKit are also UI frameworks/libraries. These are based on React, Vue, and Svelte, respectively, and package additional features such as SSR and convenient tools.
+  - !TODO! Why use Vite
 
 # 1. Setup
 
@@ -76,41 +78,44 @@ This is because the first target users of this hands-on are Windows users who do
 
 ## Initialize a new React project
 
-### 1. Create a new React project using the create-react-app command
+### 1. Create a new React project using the create-vite command
 
-run the following command to initialize a new React project using the Create React App tool:
+run the following command to initialize a new React project using the Create Vite tool:
 
 ```sh
-npx create-react-app first-app --template typescript
+npm create vite@latest first-app -- --template react-ts
 ```
 
-### 2. Wait for the installation to complete. This may take a few minutes.
-
-### 3. Once the installation is finished, your project will be set up with the basic React template.
+### 2. Once the installation is finished, your project will be set up with the basic React+Vite template.
 
 run the following command start it up and check it out.
 
 ```sh
 cd first-app
-npm start
+npm install
+npm run dev
 ```
 
 This command will start up the Node.js server and launch a new browser window displaying your app.
 
-You can use Ctrl + c to stop running the React app in your command line.
+![React+Vite template](./img/1th/vite_default.png)
 
-### 4. Install the axios library for making HTTP requests:
+You can use Ctrl + c to stop running the React+Vite app in your command line.
+
+### 3. Install the axios library for making HTTP requests:
 
 ```sh
 npm install axios
 ```
+
+You can also open another terminal to run the above command without stopping running the React app.
 
 ## Create a component to display a random Pokemon
 
 ### 1. Open the src/App.tsx file and replace its contents with the following code:
 
 ```jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 // define the Pokemon interface, which describes the shape of the Pokemon object returned by the API. 
@@ -167,16 +172,19 @@ export default App;
     - A straightforward description of a React component is a reusable UI element.
     - The concept of components is a common concept in other modern UI frameworks and libraries such as Vue.js, Svelte, Angular, and so on.
 
-### 2. Save the file, and start the development server by running the command npm start in your terminal.
+### 2. Open your browser and go to http://localhost:5173 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
 
-Make sure the current directory is directly under the React project you created, and run the following command
+If you have stopped the app, you can run the following command.<br>
+Make sure the current directory is directly under the React project you created.
+
 ```sh
-npm start
+npm run dev
 ```
 
-### 3. Open your browser and go to http://localhost:3000 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
+![Random Pokemon initial display](./img/1th/RandomPokemonInitialDisplay.png)
 
-You can use Ctrl + c to stop running the React app in your command line.
+- **Note**:
+  - The template CSS is applied. We will apply a bit of design in a later step, so we leave it as is.
 
 ## Refactoring
 
@@ -199,7 +207,7 @@ This step can be skipped for the next step.
 ```jsx
 // App.tsx
 
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 // Define PokemonContainer component
@@ -263,7 +271,7 @@ export default App;
 // PokemonContainer.tsx
 
 // Move all the parts of App.tsx related to the PokemonContainer component to this file.
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 function PokemonContainer() {
@@ -312,7 +320,6 @@ export default PokemonContainer;
 // App.tsx
 
 // Removed import statements that are no longer needed
-import React from "react";
 // PokemonContainer component is imported for use in App.tsx
 import PokemonContainer from "./PokemonContainer";
 
@@ -339,7 +346,7 @@ export default App;
 
 ```jsx
 // PokemonContainer.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 interface Pokemon {
@@ -409,7 +416,6 @@ export default PokemonContainer;
 // PokemonDisplay.tsx
 
 // Move all the parts of PokemonContainer.tsx related to the PokemonDisplay component to this file.
-import React from "react";
 
 // It can be called from other components by adding "export".
 // This is because the Pokemon interface is also used in PokemonContainer.
@@ -443,7 +449,7 @@ export default PokemonDisplay;
 
 ```jsx
 // PokemonContainer.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import PokemonDisplay, { Pokemon } from "./PokemonDisplay";
 
@@ -487,10 +493,10 @@ The PokemonDisplay component can be used by other characters except for Pokémon
 
 #### Rename the file src/PokemonDisplay.tsx to src/ItemDisplay.tsx and change its contents to the following code:
 
+**Note:** After renaming the file, you will be asked if you want to change the import from VS Code. In this case, select No.
+
 ```jsx
 // ItemDisplay.tsx
-
-import React from "react";
 
 export interface Item {
     name: string;
@@ -514,7 +520,6 @@ function ItemDisplay({ item }: ItemDisplayProps) {
   );
 }
 
-
 export default ItemDisplay;
 ```
 
@@ -522,7 +527,7 @@ export default ItemDisplay;
 
 ```jsx
 // PokemonContainer.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ItemDisplay, { Item } from "./ItemDisplay";
 
@@ -577,19 +582,20 @@ We'll install a CSS library to make it look a little better.
 Make sure the current directory is directly under the React project you created, and run the following command:
 
 ```sh
-npm install -D tailwindcss
-npx tailwindcss init
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 ```
 
 #### Add the paths to all of your template files in your tailwind.config.js file.
 
 Open the src/tailwind.config.js file and replace its contents with the following code:
 
-```
+```js
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
@@ -600,15 +606,19 @@ module.exports = {
 
 #### Add the Tailwind directives to your CSS
 
-Open src/index.css file and Add the following code to the top of the file:
+Open src/index.css file and replace its contents with the following code:
 
-```
+```css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
 
-**Note:** If you haven't stopped the process, use Ctrl + c to stop running
+#### Open your browser and check the application for any changes in behavior.
+
+**Note**: The display changes to look like below
+
+![Apply tailwind initial display](./img/1th/ApplyTailwindInitialDisplay.png)
 
 ### 2. Apply CSS
 
@@ -616,7 +626,7 @@ Open src/index.css file and Add the following code to the top of the file:
 
 ```jsx
 // PokemonContainer.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ItemDisplay, { Item } from "./ItemDisplay";
 
@@ -681,8 +691,6 @@ Below are the differences before and after setting CSS. For reference only.<br>
 ```jsx
 // ItemDisplay.tsx
 
-import React from "react";
-
 export interface Item {
     name: string;
     imageUrl: string;
@@ -721,13 +729,22 @@ Below are the differences before and after setting CSS. For reference only.<br>
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
 ```
 
-#### Run your build process with npm run start.
+#### Run your build process with npm run dev.
 
 Make sure the current directory is directly under the React project you created, and run the following command:
 
 ```sh
-npm start
+npm dev
 ```
+
+TODO: Check again later if this step is necessary.
+
+#### Open a browser and see the application with the CSS applied.
+
+**Note**: The display changes to look like below
+
+![Random Pokemon with CSS applied](./img/1th/RandomPokemonWithCSS.png)
+
 
 ## (Option)More SPA like
 
@@ -886,6 +903,8 @@ function App() {
 export default App;
 ```
 
+!TODO!
+open browser
 
 # 3. Wrap up
 This concludes the hands-on. Thank you for your hard work.<br>
