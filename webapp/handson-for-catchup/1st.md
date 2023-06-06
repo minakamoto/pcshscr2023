@@ -734,7 +734,7 @@ Below are the differences before and after setting CSS. For reference only.<br>
 Make sure the current directory is directly under the React project you created, and run the following command:
 
 ```sh
-npm dev
+npm run dev
 ```
 
 TODO: Check again later if this step is necessary.
@@ -754,8 +754,6 @@ Let's introduce the navbar and add a dog menu as well as Pokemon to make it a li
 #### Install react-router
 Make sure the current directory is directly under the React project you created, and run the following command:
 
-
-- **Note:** If you haven't stopped the process, use Ctrl + c to stop running
 - TIPS:
   - About react-router, routing
     - React Router is a popular routing library for React applications.
@@ -778,7 +776,6 @@ The menu only has Pokémon for now, but we will introduce a navbar.
 
 ```jsx
 // App.tsx
-import React from "react";
 import PokemonContainer from "./PokemonContainer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
@@ -806,14 +803,9 @@ function App() {
 export default App;
 ```
 
-#### Save the file, and start the development server by running the command npm start in your terminal.
+#### Save the file, and open your browser and go to http://localhost:5173 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
 
-Make sure the current directory is directly under the React project you created, and run the following command
-```sh
-npm start
-```
-
-#### Open your browser and go to http://localhost:3000 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
+![Implementation of a navbar](./img/1th/implementation_navbar.png)
 
 ### 3. Add dog menu
 
