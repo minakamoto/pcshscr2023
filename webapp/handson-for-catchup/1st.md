@@ -580,6 +580,10 @@ We'll install a CSS library to make it look a little better.
 
 ### 1. Set up Tailwind CSS
 
+#### Stop app
+
+You can use Ctrl + c to stop running the React+Vite app in your command line.
+
 #### Install Tailwind CSS
 
 Make sure the current directory is directly under the React project you created, and run the following command:
@@ -615,6 +619,15 @@ Open src/index.css file and replace its contents with the following code:
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+#### Start app
+
+You can run the following command.<br>
+Make sure the current directory is directly under the React project you created.
+
+```sh
+npm run dev
 ```
 
 #### Open your browser and check the application for any changes in behavior.
