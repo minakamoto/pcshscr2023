@@ -819,7 +819,7 @@ The refactored and componentized ItemDisplay.tsx is used in both DogContainer.ts
 
 ```jsx
 // DogContainer
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ItemDisplay, { Item } from "./ItemDisplay";
 
@@ -863,7 +863,6 @@ export default DogContainer;
 
 ```jsx
 // App.tsx
-import React from "react";
 import PokemonContainer from "./PokemonContainer";
 import DogContainer from "./DogContainer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -895,12 +894,12 @@ function App() {
 export default App;
 ```
 
-!TODO!
-open browser
+#### Save the files, and open your browser and go to http://localhost:5173 to see the application. 
+
+"Dog" menu has been added to the navbar next to "Pokemon." Press the "Dog" menu to check that the screen can be displayed and processed in the same way as in "Pokemon".
 
 # 3. Wrap up
-This concludes the hands-on. Thank you for your hard work.<br>
-The complete code is available [here](./src/1th/first-app/).<br>
+This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).<br>
 There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (the lame design is intentional!). Please try to improve this UI or add features with your ideas.
 
 ## Advice for those interested in frontend development
