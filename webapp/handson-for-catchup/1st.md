@@ -915,4 +915,13 @@ In my opinion, to improve your frontend technical skills on your own,
 
 # 4. Links
 
-see [0th's Links](0th.md#3-links)
+- see [0th's Links](0th.md#3-links)
+- Other well-known general sites
+  - [freeCodeCamp](https://www.freecodecamp.org/)
+  - [w3schools](https://www.w3schools.com/)
+  - [scrimba](https://scrimba.com/)
+- UI frameworks/libraries
+  - If you want to study UI frameworks and libraries, try the tutorials on the official website of each framework or library first.
+    - e.g.
+      - [React tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
+      - [Svelte tutorial](https://svelte.dev/tutorial/basics)
