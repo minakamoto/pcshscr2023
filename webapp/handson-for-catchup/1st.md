@@ -29,7 +29,10 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
   - UI frameworks/libraries
     - React is one of the UI frameworks/libraries. There are also [Vue.js](https://vuejs.org/), [Svelte](https://svelte.dev/), and [Angular](https://angular.io/).
     - Next.js, Nuxt.js, and SvelteKit are also UI frameworks/libraries. These are based on React, Vue, and Svelte, respectively, and package additional features such as SSR and convenient tools.
-  - !TODO! Why use Vite
+  - Why use Vite
+    - Vite is a build tool that facilitates fast and efficient frontend development.
+    - Vite provides a highly efficient and enjoyable developer experience by offering fast startup times, instant hot module replacement, and streamlined bundling and reloading, resulting in a smooth and productive development workflow.
+      - (Initially, this hands-on was created using only React, but to make it more comfortable and fun, Vite was added.)
 
 # 1. Setup
 
