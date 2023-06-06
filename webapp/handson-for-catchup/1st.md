@@ -181,7 +181,7 @@ Make sure the current directory is directly under the React project you created.
 npm run dev
 ```
 
-![Random Pokemon initial display](./img/1th/RandomPokemonInitialDisplay.png)
+![Random Pokemon initial display](./img/1th/random_pokemon_initial_display.png)
 
 - **Note**:
   - The template CSS is applied. We will apply a bit of design in a later step, so we leave it as is.
@@ -618,7 +618,7 @@ Open src/index.css file and replace its contents with the following code:
 
 **Note**: The display changes to look like below
 
-![Apply tailwind initial display](./img/1th/ApplyTailwindInitialDisplay.png)
+![Apply tailwind initial display](./img/1th/apply_tailwind_initial_display.png)
 
 ### 2. Apply CSS
 
@@ -743,7 +743,7 @@ TODO: Check again later if this step is necessary.
 
 **Note**: The display changes to look like below
 
-![Random Pokemon with CSS applied](./img/1th/RandomPokemonWithCSS.png)
+![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
 
 
 ## (Option)More SPA like
