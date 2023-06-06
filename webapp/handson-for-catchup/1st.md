@@ -621,21 +621,6 @@ Open src/index.css file and replace its contents with the following code:
 @tailwind utilities;
 ```
 
-#### Start app
-
-You can run the following command.<br>
-Make sure the current directory is directly under the React project you created.
-
-```sh
-npm run dev
-```
-
-#### Open your browser and check the application for any changes in behavior.
-
-**Note**: The display changes to look like below
-
-![Apply tailwind initial display](./img/1th/apply_tailwind_initial_display.png)
-
 ### 2. Apply CSS
 
 #### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
@@ -752,8 +737,6 @@ Make sure the current directory is directly under the React project you created,
 ```sh
 npm run dev
 ```
-
-TODO: Check again later if this step is necessary.
 
 #### Open a browser and see the application with the CSS applied.
 
