@@ -78,3 +78,39 @@ API ภายนอกสำหรับ hands-on นี้ คือ [PokéAPI]
     - เปิดการตั้งค่า VSCode (File > Preferences > Settings) หรือใช้ทางลัด (Ctrl+,)
     - ในการตั้งค่า ค้นหา "Editor: Format On Save" หรือ "save" และเปิดใช้งาน "Editor: Format On Save" ตัวเลือกนี้จะจัดรูปแบบโค้ดโดยอัตโนมัติเมื่อคุณบันทึกไฟล์
   - คุณสามารถกำหนดค่า Prettier เพื่อจัดรูปแบบโค้ดตามความต้องการของคุณเอง [โปรดคลิกที่นี่เพื่อดูข้อมูลเพิ่มเติม](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+# 2. ส่วนหลัก (สร้าง UI)
+
+## เริ่มต้นโปรเจกต์ React ใหม่
+
+### 1. สร้างโปรเจกต์ React ใหม่โดยใช้คำสั่ง create-vite
+
+เรียกใช้คำสั่งต่อไปนี้เพื่อเริ่มต้นโครงการ React ใหม่โดยใช้ Create Vite tool:
+
+``` sh
+npm create vite@latest first-app -- --template react-ts
+```
+
+### 2. เมื่อการติดตั้งเสร็จสิ้น โปรเจกต์ของคุณจะถูกตั้งค่าด้วยพื้นฐาน React+Vite template
+
+ปฏิบัติคำสั่งต่อไปนี้เพื่อเริ่มต้นและตรวจสอบออก
+
+``` sh
+cd first-app
+npm install
+npm run dev
+```
+
+คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ Node.js และเปิดหน้าต่างเบราว์เซอร์ใหม่เพื่อแสดงแอปของคุณ
+
+![React+Vite template](./img/1th/vite_default.png)
+
+คุณสามารถใช้ Ctrl + c เพื่อหยุดการทำงานของแอป React+Vite ใน command line ของคุณ
+
+### 3. ติดตั้ง axios library เพื่อทำ HTTP requests:
+
+```sh
+npm install axios
+```
+
+คุณยังสามารถเปิด terminal อื่นเพื่อปฏิบัติคำสั่งด้านบนโดยไม่ต้องหยุดแอป React
