@@ -114,3 +114,59 @@ npm install axios
 ```
 
 คุณยังสามารถเปิด terminal อื่นเพื่อปฏิบัติคำสั่งด้านบนโดยไม่ต้องหยุดแอป React
+
+## สร้าง component เพื่อแสดง Pokemon แบบสุ่ม
+
+### 1. เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วย code ต่อไปนี้:
+
+```jsx
+import { useState } from "react";
+import axios from "axios";
+
+// กำหนดของ Pokemon Interface ซึ่งอธิบายโครงสร้างของ Pokemon object ที่ได้รับจาก API
+interface Pokemon {
+  name: string;
+  imageUrl: string;
+}
+
+function App() {
+  // กำหนดตัวแปรสถานะ pokemon โดยใช้ useState hook
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  // กำหนดฟังก์ชัน handleClick ที่เรียกใช้เมื่อคลิกปุ่ม "Generate Image"
+  const handleClick = async () => {
+    try {
+      // สร้าง Pokemon ID แบบสุ่มจาก 1~1000 เนื่องจากในปัจจุบันมี Pokémon ประมาณ 1000 ตัว
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      // ใช้ axios library เพื่อทำ GET request ไปยัง API ภายนอกที่ส่งคืนข้อมูล Pokemon สำหรับ ID นั้น
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      // ข้อมูลตอบกลับจะถูกเก็บไว้ในตัวแปรสถานะ pokemon โดยใช้ฟังก์ชัน setPokemon
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  // UI ของแอปประกอบด้วยส่วนหัว ปุ่ม "Generate Image" และรูปภาพและชื่อ Pokemon (ถ้ามี) ที่แสดงเมื่อคลิกปุ่ม
+  // ตัวแปรสถานะ pokemon ถูกใช้เพื่อแสดงภาพและชื่อ pokemon แบบมีเงื่อนไขโดยใช้ตัวดำเนินการ && หาก pokemon ไม่เป็น null ภาพและชื่อจะแสดงโดยใช้องค์ประกอบ img และ p
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default App;
+```
