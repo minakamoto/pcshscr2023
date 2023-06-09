@@ -168,6 +168,7 @@ function App() {
 
 export default App;
 ```
+
 - **Note**:
   - I wrote the explanation of the code in the comments of the code. It's okay if you don't understand the code description well for now.
 - TIPS:
