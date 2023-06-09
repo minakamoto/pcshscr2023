@@ -1,7 +1,7 @@
 # 0. บทนำ
 
 คอร์ส hands-on นี้ถูกออกแบบมาสำหรับผู้เริ่มต้นในการพัฒนาเว็บแอปพลิเคชันสมัยใหม่ จุดมุ่งหมายไม่ใช่เพื่อเรียนรู้ความรู้จากเนื้อหานี้ แต่เพื่อให้คุณสนใจในการพัฒนาเว็บแอปพลิเคชันสมัยใหม่และทักษะและความรู้ที่จำเป็นสำหรับการพัฒนาด้วยประสบการณ์การพัฒนา
-ดังนั้น เราจะไม่อธิบายมากเกี่ยวกับภาษาโปรแกรม tools libraries หรือ code ลำดับความสำคัญของเราคือการให้คุณได้สัมผัสประสบการณ์ในการพัฒนาเว็บแอปพลิเคชันใช้งานได้ตามที่อธิบายไว้
+ดังนั้น เราจะไม่อธิบายมากเกี่ยวกับภาษาโปรแกรม tools libraries หรือ โค้ด ลำดับความสำคัญของเราคือการให้คุณได้สัมผัสประสบการณ์ในการพัฒนาเว็บแอปพลิเคชันใช้งานได้ตามที่อธิบายไว้
 ลิงค์ไปยังเว็บไซต์ที่สามารถใช้เป็นข้อมูลอ้างอิงจะมีให้ตามความจำเป็น
 
 ## สิ่งที่เราจะสร้าง
@@ -117,7 +117,7 @@ npm install axios
 
 ## สร้าง component เพื่อแสดง Pokemon แบบสุ่ม
 
-### 1. เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วย code ต่อไปนี้:
+### 1. เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```jsx
 import { useState } from "react";
@@ -172,7 +172,7 @@ export default App;
 ```
 
 - **หมายเหตุ**:
-  - ฉันได้เขียนคำอธิบายของ code ในคอมเมนต์ใน code ไม่เป็นไรถ้าคุณยังไม่เข้าใจคำอธิบายของ code ได้ดีในขณะนี้
+  - ฉันได้เขียนคำอธิบายของโค้ดในคอมเมนต์ในโค้ดไม่เป็นไรถ้าคุณยังไม่เข้าใจคำอธิบายของโค้ดได้ดีในขณะนี้
 - คำแนะนำ:
   - เกี่ยวกับ Component
     - คำอธิบายอย่างตรงไปตรงมาของ React Component คือองค์ประกอบ UI ที่นำมาใช้ซ้ำได้
@@ -191,3 +191,157 @@ npm run dev
 
 - **หมายเหตุ**:
   - ได้ปรับใช้ CSS ของเทมเพลตแล้ว เราจะปรับใช้การออกแบบเล็กน้อยในขั้นตอนต่อไป ดังนั้นเราจะปล่อยไว้ตามที่เป็นอยู่
+
+## การ Refactoring
+
+เมื่อเขียนโค้ด สิ่งสำคัญคือต้องจัดระเบียบและอ่านง่าย การ Refactoring คือกระบวนการปรับปรุงโครงสร้างของโค้ดที่มีอยู่โดยไม่เปลี่ยนลักษณะการทำงาน ซึ่งจะทำให้โค้ดง่ายต่อการเข้าใจ บำรุงรักษา และต่อยอดในอนาคต
+
+ในกรณีของเรา เราเริ่มต้นด้วยการเขียนกระบวนการแสดงรูปภาพและเนื้อหาของ Pokemon โดยตรงในไฟล์ App.tsx อย่างไรก็ตาม เมื่อแอปพลิเคชันเริ่มซับซ้อนมากขึ้น เป็นความคิดที่ดีที่จะแยกมันออกเป็นไฟล์ของตัวเองในรูปแบบของ component เพื่อให้โค้ดเป็นระเบียบและเป็นโมดูล
+
+- คำแนะนำ:
+    - เกี่ยวกับการ Refactoring ของ component
+      - การแยกส่วนรายละเอียดของโค้ดเป็นคอมโพเนนต์สนับสนุนการใช้ซ้ำ การแยกงาน และการบำรุงรักษา อย่างไรก็ตาม การแยกส่วนนี้อาจมีความซับซ้อนและภาระการทำงานเพิ่มขึ้น การตัดสินใจว่าจะแยกส่วนอย่างไรขึ้นอยู่กับขนาด ความซับซ้อน และความต้องการเฉพาะของแอปพลิเคชันของคุณ
+
+### 1. นิยามทุกอย่างที่เกี่ยวข้องกับกระบวนการแสดงรูปภาพแบบสุ่มในไฟล์ App.tsx เป็นฟังก์ชันแยกต่างหากในไฟล์ App.tsx
+
+- **หมายเหตุ**:<br>
+การ Refactoring ถูกทำครั้งเดียวในไฟล์เดียวเพื่อทำให้โค้ดง่ายต่อการติดตาม<br>
+ขั้นตอนนี้สามารถข้ามไปยังขั้นตอนถัดไปได้
+
+### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```jsx
+// App.tsx
+
+import { useState } from "react";
+import axios from "axios";
+
+// นิยาม PokemonContainer component
+// ทุกสิ่งที่เกี่ยวข้องกับกระบวนการแสดงรูปภาพแบบสุ่มในไฟล์ App.tsx ถูกนิยามใน component นี้
+function PokemonContainer() {
+  interface Pokemon {
+    name: string;
+    imageUrl: string;
+  }
+
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ใช้ PokemonContainer component
+function App() {
+  return (
+    <div>
+      <PokemonContainer />
+    </div>
+  );
+}
+
+export default App;
+```
+
+#### เปิดเบราว์เซอร์ของคุณและตรวจสอบแอปพลิเคชันว่ามีการเปลี่ยนแปลงในพฤติกรรมหรือไม่
+
+### 2. แยก PokemonContainer component จาก App.tsx
+
+#### สร้างไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```jsx
+// PokemonContainer.tsx
+
+// ย้ายทุกส่วนที่เกี่ยวข้องกับ PokemonContainer  component ใน App.tsx ไปยังไฟล์นี้
+import { useState } from "react";
+import axios from "axios";
+
+function PokemonContainer() {
+  interface Pokemon {
+    name: string;
+    imageUrl: string;
+  }
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// สามารถเรียกใช้จาก component อื่นได้
+export default PokemonContainer;
+```
+
+### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```jsx
+// App.tsx
+
+// ลบคำสั่ง import ที่ไม่จำเป็นอีกต่อไป
+// PokemonContainer component ถูกนำเข้าเพื่อใช้ใน App.tsx
+import PokemonContainer from "./PokemonContainer";
+
+function App() {
+  return (
+    <div>
+      <PokemonContainer />
+    </div>
+  );
+}
+
+export default App;
+```
+
+#### เปิดเบราว์เซอร์ของคุณและตรวจสอบแอปพลิเคชันว่ามีการเปลี่ยนแปลงในพฤติกรรมหรือไม่
+
+### 3. แยกกระบวนการที่เกี่ยวข้องกับการแสดงภาพและชื่อออกจาก PokemonContainer.tsx เป็น component ที่แยกต่างหาก
+
+- **หมายเหตุ**:
