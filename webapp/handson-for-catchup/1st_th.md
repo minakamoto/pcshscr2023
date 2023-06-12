@@ -345,3 +345,227 @@ export default App;
 ### 3. แยกกระบวนการที่เกี่ยวข้องกับการแสดงภาพและชื่อออกจาก PokemonContainer.tsx เป็น component ที่แยกต่างหาก
 
 - **หมายเหตุ**:
+  - การ Refactoring นี้ยังดำเนินการครั้งเดียวในไฟล์เดียวกันเพื่อให้โค้ดติดตามได้ง่ายขึ้น ขั้นตอนนี้สามารถข้ามไปยังขั้นตอนถัดไปได้
+  - ว่าจะ Refactoring ถึงขั้นนี้ในแอปพลิเคชันจริงควรพิจารณาจากขนาดของแอปพลิเคชัน ความซับซ้อนของโค้ด และว่าคอมโพเนนต์มีการใช้ซ้ำหรือไม่
+
+#### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```jsx
+// PokemonContainer.tsx
+import { useState } from "react";
+import axios from "axios";
+
+interface Pokemon {
+    name: string;
+    imageUrl: string;
+}
+
+// กำหนด interface ของ PokemonDisplayProps ซึ่งเป็น props ที่จะส่งให้กับคอมโพเนนต์ PokemonDisplay
+interface PokemonDisplayProps {
+    pokemon: Pokemon | null;
+}
+
+// กำหนดคอมโพเนนต์ PokemonDisplay
+// แยกการประมวลผลที่เกี่ยวข้องกับการแสดงรูปภาพและชื่อของ Pokemon จากคอมโพเนนต์ PokemonContainer และนิยามในคอมโพเนนต์นี้
+function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
+    return (
+        <div>
+            {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+        </div>
+    )
+}
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  // ใช้คอมโพเนนต์ PokemonDisplay
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      <PokemonDisplay pokemon={pokemon} />
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+#### เปิดเบราว์เซอร์ของคุณและตรวจสอบแอปพลิเคชันว่ามีการเปลี่ยนแปลงในพฤติกรรมหรือไม่
+
+### 4. แยกคอมโพเนนต์ PokemonDisplay จาก PokemonContainer.tsx
+
+#### สร้างไฟล์ src/PokemonDisplay.tsx และแทนที่เนื้อหาด้วยรหัสต่อไปนี้:
+
+```jsx
+// PokemonDisplay.tsx
+
+// ย้ายทุกส่วนของ PokemonContainer.tsx ที่เกี่ยวข้องกับคอมโพเนนต์ PokemonDisplay ไปยังไฟล์นี้
+
+// สามารถเรียกใช้จากคอมโพเนนต์อื่นได้โดยเพิ่ม "export"
+// นี่เป็นเพราะว่า interface ของ Pokemon ใช้ใน PokemonContainer ด้วย
+export interface Pokemon {
+    name: string;
+    imageUrl: string;
+}
+
+interface PokemonDisplayProps {
+    pokemon: Pokemon | null;
+}
+
+function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
+    return (
+        <div>
+            {pokemon && (
+        <div>
+          <img src={pokemon.imageUrl} alt={pokemon.name} />
+          {pokemon.imageUrl && <p>{pokemon.name}</p>}
+        </div>
+      )}
+        </div>
+    )
+}
+
+// สามารถเรียกใช้จาก component อื่นได้
+export default PokemonDisplay;
+```
+
+#### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```jsx
+// PokemonContainer.tsx
+import { useState } from "react";
+import axios from "axios";
+import PokemonDisplay, { Pokemon } from "./PokemonDisplay";
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      <PokemonDisplay pokemon={pokemon} />
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+#### เปิดเบราว์เซอร์ของคุณและตรวจสอบแอปพลิเคชันว่ามีการเปลี่ยนแปลงในพฤติกรรมหรือไม่
+
+### 5. เปลี่ยนชื่อคอมโพเนนต์ PokemonDisplay เป็นชื่อทั่วไป
+
+คอมโพเนนต์ PokemonDisplay สามารถใช้ได้กับตัวละครอื่นๆนอกเหนือจาก Pokémon ดังนั้นเราจะเปลี่ยนชื่อให้เป็นชื่อทั่วไปมากขึ้น
+
+#### เปลี่ยนชื่อไฟล์ src/PokemonDisplay.tsx เป็น src/ItemDisplay.tsx และเปลี่ยนเนื้อหาในไฟล์เป็นโค้ดต่อไปนี้:
+
+**หมายเหตุ:** หลังจากเปลี่ยนชื่อไฟล์แล้ว คุณจะถูกถามว่าต้องการเปลี่ยนการนำเข้า (import) จาก VS Code หรือไม่ ในกรณีนี้ เลือก ไม่
+
+```jsx
+// ItemDisplay.tsx
+
+export interface Item {
+    name: string;
+    imageUrl: string;
+}
+
+interface ItemDisplayProps {
+    item: Item | null;
+}
+
+function ItemDisplay({ item }: ItemDisplayProps) {
+  return (
+    <div>
+      {item && (
+        <div>
+          <img src={item.imageUrl} alt={item.name} />
+          {item.imageUrl && <p>{item.name}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default ItemDisplay;
+```
+
+#### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+
+```jsx
+// PokemonContainer.tsx
+import { useState } from "react";
+import axios from "axios";
+import ItemDisplay, { Item } from "./ItemDisplay";
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Item | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Random Pokemon Image Generator</h1>
+      <button onClick={handleClick}>Generate Image</button>
+      <ItemDisplay item={pokemon} />
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+#### เปิดเบราว์เซอร์ของคุณและตรวจสอบแอปพลิเคชันว่ามีการเปลี่ยนแปลงในพฤติกรรมหรือไม่
