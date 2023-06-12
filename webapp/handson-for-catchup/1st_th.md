@@ -569,3 +569,182 @@ export default PokemonContainer;
 ```
 
 #### เปิดเบราว์เซอร์ของคุณและตรวจสอบแอปพลิเคชันว่ามีการเปลี่ยนแปลงในพฤติกรรมหรือไม่
+
+## (ตัวเลือก) ปรับใช้งานดีไซน์
+
+เราจะติดตั้ง CSS library เพื่อทำให้ดูดีขึ้นเล็กน้อย
+
+- คำแนะนำ:
+  - เกี่ยวกับ CSS/Component library
+    - โดยทั่วไป CSS libraries และ component libraries มีจุดประสงค์ที่แตกต่างกันในการพัฒนา frontend
+    - CSS libraries เช่น Tailwind CSS จัดเตรียมสไตล์และคลาสที่สร้างไว้ล่วงหน้าซึ่งสามารถใช้จัดรูปแบบองค์ประกอบ HTML ได้
+    - Component libraries เช่น Bootstrap มีคอมโพเนนต์ UI ที่สร้างไว้ล่วงหน้าซึ่งสามารถใช้เพื่อสร้าง UI ที่สอดคล้องกันและดูเป็นมืออาชีพ
+    - ตัวเลือกระหว่างทั้งสองขึ้นอยู่กับความต้องการของโครงการ ความชอบส่วนบุคคล และระดับของการปรับแต่งที่จำเป็น
+
+### 1. ติดตั้ง Tailwind CSS
+
+#### หยุดแอป
+
+คุณสามารถใช้ Ctrl + c เพื่อหยุดการเรียกใช้แอป React+Vite ใน Command Line ของคุณ
+
+#### ติดตั้ง Tailwind CSS
+
+ตรวจสอบให้แน่ใจว่าไดเร็กทอรีปัจจุบันอยู่ภายใต้โปรเจ็กต์ React ที่คุณสร้างขึ้นโดยตรง และเรียกใช้คำสั่งต่อไปนี้:
+
+```sh
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+#### เพิ่มเส้นทางไปยังไฟล์เทมเพลตทั้งหมดในไฟล์ tailwind.config.js ของคุณ
+
+เปิดไฟล์ src/tailwind.config.js และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+#### เพิ่ม Tailwind directives ใน CSS ของคุณ
+
+เปิดไฟล์ src/index.css และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### 2. ปรับใช้ CSS
+
+#### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+
+```jsx
+// PokemonContainer.tsx
+import { useState } from "react";
+import axios from "axios";
+import ItemDisplay, { Item } from "./ItemDisplay";
+
+function PokemonContainer() {
+  
+  const [pokemon, setPokemon] = useState<Item | null>(null);
+  
+  const handleClick = async () => {
+    try {
+      const randomId = Math.floor(Math.random() * 1000) + 1;
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+      setPokemon({
+        name: response.data.name,
+        imageUrl: response.data.sprites.front_default,
+      });
+    } catch (error) {
+      console.error("Error fetching Pokemon:", error);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-start h-screen bg-gray-100 my-2">
+      <h1 className="text-4xl font-bold mb-4">Random Pokemon Image Generator</h1>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+        onClick={handleClick}
+      >
+        Generate Image
+      </button>
+      {pokemon && <ItemDisplay item={pokemon} />}
+    </div>
+  );
+}
+
+export default PokemonContainer;
+```
+
+ด้านล่างนี้คือข้อแตกต่างก่อนและหลังการตั้งค่า CSS สำหรับการอ้างอิงเท่านั้น<br>
+**อย่าคัดลอกและวางโค้ด**<br>
+เครื่องหมาย "-" หมายถึงก่อนหน้านี้ "+" หมายถึงหลังจากนี้
+
+```jsx
+-    <div>
+-      <h1>Random Pokemon Image Generator</h1>
+-      <button onClick={handleClick}>Generate Image</button
+-      <ItemDisplay item={pokemon} />
++    <div className="flex flex-col items-center justify-start h-screen bg-gray-100 my-2">
++      <h1 className="text-4xl font-bold mb-4">Random Pokemon Image Generator</h1>
++      <button
++        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
++        onClick={handleClick}
++      >
++        Generate Image
++      </button>
++      {pokemon && <ItemDisplay item={pokemon} />}
+```
+
+#### เปิดไฟล์ src/ItemDisplay.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+
+```jsx
+// ItemDisplay.tsx
+
+export interface Item {
+    name: string;
+    imageUrl: string;
+}
+
+interface ItemDisplayProps {
+    item: Item | null;
+}
+
+function ItemDisplay({ item }: ItemDisplayProps) {
+  return (
+    <div>
+      {item && (
+        <div className="mt-4">
+          <img className="w-32 h-32 rounded-full mx-auto mb-2" src={item.imageUrl} alt={item.name} />
+          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default ItemDisplay;
+```
+
+ด้านล่างนี้คือข้อแตกต่างก่อนและหลังการตั้งค่า CSS สำหรับการอ้างอิงเท่านั้น<br>
+**อย่าคัดลอกและวางโค้ด**<br>
+เครื่องหมาย "-" หมายถึงก่อนหน้านี้ "+" หมายถึงหลังจากนี้
+
+```jsx
+-        <div>
+-          <img src={item.imageUrl} alt={item.name} />
+-          {item.imageUrl && <p>{item.name}</p>}
++        <div className="mt-4">
++          <img className="w-32 h-32 rounded-full mx-auto mb-2" src={item.imageUrl} alt={item.name} />
++          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
+```
+
+#### เรียกใช้กระบวนการ Build ด้วยคำสั่ง npm run dev
+
+ตรวจสอบให้แน่ใจว่าไดเร็กทอรีปัจจุบันอยู่ภายใต้โปรเจ็กต์ React ที่คุณสร้างขึ้นโดยตรง และเรียกใช้คำสั่งต่อไปนี้:
+
+```sh
+npm run dev
+```
+
+#### 
+
+**หมายเหตุ**: การแสดงผลเปลี่ยนแปลงเป็นดังต่อไปนี้
+
+![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
