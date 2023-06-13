@@ -748,3 +748,158 @@ npm run dev
 **หมายเหตุ**: การแสดงผลเปลี่ยนแปลงเป็นดังต่อไปนี้
 
 ![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
+
+## (ตัวเลือก) เหมือน SPA มากขึ้น
+
+เราจะเพิ่มเมนูนำทาง (navbar) และเพิ่มเมนูสุนัขนอกเหนือจาก Pokemon เพื่อทำให้เหมือน SPA มากขึ้น
+
+### 1. เตรียมการใช้งาน react-router
+#### ติดตั้ง react-router
+
+ตรวจสอบให้แน่ใจว่าไดเร็กทอรีปัจจุบันอยู่ภายใต้โปรเจ็กต์ React ที่คุณสร้างขึ้นโดยตรง และเรียกใช้คำสั่งต่อไปนี้:
+
+```sh
+npm install react-router-dom
+```
+
+- คำแนะนำ:
+  - เกี่ยวกับ react-router และการกำหนดเส้นทาง (routing)
+    - React Router เป็นไลบรารีการกำหนดเส้นทางยอดนิยมสำหรับแอปพลิเคชัน React
+      - ไลบรารีและเฟรมเวิร์กอื่นๆ มีทางออกการกำหนดเส้นทางของตนเอง ตัวอย่างเช่น Angular มี Angular Router, Vue มี Vue Router เป็นต้น
+    - การกำหนดเส้นทางเป็นแนวคิดที่ใช้กับไลบรารีและเฟรมเวิร์กต่างๆ นอกเหนือจาก React
+      - ในบริบทของการพัฒนาเว็บ การกำหนดเส้นทางเกี่ยวข้องกับการจัดการ URL หรือเส้นทางต่างๆ และ mapping กับส่วน component หรือการดำเนินการเฉพาะภายในแอปพลิเคชันของคุณ ช่วยให้คุณนำทางระหว่าง views หรือ pages และรักษาสถานะของแอปพลิเคชันตาม URL ปัจจุบัน
+
+**หมายเหตุ:** <br>
+ในขณะที่เขียนข้อความนี้ React Router เวอร์ชันที่ใช้งานคือ v6 หากคุณติดตั้งตามคำอธิบายข้างต้นคุณควรสามารถใช้ v6 ได้ หากคุณติดตั้งโดยระบุเวอร์ชันเฉพาะ โปรดทราบว่าการตั้งค่าแตกต่างกันระหว่าง v5 และ v6
+
+### 2. การใช้งาน navbar
+
+ตอนนี้เมนูมีเฉพาะ Pokémon เท่านั้น  แต่เราจะแนะนำ navbar
+
+### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+```jsx
+// App.tsx
+import PokemonContainer from "./PokemonContainer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav className="bg-gray-200 p-4">
+          <ul className="flex">
+            <li className="mr-4">
+              <Link to="/pokemon">Pokemon</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/pokemon" element={<PokemonContainer />} />
+        </Routes>
+        
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+#### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณแล้วไปที่ http://localhost:5173 เพื่อดูแอปพลิเคชัน คลิกที่ "Pokemon" ในเมนูบาร์ด้านบนและตรวจสอบว่าหน้า "Get Random Pokemon" ปรากฏขึ้น
+
+![Implementation of a navbar](./img/1th/implementation_navbar.png)
+
+### 3. เพิ่มเมนูสุนัข
+
+เพิ่มเมนูที่แสดงภาพสุนัขแบบสุ่มเหมือนกับ Pokemon
+
+#### สร้างไฟล์ src/DogContainer.tsx และแทนที่เนื้อหาด้วยรหัสต่อไปนี้:
+
+ในไฟล์ DogContainer.tsx ภาพสุนัขจะถูกเรียกแบบสุ่ม คล้ายกับ PokemonContainer.tsx
+UI ก็เหมือนกัน<br>
+เราใช้ไฟล์ที่ถูก Refactor และทำเป็น Component อย่าง ItemDisplay.tsx ในทั้ง DogContainer.tsx และ PokemonContainer.tsx
+
+
+```jsx
+// DogContainer
+import { useState } from "react";
+import axios from "axios";
+import ItemDisplay, { Item } from "./ItemDisplay";
+
+function DogContainer() {
+  const [dog, setDog] = useState<Item | null>(null);
+
+  const handleClick = async () => {
+    try {
+      const response = await axios.get(
+        "https://dog.ceo/api/breeds/image/random"
+      );
+      setDog({
+        name: "dog image",
+        imageUrl: response.data.message,
+      });
+    } catch (error) {
+      console.error("Error fetching dog:", error);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex flex-col items-center justify-start h-screen bg-gray-100 my-2">
+        <h1 className="text-4xl font-bold mb-4">Random Dog Image Generator</h1>
+        <button
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded cursor-pointer"
+          onClick={handleClick}
+        >
+          Generate Image
+        </button>
+        {dog && <ItemDisplay item={dog} />}
+      </div>
+    </div>
+  );
+}
+
+export default DogContainer;
+```
+
+### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+
+
+```jsx
+// App.tsx
+import PokemonContainer from "./PokemonContainer";
+import DogContainer from "./DogContainer";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav className="bg-gray-200 p-4">
+          <ul className="flex">
+            <li className="mr-4">
+              <Link to="/pokemon">Pokemon</Link>
+            </li>
+            <li className="mr-4">
+              <Link to="/dog">Dog</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/pokemon" element={<PokemonContainer />} />
+          <Route path="/dog" element={<DogContainer />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+#### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณ ไปที่ http://localhost:5173 เพื่อดูแอปพลิเคชัน
+
+"Dog" เมนูถูกเพิ่มเข้าไปใน Navbar ติดตั้งกับ "Pokemon" กดที่เมนู "Dog" เพื่อตรวจสอบว่าหน้าจอแสดงผลและประมวลผลสามารถทำได้เหมือนกับ "Pokemon"
