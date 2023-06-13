@@ -14,7 +14,7 @@ This is a session to look at the differences between modern and traditional web 
 
 Have a look at the following diagram to get an idea of how this works. More details will be explained in the next chapter.
 
-![multiple HTML pages vs. single-page apps](./img/mpa_vs_spa.jpg)
+![multiple HTML pages vs. single-page apps](./img/0th/mpa_vs_spa.jpg)
 
 ### Overall differences between web app technology stacks from 20 years ago and today.
 
@@ -62,7 +62,7 @@ Some of the notable differences include:
 The technology stack required for modern web apps is composed of different layers, including frontend, backend, mobile, UI/UX, and infrastructure technologies, which work together to create a seamless user experience. Although the composition of the team may vary depending on the size of the organization and other factors, successful development and deployment of the application require effective collaboration and communication between team members and external stakeholders, such as clients and users. Agile, XP, TDD, Git, and various project management tools such as Jira, Asana, and Trello can aid in this collaboration and management.
 
 <div align="center">
-<img src="./img/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
+<img src="./img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
 </div>
 
 ### a brief description of each technology layer in the modern web app development stack:
@@ -85,7 +85,7 @@ Each layer requires a different set of skills and expertise, and collaboration b
 
 The detailed names of the technology stacks required for modern web application development are shown in the examples on the sticky notes. These are just examples; the author has posted stickies with the names of technology stacks that came to mind quickly at the time of writing. Please note that technology is constantly evolving and this information may become outdated at any time.
 
-![the detailed names of the technology stacks examples](./img/technology_stack_name_examples.jpg)
+![the detailed names of the technology stacks examples](./img/0th/technology_stack_name_examples.jpg)
 
 # 3. Links
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn)

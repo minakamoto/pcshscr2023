@@ -168,6 +168,7 @@ function App() {
 
 export default App;
 ```
+
 - **Note**:
   - I wrote the explanation of the code in the comments of the code. It's okay if you don't understand the code description well for now.
 - TIPS:
@@ -753,16 +754,16 @@ Let's introduce the navbar and add a dog menu as well as Pokemon to make it a li
 #### Install react-router
 Make sure the current directory is directly under the React project you created, and run the following command:
 
+```sh
+npm install react-router-dom
+```
+
 - TIPS:
   - About react-router, routing
     - React Router is a popular routing library for React applications.
       - Other libraries and frameworks have their own routing solutions. For example, Angular has Angular Router, Vue has Vue Router, and so on
     - Routing is a concept that applies to various libraries and frameworks beyond React.
       - In the context of web development, routing involves handling different URLs or paths and mapping them to specific components or actions within your application. It allows you to navigate between different views or pages and maintain the state of the application based on the current URL.
-
-```sh
-npm install react-router-dom
-```
 
 **NOTE:** <br>
 At the time of writing, the React route version is v6. If you install as described above, you should be able to use v6. If you install by specifying the version, note that the settings are different between v5 and v6.
@@ -899,14 +900,14 @@ export default App;
 
 # 3. Wrap up
 This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).<br>
-There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (the lame design is intentional!). Please try to improve this UI or add features with your ideas.
+There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (The too-simple design is intentional!). Please try to improve this UI or add features with your ideas.
 
 ## Advice for those interested in frontend development
 
 In my opinion, to improve your frontend technical skills on your own,
 1. learn the basics of Javascript/Typescript, HTML, CSS
 1. think of an application you want to make and try to develop it yourself
-1. (If you can't think of an application you want to make) find a UI or application that you want to learn hands-on or copy from the web, imitate it, and implement it
+1. (If you can't think of an application you want to make) find a UI or application that you want to learn hands-on or copy from the web, imitate it, and implement it(Of course, copying is only for the purpose of studying.)
 1. figure out what knowledge and skills you lack in 2. and/or 3. and dig deeper.
 
 # 4. Links
