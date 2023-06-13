@@ -900,14 +900,14 @@ export default App;
 
 # 3. Wrap up
 This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).<br>
-There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (the lame design is intentional!). Please try to improve this UI or add features with your ideas.
+There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (The too-simple design is intentional!). Please try to improve this UI or add features with your ideas.
 
 ## Advice for those interested in frontend development
 
 In my opinion, to improve your frontend technical skills on your own,
 1. learn the basics of Javascript/Typescript, HTML, CSS
 1. think of an application you want to make and try to develop it yourself
-1. (If you can't think of an application you want to make) find a UI or application that you want to learn hands-on or copy from the web, imitate it, and implement it
+1. (If you can't think of an application you want to make) find a UI or application that you want to learn hands-on or copy from the web, imitate it, and implement it(Of course, copying is only for the purpose of studying.)
 1. figure out what knowledge and skills you lack in 2. and/or 3. and dig deeper.
 
 # 4. Links
