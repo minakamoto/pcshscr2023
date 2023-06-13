@@ -754,16 +754,16 @@ Let's introduce the navbar and add a dog menu as well as Pokemon to make it a li
 #### Install react-router
 Make sure the current directory is directly under the React project you created, and run the following command:
 
+```sh
+npm install react-router-dom
+```
+
 - TIPS:
   - About react-router, routing
     - React Router is a popular routing library for React applications.
       - Other libraries and frameworks have their own routing solutions. For example, Angular has Angular Router, Vue has Vue Router, and so on
     - Routing is a concept that applies to various libraries and frameworks beyond React.
       - In the context of web development, routing involves handling different URLs or paths and mapping them to specific components or actions within your application. It allows you to navigate between different views or pages and maintain the state of the application based on the current URL.
-
-```sh
-npm install react-router-dom
-```
 
 **NOTE:** <br>
 At the time of writing, the React route version is v6. If you install as described above, you should be able to use v6. If you install by specifying the version, note that the settings are different between v5 and v6.
