@@ -896,7 +896,7 @@ export default App;
 
 #### Save the files, and open your browser and go to http://localhost:5173 to see the application. 
 
-"Dog" menu has been added to the navbar next to "Pokemon." Press the "Dog" menu to check that the screen can be displayed and processed in the same way as in "Pokemon".
+"Dog" menu has been added to the navbar next to "Pokemon". Press the "Dog" menu to check that the screen can be displayed and processed in the same way as in "Pokemon".
 
 # 3. Wrap up
 This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).<br>
