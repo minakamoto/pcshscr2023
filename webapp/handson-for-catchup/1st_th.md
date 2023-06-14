@@ -906,6 +906,8 @@ export default App;
 
 # 3. ในปิดท้าย
 นี่เป็นการสรุป hands-on ขอบคุณสำหรับความพยายามของคุณ โค้ดที่สมบูรณ์มีอยู่ [ที่นี่](./src/1th/first-app/)<br>
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
+
 ยังมีหลายสิ่งที่ต้องแก้ไข เช่น ไม่มีหน้าจอ TOP และการออกแบบที่แย่มาก (การออกแบบที่เรียบง่ายเกินไปคือความตั้งใจ!) โปรดลองปรับปรุง UI นี้หรือเพิ่มคุณสมบัติด้วยแนวคิดของคุณ
 
 ## คำแนะนำสำหรับผู้ที่สนใจในการพัฒนา frontend
