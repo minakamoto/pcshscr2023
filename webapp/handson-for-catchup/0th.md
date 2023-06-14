@@ -5,7 +5,6 @@ This is a session to look at the differences between modern and traditional web 
   - You may not know what it is the first time you see it, but that's okay. It is enough to know that web development in the past and today are very different, and that the amount and breadth of the technology stack for modern web development is broad.
   - You may find this helpful to come back and look at it again after you've done some hands-on activities, etc.
 
-
 # 1. Overview of Web App Technology Stack Evolution
 
 ## The differences between web app technology stacks from 20 years ago and today.
