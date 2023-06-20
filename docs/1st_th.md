@@ -105,7 +105,7 @@ npm run dev
 
 คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ Node.js และเปิดหน้าต่างเบราว์เซอร์ใหม่เพื่อแสดงแอปของคุณ
 
-![React+Vite template](./img/1th/vite_default.png)
+![React+Vite template](./public/img/1th/vite_default.png)
 
 คุณสามารถใช้ Ctrl + c เพื่อหยุดการทำงานของแอป React+Vite ใน command line ของคุณ
 
@@ -189,7 +189,7 @@ export default App;
 npm run dev
 ```
 
-![Random Pokemon initial display](./img/1th/random_pokemon_initial_display.png)
+![Random Pokemon initial display](./public/img/1th/random_pokemon_initial_display.png)
 
 - **หมายเหตุ**:
   - ได้ปรับใช้ CSS ของเทมเพลตแล้ว เราจะปรับใช้การออกแบบเล็กน้อยในขั้นตอนต่อไป ดังนั้นเราจะปล่อยไว้ตามที่เป็นอยู่
@@ -749,7 +749,7 @@ npm run dev
 
 **หมายเหตุ**: การแสดงผลเปลี่ยนแปลงเป็นดังต่อไปนี้
 
-![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
+![Random Pokemon with CSS applied](./public/img/1th/random_pokemon_with_css.png)
 
 ### (ตัวเลือก) เหมือน SPA มากขึ้น
 
@@ -811,7 +811,7 @@ export default App;
 
 ##### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณแล้วไปที่ http://localhost:5173 เพื่อดูแอปพลิเคชัน คลิกที่ "Pokemon" ในเมนูบาร์ด้านบนและตรวจสอบว่าหน้า "Get Random Pokemon" ปรากฏขึ้น
 
-![Implementation of a navbar](./img/1th/implementation_navbar.png)
+![Implementation of a navbar](./public/img/1th/implementation_navbar.png)
 
 #### 3. เพิ่มเมนูสุนัข
 
@@ -907,7 +907,7 @@ export default App;
 "Dog" เมนูถูกเพิ่มเข้าไปใน Navbar ติดตั้งกับ "Pokemon" กดที่เมนู "Dog" เพื่อตรวจสอบว่าหน้าจอแสดงผลและประมวลผลสามารถทำได้เหมือนกับ "Pokemon"
 
 ## 3. ในปิดท้าย
-นี่เป็นการสรุป hands-on ขอบคุณสำหรับความพยายามของคุณ โค้ดที่สมบูรณ์มีอยู่ [ที่นี่](./src/1th/first-app/)  
+นี่เป็นการสรุป hands-on ขอบคุณสำหรับความพยายามของคุณ โค้ดที่สมบูรณ์มีอยู่ [ที่นี่](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)  
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
 
 ยังมีหลายสิ่งที่ต้องแก้ไข เช่น ไม่มีหน้าจอ TOP และการออกแบบที่แย่มาก (การออกแบบที่เรียบง่ายเกินไปคือความตั้งใจ!) โปรดลองปรับปรุง UI นี้หรือเพิ่มคุณสมบัติด้วยแนวคิดของคุณ

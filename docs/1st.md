@@ -103,7 +103,7 @@ npm run dev
 
 This command will start up the Node.js server and launch a new browser window displaying your app.
 
-![React+Vite template](./img/1th/vite_default.png)
+![React+Vite template](./public/img/1th/vite_default.png)
 
 You can use Ctrl + c to stop running the React+Vite app in your command line.
 
@@ -187,7 +187,7 @@ Make sure the current directory is directly under the React project you created.
 npm run dev
 ```
 
-![Random Pokemon initial display](./img/1th/random_pokemon_initial_display.png)
+![Random Pokemon initial display](./public/img/1th/random_pokemon_initial_display.png)
 
 - **Note**:
   - The template CSS is applied. We will apply a bit of design in a later step, so we leave it as is.
@@ -745,7 +745,7 @@ npm run dev
 
 **Note**: The display changes to look like below
 
-![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
+![Random Pokemon with CSS applied](./public/img/1th/random_pokemon_with_css.png)
 
 
 ### (Option)More SPA like
@@ -807,7 +807,7 @@ export default App;
 
 ##### Save the file, and open your browser and go to http://localhost:5173 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
 
-![Implementation of a navbar](./img/1th/implementation_navbar.png)
+![Implementation of a navbar](./public/img/1th/implementation_navbar.png)
 
 #### 3. Add dog menu
 
@@ -901,7 +901,7 @@ export default App;
 "Dog" menu has been added to the navbar next to "Pokemon". Press the "Dog" menu to check that the screen can be displayed and processed in the same way as in "Pokemon".
 
 ## 3. Wrap up
-This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).  
+This concludes the hands-on. Thank you for your hard work.The complete code is available [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app).  
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
 
 There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (The too-simple design is intentional!). Please try to improve this UI or add features with your ideas.
