@@ -1,17 +1,19 @@
-# 0. はじめに
+# Hands-on to develop simple & easy UI
+
+## 0. はじめに
 
 このハンズオンは、モダンなWebアプリケーション開発の初心者を対象としています。この資料で知識を学ぶことが目的ではなく、実際に開発を体験することで、モダンなWebアプリケーション開発やそれに必要なスキルや知識に興味を持ってもらうことを目的としています。  
 このため、プログラミング言語、ツール、ライブラリ、コードについてはあまり説明しません。あくまでも、実際に動くWebアプリを開発することを体験していただくことを優先します。
 参考となるWebサイトへのリンクは、必要に応じて提供します。
 
-## 作るもの
+### 作るもの
 
 外部APIを呼び出し、その情報を画面に表示するシンプルなUIを構築します。
 
 **注意事項**:  
 今回のハンズオンで使用する外部APIは、[PokéAPI](https://pokeapi.co/)です。この資料を書いている時点では利用可能ですが、ハンズオンを行う際にその利用可否は保証できません。もし、利用できない場合は、他のAPIに置き換えて実装してください。
 
-## 主な技術スタック
+### 主な技術スタック
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
 - [React](https://react.dev/)
@@ -34,9 +36,9 @@
     - Viteは、高速な起動時間、ホットモジュールの即時置換、合理的なバンドルとリロードを提供することにより、高効率で楽しい開発者体験を提供し、スムーズで生産的な開発ワークフローを実現します。
       - (当初、本ハンズオンはReactのみで作成しましたが、より快適に楽しんでもらうために、Viteを追加しました。)
 
-# 1. Setup
+## 1. Setup
 
-## 前提条件
+### 前提条件
 
 - Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
@@ -45,7 +47,7 @@
 ここに記載されている必要なソフトウェアのインストール手順は、PowershellやWSLも使用しないWindowsユーザーを対象としています。
 これは、このハンズオンの最初のターゲットユーザーが、PowershellやWSLを使用しないWindowsユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
 
-## Windowsユーザー向けの詳細な手順
+### Windowsユーザー向けの詳細な手順
 
 - Node.jsのインストール
   - [Node.jsのウェブサイト](https://nodejs.org/en/)にアクセスし、最新のLTS（Long-Term Support）バージョンのWindows用のNode.jsをダウンロードします。インストーラーを実行し、プロンプトに従ってNode.jsをインストールします。
@@ -78,11 +80,11 @@
     - 設定の中で、「Editor: Format On Save」または「Save」を検索します。このオプションは、ファイルを保存する際に、コードを自動的にフォーマットします。
   - Prettierが自分の好みに合わせてコードをフォーマットするように設定することができます。[詳しくはこちらをご覧ください](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-# 2. メインパート(UI作成)
+## 2. メインパート(UI作成)
 
-## 新しいReactプロジェクトの初期化
+### 新しいReactプロジェクトの初期化
 
-### 1. create-viteコマンドを使用して新しいReactプロジェクトの作成
+#### 1. create-viteコマンドを使用して新しいReactプロジェクトの作成
 
 以下のコマンドを実行し、Create Viteツールを使用して新しいReactプロジェクトを初期化します：
 
@@ -90,7 +92,7 @@
 npm create vite@latest first-app -- --template react-ts
 ```
 
-### 2. インストールが完了すると、プロジェクトにReact+Viteの標準テンプレートがセットアップされます。
+#### 2. インストールが完了すると、プロジェクトにReact+Viteの標準テンプレートがセットアップされます。
 
 以下のコマンドを実行すると、プロジェクトが起動し、確認することができます。
 
@@ -106,7 +108,7 @@ npm run dev
 
 コマンドラインで「Ctrl + c」でReact+Viteアプリの実行を停止することができます。
 
-### 3. HTTP リクエストを行うための axios ライブラリのインストール：
+#### 3. HTTP リクエストを行うための axios ライブラリのインストール：
 
 ```sh
 npm install axios
@@ -114,9 +116,9 @@ npm install axios
 
 Reactアプリの実行を止めずに、別のターミナルを開いて上記コマンドを実行することも可能です。
 
-## ランダムなポケモンを表示するコンポーネントの作成
+### ランダムなポケモンを表示するコンポーネントの作成
 
-### 1. src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+#### 1. src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
 
 
 ```jsx
@@ -178,7 +180,7 @@ export default App;
     - Reactのコンポーネントを端的に説明すると、再利用可能なUI要素です。
     - コンポーネントという概念は、Vue.js、Svelte、Angularなど、他のモダンなUIフレームワークやライブラリでも共通する概念です。
 
-### 2. ブラウザを開き、http://localhost:5173にアクセスし、アプリケーションを表示します。「Get Random Pokémon」ボタンをクリックすると、PokeAPIからランダムにポケモンを取得し、名前と画像を表示します。
+#### 2. ブラウザを開き、http://localhost:5173にアクセスし、アプリケーションを表示します。「Get Random Pokémon」ボタンをクリックすると、PokeAPIからランダムにポケモンを取得し、名前と画像を表示します。
 
 アプリを停止している場合は、以下のコマンドを実行します。  。
 カレントディレクトリが、作成したReactプロジェクトの直下にあることを確認してください。
@@ -192,7 +194,7 @@ npm run dev
 - **注意事項**：
   - テンプレートCSSが適用されています。少し変ですが、後のステップで少しデザインを施しますので、そのままにしておきます。
 
-## リファクタリング
+### リファクタリング
 
 コードを書くときには、整理して読みやすくすることが大切です。リファクタリングとは、既存のコードの動作を変えずに、その中身（構造）を改善するプロセスです。これにより、コードの理解、維持（保守）、将来の拡張を容易にすることができます。
 
@@ -202,13 +204,13 @@ npm run dev
   - コンポーネントのリファクタリングについて
     - コードの各パーツをコンポーネント化することで、再利用性、関心の分離、保守性が促進されます。コンポーネント化のレベルを決めるのは、アプリケーションのサイズ、複雑さ、特定の要件に依存します。
 
-### 1. App.tsxのランダム画像表示処理に関わる全てをApp.tsxの別関数として定義
+#### 1. App.tsxのランダム画像表示処理に関わる全てをApp.tsxの別関数として定義
 
 **注意事項**:  
 コードをおいやすくするため（わかりやすいように）、リファクタリングは、同じファイル内で一度行います。  
 このステップは、次のステップまで省略することができます。
 
-#### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // App.tsx
@@ -267,11 +269,11 @@ function App() {
 export default App;
 ```
 
-#### ブラウザを開き、アプリケーションの動作に変化がないかを確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないかを確認します。
 
-### 2. App.tsxからPokemonContainerコンポーネントを分割
+#### 2. App.tsxからPokemonContainerコンポーネントを分割
 
-#### src/PokemonContainer.tsxファイルを作成し、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsxファイルを作成し、その内容を以下のコードに置き換えます：
 
 ```jsx
 // PokemonContainer.tsx
@@ -320,7 +322,7 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // App.tsx
@@ -340,15 +342,15 @@ function App() {
 export default App;
 ```
 
-#### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
 
-### 3. 画像や名前の表示に関する処理を、PokemonContainer.tsxから別コンポーネントとして分割します。
+#### 3. 画像や名前の表示に関する処理を、PokemonContainer.tsxから別コンポーネントとして分割します。
 
 - **注意事項**：
   - コードをおいやすくするため（わかりやすいように）、リファクタリングは、同じファイル内で一度行います。このステップは、次のステップまで省略することができます
   - 実際のアプリケーションでここまでリファクタリングするかどうかは、アプリケーションの規模、コードの複雑さ、コンポーネントの再利用の有無などによって判断する必要があります。
 
-#### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // PokemonContainer.tsx
@@ -412,11 +414,11 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
 
-### 4. PokemonDisplayコンポーネントをPokemonContainer.tsxから分割します。
+#### 4. PokemonDisplayコンポーネントをPokemonContainer.tsxから分割します。
 
-#### src/PokemonDisplay.tsxファイルを作成し、その内容を以下のコードに置き換えます：
+##### src/PokemonDisplay.tsxファイルを作成し、その内容を以下のコードに置き換えます：
 
 
 ```jsx
@@ -452,7 +454,7 @@ function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
 export default PokemonDisplay;
 ```
 
-#### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // PokemonContainer.tsx
@@ -491,13 +493,13 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### ブラウザを開き、アプリケーションの動作に変化がないか確認する。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認する。
 
-### 5. PokemonDisplayコンポーネントの名前を一般的な名前に変更します。
+#### 5. PokemonDisplayコンポーネントの名前を一般的な名前に変更します。
 
 PokemonDisplayコンポーネントは、ポケモン以外のキャラクターでも使えるように、より一般的な名前にすることにします。
 
-#### src/PokemonDisplay.tsx を src/ItemDisplay.tsx にリネームして、その内容を以下のコードに変更します：
+##### src/PokemonDisplay.tsx を src/ItemDisplay.tsx にリネームして、その内容を以下のコードに変更します：
 
 **注意事項:** ファイル名を変更した際、VS Codeからのインポートを変更するかどうか尋ねられます。今回の場合、「No」を選択します。
 
@@ -529,7 +531,7 @@ function ItemDisplay({ item }: ItemDisplayProps) {
 export default ItemDisplay;
 ```
 
-#### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // PokemonContainer.tsx
@@ -568,9 +570,9 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
 
-## (オプション)デザインを適用する
+### (オプション)デザインを適用する
 
 CSSライブラリを導入して、ほんの少し見栄えを良くします。
 
@@ -581,13 +583,13 @@ CSSライブラリを導入して、ほんの少し見栄えを良くします�
     - Bootstrapのようなコンポーネントライブラリは、一貫性のあるプロフェッショナルなユーザーインターフェイスを作成するために使用でき、あらかじめ構築されたUIコンポーネントを提供します。
     - この2つのどちらを選ぶかは、プロジェクトの要件、個人の好み、必要なカスタマイズのレベルによって決まります。
 
-### 1. Tailwind CSSのセットアップ
+#### 1. Tailwind CSSのセットアップ
 
-#### アプリの停止
+##### アプリの停止
 
 コマンドラインで「Ctrl + c」を使い、React+Viteアプリの実行を停止します。
 
-#### Tailwind CSSのインストール
+##### Tailwind CSSのインストール
 
 カレントディレクトリが作成したReactプロジェクトの直下にあることを確認し、以下のコマンドを実行します：
 
@@ -596,7 +598,7 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-#### tailwind.config.jsファイルに、すべてのテンプレートファイルのパスを追加します。
+##### tailwind.config.jsファイルに、すべてのテンプレートファイルのパスを追加します。
 
 src/tailwind.config.jsファイルを開き、その内容を以下のコードに置き換えます：
 
@@ -614,7 +616,7 @@ export default {
 }
 ```
 
-#### CSSにTailwindディレクティブを追加する
+##### CSSにTailwindディレクティブを追加する
 
 src/index.cssファイルを開き、その内容を以下のコードに置き換えます：
 
@@ -624,9 +626,9 @@ src/index.cssファイルを開き、その内容を以下のコードに置き�
 @tailwind utilities;
 ```
 
-### 2. CSSの適用
+#### 2. CSSの適用
 
-#### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // PokemonContainer.tsx
@@ -690,7 +692,7 @@ export default PokemonContainer;
 +      {pokemon && <ItemDisplay item={pokemon} />}
 ```
 
-#### src/ItemDisplay.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/ItemDisplay.tsx ファイルを開き、その内容を以下のコードに置き換えます：
 
 
 ```jsx
@@ -734,7 +736,7 @@ export default ItemDisplay;
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
 ```
 
-#### npm run dev でビルドプロセスを実行します。
+##### npm run dev でビルドプロセスを実行します。
 
 カレントディレクトリが作成したReactプロジェクトの直下にあることを確認し、以下のコマンドを実行します：
 
@@ -742,18 +744,18 @@ export default ItemDisplay;
 npm run dev
 ```
 
-#### ブラウザを開いて、CSSが適用されたアプリケーションを確認してください。
+##### ブラウザを開いて、CSSが適用されたアプリケーションを確認してください。
 
 **備考**： 表示は以下のように変化します。
 
 ![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
 
-## (Option)もう少しSPAっぽくする
+### (Option)もう少しSPAっぽくする
 
 navbarを導入して、ポケモンだけでなく犬のメニューも追加して、もう少しSPAっぽくしてみましょう。
 
-### 1. react-routerのセットアップ
-#### react-routerのインストール
+#### 1. react-routerのセットアップ
+##### react-routerのインストール
 カレントディレクトリが作成したReactプロジェクトの直下にあることを確認し、以下のコマンドを実行します：
 
 ```sh
@@ -770,11 +772,11 @@ npm install react-router-dom
 **注意事項:**   
 執筆時点のReact routeのバージョンはv6です。上記のようにインストールすればv6を利用できるはずです。バージョンを指定してインストールする場合は、v5とv6で設定が異なるので注意してください。
 
-### 2.navbarの導入
+#### 2.navbarの導入
 
 メニューは今のところポケモンしかありませんが、navbarを導入します。
 
-#### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // App.tsx
@@ -805,15 +807,15 @@ function App() {
 export default App;
 ```
 
-#### ファイルを保存し、ブラウザを開いて http://localhost:5173 にアクセスし、アプリケーションを表示します。上部navbarの「Pokemon」をクリックし、「Get Random Pokemon」画面が表示されることを確認します。
+##### ファイルを保存し、ブラウザを開いて http://localhost:5173 にアクセスし、アプリケーションを表示します。上部navbarの「Pokemon」をクリックし、「Get Random Pokemon」画面が表示されることを確認します。
 
 ![Implementation of a navbar](./img/1th/implementation_navbar.png)
 
-### 3. 犬メニューの追加
+#### 3. 犬メニューの追加
 
 ポケモンだけでなく、犬の画像をランダムに表示するメニューを追加します。
 
-#### src/DogContainer.tsx ファイルを作成し、その内容を以下のコードに置き換えます：
+##### src/DogContainer.tsx ファイルを作成し、その内容を以下のコードに置き換えます：
 
 DogContainer.tsxでは、PokemonContainer.tsxと同様に犬の画像がランダムに取得されます。
 デザインも同じです。  。
@@ -861,7 +863,7 @@ function DogContainer() {
 export default DogContainer;
 ```
 
-#### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
 
 ```jsx
 // App.tsx
@@ -896,17 +898,17 @@ function App() {
 export default App;
 ```
 
-#### ファイルを保存し、ブラウザを開いて http://localhost:5173 にアクセスし、アプリケーションを表示します。
+##### ファイルを保存し、ブラウザを開いて http://localhost:5173 にアクセスし、アプリケーションを表示します。
 
 「Pokemon」の横のnavbarに「Dog」メニューが追加されました。「Dog」メニューを押して、「Pokemon」と同じように画面の表示や処理ができることを確認してください。
 
-# 3. 終わりに
+## 3. 終わりに
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](./src/1th/first-app/)から確認できます。  
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
 
 TOP画面がない、デザインが極端に悪い（ダサいデザインは意図的です！）など、修正すべき点は多々あります。ぜひ、あなたのアイデアでこのUIの改善や機能追加にチャレンジしてみてください。
 
-## フロントエンド開発に興味がある人へのアドバイス
+### フロントエンド開発に興味がある人へのアドバイス
 
 私見ですが、独学でフロントエンドの技術力を高めるには
 
@@ -915,7 +917,7 @@ TOP画面がない、デザインが極端に悪い（ダサいデザインは�
 1. 作りたいアプリケーションが思いつかない場合、ハンズオンで学びたいUIやアプリケーションを探すか、Web上からコピーして真似して実装する(もちろんコピーは勉強のためだけです。)
 1. 自分に足りない2.や3.の知識やスキルを把握し、深堀りする。
 
-# 4. Links
+## 4. Links
 
 - see [0th's Links](0th.md#3-links)
 - Other well-known general sites

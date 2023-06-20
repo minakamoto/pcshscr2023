@@ -1,17 +1,19 @@
-# 0. Introduction
+# Hands-on to develop simple & easy UI
+
+## 0. Introduction
 
 This hands-on course is designed for beginners in modern web application development. The goal is not to learn knowledge from this material, but to get you interested in modern web application development and the skills and knowledge required for it through actual hands-on development experience.  
 For this reason, we will not explain much about the programming language, tools, libraries, or code. Our priority is to give you the experience of developing a working WebApp as described.
 Links to websites that can be used as references will be provided as necessary.
 
-## What we make
+### What we make
 
 Build a simple UI that calls an external API and displays that information on the screen.
 
 **Note**:  
 The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is available at the time of this writing, but cannot compensate for its availability when doing hands-on sessions. In this case, please replace it with another API and implement it.
 
-## Main Technology Stack
+### Main Technology Stack
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
 - [React](https://react.dev/)
@@ -34,9 +36,9 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
     - Vite provides a highly efficient and enjoyable developer experience by offering fast startup times, instant hot module replacement, and streamlined bundling and reloading, resulting in a smooth and productive development workflow.
       - (Initially, this hands-on was created using only React, but to make it more comfortable and fun, Vite was added.)
 
-# 1. Setup
+## 1. Setup
 
-## Prerequisites
+### Prerequisites
 
 - Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
@@ -45,7 +47,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.
 This is because the first target users of this hands-on are Windows users who do not use Powershell or WSL. Please follow the installation procedure for your environment when actually installing the software.
 
-## Detailed procedure for windows users
+### Detailed procedure for windows users
 
 - Install Node.js
   - Go to [the Node.js website](https://nodejs.org/en/) and download the latest LTS(Long-Term Support) version of Node.js for Windows. Run the installer and follow the prompts to install Node.js on your system.
@@ -77,11 +79,11 @@ This is because the first target users of this hands-on are Windows users who do
     - In the settings, search for "Editor: Format On Save" or "save" and enable "Editor: Format On Save" option. This option automatically formats the code when you save the file.
   - You can configure Prettier to format your code according to your own preferences. [Please click here for more information.](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-# 2. Main Part(Create UI)
+## 2. Main Part(Create UI)
 
-## Initialize a new React project
+### Initialize a new React project
 
-### 1. Create a new React project using the create-vite command
+#### 1. Create a new React project using the create-vite command
 
 run the following command to initialize a new React project using the Create Vite tool:
 
@@ -89,7 +91,7 @@ run the following command to initialize a new React project using the Create Vit
 npm create vite@latest first-app -- --template react-ts
 ```
 
-### 2. Once the installation is finished, your project will be set up with the basic React+Vite template.
+#### 2. Once the installation is finished, your project will be set up with the basic React+Vite template.
 
 run the following command start it up and check it out.
 
@@ -105,7 +107,7 @@ This command will start up the Node.js server and launch a new browser window di
 
 You can use Ctrl + c to stop running the React+Vite app in your command line.
 
-### 3. Install the axios library for making HTTP requests:
+#### 3. Install the axios library for making HTTP requests:
 
 ```sh
 npm install axios
@@ -113,9 +115,9 @@ npm install axios
 
 You can also open another terminal to run the above command without stopping running the React app.
 
-## Create a component to display a random Pokemon
+### Create a component to display a random Pokemon
 
-### 1. Open the src/App.tsx file and replace its contents with the following code:
+#### 1. Open the src/App.tsx file and replace its contents with the following code:
 
 ```jsx
 import { useState } from "react";
@@ -176,7 +178,7 @@ export default App;
     - A straightforward description of a React component is a reusable UI element.
     - The concept of components is a common concept in other modern UI frameworks and libraries such as Vue.js, Svelte, Angular, and so on.
 
-### 2. Open your browser and go to http://localhost:5173 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
+#### 2. Open your browser and go to http://localhost:5173 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
 
 If you have stopped the app, you can run the following command.  
 Make sure the current directory is directly under the React project you created.
@@ -190,7 +192,7 @@ npm run dev
 - **Note**:
   - The template CSS is applied. We will apply a bit of design in a later step, so we leave it as is.
 
-## Refactoring
+### Refactoring
 
 When writing code, it's important to keep it organized and easy to read. Refactoring is the process of improving the structure of existing code without changing its behavior. This can make the code easier to understand, maintain, and extend in the future.
 
@@ -200,13 +202,13 @@ In our case, we started by writing the Pokémon image process and content direct
   - About refactoring of component
     - Componentizing individual parts of the code promotes reusability, separation of concerns, and maintainability. However, it comes with increased complexity and potential overhead. Deciding on the level of componentization depends on the size, complexity, and specific requirements of your application.
 
-### 1. Define everything related to the random image display process in App.tsx as a separate function in App.tsx.
+#### 1. Define everything related to the random image display process in App.tsx as a separate function in App.tsx.
 
 **Note**:  
 Refactoring is performed once in the same file to make the code easier to follow.  
 This step can be skipped for the next step.
 
-#### Open the src/App.tsx file and replace its contents with the following code:
+##### Open the src/App.tsx file and replace its contents with the following code:
 
 ```jsx
 // App.tsx
@@ -265,11 +267,11 @@ function App() {
 export default App;
 ```
 
-#### Open your browser and check the application for any changes in behavior.
+##### Open your browser and check the application for any changes in behavior.
 
-### 2. Separate PokemonContainer component from App.tsx
+#### 2. Separate PokemonContainer component from App.tsx
 
-#### Create the src/PokemonContainer.tsx file and replace its contents with the following code:
+##### Create the src/PokemonContainer.tsx file and replace its contents with the following code:
 
 ```jsx
 // PokemonContainer.tsx
@@ -318,7 +320,7 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### Open the src/App.tsx file and replace its contents with the following code:
+##### Open the src/App.tsx file and replace its contents with the following code:
 
 ```jsx
 // App.tsx
@@ -338,15 +340,15 @@ function App() {
 export default App;
 ```
 
-#### Open your browser and check the application for any changes in behavior.
+##### Open your browser and check the application for any changes in behavior.
 
-### 3. Separate the processes related to the display of the image and the name from the PokemonContainer.tsx as a separate component.
+#### 3. Separate the processes related to the display of the image and the name from the PokemonContainer.tsx as a separate component.
 
 - **Note**:
   - This Refactoring is also performed once in the same file to make the code easier to follow.This step can be skipped for the next step.
   - Whether or not to refactor to this extent in an actual application should be determined by the size of the application, the complexity of the code, and whether or not components are reused.
 
-#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+##### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
 ```jsx
 // PokemonContainer.tsx
@@ -410,11 +412,11 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### Open your browser and check the application for any changes in behavior.
+##### Open your browser and check the application for any changes in behavior.
 
-### 4. Separate PokemonDisplay component from PokemonContainer.tsx
+#### 4. Separate PokemonDisplay component from PokemonContainer.tsx
 
-#### Create the src/PokemonDisplay.tsx file and replace its contents with the following code:
+##### Create the src/PokemonDisplay.tsx file and replace its contents with the following code:
 
 ```jsx
 // PokemonDisplay.tsx
@@ -449,7 +451,7 @@ function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
 export default PokemonDisplay;
 ```
 
-#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+##### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
 ```jsx
 // PokemonContainer.tsx
@@ -488,14 +490,14 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### Open your browser and check the application for any changes in behavior.
+##### Open your browser and check the application for any changes in behavior.
 
-### 5. Rename the PokemonDisplay component to a generic name
+#### 5. Rename the PokemonDisplay component to a generic name
 
 
 The PokemonDisplay component can be used by other characters except for Pokémon, so we will make the name more generic.
 
-#### Rename the file src/PokemonDisplay.tsx to src/ItemDisplay.tsx and change its contents to the following code:
+##### Rename the file src/PokemonDisplay.tsx to src/ItemDisplay.tsx and change its contents to the following code:
 
 **Note:** After renaming the file, you will be asked if you want to change the import from VS Code. In this case, select No.
 
@@ -527,7 +529,7 @@ function ItemDisplay({ item }: ItemDisplayProps) {
 export default ItemDisplay;
 ```
 
-#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+##### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
 ```jsx
 // PokemonContainer.tsx
@@ -566,9 +568,9 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### Open your browser and check the application for any changes in behavior.
+##### Open your browser and check the application for any changes in behavior.
 
-## (Option)Apply design
+### (Option)Apply design
 
 We'll install a CSS library to make it look a little better.
 
@@ -579,13 +581,13 @@ We'll install a CSS library to make it look a little better.
     - Component libraries, like Bootstrap, provide pre-built UI components that can be used to create a consistent and professional-looking user interface. 
     - The choice between the two depends on the project requirements, personal preferences, and the level of customization needed.
 
-### 1. Set up Tailwind CSS
+#### 1. Set up Tailwind CSS
 
-#### Stop app
+##### Stop app
 
 You can use Ctrl + c to stop running the React+Vite app in your command line.
 
-#### Install Tailwind CSS
+##### Install Tailwind CSS
 
 Make sure the current directory is directly under the React project you created, and run the following command:
 
@@ -594,7 +596,7 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-#### Add the paths to all of your template files in your tailwind.config.js file.
+##### Add the paths to all of your template files in your tailwind.config.js file.
 
 Open the src/tailwind.config.js file and replace its contents with the following code:
 
@@ -612,7 +614,7 @@ export default {
 }
 ```
 
-#### Add the Tailwind directives to your CSS
+##### Add the Tailwind directives to your CSS
 
 Open src/index.css file and replace its contents with the following code:
 
@@ -622,9 +624,9 @@ Open src/index.css file and replace its contents with the following code:
 @tailwind utilities;
 ```
 
-### 2. Apply CSS
+#### 2. Apply CSS
 
-#### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
+##### Open the src/PokemonContainer.tsx file and replace its contents with the following code:
 
 ```jsx
 // PokemonContainer.tsx
@@ -688,7 +690,7 @@ Below are the differences before and after setting CSS. For reference only.
 +      {pokemon && <ItemDisplay item={pokemon} />}
 ```
 
-#### Open the src/ItemDisplay.tsx file and replace its contents with the following code:
+##### Open the src/ItemDisplay.tsx file and replace its contents with the following code:
 
 ```jsx
 // ItemDisplay.tsx
@@ -731,7 +733,7 @@ Below are the differences before and after setting CSS. For reference only.
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
 ```
 
-#### Run your build process with npm run dev.
+##### Run your build process with npm run dev.
 
 Make sure the current directory is directly under the React project you created, and run the following command:
 
@@ -739,19 +741,19 @@ Make sure the current directory is directly under the React project you created,
 npm run dev
 ```
 
-#### Open a browser and see the application with the CSS applied.
+##### Open a browser and see the application with the CSS applied.
 
 **Note**: The display changes to look like below
 
 ![Random Pokemon with CSS applied](./img/1th/random_pokemon_with_css.png)
 
 
-## (Option)More SPA like
+### (Option)More SPA like
 
 Let's introduce the navbar and add a dog menu as well as Pokemon to make it a little more SPA-like.
 
-### 1. Set up react-router
-#### Install react-router
+#### 1. Set up react-router
+##### Install react-router
 Make sure the current directory is directly under the React project you created, and run the following command:
 
 ```sh
@@ -768,11 +770,11 @@ npm install react-router-dom
 **NOTE:**   
 At the time of writing, the React route version is v6. If you install as described above, you should be able to use v6. If you install by specifying the version, note that the settings are different between v5 and v6.
 
-### 2. implementation of a navbar
+#### 2. implementation of a navbar
 
 The menu only has Pokémon for now, but we will introduce a navbar.
 
-#### Open the src/App.tsx file and replace its contents with the following code:
+##### Open the src/App.tsx file and replace its contents with the following code:
 
 ```jsx
 // App.tsx
@@ -803,15 +805,15 @@ function App() {
 export default App;
 ```
 
-#### Save the file, and open your browser and go to http://localhost:5173 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
+##### Save the file, and open your browser and go to http://localhost:5173 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
 
 ![Implementation of a navbar](./img/1th/implementation_navbar.png)
 
-### 3. Add dog menu
+#### 3. Add dog menu
 
 Add a menu that displays a random image of a dog as well as Pokémon.
 
-#### Create the src/DogContainer.tsx file and replace its contents with the following code:
+##### Create the src/DogContainer.tsx file and replace its contents with the following code:
 
 In DogContainer.tsx, the dog image is retrieved randomly, similar to PokemonContainer.tsx.
 The design is also the same.  
@@ -859,7 +861,7 @@ function DogContainer() {
 export default DogContainer;
 ```
 
-#### Open the src/App.tsx file and replace its contents with the following code:
+##### Open the src/App.tsx file and replace its contents with the following code:
 
 ```jsx
 // App.tsx
@@ -894,17 +896,17 @@ function App() {
 export default App;
 ```
 
-#### Save the files, and open your browser and go to http://localhost:5173 to see the application. 
+##### Save the files, and open your browser and go to http://localhost:5173 to see the application. 
 
 "Dog" menu has been added to the navbar next to "Pokemon". Press the "Dog" menu to check that the screen can be displayed and processed in the same way as in "Pokemon".
 
-# 3. Wrap up
+## 3. Wrap up
 This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).  
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
 
 There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (The too-simple design is intentional!). Please try to improve this UI or add features with your ideas.
 
-## Advice for those interested in frontend development
+### Advice for those interested in frontend development
 
 In my opinion, to improve your frontend technical skills on your own,
 1. learn the basics of Javascript/Typescript, HTML, CSS
@@ -912,7 +914,7 @@ In my opinion, to improve your frontend technical skills on your own,
 1. (If you can't think of an application you want to make) find a UI or application that you want to learn hands-on or copy from the web, imitate it, and implement it(Of course, copying is only for the purpose of studying.)
 1. figure out what knowledge and skills you lack in 2. and/or 3. and dig deeper.
 
-# 4. Links
+## 4. Links
 
 - see [0th's Links](0th.md#3-links)
 - Other well-known general sites
