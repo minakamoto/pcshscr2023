@@ -1,6 +1,6 @@
 # 0. Introduction
 
-This hands-on course is designed for beginners in modern web application development. The goal is not to learn knowledge from this material, but to get you interested in modern web application development and the skills and knowledge required for it through actual hands-on development experience.<br>
+This hands-on course is designed for beginners in modern web application development. The goal is not to learn knowledge from this material, but to get you interested in modern web application development and the skills and knowledge required for it through actual hands-on development experience.  
 For this reason, we will not explain much about the programming language, tools, libraries, or code. Our priority is to give you the experience of developing a working WebApp as described.
 Links to websites that can be used as references will be provided as necessary.
 
@@ -8,7 +8,7 @@ Links to websites that can be used as references will be provided as necessary.
 
 Build a simple UI that calls an external API and displays that information on the screen.
 
-**Note**:<br>
+**Note**:  
 The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is available at the time of this writing, but cannot compensate for its availability when doing hands-on sessions. In this case, please replace it with another API and implement it.
 
 ## Main Technology Stack
@@ -41,7 +41,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 - Node.js 16 or above
 - Code Editor (e.g., Visual Studio Code)
 
-**Note**:<br>
+**Note**:  
 The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.
 This is because the first target users of this hands-on are Windows users who do not use Powershell or WSL. Please follow the installation procedure for your environment when actually installing the software.
 
@@ -178,7 +178,7 @@ export default App;
 
 ### 2. Open your browser and go to http://localhost:5173 to see the application. Click the "Get Random Pokémon" button to fetch a random Pokémon from the PokeAPI and display its name and image.
 
-If you have stopped the app, you can run the following command.<br>
+If you have stopped the app, you can run the following command.  
 Make sure the current directory is directly under the React project you created.
 
 ```sh
@@ -202,8 +202,8 @@ In our case, we started by writing the Pokémon image process and content direct
 
 ### 1. Define everything related to the random image display process in App.tsx as a separate function in App.tsx.
 
-**Note**:<br>
-Refactoring is performed once in the same file to make the code easier to follow.<br>
+**Note**:  
+Refactoring is performed once in the same file to make the code easier to follow.  
 This step can be skipped for the next step.
 
 #### Open the src/App.tsx file and replace its contents with the following code:
@@ -668,8 +668,8 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-Below are the differences before and after setting CSS. For reference only.<br>
-**Do not copy and paste the code.**<br>
+Below are the differences before and after setting CSS. For reference only.  
+**Do not copy and paste the code.**  
 "-" means before, "+" means after
 
 ```jsx
@@ -718,8 +718,8 @@ function ItemDisplay({ item }: ItemDisplayProps) {
 export default ItemDisplay;
 ```
 
-Below are the differences before and after setting CSS. For reference only.<br>
-**Do not copy and paste the code.**<br>
+Below are the differences before and after setting CSS. For reference only.  
+**Do not copy and paste the code.**  
 "-" means before, "+" means after
 
 ```jsx
@@ -765,7 +765,7 @@ npm install react-router-dom
     - Routing is a concept that applies to various libraries and frameworks beyond React.
       - In the context of web development, routing involves handling different URLs or paths and mapping them to specific components or actions within your application. It allows you to navigate between different views or pages and maintain the state of the application based on the current URL.
 
-**NOTE:** <br>
+**NOTE:**   
 At the time of writing, the React route version is v6. If you install as described above, you should be able to use v6. If you install by specifying the version, note that the settings are different between v5 and v6.
 
 ### 2. implementation of a navbar
@@ -814,7 +814,7 @@ Add a menu that displays a random image of a dog as well as Pokémon.
 #### Create the src/DogContainer.tsx file and replace its contents with the following code:
 
 In DogContainer.tsx, the dog image is retrieved randomly, similar to PokemonContainer.tsx.
-The design is also the same.<br>
+The design is also the same.  
 The refactored and componentized ItemDisplay.tsx is used in both DogContainer.tsx and PokemonContainer.tsx.
 
 ```jsx
@@ -899,7 +899,7 @@ export default App;
 "Dog" menu has been added to the navbar next to "Pokemon". Press the "Dog" menu to check that the screen can be displayed and processed in the same way as in "Pokemon".
 
 # 3. Wrap up
-This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).<br>
+This concludes the hands-on. Thank you for your hard work.The complete code is available [here](./src/1th/first-app/).  
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
 
 There are many things that need to be fixed, such as the lack of a TOP screen and extremely poor design (The too-simple design is intentional!). Please try to improve this UI or add features with your ideas.
