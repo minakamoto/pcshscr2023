@@ -15,7 +15,7 @@
 
 次の図を見て、この仕組みのイメージをなんとなくつかんでみてください。詳細は次章で説明します。
 
-![multiple HTML pages vs. single-page apps](./public/img/0th/mpa_vs_spa.jpg)
+![multiple HTML pages vs. single-page apps](../public/img/0th/mpa_vs_spa.jpg)
 
 #### 約20年前と現在のWebアプリの技術スタックの全体的な違い
 
@@ -62,7 +62,7 @@
 モダンなWebアプリケーションに必要な技術スタックは、フロントエンド、バックエンド、モバイル、UI/UX、インフラストラクチャなどの異なるレイヤーで構成され、それらが連携してシームレスなユーザーエクスペリエンスを実現します。組織の規模などによってチームの構成は異なりますが、アプリケーションの開発とデプロイを成功させるには、チームメンバーとクライアントやユーザーなどの外部ステークホルダーとの効果的な連携とコミュニケーションが必要不可欠です。アジャイル、XP、TDD、Git、そしてJira、Asana、Trelloなどの各種プロジェクト管理ツールは、このコラボレーションと管理を支援することができます。
 
 <div align="center">
-<img src="./public/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
+<img src="../public/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
 </div>
 
 #### モダンなWebアプリ開発における各技術レイヤーの簡単な説明：
@@ -84,7 +84,7 @@
 
 モダンなWebアプリケーション開発に必要な技術スタックの詳細な名称を付箋に例示しています。これらはあくまで例であり、筆者が執筆時にパッと思いついた技術スタックの名称を付箋に貼っています。技術は常に進化しており、この情報はいつでも古くなる可能性があることにご留意ください。
 
-![the detailed names of the technology stacks examples](./public/img/0th/technology_stack_name_examples.jpg)
+![the detailed names of the technology stacks examples](../public/img/0th/technology_stack_name_examples.jpg)
 
 ## 3. Links
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn)
