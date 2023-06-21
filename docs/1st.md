@@ -103,7 +103,7 @@ npm run dev
 
 This command will start up the Node.js server and launch a new browser window displaying your app.
 
-![React+Vite template](./public/img/1th/vite_default.png)
+![React+Vite template](./static/img/1th/vite_default.png)
 
 You can use Ctrl + c to stop running the React+Vite app in your command line.
 
@@ -187,7 +187,7 @@ Make sure the current directory is directly under the React project you created.
 npm run dev
 ```
 
-![Random Pokemon initial display](./public/img/1th/random_pokemon_initial_display.png)
+![Random Pokemon initial display](./static/img/1th/random_pokemon_initial_display.png)
 
 - **Note**:
   - The template CSS is applied. We will apply a bit of design in a later step, so we leave it as is.
@@ -745,7 +745,7 @@ npm run dev
 
 **Note**: The display changes to look like below
 
-![Random Pokemon with CSS applied](./public/img/1th/random_pokemon_with_css.png)
+![Random Pokemon with CSS applied](./static/img/1th/random_pokemon_with_css.png)
 
 
 ### (Option)More SPA like
@@ -807,7 +807,7 @@ export default App;
 
 ##### Save the file, and open your browser and go to http://localhost:5173 to see the application. Click "Pokemon" in the top navbar and make sure the "Get Random Pokemon" screen appears.
 
-![Implementation of a navbar](./public/img/1th/implementation_navbar.png)
+![Implementation of a navbar](./static/img/1th/implementation_navbar.png)
 
 #### 3. Add dog menu
 
