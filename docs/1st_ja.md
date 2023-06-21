@@ -904,7 +904,7 @@ export default App;
 
 ## 3. 終わりに
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)から確認できます。  
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/webapp/handson-for-catchup/src/1th/first-app)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)
 
 TOP画面がない、デザインが極端に悪い（ダサいデザインは意図的です！）など、修正すべき点は多々あります。ぜひ、あなたのアイデアでこのUIの改善や機能追加にチャレンジしてみてください。
 
