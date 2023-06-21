@@ -16,7 +16,7 @@
 
 ดูแผนภาพต่อไปนี้เพื่อทำความเข้าใจวิธีการทำงาน รายละเอียดเพิ่มเติมจะอธิบายในบทต่อไป
 
-![multiple HTML pages vs. single-page apps](./public/img/0th/mpa_vs_spa.jpg)
+![multiple HTML pages vs. single-page apps](../public/img/0th/mpa_vs_spa.jpg)
 
 #### ความแตกต่างโดยรวมระหว่างสแต็กเทคโนโลยีเว็บแอปเมื่อ 20 ปีที่แล้วกับปัจจุบัน
 
@@ -63,7 +63,7 @@
 สแต็กเทคโนโลยีที่จำเป็นสำหรับเว็บแอปสมัยใหม่ประกอบด้วยเลเยอร์ต่างๆรวมถึง frontend, backend, mobile, UI/UX และ เทคโนโลยีinfrastructure ซึ่งทำงานร่วมกันเพื่อสร้างประสบการณ์ผู้ใช้ที่ราบรื่น แม้ว่าองค์ประกอบของทีมอาจแตกต่างกันไปขึ้นอยู่กับขนาดขององค์กรและปัจจัยอื่นๆ การพัฒนาและปรับใช้แอปพลิเคชันให้ประสบความสำเร็จจำเป็นต้องอาศัยการทำงานร่วมกันและการสื่อสารที่มีประสิทธิภาพระหว่างสมาชิกในทีมและผู้มีส่วนได้ส่วนเสียภายนอก เช่น ลูกค้าและผู้ใช้ Agile, XP, TDD, Git และเครื่องมือการจัดการโครงการต่างๆ เช่น Jira, Asana และ Trello สามารถช่วยในการทำงานร่วมกันและการจัดการนี้ได้
 
 <div align="center">
-<img src="./public/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
+<img src="../public/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
 </div>
 
 #### คำอธิบายสั้น ๆ ของแต่ละเลเยอร์เทคโนโลยีในสแต็กการพัฒนาเว็บแอปสมัยใหม่:
@@ -85,7 +85,7 @@
 
 ชื่อโดยละเอียดของสแต็คเทคโนโลยีที่จำเป็นสำหรับการพัฒนาเว็บแอปพลิเคชันสมัยใหม่แสดงอยู่ในตัวอย่างบนสติกกี่ นี่เป็นเพียงตัวอย่างเท่านั้น ผู้เขียนได้โพสต์สติกกี่พร้อมชื่อสแต็กเทคโนโลยีที่คิดขึ้นได้อย่างรวดเร็วในเวลาที่เขียน โปรดทราบว่าเทคโนโลยีมีการพัฒนาอย่างต่อเนื่อง และข้อมูลนี้อาจล้าสมัยได้ทุกเมื่อ
 
-![the detailed names of the technology stacks examples](./public/img/0th/technology_stack_name_examples.jpg)
+![the detailed names of the technology stacks examples](../public/img/0th/technology_stack_name_examples.jpg)
 
 ## 3. Links
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn)

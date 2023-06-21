@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "PCSHSCR2023"
-  text: "Some ICT materials in PCSHSCR for academic year 2023."
+  text: "สื่อ ICT บางส่วนใน PCSHSCR ประจำปีการศึกษา 2566"
   tagline: This materials tagline
   actions:
     - theme: brand
