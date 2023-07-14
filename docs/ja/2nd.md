@@ -14,6 +14,7 @@ API を作成し、それらを呼び出し、その情報を画面に表示し�
 - [Next.js](https://nextjs.org/)
 - [Python](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
+- [pydantic](https://pydantic.dev/)
 
 **注意事項**:
 
@@ -69,3 +70,41 @@ TIPS:
       ```sh
       python --version
       ```
+- Visual Studio Code(VS Code)のインストール
+  - [1st](./1st#1-setup)参照
+- VS Code の拡張機能のインストール・設定
+
+  - Javascript に関しては[1st](./1st#1-setup)参照
+
+    - (追加の設定オプション)保存時に自動的に ESLint でコードを修正するように設定します。
+    - `Editor: Code Actions On Save`の設定変更
+
+      - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+      - 設定の中で「Editor: Code Actions On Save」または「editor.codeActionsOnSave」を検索し、「Edit in setting.json」を押します。
+        - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
+      - 以下の設定に変更します。
+
+        ```json
+        {
+          "editor.codeActionsOnSave": {
+            "source.fixAll": true
+          }
+        }
+        ```
+
+  - Python の開発にあたって、以下の拡張機能をインストールして、Web アプリの開発体験を向上させることをお勧めします：
+    - Visual Studio Code を起動します。
+    - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensions サイドバーを開きます。
+    - 以下の拡張機能を検索し、各拡張機能の横にある「インストール」ボタンをクリックします：
+      - Python
+    - 拡張機能の設定
+      - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
+      - `Python › Formatting: Provider`の設定変更
+        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+        - 設定の中で「python.formatting.provider」を検索し、値を「black」にします。
+      - `Python › Linting: Flake8 Enabled`の設定変更
+        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+        - 設定の中で「python.linting.flake8Enabled」を検索し、チェックボックスにチェックを入れます。
+      - `Python: Language Server`の設定変更
+        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+        - 設定の中で「python.languageServer」を検索し、値を「Pylance」にします。
