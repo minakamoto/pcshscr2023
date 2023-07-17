@@ -120,7 +120,7 @@ mkdir dish-delight/backend dish-delight/frontend
 cd dish-delight
 ```
 
-#### Next.js プロジェクト作成
+#### Frontend(Next.js) プロジェクト作成
 
 以下のコマンドを実行してください。
 
@@ -138,6 +138,14 @@ npx create-next-app .
 ✔ Would you like to use `src/` directory? … No
 ✔ Would you like to use App Router? (recommended) … Yes
 ✔ Would you like to customize the default import alias? … No
+```
+
+#### UI フレームワーク(MUI)のインストール
+
+以下のコマンドを実行してください。
+
+```sh
+npm install @mui/material @emotion/react @emotion/styled
 ```
 
 #### Backend プロジェクトの初期化
