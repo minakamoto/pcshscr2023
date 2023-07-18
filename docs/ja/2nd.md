@@ -172,3 +172,71 @@ rye add --dev black flake8
 # インストール
 rye sync
 ```
+
+## 2. １店舗のみを想定したメニューの一覧と詳細表示の構築
+
+### メニュー一覧ページとメニュー詳細ページを作成
+
+Next.js と MUI を使用して、メニュー一覧ページとメニュー詳細ページを作成します。  
+frontend のみの実装で backend にはまだ接続しません。
+
+#### frontend/app ディレクトリに\_app.tsx ファイルを作成し、MUI のスタイルシートを追加します。
+
+```tsx
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { AppProps } from "next/app";
+import { EmotionCache } from "@emotion/react";
+import theme from "../theme";
+
+export interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+export default function MyApp(props: MyAppProps) {
+  const { Component, pageProps } = props;
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
+```
+
+#### frontend ディレクトリ直下に theme.tsx ファイルを作成し、MUI のテーマを定義します。
+
+```tsx
+import { Roboto } from "next/font/google";
+import { createTheme } from "@mui/material/styles";
+import { red } from "@mui/material/colors";
+
+export const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  fallback: ["Helvetica", "Arial", "sans-serif"],
+});
+
+// Create a theme instance.
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#556cd6",
+    },
+    secondary: {
+      main: "#19857b",
+    },
+    error: {
+      main: red.A400,
+    },
+  },
+  typography: {
+    fontFamily: roboto.style.fontFamily,
+  },
+});
+
+export default theme;
+```
+
