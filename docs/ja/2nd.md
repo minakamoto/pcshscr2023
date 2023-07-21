@@ -150,6 +150,8 @@ cd ../backend
 rye init
 # このProjectで使用するPythonのバージョンを指定
 rye pin 3.11
+# 同期化し、virtualenv作成
+rye sync
 ```
 
 以下のコマンドを実行して、`Python 3.11.X`(X は最新のマイナーバージョンの数字。例: `Python 3.11.3`)と表示されることを確認してください。
@@ -167,7 +169,7 @@ python --version
 rye add fastapi uvicorn
 # 必要な開発用のツールの追加
 rye add --dev black flake8
-# インストール
+# 同期化し、インストール
 rye sync
 ```
 
