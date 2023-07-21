@@ -173,72 +173,38 @@ rye add --dev black flake8
 rye sync
 ```
 
-## 2. １店舗のみを想定したメニューの一覧と詳細表示の構築
+## 2. １店舗のみを想定したメニューの一覧と詳細表示の実装
 
 ### メニュー一覧ページとメニュー詳細ページを作成
 
-Next.js と MUI を使用して、メニュー一覧ページとメニュー詳細ページを作成します。  
+Next.js と Tailwind CSS を使用して、メニュー一覧ページとメニュー詳細ページを作成します。  
 frontend のみの実装で backend にはまだ接続しません。
 
-#### frontend/app ディレクトリに\_app.tsx ファイルを作成し、MUI のスタイルシートを追加します。
+TIPS:
 
-```tsx
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { AppProps } from "next/app";
-import { EmotionCache } from "@emotion/react";
-import theme from "../theme";
+- 今回、Tailwind CSS のインストールや設定は不要です。Nextjs プロジェクト作成時に Tailwind CSS を使用するオプションを指定しているためです。
 
-export interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
+#### 開発サーバーの起動
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, pageProps } = props;
+以下のコマンドを実行してください。
 
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
-}
+```sh
+cd ../frontend
+npm run dev
 ```
 
-#### frontend ディレクトリ直下に theme.tsx ファイルを作成し、MUI のテーマを定義します。
+ブラウザを開いて http://localhost:3000 にアクセスし、Nextjs のデフォルト画面が表示されることを確認してください。
 
-```tsx
-import { Roboto } from "next/font/google";
-import { createTheme } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
+**注意事項**:すでに 3000 ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
 
-export const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  fallback: ["Helvetica", "Arial", "sans-serif"],
-});
-
-// Create a theme instance.
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#556cd6",
-    },
-    secondary: {
-      main: "#19857b",
-    },
-    error: {
-      main: red.A400,
-    },
-  },
-  typography: {
-    fontFamily: roboto.style.fontFamily,
-  },
-});
-
-export default theme;
+```sh
+- warn Port 3000 is in use, trying 3001 instead.
+- ready started server on 0.0.0.0:3001, url: http://localhost:3001
 ```
+
+開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインで「Ctrl + c」で停止することができます。
+
+#### 画像取得
 
 ####
 
