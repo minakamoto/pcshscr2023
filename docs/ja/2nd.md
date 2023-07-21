@@ -38,7 +38,7 @@ TIPS:
 ### 前提条件
 
 - Node.js 16 or above
-- Python 3.7 or above
+- Python 3.8 or above
 - Code Editor (e.g., Visual Studio Code)
 
 **注意事項**：  
@@ -140,14 +140,6 @@ npx create-next-app .
 ✔ Would you like to customize the default import alias? … No
 ```
 
-#### UI フレームワーク(MUI)のインストール
-
-以下のコマンドを実行してください。
-
-```sh
-npm install @mui/material @emotion/react @emotion/styled
-```
-
 #### Backend プロジェクトの初期化
 
 以下のコマンドを実行してください。
@@ -240,3 +232,8 @@ const theme = createTheme({
 export default theme;
 ```
 
+####
+
+####
+
+####
