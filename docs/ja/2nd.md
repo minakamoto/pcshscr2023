@@ -204,6 +204,24 @@ npm run dev
 
 開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインで「Ctrl + c」で停止することができます。
 
+#### globals.css の設定修正
+
+デフォルトで設定されている globals.css の設定を修正します。  
+`dish-delight/frontend/app/globals.css`を開き、以下のコードの修正します。
+
+TODO あとでコードの内容確認
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+}
+```
+
 #### 画像取得サイトの設定
 
 ####
