@@ -207,7 +207,7 @@ npm run dev
 #### globals.css の設定修正
 
 デフォルトで設定されている globals.css の設定を修正します。  
-`dish-delight/frontend/app/globals.css`を開き、以下のコードの修正します。
+`dish-delight/frontend/app/globals.css`を開き、その内容を以下のコードに置き換えます：
 
 TODO あとでコードの内容確認
 
@@ -222,7 +222,31 @@ body {
 }
 ```
 
-#### 画像取得サイトの設定
+#### 外部画像サイトの設定
+
+今回、Next.js が提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.js の`Imageコンポーネント`は、HTML の <img> 要素の拡張で、現代の Web のニーズに適応したものです。良い Core Web Vitals を達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
+
+また、今回外部画像を使用するため、`next.config.js`にて、`remotePatterns`プロパティの設定が必要です。詳しくは[公式サイトの説明](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)を参照してください。
+
+`dish-delight/frontend/next.config.js`を開き、その内容を以下のコードに置き換えます：
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
+```
 
 ####
 
