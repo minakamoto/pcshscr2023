@@ -334,6 +334,99 @@ TODO:
 - how to share static image file
   - ロゴなどの静的ファイルの共有 or 配布方法を検討する
 
+#### Navbar をコンポーネント化する
+
+メニュー一覧やメニュー詳細画面でも同じ Navbar を使用したいため、Navbar をコンポーネント化します。
+
+`dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```tsx
+import Image from "next/image";
+import jojoUnivLogo from "../public/logo_jojo_univ.svg";
+
+export default function Navbar() {
+  return (
+    <>
+      <nav className="flex items-center justify-between flex-wrap bg-sky-500 p-2">
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
+          <Image
+            src={jojoUnivLogo}
+            alt="Logo of Jojo University"
+            width={45}
+            height={45}
+          />
+          <span className="font-semibold text-lg tracking-tight pl-2">
+            Jojo University Cafeteria
+          </span>
+        </div>
+      </nav>
+    </>
+  );
+}
+```
+
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "./../components/navbar";
+
+const stores = [
+  {
+    id: 1,
+    name: "Sakura-tei",
+    img: "/sakura_tei_logo.jpeg",
+    category: "Japanese",
+  },
+];
+
+export default function Home() {
+  return (
+    <div>
+      <Navbar />
+      <div className="text-center mt-8">
+        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <Image
+          className="hidden md:block mx-auto mt-4"
+          src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
+          alt="University Cafeteria Image"
+          width={350}
+          height={350}
+        />
+      </div>
+      <div className="text-center mt-6 mx-2">
+        <h2 className="text-xl text-gray-500">
+          Select the store where you would like to see the menu
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+          {stores.map((store) => (
+            <Link href={`/stores/${store.id}`} key={store.id}>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                <Image
+                  className="w-full"
+                  src={store.img}
+                  alt={store.name}
+                  width={100}
+                  height={100}
+                />
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{store.name}</div>
+                  <p className="text-gray-700 text-base">{store.category}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+####
+
+####
 
 ####
 
