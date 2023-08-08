@@ -424,7 +424,10 @@ export default function Home() {
 }
 ```
 
-####
+`dish-delight/frontend/public`にロゴ 2 つ(logo_jojo_univ.svg, sakura_tei_logo.jpeg)を配置します：
+
+TODO ロゴの配置場所 or 配布場所
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd)から取得してください。
 
 ####
 
