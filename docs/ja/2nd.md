@@ -341,6 +341,7 @@ TODO:
 `dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
 
 ```tsx
+// components/Navbar.tsx
 import Image from "next/image";
 import jojoUnivLogo from "../public/logo_jojo_univ.svg";
 
@@ -368,9 +369,10 @@ export default function Navbar() {
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
 ```tsx
+// app/page.tsx
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./../components/navbar";
+import Navbar from "../components/Navbar";
 
 const stores = [
   {
@@ -434,6 +436,7 @@ TODO ロゴの配置場所 or 配布場所
 - 見た目は以下となっていること
   - TODO キャプチャ添付
 - `Sakura-tei`の Card をクリックすると、メニュー一覧画面に遷移すること
+  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
 ブラウザの開発者ツールを開き、いずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
 
@@ -450,6 +453,242 @@ TODO キャプチャーを貼る
 
 TIPS:
 タブレットサイズにすると、列は 2 つになります。
+
+#### メニュー一覧画面を実装する
+
+Home 画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
+
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "../components/Navbar";
+
+type Store = {
+  id: number;
+  name: string;
+  img: string;
+  category: string;
+};
+
+export const stores: Store[] = [
+  {
+    id: 1,
+    name: "Sakura-tei",
+    img: "/sakura_tei_logo.jpeg",
+    category: "Japanese",
+  },
+];
+
+export default function Home() {
+  return (
+    <div>
+      <Navbar />
+      <div className="text-center mt-8">
+        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <Image
+          className="hidden md:block mx-auto mt-4"
+          src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
+          alt="University Cafeteria Image"
+          width={350}
+          height={350}
+        />
+      </div>
+      <div className="text-center mt-6 mx-2">
+        <h2 className="text-xl text-gray-500">
+          Select the store where you would like to see the menu
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+          {stores.map((store) => (
+            <Link href={`/stores/${store.id}`} key={store.id}>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                <Image
+                  className="w-full"
+                  src={store.img}
+                  alt={store.name}
+                  width={100}
+                  height={100}
+                />
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{store.name}</div>
+                  <p className="text-gray-700 text-base">{store.category}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+`dish-delight/frontend/app/stores/[id]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```tsx
+// dish-delight/frontend/app/stores/[id]/page.tsx
+import Link from "next/link";
+import Navbar from "../../../components/Navbar";
+import { stores } from "@/app/page";
+import Image from "next/image";
+
+// まずはfrontendで固定でメニュー情報を保持します。
+// 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
+export const menus = [
+  {
+    id: 1,
+    name: "醤油ラーメン",
+    img: "https://images.unsplash.com/photo-1632709810780-b5a4343cebec",
+    author: "@5amramen",
+    price: "900円",
+  },
+  {
+    id: 2,
+    name: "うどん",
+    img: "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3",
+    author: "@jinomono",
+    price: "800円",
+  },
+  {
+    id: 3,
+    name: "ざるそば",
+    img: "https://images.unsplash.com/photo-1519984388953-d2406bc725e1",
+    author: "@gaspanik",
+    price: "1,000円",
+  },
+  {
+    id: 4,
+    name: "辛味噌ラーメン",
+    img: "https://images.unsplash.com/photo-1637024696628-02cb19cc1829",
+    author: "@5amramen",
+    price: "900円",
+  },
+  {
+    id: 5,
+    name: "天丼そばセット",
+    img: "https://images.unsplash.com/photo-1593357871477-00fd350cc0f8",
+    author: "@bady",
+    price: "1,200円",
+  },
+  {
+    id: 6,
+    name: "海鮮丼",
+    img: "https://images.unsplash.com/photo-1565967531713-45739e0cad63",
+    author: "@jangus231",
+    price: "2,000円",
+  },
+  {
+    id: 7,
+    name: "日替わり定食",
+    img: "https://images.unsplash.com/photo-1565941072372-0f0f10c8b7dd",
+    author: "@roppongi",
+    price: "1,000円",
+  },
+];
+
+export default function StoreMenu({ params }: { params: { id: string } }) {
+  const id = Number(params.id);
+  const store = stores.find((store) => store.id === id);
+  return (
+    <div>
+      <Navbar storeName={store?.name} storeId={store?.id} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        {menus.map((menu) => (
+          <Link href={`/stores/${id}/menus/${menu.id}`} key={menu.id}>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <Image
+                className="w-full"
+                src={menu.img}
+                alt={menu.name}
+                width={200}
+                height={200}
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{menu.name}</div>
+                <p className="text-gray-700 text-base">{menu.price}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+import Image from "next/image";
+import jojoUnivLogo from "../public/logo_jojo_univ.svg";
+import Link from "next/link";
+
+export default function Navbar({
+  storeName,
+  storeId,
+}: {
+  storeName?: string;
+  storeId?: number;
+}) {
+  return (
+    <>
+      <nav className="flex items-center justify-between flex-wrap bg-sky-500 p-2">
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
+          <Link href="/">
+            <Image
+              src={jojoUnivLogo}
+              alt="Logo of Jojo University"
+              width={45}
+              height={45}
+            />
+          </Link>
+          {/* If the store is not set up (i.e., only for Home), give the name of the university. */}
+          {!storeName && (
+            <span className="font-semibold text-lg md:text-xl tracking-tight pl-2">
+              Jojo University Cafeteria
+            </span>
+          )}
+          {/* Only when the store name is set, the store name and a link to Home are displayed. */}
+          {storeName && (
+            <>
+              <span className="font-semibold text-lg md:text-xl tracking-tight px-2">
+                Sakura-tei
+              </span>
+              <Link
+                href="/"
+                className="text-gray-200 text-base ml-3 px-1 hover:bg-sky-600"
+              >
+                Home
+              </Link>
+            </>
+          )}
+          {/* Display a link to the menu list only when the store name and store ID are set */}
+          {storeName && storeId && (
+            <Link
+              href={`/stores/${storeId}`}
+              key={storeId}
+              className="text-gray-200 text-base ml-3 px-1 hover:bg-sky-600"
+            >
+              Menus
+            </Link>
+          )}
+        </div>
+      </nav>
+    </>
+  );
+}
+```
+
+動作・見た目を確認します。(上記に添付した Figma でも見た目は確認できます)
+
+- Home 画面にて`Sakura-tei`の Card をクリックすると、メニュー一覧画面に遷移すること
+- 見た目は以下となっていること
+  - TODO キャプチャ添付
+- Navbar の"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面のままであること
+- メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
+  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
+
 
 ####
 
