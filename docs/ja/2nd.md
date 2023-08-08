@@ -689,6 +689,262 @@ export default function Navbar({
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
+#### メニュー詳細画面を実装する
+
+TODO 見直し
+メニュー詳細画面を実装すると、ディレクトリ構成は以下となります。
+
+```
+dish-delight/
+├── lib/
+│   ├── api.js                 // backend APIを呼び出す処理を集める
+├── app/
+│   ├── _app.js
+│   ├── index.js
+│   └── stores/
+│       ├── [id]/
+│       │   └── page.js
+│       └── menus/
+│           └── [id]/
+│               └── page.js
+├── components/
+│   └── Navbar.js
+├── public/
+│   ├── logo_jojo_univ.svg
+│   ├── sakura_tei_logo.jpeg
+│   ├── xxxxx_logo.jpeg        // TBD
+│   └── yyyyy_logo.jpeg        // TBD
+├── styles/
+│   └── globals.css
+└── tailwind.config.js
+```
+
+TODO
+TIPS:
+props よりも fetch した方が良さそう。React が後ろでメモ化してくれるから
+https://nextjs.org/docs/app/building-your-application/caching#request-memoization
+
+#####　リファクタリング
+TODO
+現状 Frontend で固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、まずはそのための準備のリファクタリングをします。
+
+リファクタリングの流れ(細かなステップ、考え方)としては以下のとおりです。  
+ただし、この流れは手順を示すだけにしておきます。これまで通り、修正後のコードを各ファイルに上書きする方法で記載します。  
+もし、余力がある方はこの流れに沿ってご自身でリファクタリングを実施し、修正後のコードと比べてみてください。
+
+1. `dish-delight/frontend/app/page.tsx`から店舗の固定データを`dish-delight/frontend/lib/api.tsx`に移動します。
+1. `dish-delight/frontend/lib/api.tsx`に`getStores`メソッドを作って、店舗データをすべて返すようにする (async/await を忘れるな)
+1. `dish-delight/frontend/app/page.tsx`で店舗の固定データを呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStores`メソッドを呼ぶようにする (async/await を忘れるな)
+1. `dish-delight/frontend/app/stores/[id]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
+1. `dish-delight/frontend/lib/api.tsx`に`getStore`メソッドを作って指定された店舗だけを返すようにする (async/await を忘れるな)
+1. `dish-delight/frontend/app/stores/[id]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする (async/await を忘れるな)
+1. `dish-delight/frontend/lib/api.tsx`に`getMenus`メソッドを作って指定された店舗のメニューをすべて返すようにする (async/await を忘れるな).
+   - 今のところ店舗はほかにないので、店舗 ID は引数で渡すだけ
+1. `dish-delight/frontend/app/stores/[id]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`は`dish-delight/frontend/lib/api.tsx`の一旦`getMenus`メソッドを呼び、取得するようにする (async/await を忘れるな)
+
+`dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます：
+
+```tsx
+// lib/api.js
+// まずはfrontendで固定でメニュー情報を保持します。
+
+type Store = {
+  id: number;
+  name: string;
+  img: string;
+  category: string;
+};
+
+export const stores: Store[] = [
+  {
+    id: 1,
+    name: "Sakura-tei",
+    img: "/sakura_tei_logo.jpeg",
+    category: "Japanese",
+  },
+];
+
+// 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
+const menus = [
+  {
+    id: 1,
+    name: "醤油ラーメン",
+    img: "https://images.unsplash.com/photo-1632709810780-b5a4343cebec",
+    author: "@5amramen",
+    price: "900円",
+  },
+  {
+    id: 2,
+    name: "うどん",
+    img: "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3",
+    author: "@jinomono",
+    price: "800円",
+  },
+  {
+    id: 3,
+    name: "ざるそば",
+    img: "https://images.unsplash.com/photo-1519984388953-d2406bc725e1",
+    author: "@gaspanik",
+    price: "1,000円",
+  },
+  {
+    id: 4,
+    name: "辛味噌ラーメン",
+    img: "https://images.unsplash.com/photo-1637024696628-02cb19cc1829",
+    author: "@5amramen",
+    price: "900円",
+  },
+  {
+    id: 5,
+    name: "天丼そばセット",
+    img: "https://images.unsplash.com/photo-1593357871477-00fd350cc0f8",
+    author: "@bady",
+    price: "1,200円",
+  },
+  {
+    id: 6,
+    name: "海鮮丼",
+    img: "https://images.unsplash.com/photo-1565967531713-45739e0cad63",
+    author: "@jangus231",
+    price: "2,000円",
+  },
+  {
+    id: 7,
+    name: "日替わり定食",
+    img: "https://images.unsplash.com/photo-1565941072372-0f0f10c8b7dd",
+    author: "@roppongi",
+    price: "1,000円",
+  },
+];
+
+export async function getStores(): Promise<Store[]> {
+  return stores;
+}
+
+export async function getStore(id: number): Promise<Store | undefined> {
+  return await stores.find((store) => store.id === id);
+}
+
+export async function getMenus(storeId: number) {
+  return menus;
+}
+```
+
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+import Image from "next/image";
+import Link from "next/link";
+import Navbar from "../components/Navbar";
+import { getStores } from "@/lib/api";
+
+export default async function Home() {
+  const stores = await getStores();
+  return (
+    <div>
+      <Navbar />
+      <div className="text-center mt-8">
+        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <Image
+          className="hidden md:block mx-auto mt-4"
+          src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
+          alt="University Cafeteria Image"
+          width={350}
+          height={350}
+        />
+      </div>
+      <div className="text-center mt-6 mx-2">
+        <h2 className="text-xl text-gray-500">
+          Select the store where you would like to see the menu
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+          {stores.map((store) => (
+            <Link href={`/stores/${store.id}`} key={store.id}>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                <Image
+                  className="w-full"
+                  src={store.img}
+                  alt={store.name}
+                  width={100}
+                  height={100}
+                />
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{store.name}</div>
+                  <p className="text-gray-700 text-base">{store.category}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+`dish-delight/frontend/app/stores/[id]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+// dish-delight/frontend/app/stores/[id]/page.tsx
+import Link from "next/link";
+import Navbar from "../../../components/Navbar";
+import Image from "next/image";
+import { getMenus, getStore } from "@/lib/api";
+
+export default async function StoreMenu({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const id = Number(params.id);
+  const store = await getStore(id);
+  const menus = await getMenus(id);
+  // TODO storeが存在しないときの処理
+  if (!store) {
+    return (
+      <p>
+        該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+      </p>
+    );
+  }
+
+  // TODO menuが一件もないときの処理
+  if (menus.length === 0) {
+    return (
+      <p>
+        該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+      </p>
+    );
+  }
+
+  return (
+    <div>
+      <Navbar storeName={store.name} storeId={store.id} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        {menus.map((menu) => (
+          <Link href={`/stores/${id}/menus/${menu.id}`} key={menu.id}>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <Image
+                className="w-full"
+                src={menu.img}
+                alt={menu.name}
+                width={200}
+                height={200}
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{menu.name}</div>
+                <p className="text-gray-700 text-base">{menu.price}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+動作や見た目に変更がないことを確認します。
 
 ####
 
