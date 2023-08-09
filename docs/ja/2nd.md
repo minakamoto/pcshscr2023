@@ -1110,6 +1110,129 @@ export default async function StoreMenu({
 
 動作や見た目に変更がないことを確認します。
 
+#### メニュー詳細画面を実装する
+
+メニュー一覧画面にてメニューを選択後に表示されるメニュー詳細画面を実装します。
+
+TODO 見直し
+メニュー詳細画面を実装すると、ディレクトリ構成は以下となります。
+
+```
+dish-delight/
+├── lib/
+│   ├── api.js                 // backend APIを呼び出す処理を集める
+├── app/
+│   ├── _app.js
+│   ├── index.js
+│   └── stores/
+│       ├── [storeId]/
+│       │   └── page.js
+│       └── menus/
+│           └── [menuId]/
+│               └── page.js
+├── components/
+│   └── Navbar.js
+├── public/
+│   ├── logo_jojo_univ.svg
+│   ├── sakura_tei_logo.jpeg
+│   ├── xxxxx_logo.jpeg        // TBD
+│   └── yyyyy_logo.jpeg        // TBD
+├── styles/
+│   └── globals.css
+└── tailwind.config.js
+```
+
+TODO
+TIPS:
+props よりも fetch した方が良さそう。React が後ろでメモ化してくれるから
+https://nextjs.org/docs/app/building-your-application/caching#request-memoization
+
+`dish-delight/frontend/lib/api.tsx`を作成し、以下のコードを最下部に加えます：
+
+```tsx
+// lib/api.tsx
+export async function getMenu(
+  storeId: number,
+  menuId: number
+): Promise<Menu | undefined> {
+  return menus.find((menu) => menu.storeId === storeId && menu.id === menuId);
+}
+```
+
+`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を作成し、以下のコードに置き換えます：
+
+```tsx
+// app/stores/menus/[id]/page.tsx
+import Image from "next/image";
+import { getMenu, getStore } from "@/lib/api";
+import Navbar from "@/components/Navbar";
+
+export default async function Menu({
+  params,
+}: {
+  params: { storeId: string; menuId: string };
+}) {
+  const storeId = Number(params.storeId);
+  const menuId = Number(params.menuId);
+  const store = await getStore(storeId);
+  const menu = await getMenu(storeId, menuId);
+
+  // TODO storeが存在しないときの処理
+  if (!store) {
+    return (
+      <p>
+        該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+      </p>
+    );
+  }
+
+  // TODO menuが存在しないときの処理
+  if (!menu) {
+    return (
+      <p>
+        該当するメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+      </p>
+    );
+  }
+
+  return (
+    <div>
+      <Navbar storeName={store.name} storeId={store.id} />
+      <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg m-4">
+        <Image
+          className="w-full"
+          src={menu.img}
+          alt={menu.name}
+          width={200}
+          height={200}
+        />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">{menu.name}</div>
+          <p className="text-gray-500 text-base mt-2">{menu.price}</p>
+          <div className="text-base mt-3">{menu.description}</div>
+          {menu.options && (
+            <div>
+              <p className="font-bold text-gray-500 text-lg mt-5">Option</p>
+              {menu.options.map((option) => (
+                <ul key={option.name}>
+                  <li className="list-disc list-inside text-base mt-3">
+                    {option.name}{" "}
+                    <span className="text-gray-500">{option.price}</span>
+                  </li>
+                </ul>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+動作・見た目を確認します。
+TODO
+
 ####
 
 ####
