@@ -587,15 +587,15 @@ export const menus = [
   },
 ];
 
-export default function StoreMenu({ params }: { params: { id: string } }) {
-  const id = Number(params.id);
-  const store = stores.find((store) => store.id === id);
+export default function StoreMenu({ params }: { params: { storeId: string } }) {
+  const storeId = Number(params.storeId);
+  const store = stores.find((store) => store.id === storeId);
   return (
     <div>
       <Navbar storeName={store?.name} storeId={store?.id} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {menus.map((menu) => (
-          <Link href={`/stores/${id}/menus/${menu.id}`} key={menu.id}>
+          <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
               <Image
                 className="w-full"
@@ -735,12 +735,12 @@ TODO
 1. `dish-delight/frontend/app/page.tsx`から店舗の固定データを`dish-delight/frontend/lib/api.tsx`に移動します。
 1. `dish-delight/frontend/lib/api.tsx`に`getStores`メソッドを作って、店舗データをすべて返すようにする (async/await を忘れるな)
 1. `dish-delight/frontend/app/page.tsx`で店舗の固定データを呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStores`メソッドを呼ぶようにする (async/await を忘れるな)
-1. `dish-delight/frontend/app/stores/[id]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
+1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
 1. `dish-delight/frontend/lib/api.tsx`に`getStore`メソッドを作って指定された店舗だけを返すようにする (async/await を忘れるな)
-1. `dish-delight/frontend/app/stores/[id]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする (async/await を忘れるな)
+1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする (async/await を忘れるな)
 1. `dish-delight/frontend/lib/api.tsx`に`getMenus`メソッドを作って指定された店舗のメニューをすべて返すようにする (async/await を忘れるな).
    - 今のところ店舗はほかにないので、店舗 ID は引数で渡すだけ
-1. `dish-delight/frontend/app/stores/[id]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`は`dish-delight/frontend/lib/api.tsx`の一旦`getMenus`メソッドを呼び、取得するようにする (async/await を忘れるな)
+1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`は`dish-delight/frontend/lib/api.tsx`の一旦`getMenus`メソッドを呼び、取得するようにする (async/await を忘れるな)
 
 `dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます：
 
@@ -882,10 +882,10 @@ export default async function Home() {
 }
 ```
 
-`dish-delight/frontend/app/stores/[id]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
 ```tsx
-// dish-delight/frontend/app/stores/[id]/page.tsx
+// dish-delight/frontend/app/stores/[storeId]/page.tsx
 import Link from "next/link";
 import Navbar from "../../../components/Navbar";
 import Image from "next/image";
@@ -894,11 +894,11 @@ import { getMenus, getStore } from "@/lib/api";
 export default async function StoreMenu({
   params,
 }: {
-  params: { id: string };
+  params: { storeId: string };
 }) {
-  const id = Number(params.id);
-  const store = await getStore(id);
-  const menus = await getMenus(id);
+  const storeId = Number(params.storeId);
+  const store = await getStore(storeId);
+  const menus = await getMenus(storeId);
   // TODO storeが存在しないときの処理
   if (!store) {
     return (
@@ -922,7 +922,7 @@ export default async function StoreMenu({
       <Navbar storeName={store.name} storeId={store.id} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {menus.map((menu) => (
-          <Link href={`/stores/${id}/menus/${menu.id}`} key={menu.id}>
+          <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
               <Image
                 className="w-full"
