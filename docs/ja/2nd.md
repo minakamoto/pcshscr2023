@@ -465,6 +465,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 
+// TODO 型の定義は最初からでも良さそう
 type Store = {
   id: number;
   name: string;
@@ -538,52 +539,146 @@ import Image from "next/image";
 export const menus = [
   {
     id: 1,
-    name: "醤油ラーメン",
+    storeId: 1,
+    name: "Soy sauce ramen",
     img: "https://images.unsplash.com/photo-1632709810780-b5a4343cebec",
     author: "@5amramen",
-    price: "900円",
+    price: "900 yen",
+    description:
+      "A classic Japanese ramen noodle soup that is made with a soy sauce-based broth.",
+    options: [
+      {
+        name: "Extra noodles",
+        price: "100 yen",
+      },
+      {
+        name: "Extra char siu",
+        price: "100 yen",
+      },
+      {
+        name: "Barikata(very hard noodles)",
+        price: "0 yen",
+      },
+    ],
   },
   {
     id: 2,
-    name: "うどん",
+    storeId: 1,
+    name: "Sanuki Udon",
     img: "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3",
     author: "@jinomono",
-    price: "800円",
+    price: "800 yen",
+    description:
+      "A type of thick, chewy udon noodle that is made in Kagawa Prefecture, Japan.",
+    options: [
+      {
+        name: "Chicken tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Squid tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Vegetable tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Large size",
+        price: "100 yen",
+      },
+      {
+        name: "Small size",
+        price: "-50 yen",
+      },
+    ],
   },
   {
     id: 3,
-    name: "ざるそば",
+    storeId: 1,
+    name: "Zaru soba",
     img: "https://images.unsplash.com/photo-1519984388953-d2406bc725e1",
     author: "@gaspanik",
-    price: "1,000円",
+    price: "1,000 yen",
+    description: "A cold soba noodle dish served with a dipping sauce.",
+    options: [
+      {
+        name: "Large size",
+        price: "200 yen",
+      },
+    ],
   },
   {
     id: 4,
-    name: "辛味噌ラーメン",
+    storeId: 1,
+    name: "Spicy Miso Ramen",
     img: "https://images.unsplash.com/photo-1637024696628-02cb19cc1829",
     author: "@5amramen",
-    price: "900円",
+    price: "900 yen",
+    description: "A spicy miso ramen with a rich and flavorful broth.",
+    options: [
+      {
+        name: "Large size",
+        price: "100 yen",
+      },
+      {
+        name: "Extra char siu",
+        price: "100 yen",
+      },
+      {
+        name: "Seasoned egg",
+        price: "100 yen",
+      },
+    ],
   },
   {
     id: 5,
-    name: "天丼そばセット",
+    storeId: 1,
+    name: "Tempura bowl and soba set",
     img: "https://images.unsplash.com/photo-1593357871477-00fd350cc0f8",
     author: "@bady",
-    price: "1,200円",
+    price: "1,200 yen",
+    description:
+      "A set meal consisting of a tempura bowl and a bowl of soba noodles.",
   },
   {
     id: 6,
-    name: "海鮮丼",
+    storeId: 1,
+    name: "Seafood bowl",
     img: "https://images.unsplash.com/photo-1565967531713-45739e0cad63",
     author: "@jangus231",
-    price: "2,000円",
+    price: "2,000 yen",
+    description:
+      "A bowl of rice topped with a variety of seafood, such as salmon, tuna, shrimp, and scallops.",
   },
   {
     id: 7,
-    name: "日替わり定食",
+    storeId: 1,
+    name: "Daily set lunch",
     img: "https://images.unsplash.com/photo-1565941072372-0f0f10c8b7dd",
     author: "@roppongi",
-    price: "1,000円",
+    price: "1,000 yen",
+    description: "A daily set meal that changes daily.",
+    options: [
+      {
+        name: "Mixed grain rice",
+        price: "100 yen",
+      },
+      {
+        name: "Pork soup",
+        price: "100 yen",
+      },
+    ],
+  },
+  {
+    id: 8,
+    storeId: 2,
+    name: "Khao soi",
+    img: "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12",
+    author: "@ural_8_low",
+    price: "60 baht",
+    description:
+      "Khao Soi is a Northern Thai curry noodle soup with a rich and flavorful broth.",
   },
 ];
 
@@ -689,46 +784,11 @@ export default function Navbar({
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-#### メニュー詳細画面を実装する
-
-TODO 見直し
-メニュー詳細画面を実装すると、ディレクトリ構成は以下となります。
-
-```
-dish-delight/
-├── lib/
-│   ├── api.js                 // backend APIを呼び出す処理を集める
-├── app/
-│   ├── _app.js
-│   ├── index.js
-│   └── stores/
-│       ├── [id]/
-│       │   └── page.js
-│       └── menus/
-│           └── [id]/
-│               └── page.js
-├── components/
-│   └── Navbar.js
-├── public/
-│   ├── logo_jojo_univ.svg
-│   ├── sakura_tei_logo.jpeg
-│   ├── xxxxx_logo.jpeg        // TBD
-│   └── yyyyy_logo.jpeg        // TBD
-├── styles/
-│   └── globals.css
-└── tailwind.config.js
-```
-
+####　リファクタリング
 TODO
-TIPS:
-props よりも fetch した方が良さそう。React が後ろでメモ化してくれるから
-https://nextjs.org/docs/app/building-your-application/caching#request-memoization
+現状 Frontend で固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
 
-#####　リファクタリング
-TODO
-現状 Frontend で固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、まずはそのための準備のリファクタリングをします。
-
-リファクタリングの流れ(細かなステップ、考え方)としては以下のとおりです。  
+リファクタリングの流れ(細かなステップ)としては以下のとおりです。  
 ただし、この流れは手順を示すだけにしておきます。これまで通り、修正後のコードを各ファイルに上書きする方法で記載します。  
 もし、余力がある方はこの流れに沿ってご自身でリファクタリングを実施し、修正後のコードと比べてみてください。
 
@@ -739,7 +799,8 @@ TODO
 1. `dish-delight/frontend/lib/api.tsx`に`getStore`メソッドを作って指定された店舗だけを返すようにする (async/await を忘れるな)
 1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする (async/await を忘れるな)
 1. `dish-delight/frontend/lib/api.tsx`に`getMenus`メソッドを作って指定された店舗のメニューをすべて返すようにする (async/await を忘れるな).
-   - 今のところ店舗はほかにないので、店舗 ID は引数で渡すだけ
+   - 動作確認用に別店舗のデータを固定データに加えています
+   - レスポンスの型を指定したいので、メニューの型定義も行っています
 1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`は`dish-delight/frontend/lib/api.tsx`の一旦`getMenus`メソッドを呼び、取得するようにする (async/await を忘れるな)
 
 `dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます：
@@ -764,56 +825,156 @@ export const stores: Store[] = [
   },
 ];
 
+// メニューのオプションの型定義
+type MenuOption = {
+  name: string;
+  price: string;
+};
+
 // 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
 const menus = [
   {
     id: 1,
-    name: "醤油ラーメン",
+    storeId: 1,
+    name: "Soy sauce ramen",
     img: "https://images.unsplash.com/photo-1632709810780-b5a4343cebec",
     author: "@5amramen",
-    price: "900円",
+    price: "900 yen",
+    description:
+      "A classic Japanese ramen noodle soup that is made with a soy sauce-based broth.",
+    options: [
+      {
+        name: "Extra noodles",
+        price: "100 yen",
+      },
+      {
+        name: "Extra char siu",
+        price: "100 yen",
+      },
+      {
+        name: "Barikata(very hard noodles)",
+        price: "0 yen",
+      },
+    ],
   },
   {
     id: 2,
-    name: "うどん",
+    storeId: 1,
+    name: "Sanuki Udon",
     img: "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3",
     author: "@jinomono",
-    price: "800円",
+    price: "800 yen",
+    description:
+      "A type of thick, chewy udon noodle that is made in Kagawa Prefecture, Japan.",
+    options: [
+      {
+        name: "Chicken tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Squid tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Vegetable tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Large size",
+        price: "100 yen",
+      },
+      {
+        name: "Small size",
+        price: "-50 yen",
+      },
+    ],
   },
   {
     id: 3,
-    name: "ざるそば",
+    storeId: 1,
+    name: "Zaru soba",
     img: "https://images.unsplash.com/photo-1519984388953-d2406bc725e1",
     author: "@gaspanik",
-    price: "1,000円",
+    price: "1,000 yen",
+    description: "A cold soba noodle dish served with a dipping sauce.",
+    options: [
+      {
+        name: "Large size",
+        price: "200 yen",
+      },
+    ],
   },
   {
     id: 4,
-    name: "辛味噌ラーメン",
+    storeId: 1,
+    name: "Spicy Miso Ramen",
     img: "https://images.unsplash.com/photo-1637024696628-02cb19cc1829",
     author: "@5amramen",
-    price: "900円",
+    price: "900 yen",
+    description: "A spicy miso ramen with a rich and flavorful broth.",
+    options: [
+      {
+        name: "Large size",
+        price: "100 yen",
+      },
+      {
+        name: "Extra char siu",
+        price: "100 yen",
+      },
+      {
+        name: "Seasoned egg",
+        price: "100 yen",
+      },
+    ],
   },
   {
     id: 5,
-    name: "天丼そばセット",
+    storeId: 1,
+    name: "Tempura bowl and soba set",
     img: "https://images.unsplash.com/photo-1593357871477-00fd350cc0f8",
     author: "@bady",
-    price: "1,200円",
+    price: "1,200 yen",
+    description:
+      "A set meal consisting of a tempura bowl and a bowl of soba noodles.",
   },
   {
     id: 6,
-    name: "海鮮丼",
+    storeId: 1,
+    name: "Seafood bowl",
     img: "https://images.unsplash.com/photo-1565967531713-45739e0cad63",
     author: "@jangus231",
-    price: "2,000円",
+    price: "2,000 yen",
+    description:
+      "A bowl of rice topped with a variety of seafood, such as salmon, tuna, shrimp, and scallops.",
   },
   {
     id: 7,
-    name: "日替わり定食",
+    storeId: 1,
+    name: "Daily set lunch",
     img: "https://images.unsplash.com/photo-1565941072372-0f0f10c8b7dd",
     author: "@roppongi",
-    price: "1,000円",
+    price: "1,000 yen",
+    description: "A daily set meal that changes daily.",
+    options: [
+      {
+        name: "Mixed grain rice",
+        price: "100 yen",
+      },
+      {
+        name: "Pork soup",
+        price: "100 yen",
+      },
+    ],
+  },
+  {
+    id: 8,
+    storeId: 2,
+    name: "Khao soi",
+    img: "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12",
+    author: "@ural_8_low",
+    price: "60 baht",
+    description:
+      "Khao Soi is a Northern Thai curry noodle soup with a rich and flavorful broth.",
   },
 ];
 
@@ -821,14 +982,17 @@ export async function getStores(): Promise<Store[]> {
   return stores;
 }
 
-export async function getStore(id: number): Promise<Store | undefined> {
-  return await stores.find((store) => store.id === id);
+export async function getStore(storeId: number): Promise<Store | undefined> {
+  return stores.find((store) => store.id === storeId);
 }
 
-export async function getMenus(storeId: number) {
-  return menus;
+export async function getMenus(storeId: number): Promise<Menu[]> {
+  return menus.filter((menu) => menu.storeId === storeId);
 }
 ```
+
+注意事項:
+固定データの取得に非同期処理のための async/await を付ける必要はまったくないです。Backend API に置き換えたとき、修正が少ないように async/await を付けています。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
