@@ -290,7 +290,9 @@ export default function Home() {
         </div>
       </nav>
       <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <h1 className="text-3xl font-bold">
+          Welcome to Jojo University Cafeteria!
+        </h1>
         {/* Do not display this image for mobile */}
         <Image
           className="hidden md:block mx-auto mt-4"
@@ -390,7 +392,9 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <h1 className="text-3xl font-bold">
+          Welcome to Jojo University Cafeteria!
+        </h1>
         <Image
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
@@ -489,7 +493,9 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <h1 className="text-3xl font-bold">
+          Welcome to Jojo University Cafeteria!
+        </h1>
         <Image
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
@@ -1010,7 +1016,9 @@ export default async function Home() {
     <div>
       <Navbar />
       <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold">Welcome to University Cafeteria!</h1>
+        <h1 className="text-3xl font-bold">
+          Welcome to Jojo University Cafeteria!
+        </h1>
         <Image
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
