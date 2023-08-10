@@ -1246,7 +1246,49 @@ export default async function Menu({
   - 該当のメニュー画像や説明、Option などが表示されること
 - Navbar の"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面に遷移すること
 
-####
+#### サイトのタイトルと favicon の設定
+
+上記で Frontend 部分は終わりですが、最後にサイトのタイトルと favicon だけ修正します。
+
+TODO
+タイトルのキャプチャ
+
+`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Jojo University Cafeteria",
+  description: "This site shows the menu of Jojo University Cafeteria",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
+  );
+}
+```
+
+`dish-delight/frontend/app/favicon.ico`を置き換えます：
+
+TODO ロゴの配置場所 or 配布場所
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd)から取得してください。
+
+動作・見た目を確認します。
+
+- サイトのタイトルと favicon が以下のキャプチャと同じであることを確認する
+  - TODO キャプチャ
 
 ####
 
