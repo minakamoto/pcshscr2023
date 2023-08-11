@@ -104,9 +104,13 @@ TIPS:
       - `Python › Formatting: Provider`の設定変更
         - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
         - 設定の中で「python.formatting.provider」を検索し、値を「black」にします。
+          - TODO
+            - > This setting will soon be deprecated. Please use the Autopep8 extension or the Black Formatter extension. Learn more here: https://aka.ms/AAlgvkb.
       - `Python › Linting: Flake8 Enabled`の設定変更
         - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
         - 設定の中で「python.linting.flake8Enabled」を検索し、チェックボックスにチェックを入れます。
+          - TODO
+            - > This setting will soon be deprecated. Please use the Flake8 extension. Learn more here: https://aka.ms/AAlgvkb.
       - `Python: Language Server`の設定変更
         - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
         - 設定の中で「python.languageServer」を検索し、値を「Pylance」にします。
