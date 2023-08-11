@@ -153,7 +153,7 @@ npx create-next-app .
 ```sh
 cd ../backend
 # Projectの初期化
-rye init
+rye init --no-pin
 # このProjectで使用するPythonのバージョンを指定
 rye pin 3.11
 # 同期化し、virtualenv作成
