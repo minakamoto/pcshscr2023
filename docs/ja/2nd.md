@@ -172,7 +172,7 @@ python --version
 
 ```sh
 # 必要なライブラリの追加
-rye add fastapi uvicorn
+rye add fastapi uvicorn sqlalchemy
 # 必要な開発用のツールの追加
 rye add --dev black flake8
 # 同期化し、インストール
