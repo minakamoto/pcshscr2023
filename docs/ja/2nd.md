@@ -1304,6 +1304,19 @@ TODO ロゴの配置場所 or 配布場所
 
 ### データベースを Setup する
 
+TODO:
+Pylance が rye 自動構築の仮想環境を認識できておらず、import で警告がでる場合の対処
+
+1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
+1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.json の`"python.languageServer": "Pylance",`の下にを指定、未検証（未解決）
+
+```json
+"python.analysis.extraPaths": [
+    "${workspaceFolder}/dish-delight/backend/.venv/lib/python3.11/site-packages"
+  ],
+  "python.envFile": "${workspaceFolder}/dish-delight/backend/.venv/bin/python"
+```
+
 ### FastAPI からデータベースに接続し、メニュー一覧とメニュー詳細のデータを取得して返す
 
 ## (Option)4. 複数店舗に対応したメニューの一覧と詳細表示の実装
