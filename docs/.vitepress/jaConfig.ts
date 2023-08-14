@@ -16,7 +16,7 @@ export const jaConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
           { text: "シンプルかつ簡単なUIを開発するハンズオン", link: "/ja/1st" },
           {
             text: "ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン",
-            link: "/ja/2st",
+            link: "/ja/2nd",
           },
         ],
       },
