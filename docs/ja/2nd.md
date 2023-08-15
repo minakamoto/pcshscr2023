@@ -179,6 +179,10 @@ rye add --dev black flake8
 rye sync
 ```
 
+#### 不要なファイルの削除 TODO
+
+`dish-delight/backend/src/backend/__init__.py`は使用しないため、削除する
+
 ## 2. １店舗のみを想定したメニューの一覧と詳細表示の実装
 
 TODO: Figma で作成したイメージを参考に紹介する
@@ -1133,7 +1137,7 @@ TODO 見直し
 メニュー詳細画面を実装すると、ディレクトリ構成は以下となります。
 
 ```
-dish-delight/
+dish-delight/frontend
 ├── lib/
 │   ├── api.js                 // backend APIを呼び出す処理を集める
 ├── app/
@@ -1303,9 +1307,36 @@ TODO ロゴの配置場所 or 配布場所
 
 ## 3. データベースに接続してデータを返す
 
-### データベースを Setup する
+### データベースに初期データを投入する
 
-TODO:
+データベースに初期データを投入します。
+[Github リポジトリ](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
+
+対象のファイルは以下の 6 つです。
+
+- data.json TODO: 複数店舗のデータを用意する
+- database.py
+- insert_data.py
+- load_initial_data.py
+- read_json.py
+- table.py
+
+`dish-delight/backend/src/backend`にて、以下のコマンドを実行します。
+
+```sh
+python load_initial_data.py
+```
+
+`dish-delight/backend/src/backend`配下に`university.db`ファイルができていれば成功です。
+
+TIPS(TODO):
+
+- `SQLite`について
+  - 今回ハンズオンの DB には`SQLite`を使用している。`SQLite`は...
+- `SQLAlchemy`について
+  - 今回ハンズオンの ORM には`SQLAlchemy`を使用している。`SQLAlchemy`は...
+
+注意事項(TODO):
 Pylance が rye 自動構築の仮想環境を認識できておらず、import で警告がでる場合の対処
 
 1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
