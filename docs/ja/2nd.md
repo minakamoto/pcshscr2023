@@ -185,12 +185,14 @@ rye sync
 
 ## 2. １店舗のみを想定したメニューの一覧と詳細表示の実装
 
+TODO: 「１店舗のみ」構成の見直し
+
 TODO: Figma で作成したイメージを参考に紹介する
 
 ### メニュー一覧ページとメニュー詳細ページを作成
 
 Next.js と Tailwind CSS を使用して、メニュー一覧ページとメニュー詳細ページを作成します。  
-frontend のみの実装で backend にはまだ接続しません。
+Frontend のみの実装で Backend にはまだ接続しません。
 
 TIPS:
 
@@ -550,6 +552,7 @@ import Navbar from "../../../components/Navbar";
 import { stores } from "@/app/page";
 import Image from "next/image";
 
+// TODO データが多すぎるので、後で減らす
 // まずはfrontendで固定でメニュー情報を保持します。
 // 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
 export const menus = [
@@ -764,7 +767,7 @@ export default function Navbar({
           {storeName && (
             <>
               <span className="font-semibold text-lg md:text-xl tracking-tight px-2">
-                Sakura-tei
+                {storeName}
               </span>
               <Link
                 href="/"
@@ -848,6 +851,7 @@ type MenuOption = {
   price: string;
 };
 
+// TODO データが多すぎるので、後で減らす
 // 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
 const menus = [
   {
@@ -1332,9 +1336,10 @@ python load_initial_data.py
 TIPS(TODO):
 
 - `SQLite`について
-  - 今回ハンズオンの DB には`SQLite`を使用している。`SQLite`は...
+  - 今回ハンズオンのデータベースには`SQLite`を使用している。`SQLite`は...
 - `SQLAlchemy`について
   - 今回ハンズオンの ORM には`SQLAlchemy`を使用している。`SQLAlchemy`は...
+- データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。要確認
 
 注意事項(TODO):
 Pylance が rye 自動構築の仮想環境を認識できておらず、import で警告がでる場合の対処
@@ -1349,10 +1354,103 @@ Pylance が rye 自動構築の仮想環境を認識できておらず、import 
   "python.envFile": "${workspaceFolder}/dish-delight/backend/.venv/bin/python"
 ```
 
+### データベースに接続し、店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返す API を作成する
+
+`dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```py
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from database import get_session
+from table import store, menu
+from pydantic import BaseModel
+
+app = FastAPI()
+
+
+# Dependency
+def get_db():
+    db = get_session()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
+# Store type definition
+class Store(BaseModel):
+    id: int
+    name: str
+    img: str
+    category: str
+
+
+# Menu type definition
+class Menu(BaseModel):
+    id: int
+    storeId: int
+    name: str
+    img: str
+    author: str
+    price: str
+    description: str
+
+
+# Type definition for menu options
+class Option(BaseModel):
+    id: int
+    menuId: int
+    name: str
+    price: str
+
+
+# API to get a list of stores
+# `@app.get`でGETメソッド, `()`内の"/stores"でパスを指定します
+@app.get("/stores")
+def read_stores(db: Session = Depends(get_db)) -> list[Store]:
+    # `-> list[Store]`で戻り値の型を定義
+    # `db.query(store).all()`でStoreテーブルから全件取得
+    result = db.query(store).all()
+    # 結果が存在しない場合の例外処理
+    if not result:
+        raise HTTPException(status_code=404, detail="Store not found")
+    return result
+
+
+# API to get the specified store ID
+@app.get("/stores/{store_id}")
+def read_store(store_id: int, db: Session = Depends(get_db)) -> Store:
+    # `db.query(store).filter(store.id == store_id)`で
+    # Storeテーブルから指定されたstore_idとIdが合致するデータを取得
+    result = db.query(store).filter(store.id == store_id).first()
+    if not result:
+        raise HTTPException(status_code=404, detail="Store not found")
+    return result
+
+
+# API to get the menu list of the specified store ID
+@app.get("/stores/{store_id}/menus")
+def read_menus(store_id: int, db: Session = Depends(get_db)) -> list[Menu]:
+    result = db.query(menu).filter(menu.storeId == store_id).all()
+    if not result:
+        raise HTTPException(status_code=404, detail="Menus not found")
+    return result
+
+
+# API to get the menu with the specified store ID and menu ID
+@app.get("/stores/{store_id}/menus/{menu_id}")
+def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
+    # MenuテーブルのstoreIdとIDの複数条件を指定
+    condition = [menu.storeId == store_id, menu.id == menu_id]
+    result = db.query(menu).filter(*condition).first()
+    if not result:
+        raise HTTPException(status_code=404, detail="Menu not found")
+    return result
+
+```
+
 ### FastAPI からデータベースに接続し、メニュー一覧とメニュー詳細のデータを取得して返す
 
 ## (Option)4. 複数店舗に対応したメニューの一覧と詳細表示の実装
 
 ### Frontend 店舗の切り替え機能を追加する
-
-### Backend 店舗ごとのメニュー一覧とメニュー詳細の API を作成する
