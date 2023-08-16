@@ -186,8 +186,8 @@
       "id": 11,
       "storeId": 2,
       "name": "Pad Kra Pao",
-      "img": "https://images.unsplash.com/photo-1627308595186-e6bb36712645",
-      "author": "@streets_of_food",
+      "img": "https://images.unsplash.com/photo-1629606600908-a51ec6c44fdd",
+      "author": "@setsj",
       "price": "70 baht",
       "description": "a Thai rice dish made with stir-fried ground meat, Thai basil, and chili peppers."
     },
@@ -204,8 +204,8 @@
       "id": 13,
       "storeId": 3,
       "name": "Bolognese",
-      "img": "https://images.unsplash.com/photo-1600803907087-f56d462fd26b",
-      "author": "@emanuelekstrom",
+      "img": "https://images.unsplash.com/photo-1598866594230-a7c12756260f",
+      "author": "@dacakockica",
       "price": "7 Euro",
       "description": "A pasta dish with a meat sauce made with ground beef, pork, and veal."
     },
@@ -213,8 +213,8 @@
       "id": 14,
       "storeId": 3,
       "name": "Carbonara",
-      "img": "https://images.unsplash.com/photo-1546549032-9571cd6b27df",
-      "author": "@brunabranco",
+      "img": "https://images.unsplash.com/photo-1612874742237-6526221588e3",
+      "author": "@robwicks",
       "price": "9 Euro",
       "description": "A pasta dish with a cream sauce made with guanciale, eggs, and Parmesan cheese."
     }

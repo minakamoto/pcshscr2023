@@ -1,13 +1,20 @@
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
-from database import get_session
-from table import store as Store, menu as Menu, option as Option
+from database import SessionLocal, Base, engine
+from models import Store, Menu, Option
+
+
+def _create_tables():
+    Base.metadata.create_all(bind=engine)
 
 
 def insert_data_to_tables(data):
-    session: Session = get_session()
+    session: Session = SessionLocal()
 
     try:
+        # 全テーブルを作成
+        _create_tables()
+
         # Storeデータを挿入
         db_stores = [Store(**store) for store in data["stores"]]
         session.add_all(db_stores)

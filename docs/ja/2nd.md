@@ -1307,48 +1307,147 @@ TODO ロゴの配置場所 or 配布場所
 
 ## 3. データベースに接続してデータを返す
 
-### データベースに初期データを投入する
+### データベースの接続設定を行う
 
-データベースに初期データを投入します。
+`ORM`の`SQLAlchemy`による`SQLite`データベースへの接続設定を行います。
+
+`dish-delight/backend/src/backend/database.py`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```py
+# dish-delight/backend/src/backend/database.py
+
+# Quoting the official [FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/)
+
+# import the SQLAlchemy parts
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+# Create a database URL for SQLAlchemy
+# connecting to a SQLite database (opening a file with the SQLite database).
+DATABASE_URL = "sqlite:///./university.db"
+
+# Create a SQLAlchemy "engine"
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+
+# Create a SessionLocal class.
+# Each instance of the SessionLocal class will be a database session.
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+# Create a Base class.
+# Later we will inherit from this class to create each of the database models or classes (the ORM models)
+Base = declarative_base()
+
+```
+
+TIPS(TODO):
+
+- `ORM`とは
+- `SQLite`について
+  - 今回ハンズオンのデータベースには`SQLite`を使用している。`SQLite`は...
+- `SQLAlchemy`について
+  - 今回ハンズオンの ORM には`SQLAlchemy`を使用している。`SQLAlchemy`は...
+- データベースや SQL 周りのコードや説明は[FastAPI 公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
+
+注意事項(TODO):
+
+- Pylance が rye 自動構築の仮想環境を認識できておらず、import で警告がでる場合の対処
+  1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
+  1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.json の`"python.languageServer": "Pylance",`の下にを指定、未検証（未解決）
+  ```json
+  "python.analysis.extraPaths": [
+      "${workspaceFolder}/dish-delight/backend/.venv/lib/python3.11/site-packages"
+    ],
+    "python.envFile": "${workspaceFolder}/dish-delight/backend/.venv/bin/python"
+  ```
+
+### テーブル(データベースモデル)定義を行う
+
+`SQLAlchemy`によるテーブル(データベースモデル)定義を行います。
+
+`dish-delight/backend/src/backend/models.py`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```py
+# dish-delight/backend/src/backend/models.py
+
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+
+# Import Base defined in database.py
+from database import Base
+
+
+# Define a model for each table by inheriting from Base
+class Store(Base):
+    # Storeテーブルの定義
+    __tablename__ = "stores"
+
+    # Define columns and attributes
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    img = Column(String)
+    category = Column(String)
+
+    # Define the relationship
+    menus = relationship("Menu", back_populates="store")
+
+
+class Menu(Base):
+    # Menuテーブルの定義
+    __tablename__ = "menus"
+
+    id = Column(Integer, primary_key=True, index=True)
+    storeId = Column(Integer, ForeignKey("stores.id"))
+    name = Column(String, index=True)
+    img = Column(String)
+    author = Column(String)
+    price = Column(String)
+    description = Column(String)
+
+    store = relationship("Store", back_populates="menus")
+    options = relationship("Option", back_populates="menu")
+
+
+class Option(Base):
+    # Optionテーブルの定義
+    __tablename__ = "options"
+
+    id = Column(Integer, primary_key=True, index=True)
+    menuId = Column(Integer, ForeignKey("menus.id"))
+    name = Column(String)
+    price = Column(String)
+
+    menu = relationship("Menu", back_populates="options")
+
+```
+
+### データベースに初期データを登録する
+
+データベースに初期データを登録します。初期データ登録用に簡単なスクリプトを用意しています。  
 [Github リポジトリ](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
 
-対象のファイルは以下の 6 つです。
+対象のファイルは以下の 4 つです。
 
-- data.json TODO: 複数店舗のデータを用意する
-- database.py
+- data.json
 - insert_data.py
-- load_initial_data.py
+- insert_initial_data.py
 - read_json.py
-- table.py
 
 `dish-delight/backend/src/backend`にて、以下のコマンドを実行します。
 
 ```sh
-python load_initial_data.py
+python insert_initial_data.py
 ```
 
 `dish-delight/backend/src/backend`配下に`university.db`ファイルができていれば成功です。
 
 TIPS(TODO):
 
-- `SQLite`について
-  - 今回ハンズオンのデータベースには`SQLite`を使用している。`SQLite`は...
-- `SQLAlchemy`について
-  - 今回ハンズオンの ORM には`SQLAlchemy`を使用している。`SQLAlchemy`は...
 - データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。要確認
 
 注意事項(TODO):
-Pylance が rye 自動構築の仮想環境を認識できておらず、import で警告がでる場合の対処
 
-1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
-1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.json の`"python.languageServer": "Pylance",`の下にを指定、未検証（未解決）
-
-```json
-"python.analysis.extraPaths": [
-    "${workspaceFolder}/dish-delight/backend/.venv/lib/python3.11/site-packages"
-  ],
-  "python.envFile": "${workspaceFolder}/dish-delight/backend/.venv/bin/python"
-```
+- 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPI であれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
 
 ### データベースに接続し、店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返す API を作成する
 
@@ -1446,6 +1545,20 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
 ```
 
 ## OpenAPI を使用して、API の動作確認を行う
+
+FastAPI を起動します。
+
+```sh
+rye run uvicorn main:app --reload
+```
+
+TIPS:
+
+- FastAPI の起動について
+  - 今回の`rye`を使用しているため、`rye run`をつけますが、`rye`を使用しない場合は
+  ```sh
+  uvicorn main:app --reload
+  ```
 
 ### Backend の API からデータを取得するように Frontend を修正する
 
