@@ -179,10 +179,6 @@ rye add --dev black flake8
 rye sync
 ```
 
-#### 不要なファイルの削除 TODO
-
-`dish-delight/backend/src/backend/__init__.py`は使用しないため、削除する
-
 ## 2. １店舗のみを想定したメニューの一覧と詳細表示の実装
 
 TODO: 「１店舗のみ」構成の見直し
@@ -1449,7 +1445,9 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
 
 ```
 
-### FastAPI からデータベースに接続し、メニュー一覧とメニュー詳細のデータを取得して返す
+## OpenAPI を使用して、API の動作確認を行う
+
+### Backend の API からデータを取得するように Frontend を修正する
 
 ## (Option)4. 複数店舗に対応したメニューの一覧と詳細表示の実装
 
