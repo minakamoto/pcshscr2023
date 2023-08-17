@@ -1454,23 +1454,27 @@ TIPS(TODO):
 
 - 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPI であれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
 
-### データベースに接続し、店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返す API を作成する
+### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返す API を作成する
+
+API で使用するデータの型(`Pydantic`のモデル)とデータベースから店舗一覧、メニュー一覧とメニュー詳細を取得する API を作成します。
 
 `dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます：
 
 ```py
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
-from database import get_session
-from table import store, menu
+from database import SessionLocal
+import models
 from pydantic import BaseModel
 
 app = FastAPI()
 
 
 # Dependency
+# This dependency will create a new SQLAlchemy SessionLocal that will be used in a single request,
+# and then close it once the request is finished.
 def get_db():
-    db = get_session()
+    db = SessionLocal()
     try:
         yield db
     finally:
@@ -1484,6 +1488,9 @@ class Store(BaseModel):
     img: str
     category: str
 
+    class Config:
+        from_attributes = True
+
 
 # Menu type definition
 class Menu(BaseModel):
@@ -1495,6 +1502,9 @@ class Menu(BaseModel):
     price: str
     description: str
 
+    class Config:
+        from_attributes = True
+
 
 # Type definition for menu options
 class Option(BaseModel):
@@ -1503,14 +1513,17 @@ class Option(BaseModel):
     name: str
     price: str
 
+    class Config:
+        from_attributes = True
+
 
 # API to get a list of stores
-# `@app.get`でGETメソッド, `()`内の"/stores"でパスを指定します
-@app.get("/stores")
-def read_stores(db: Session = Depends(get_db)) -> list[Store]:
+# `@app.get`でGETメソッド, `()`の"/stores"でパスを指定します
+@app.get("/stores", response_model=list[Store])
+def read_stores(db: Session = Depends(get_db)):
     # `-> list[Store]`で戻り値の型を定義
     # `db.query(store).all()`でStoreテーブルから全件取得
-    result = db.query(store).all()
+    result = db.query(models.Store).all()
     # 結果が存在しない場合の例外処理
     if not result:
         raise HTTPException(status_code=404, detail="Store not found")
@@ -1518,36 +1531,59 @@ def read_stores(db: Session = Depends(get_db)) -> list[Store]:
 
 
 # API to get the specified store ID
-@app.get("/stores/{store_id}")
-def read_store(store_id: int, db: Session = Depends(get_db)) -> Store:
+@app.get("/stores/{store_id}", response_model=Store)
+def read_store(store_id: int, db: Session = Depends(get_db)):
     # `db.query(store).filter(store.id == store_id)`で
     # Storeテーブルから指定されたstore_idとIdが合致するデータを取得
-    result = db.query(store).filter(store.id == store_id).first()
+    result = db.query(models.Store).filter(models.Store.id == store_id).first()
     if not result:
         raise HTTPException(status_code=404, detail="Store not found")
     return result
 
 
 # API to get the menu list of the specified store ID
-@app.get("/stores/{store_id}/menus")
-def read_menus(store_id: int, db: Session = Depends(get_db)) -> list[Menu]:
-    result = db.query(menu).filter(menu.storeId == store_id).all()
+@app.get("/stores/{store_id}/menus", response_model=list[Menu])
+def read_menus(store_id: int, db: Session = Depends(get_db)):
+    result = db.query(models.Menu).filter(models.Menu.storeId == store_id).all()
     if not result:
         raise HTTPException(status_code=404, detail="Menus not found")
     return result
 
 
 # API to get the menu with the specified store ID and menu ID
-@app.get("/stores/{store_id}/menus/{menu_id}")
+@app.get("/stores/{store_id}/menus/{menu_id}", response_model=Menu)
 def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
     # MenuテーブルのstoreIdとIDの複数条件を指定
-    condition = [menu.storeId == store_id, menu.id == menu_id]
-    result = db.query(menu).filter(*condition).first()
+    condition = [models.Menu.storeId == store_id, models.Menu.id == menu_id]
+    result = db.query(models.Menu).filter(*condition).first()
     if not result:
         raise HTTPException(status_code=404, detail="Menu not found")
     return result
 
 ```
+
+TIPS(TODO):
+
+- `models.py`で作成したモデルは`SQLAlchemy`のモデルであり、データベース用のモデルです。
+- 今回のハンズオンではモデルが少ないため、`main.py`の中に API と合わせて、`Pydantic`のモデルを実装しました。しかし、モデルが多いなどの場合は別モジュールにすることを検討してください。
+  - `Pydantic`のモデルは API でデータを読み込んだり、作成したりするときに使用します。
+  - [FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、`SQLAlchemy`のモデルと区別するため、`schemas.py`の中に定義されています。
+- ハンズオンと[FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
+  - [FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では`Pydantic`のモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
+    - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは 1 つのみ作成しています。
+      - CRUD comes from: Create, Read, Update, and Delete.
+  - [FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数の Util モジュールを作成し、それらを各 API 関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
+    - このハンズオンでは Web アプリ開発体験を優先するため、各 API 関数内で直接実装しています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
+
+注意事項(TODO):
+
+- ハンズオンを記載している時点の[FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
+  - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
+    > These docs are about to be updated. 🎉
+    >
+    > The current version assumes Pydantic v1, and SQLAlchemy versions less than 2.0.
+    >
+    > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
 ## OpenAPI を使用して、API の動作確認を行う
 
