@@ -1587,16 +1587,84 @@ TIPS(TODO):
 
 ## OpenAPI を使用して、API の動作確認を行う
 
-FastAPI を起動します。
+`FastAPI`ではデフォルトで API ドキュメントを`OpenAPI`仕様に基づいて自動で生成されます。`Swagger UI`を使用して、Web ブラウザで確認することができます。
+`FastAPI`を起動します。
 
 ```sh
 rye run uvicorn main:app --reload
 ```
 
+ブラウザを開いて http://127.0.0.1:8000/docs にアクセスし、以下の画面が表示されることを確認してください。
+
+TODO: キャプチャ貼る
+
+注意事項:
+
+もし、該当のポートを使用中であった場合は別のポートに振り返られている可能性があります。`FastAPI`を起動した際のログを確認してください。起動ポートは以下のように表示されます。
+
+```sh
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+```
+
+各 API を開いて、必要に応じて`Parameters`を入力して動作を確認してみてください。
+
+手順
+
+- 確認した API を開く
+- `Try it out`ボタンを押す
+- 確認したい内容に応じて`Parameters`を入力する
+- `Execute`ボタンを押す
+- `Code`が 200 であることを確認し、`Details`の中身が意図したデータであることを確認する
+
+例：指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
+
+- `Parameters`の`store_id`に`3`を代入する
+  - 実行前の画面 TODO キャプチャ貼る
+- `Execute`ボタンを押す
+- `Code`が 200 であることを確認し、`Details`の中身が以下であること
+  ```sh
+  [
+  {
+    "id": 12,
+    "storeId": 3,
+    "name": "Margherita",
+    "img": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca",
+    "author": "@amir_v_ali",
+    "price": "6 Euro",
+    "description": "A pizza with tomato sauce, mozzarella cheese, and basil."
+  },
+  {
+    "id": 13,
+    "storeId": 3,
+    "name": "Bolognese",
+    "img": "https://images.unsplash.com/photo-1598866594230-a7c12756260f",
+    "author": "@dacakockica",
+    "price": "7 Euro",
+    "description": "A pasta dish with a meat sauce made with ground beef, pork, and veal."
+  },
+  {
+    "id": 14,
+    "storeId": 3,
+    "name": "Carbonara",
+    "img": "https://images.unsplash.com/photo-1612874742237-6526221588e3",
+    "author": "@robwicks",
+    "price": "9 Euro",
+    "description": "A pasta dish with a cream sauce made with guanciale, eggs, and Parmesan cheese."
+  }
+  ]
+  ```
+
 TIPS:
 
+- API 周りについて
+
+  - API はプログラム間の通信インターフェースであり、一般的に`RestAPI`と`GraphQL`に大別されます。
+    - `RestAPI`は HTTP プロトコルを通じてリソースを操作するための形式であり、`GraphQL`は柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
+  - `OpenAPI`仕様は、`RestAPI`の設計、記述、ドキュメント化、テストを支援するための仕様です。
+  - `Swagger UI`は `OpenAPI`仕様に基づいて API ドキュメントを視覚的に確認し、API をテストするためのツールです。
+
 - FastAPI の起動について
-  - 今回の`rye`を使用しているため、`rye run`をつけますが、`rye`を使用しない場合は
+  - 今回の`rye`を使用しているため、`rye run`をつけますが、`rye`を使用しない場合は以下です。
   ```sh
   uvicorn main:app --reload
   ```
