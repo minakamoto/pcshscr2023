@@ -539,10 +539,10 @@ export default function Home() {
 }
 ```
 
-`dish-delight/frontend/app/stores/[id]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
 
 ```tsx
-// dish-delight/frontend/app/stores/[id]/page.tsx
+// dish-delight/frontend/app/stores/[storeId]/page.tsx
 import Link from "next/link";
 import Navbar from "../../../components/Navbar";
 import { stores } from "@/app/page";
@@ -1082,21 +1082,30 @@ export default async function StoreMenu({
   const storeId = Number(params.storeId);
   const store = await getStore(storeId);
   const menus = await getMenus(storeId);
-  // TODO storeが存在しないときの処理
+
   if (!store) {
     return (
-      <p>
-        該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
-      </p>
+      <div>
+        <Navbar />
+        <div className="m-3">
+          <p>
+            該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+          </p>
+        </div>
+      </div>
     );
   }
 
-  // TODO menuが一件もないときの処理
   if (menus.length === 0) {
     return (
-      <p>
-        該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
-      </p>
+      <div>
+        <Navbar />
+        <div className="m-3">
+          <p>
+            該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+          </p>
+        </div>
+      </div>
     );
   }
 
@@ -1186,7 +1195,7 @@ export async function getMenu(
 `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を作成し、以下のコードに置き換えます：
 
 ```tsx
-// app/stores/menus/[id]/page.tsx
+// app/stores/menus/[menuId]/page.tsx
 import Image from "next/image";
 import { getMenu, getStore } from "@/lib/api";
 import Navbar from "@/components/Navbar";
@@ -1201,21 +1210,29 @@ export default async function Menu({
   const store = await getStore(storeId);
   const menu = await getMenu(storeId, menuId);
 
-  // TODO storeが存在しないときの処理
   if (!store) {
     return (
-      <p>
-        該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
-      </p>
+      <div>
+        <Navbar />
+        <div className="m-3">
+          <p>
+            該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+          </p>
+        </div>
+      </div>
     );
   }
 
-  // TODO menuが存在しないときの処理
   if (!menu) {
     return (
-      <p>
-        該当するメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
-      </p>
+      <div>
+        <Navbar />
+        <div className="m-3">
+          <p>
+            該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+          </p>
+        </div>
+      </div>
     );
   }
 
@@ -1259,6 +1276,10 @@ export default async function Menu({
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Option などが表示されること
 - Navbar の"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面に遷移すること
+
+#### TODO リファクタリング(データ取得のエラー画面のコンポーネント化)
+
+店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長なため、コンポーネント化します。
 
 #### サイトのタイトルと favicon の設定
 
