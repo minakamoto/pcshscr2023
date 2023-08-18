@@ -1869,6 +1869,94 @@ TIPS:
 
 ### Backend の API からデータを取得するように Frontend を修正する
 
-## (Option)4. 複数店舗に対応したメニューの一覧と詳細表示の実装
+`Backend`の API からデータを取得するように`Frontend`を修正します。  
+`dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます：
+
+```ts
+// dish-delight/frontend/lib/api.ts
+
+// 店舗の型定義
+type Store = {
+  id: number;
+  name: string;
+  img: string;
+  category: string;
+};
+
+// メニューの型定義
+type Menu = {
+  id: number;
+  storeId: number;
+  name: string;
+  img: string;
+  author: string;
+  price: string;
+  description: string;
+  options?: MenuOption[];
+};
+
+// メニューのオプションの型定義
+type MenuOption = {
+  name: string;
+  price: string;
+};
+
+const url = "http://127.0.0.1:8000";
+
+export async function getStores(): Promise<Store[]> {
+  const res = await fetch(`${url}/stores`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+  // return stores;
+}
+
+export async function getStore(storeId: number): Promise<Store | undefined> {
+  const res = await fetch(`${url}/stores/${storeId}`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export async function getMenus(storeId: number): Promise<Menu[]> {
+  const res = await fetch(`${url}/stores/${storeId}/menus`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export async function getMenu(
+  storeId: number,
+  menuId: number
+): Promise<Menu | undefined> {
+  const res = await fetch(`${url}/stores/${storeId}/menus/${menuId}`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+```
+
+動作・見た目を確認します。  
+店舗やメニューを変えてひとしきり動作確認を行なってみてください。Home だけでなく Navbar のボタンも使用してみてください。
+
+## (Option)4. Frontend のリファクタリング
+
+TBD：要不要を検討
 
 ### Frontend 店舗の切り替え機能を追加する
