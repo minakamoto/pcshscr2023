@@ -730,17 +730,18 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 `dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます：
 
 ```tsx
+// dish-delight/frontend/components/Navbar.tsx
 import Image from "next/image";
 import jojoUnivLogo from "../public/logo_jojo_univ.svg";
 import Link from "next/link";
 
-export default function Navbar({
-  storeName,
-  storeId,
-}: {
+// type definition of props
+type NavbarProps = {
   storeName?: string;
   storeId?: number;
-}) {
+};
+
+export default function Navbar({ storeName, storeId }: NavbarProps) {
   return (
     <>
       <nav className="flex items-center justify-between flex-wrap bg-sky-500 p-2">
