@@ -438,10 +438,13 @@ export default function Home() {
 }
 ```
 
-`dish-delight/frontend/public`にロゴ 2 つ(logo_jojo_univ.svg, sakura_tei_logo.jpeg)を配置します：
+`dish-delight/frontend/public`にロゴを 4 つを配置します：
 
-TODO ロゴの配置場所 or 配布場所
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd)から取得してください。
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。
+
+注意事項:
+
+- これらの画像は、Bing 上から`Image Creator`(`DALL-E`)を使用して作成しています。
 
 動作・見た目を確認します。(上記に添付した Figma でも見た目は確認できます)
 
