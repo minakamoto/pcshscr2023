@@ -800,7 +800,7 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-#### リファクタリング
+#### リファクタリング(Bakcend の API 呼び出しのための準備)
 
 TODO
 現状 Frontend で固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
@@ -1084,6 +1084,7 @@ export default async function StoreMenu({
   const store = await getStore(storeId);
   const menus = await getMenus(storeId);
 
+  // 該当する店舗が存在しないとき
   if (!store) {
     return (
       <div>
@@ -1097,6 +1098,7 @@ export default async function StoreMenu({
     );
   }
 
+  // 該当するメニューが存在しないとき
   if (menus.length === 0) {
     return (
       <div>
@@ -1137,7 +1139,13 @@ export default async function StoreMenu({
 }
 ```
 
-動作や見た目に変更がないことを確認します。
+動作や見た目に変更がないことを確認します。  
+なお、このリファクタリングにて、店舗やメニューが存在しない場合の処理を加えています。  
+一時的にコードを書き換えてみて(例: 取得データを 0 にする、if 文を外すなど)、動作確認をしてみてください。店舗の場合は以下になります。
+
+<div align="center">
+<img src="../static/img/2nd/docs/store_not_found.png" alt="Store not found" width="375">
+</div>
 
 注意事項:
 
@@ -1154,18 +1162,18 @@ TODO 見直し
 ```
 dish-delight/frontend
 ├── lib/
-│   ├── api.js                 // backend APIを呼び出す処理を集める
+│   ├── api.ts                 // backend APIを呼び出す処理を集める
 ├── app/
-│   ├── _app.js
-│   ├── index.js
+│   ├── _app.ts
+│   ├── index.ts
 │   └── stores/
 │       ├── [storeId]/
-│       │   └── page.js
+│       │   └── page.tsx
 │       └── menus/
 │           └── [menuId]/
-│               └── page.js
+│               └── page.tsx
 ├── components/
-│   └── Navbar.js
+│   └── Navbar.tsx
 ├── public/
 │   ├── logo_jojo_univ.svg
 │   ├── sakura_tei_logo.jpeg
@@ -1211,6 +1219,7 @@ export default async function Menu({
   const store = await getStore(storeId);
   const menu = await getMenu(storeId, menuId);
 
+  // 該当する店舗が存在しないとき
   if (!store) {
     return (
       <div>
@@ -1224,6 +1233,7 @@ export default async function Menu({
     );
   }
 
+  // 該当するメニューが存在しないとき
   if (!menu) {
     return (
       <div>
@@ -1277,10 +1287,176 @@ export default async function Menu({
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Option などが表示されること
 - Navbar の"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面に遷移すること
+- 店舗やメニューが存在しない場合のエラー画面
+  - イメージはメニュー一覧画面と同じ
 
-#### TODO リファクタリング(データ取得のエラー画面のコンポーネント化)
+#### リファクタリング(データ取得のエラー画面のコンポーネント化)
 
-店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長なため、コンポーネント化します。
+店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長な(今回でいうと同じようなコードが複数ある)ため、コンポーネント化します。
+
+リファクタリングの対象は以下の 2 つです。それぞれ、店舗やメニューのデータ取得時に存在しなかった場合の画面を実装しています。これを共通化します。
+
+- `dish-delight/frontend/app/stores/[storeId]/page.tsx`
+- `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
+
+固定のメッセージを格納するために、`dish-delight/frontend/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```ts
+// dish-delight/frontend/lib/constants.ts
+
+export const DATA_NOT_FOUND_MESSAGE = {
+  STORE:
+    "該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。",
+  MENU: "該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。",
+};
+```
+
+`dish-delight/frontend/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+
+```tsx
+// dish-delight/frontend/components/DataNotFound.tsx
+
+import Navbar from "./Navbar";
+
+type DataNotFoundProps = {
+  message: string;
+};
+
+export default function DataNotFound({ message }: DataNotFoundProps) {
+  return (
+    <>
+      <Navbar />
+      <div className="m-3">
+        <p>{message}</p>
+      </div>
+    </>
+  );
+}
+```
+
+`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+// dish-delight/frontend/app/stores/[storeId]/page.tsx
+import Link from "next/link";
+import Navbar from "../../../components/Navbar";
+import Image from "next/image";
+import { getMenus, getStore } from "@/lib/api";
+import DataNotFound from "@/components/DataNotFound";
+import { DATA_NOT_FOUND_MESSAGE } from "@/lib/constants";
+
+export default async function StoreMenu({
+  params,
+}: {
+  params: { storeId: string };
+}) {
+  const storeId = Number(params.storeId);
+  const store = await getStore(storeId);
+  const menus = await getMenus(storeId);
+
+  // 該当する店舗が存在しないとき
+  if (!store) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.STORE} />;
+  }
+
+  // 該当するメニューが存在しないとき
+  if (menus.length === 0) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
+  }
+
+  return (
+    <div>
+      <Navbar storeName={store.name} storeId={store.id} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+        {menus.map((menu) => (
+          <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
+            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <Image
+                className="w-full"
+                src={menu.img}
+                alt={menu.name}
+                width={200}
+                height={200}
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{menu.name}</div>
+                <p className="text-gray-700 text-base">{menu.price}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+
+```tsx
+// app/stores/menus/[menuId]/page.tsx
+import Image from "next/image";
+import { getMenu, getStore } from "@/lib/api";
+import Navbar from "@/components/Navbar";
+import DataNotFound from "@/components/DataNotFound";
+import { DATA_NOT_FOUND_MESSAGE } from "@/lib/constants";
+
+export default async function Menu({
+  params,
+}: {
+  params: { storeId: string; menuId: string };
+}) {
+  const storeId = Number(params.storeId);
+  const menuId = Number(params.menuId);
+  const store = await getStore(storeId);
+  const menu = await getMenu(storeId, menuId);
+
+  // 該当する店舗が存在しないとき
+  if (!store) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.STORE} />;
+  }
+
+  // 該当するメニューが存在しないとき
+  if (!menu) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
+  }
+
+  return (
+    <div>
+      <Navbar storeName={store.name} storeId={store.id} />
+      <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg m-4">
+        <Image
+          className="w-full"
+          src={menu.img}
+          alt={menu.name}
+          width={200}
+          height={200}
+        />
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">{menu.name}</div>
+          <p className="text-gray-500 text-base mt-2">{menu.price}</p>
+          <div className="text-base mt-3">{menu.description}</div>
+          {menu.options && (
+            <div>
+              <p className="font-bold text-gray-500 text-lg mt-5">Option</p>
+              {menu.options.map((option) => (
+                <ul key={option.name}>
+                  <li className="list-disc list-inside text-base mt-3">
+                    {option.name}{" "}
+                    <span className="text-gray-500">{option.price}</span>
+                  </li>
+                </ul>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+動作・見た目に変更がないことを確認します。
 
 #### サイトのタイトルと favicon の設定
 
