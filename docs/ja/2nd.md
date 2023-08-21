@@ -304,8 +304,8 @@ export default function Home() {
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
           alt="University Cafeteria Image"
-          width={350}
-          height={350}
+          width={500}
+          height={375}
         />
       </div>
       <div className="text-center mt-6 mx-2">
@@ -315,13 +315,13 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
           {stores.map((store) => (
             <Link href={`/stores/${store.id}`} key={store.id}>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
                 <Image
                   className="w-full"
                   src={store.img}
                   alt={store.name}
-                  width={100}
-                  height={100}
+                  width={300}
+                  height={300}
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{store.name}</div>
@@ -379,7 +379,7 @@ export default function Navbar() {
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
 ```tsx
-// app/page.tsx
+// dish-delight/frontend/app/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
@@ -405,8 +405,8 @@ export default function Home() {
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
           alt="University Cafeteria Image"
-          width={350}
-          height={350}
+          width={500}
+          height={375}
         />
       </div>
       <div className="text-center mt-6 mx-2">
@@ -416,13 +416,13 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
           {stores.map((store) => (
             <Link href={`/stores/${store.id}`} key={store.id}>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
                 <Image
                   className="w-full"
                   src={store.img}
                   alt={store.name}
-                  width={100}
-                  height={100}
+                  width={300}
+                  height={300}
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{store.name}</div>
@@ -509,8 +509,8 @@ export default function Home() {
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
           alt="University Cafeteria Image"
-          width={350}
-          height={350}
+          width={500}
+          height={375}
         />
       </div>
       <div className="text-center mt-6 mx-2">
@@ -520,13 +520,13 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
           {stores.map((store) => (
             <Link href={`/stores/${store.id}`} key={store.id}>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
                 <Image
                   className="w-full"
                   src={store.img}
                   alt={store.name}
-                  width={100}
-                  height={100}
+                  width={300}
+                  height={300}
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{store.name}</div>
@@ -709,13 +709,13 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {menus.map((menu) => (
           <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
               <Image
                 className="w-full"
                 src={menu.img}
                 alt={menu.name}
-                width={200}
-                height={200}
+                width={300}
+                height={300}
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{menu.name}</div>
@@ -1018,6 +1018,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
 ```tsx
+// dish-delight/frontend/app/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
@@ -1036,8 +1037,8 @@ export default async function Home() {
           className="hidden md:block mx-auto mt-4"
           src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
           alt="University Cafeteria Image"
-          width={350}
-          height={350}
+          width={500}
+          height={375}
         />
       </div>
       <div className="text-center mt-6 mx-2">
@@ -1047,13 +1048,13 @@ export default async function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
           {stores.map((store) => (
             <Link href={`/stores/${store.id}`} key={store.id}>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
+              <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
                 <Image
                   className="w-full"
                   src={store.img}
                   alt={store.name}
-                  width={100}
-                  height={100}
+                  width={300}
+                  height={300}
                 />
                 <div className="px-6 py-4">
                   <div className="font-bold text-xl mb-2">{store.name}</div>
@@ -1121,13 +1122,13 @@ export default async function StoreMenu({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {menus.map((menu) => (
           <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
               <Image
                 className="w-full"
                 src={menu.img}
                 alt={menu.name}
-                width={200}
-                height={200}
+                width={300}
+                height={300}
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{menu.name}</div>
@@ -1207,7 +1208,7 @@ export async function getMenu(
 `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を作成し、以下のコードに置き換えます：
 
 ```tsx
-// app/stores/menus/[menuId]/page.tsx
+// dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
 import Image from "next/image";
 import { getMenu, getStore } from "@/lib/api";
 import Navbar from "@/components/Navbar";
@@ -1253,13 +1254,14 @@ export default async function Menu({
   return (
     <div>
       <Navbar storeName={store.name} storeId={store.id} />
-      <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg m-4">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 md:mx-auto">
         <Image
           className="w-full"
           src={menu.img}
           alt={menu.name}
-          width={200}
-          height={200}
+          width={300}
+          height={300}
+          priority={false}
         />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{menu.name}</div>
@@ -1373,13 +1375,13 @@ export default async function StoreMenu({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
         {menus.map((menu) => (
           <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
-            <div className="max-w-sm rounded overflow-hidden shadow-lg">
+            <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
               <Image
                 className="w-full"
                 src={menu.img}
                 alt={menu.name}
-                width={200}
-                height={200}
+                width={300}
+                height={300}
               />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{menu.name}</div>
@@ -1397,7 +1399,7 @@ export default async function StoreMenu({
 `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
 ```tsx
-// app/stores/menus/[menuId]/page.tsx
+// dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
 import Image from "next/image";
 import { getMenu, getStore } from "@/lib/api";
 import Navbar from "@/components/Navbar";
@@ -1427,13 +1429,14 @@ export default async function Menu({
   return (
     <div>
       <Navbar storeName={store.name} storeId={store.id} />
-      <div className="max-w-sm mx-auto rounded overflow-hidden shadow-lg m-4">
+      <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 md:mx-auto">
         <Image
           className="w-full"
           src={menu.img}
           alt={menu.name}
-          width={200}
-          height={200}
+          width={300}
+          height={300}
+          priority={false}
         />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{menu.name}</div>
