@@ -123,14 +123,14 @@ TIPS:
 
 #### プロジェクトディレクトリの作成
 
-`dish-delight`ディレクトリを作成し、その中に Frontend ディレクトリと Backend ディレクトリを作成します。以下のコマンドを実行します。
+`dish-delight`ディレクトリを作成し、その中に `frontend` ディレクトリと backend ディレクトリを作成します。以下のコマンドを実行します。
 
 ```sh
 mkdir dish-delight/backend dish-delight/frontend
 cd dish-delight
 ```
 
-#### Frontend(Next.js) プロジェクト作成
+#### フロントエンド(Next.js) プロジェクト作成
 
 以下のコマンドを実行してください。
 
@@ -150,7 +150,7 @@ npx create-next-app .
 ✔ Would you like to customize the default import alias? … No
 ```
 
-#### Backend プロジェクトの初期化
+#### バックエンドプロジェクトの初期化
 
 以下のコマンドを実行してください。
 
@@ -192,7 +192,7 @@ TODO: Figma で作成したイメージを参考に紹介する
 ### メニュー一覧ページとメニュー詳細ページを作成
 
 Next.js と Tailwind CSS を使用して、メニュー一覧ページとメニュー詳細ページを作成します。  
-Frontend のみの実装で Backend にはまだ接続しません。
+フロントエンドのみの実装でバックエンドにはまだ接続しません。
 
 TIPS:
 
@@ -556,7 +556,7 @@ import { stores } from "@/app/page";
 import Image from "next/image";
 
 // TODO データが多すぎるので、後で減らす
-// まずはfrontendで固定でメニュー情報を保持します。
+// まずはフロントエンドで固定でメニュー情報を保持します。
 // 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
 export const menus = [
   {
@@ -809,7 +809,7 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 
 #### リファクタリング(Bakcend の API 呼び出しのための準備)
 
-現状 Frontend で固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
+現状フロントエンドで固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
 
 リファクタリングの流れ(細かなステップ)としては以下のとおりです。  
 ただし、この流れは手順を示すだけにしておきます。これまで通り、修正後のコードを各ファイルに上書きする方法で記載します。  
@@ -830,7 +830,7 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 
 ```tsx
 // lib/api.js
-// まずはfrontendで固定でメニュー情報を保持します。
+// まずはフロントエンドで固定でメニュー情報を保持します。
 
 type Store = {
   id: number;
@@ -1016,7 +1016,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 ```
 
 注意事項:  
-固定データの取得に非同期処理のための async/await を付ける必要はまったくないです。Backend API に置き換えたとき、修正が少ないように async/await を付けています。
+固定データの取得に非同期処理のための async/await を付ける必要はまったくないです。バックエンド API に置き換えたとき、修正が少ないように async/await を付けています。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
@@ -1157,7 +1157,7 @@ export default async function StoreMenu({
 注意事項:
 
 - このハンズオンの例外処理について
-  - Frontend、Backend ともに本ハンズオンでは、Web アプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
+  - フロントエンド、バックエンドともに本ハンズオンでは、Web アプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
 
 #### メニュー詳細画面を実装する
 
@@ -1469,7 +1469,7 @@ export default async function Menu({
 
 #### サイトのタイトルと favicon の設定
 
-上記で Frontend 部分は終わりですが、最後にサイトのタイトルと favicon だけ修正します。
+上記でフロントエンド部分は終わりですが、最後にサイトのタイトルと favicon だけ修正します。
 
 TODO
 タイトルのキャプチャ
@@ -1876,9 +1876,9 @@ TIPS:
   uvicorn main:app --reload
   ```
 
-### Backend の API からデータを取得するように Frontend を修正する
+### バックエンドの API からデータを取得するようにフロントエンドを修正する
 
-Backend の API からデータを取得するように Frontend を修正します。  
+バックエンドの API からデータを取得するようにフロントエンドを修正します。  
 `dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます：
 
 ```ts
@@ -1965,11 +1965,11 @@ export async function getMenu(
 
 注意事項:
 
-- Backend の接続先 URL について
-  - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、Backend(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
+- バックエンドの接続先 URL について
+  - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
 
-## (Option)4. Frontend のリファクタリング
+## (Option)4. フロントエンドのリファクタリング
 
 TBD：要不要を検討
 
-### Frontend 店舗の切り替え機能を追加する
+### フロントエンド店舗の切り替え機能を追加する
