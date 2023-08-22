@@ -87,40 +87,57 @@ TIPS:
 - Visual Studio Code(VS Code)のインストール
   - [1st](./1st#1-setup)参照
 - VS Code の拡張機能のインストール・設定
+
   - Javascript に関しては[1st](./1st#1-setup)参照
-    - (追加の設定オプション)保存時に自動的に ESLint でコードを修正するように設定します。
-    - `Editor: Code Actions On Save`の設定変更
-      - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-      - 設定の中で「Editor: Code Actions On Save」または「editor.codeActionsOnSave」を検索し、「Edit in setting.json」を押します。
-        - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
-      - 以下の設定に変更します。
-        ```json
-        {
-          "editor.codeActionsOnSave": {
-            "source.fixAll": true
+    - (Option)保存時に自動的に ESLint でコードを修正するように設定します。
+      - `Editor: Code Actions On Save`の設定変更
+        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+        - 設定の中で「Editor: Code Actions On Save」または「editor.codeActionsOnSave」を検索し、「Edit in setting.json」を押します。
+          - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
+        - 以下の設定に変更します。変更後、忘れずにファイルを保存してください。
+          ```json
+          {
+            "editor.codeActionsOnSave": {
+              "source.fixAll": true
+            }
           }
-        }
-        ```
+          ```
   - (Option)Python の開発にあたって、以下の拡張機能をインストールして、Web アプリの開発体験を向上させることをお勧めします：
-    - Visual Studio Code を起動します。
-    - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensions サイドバーを開きます。
-    - 以下の拡張機能を検索し、各拡張機能の横にある「インストール」ボタンをクリックします：
+    - Visual Studio Code を起動します。 - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensions サイドバーを開きます。
+    - 以下の拡張機能(いずれも Microsoft 社製)を検索し、各拡張機能の横にある「インストール」ボタンをクリックします：
       - Python
-    - 拡張機能の設定
+        - Pylance が含まれています。
+      - Flake8
+        - こちらをインストールすると、Python ファイルを開いたときに自動的に flake8(Linter)が実行されます。
+    - `Python: Language Server`の設定変更 - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
-      - `Python › Formatting: Provider`の設定変更
-        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-        - 設定の中で「python.formatting.provider」を検索し、値を「black」にします。
-          - TODO
-            - > This setting will soon be deprecated. Please use the Autopep8 extension or the Black Formatter extension. Learn more here: https://aka.ms/AAlgvkb.
-      - `Python › Linting: Flake8 Enabled`の設定変更
-        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-        - 設定の中で「python.linting.flake8Enabled」を検索し、チェックボックスにチェックを入れます。
-          - TODO
-            - > This setting will soon be deprecated. Please use the Flake8 extension. Learn more here: https://aka.ms/AAlgvkb.
-      - `Python: Language Server`の設定変更
-        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-        - 設定の中で「python.languageServer」を検索し、値を「Pylance」にします。
+      - 設定の中で「python.languageServer」を検索し、値を「Pylance」にします。
+    - Python ファイルの保存時に自動的に Black Formatter でコードを修正するように設定します。
+      - Ctrl+Shift+P を押して、コマンドパレットを開きます。
+      - `Preferences: Open User Settings(JSON)`を入力、選択して、JSON ファイルを開きます。
+        - **このハンズオン以外でこの設定を使用したくない場合は`Preferences: Open Workspace Settings(JSON)`開いてください。**
+      - 以下のコードを JSON の最後に設定します。
+        ```js
+          "[python]": {
+            "editor.defaultFormatter": "ms-python.black-formatter",
+            "editor.formatOnSave": true
+          }
+        ```
+        - ほかの設定も行なっている場合には以下のようになります。
+          ```js
+          {
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+              "source.fixAll": true
+            },
+            "python.languageServer": "Pylance",
+            "[python]": {
+              "editor.defaultFormatter": "ms-python.black-formatter",
+              "editor.formatOnSave": true
+            }
+          }
+          ```
 
 ### プロジェクト作成
 
@@ -1795,9 +1812,9 @@ TIPS(TODO):
     >
     > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
-## OpenAPI を使用して、API の動作確認を行う
+## Swagger UI を使用して、API の動作確認を行う
 
-FastAPI ではデフォルトで API ドキュメントを OpenAPI 仕様に基づいて自動で生成されます。`Swagger UI`を使用して、Web ブラウザで確認することができます。
+FastAPI ではデフォルトで API ドキュメントを OpenAPI 仕様に基づいて自動で生成されます。Swagger UI を使用して、Web ブラウザで確認することができます。
 FastAPI を起動します。
 
 ```sh
