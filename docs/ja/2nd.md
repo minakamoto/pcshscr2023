@@ -832,6 +832,11 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
     - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
       - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
 
+注意事項:
+
+- このハンズオンの例外処理について
+  - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
+
 #### リファクタリング(バックエンドのAPI呼び出しのための準備)
 
 現状フロントエンドで固定でデータを持っていますが、後ほどの手順でバックエンドのAPI呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
@@ -843,19 +848,17 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 1. `dish-delight/frontend/app/page.tsx`から店舗の固定データを`dish-delight/frontend/lib/api.tsx`に移動します。
 1. `dish-delight/frontend/lib/api.tsx`に`getStores`メソッドを作って、店舗データをすべて返すようにする
 1. `dish-delight/frontend/app/page.tsx`で店舗の固定データを呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStores`メソッドを呼ぶようにする
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
 1. `dish-delight/frontend/lib/api.tsx`に`getStore`メソッドを作って指定された店舗だけを返すようにする
 1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする
+1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
 1. `dish-delight/frontend/lib/api.tsx`に`getMenus`メソッドを作って指定された店舗のメニューをすべて返すようにする
-   - 動作確認用に別店舗のデータを固定データに加えています
    - レスポンスの型を指定したいので、メニューの型定義も行っています
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`は`dish-delight/frontend/lib/api.tsx`の一旦`getMenus`メソッドを呼び、取得するようにする
+1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getMenus`メソッドを呼び、取得するようにする
 
 `dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
-// lib/api.js
-// まずはフロントエンドで固定でメニュー情報を保持します。
+// dish-delight/frontend/lib/api.tsx
 
 type Store = {
   id: number;
@@ -871,17 +874,39 @@ export const stores: Store[] = [
     img: "/sakura_tei_logo.jpeg",
     category: "Japanese",
   },
+  {
+    id: 2,
+    name: "Aroy",
+    img: "/aroy_logo.jpeg",
+    category: "Thai",
+  },
+  {
+    id: 3,
+    name: "Buono",
+    img: "/buono_logo.jpeg",
+    category: "Italian",
+  },
 ];
 
-// メニューのオプションの型定義
+// type definition of menu
+type Menu = {
+  id: number;
+  storeId: number;
+  name: string;
+  img: string;
+  author: string;
+  price: string;
+  description: string;
+  options?: MenuOption[];
+};
+
+// type definition of menu's option
 type MenuOption = {
   name: string;
   price: string;
 };
 
-// TODO データが多すぎるので、後で減らす
-// 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
-const menus = [
+export const menus = [
   {
     id: 1,
     storeId: 1,
@@ -977,45 +1002,6 @@ const menus = [
     ],
   },
   {
-    id: 5,
-    storeId: 1,
-    name: "Tempura bowl and soba set",
-    img: "https://images.unsplash.com/photo-1593357871477-00fd350cc0f8",
-    author: "@bady",
-    price: "1,200 yen",
-    description:
-      "A set meal consisting of a tempura bowl and a bowl of soba noodles.",
-  },
-  {
-    id: 6,
-    storeId: 1,
-    name: "Seafood bowl",
-    img: "https://images.unsplash.com/photo-1565967531713-45739e0cad63",
-    author: "@jangus231",
-    price: "2,000 yen",
-    description:
-      "A bowl of rice topped with a variety of seafood, such as salmon, tuna, shrimp, and scallops.",
-  },
-  {
-    id: 7,
-    storeId: 1,
-    name: "Daily set lunch",
-    img: "https://images.unsplash.com/photo-1565941072372-0f0f10c8b7dd",
-    author: "@roppongi",
-    price: "1,000 yen",
-    description: "A daily set meal that changes daily.",
-    options: [
-      {
-        name: "Mixed grain rice",
-        price: "100 yen",
-      },
-      {
-        name: "Pork soup",
-        price: "100 yen",
-      },
-    ],
-  },
-  {
     id: 8,
     storeId: 2,
     name: "Khao soi",
@@ -1041,7 +1027,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 ```
 
 注意事項:  
-固定データの取得に非同期処理のための async/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないように async/awaitを付けています。
+固定データの取得に非同期処理のためのasync/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないようにasync/awaitを付けています。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1172,17 +1158,6 @@ export default async function StoreMenu({
 ```
 
 動作や見た目に変更がないことを確認します。  
-なお、このリファクタリングにて、店舗やメニューが存在しない場合の処理を加えています。  
-一時的にコードを書き換えてみて(例: 取得データを0にする、if文を外すなど)、動作確認をしてみてください。店舗の場合は以下になります。
-
-<div align="center">
-<img src="../static/img/2nd/docs/store_not_found.png" alt="Store not found" width="375">
-</div>
-
-注意事項:
-
-- このハンズオンの例外処理について
-  - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
 
 #### メニュー詳細画面を実装する
 
