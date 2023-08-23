@@ -219,7 +219,13 @@ rye sync
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
-| <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
+| <img src="../static/img/2nd/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
+
+<div align="center">
+<img src="../static/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
+</div>
+
+<img src="../static/img/2nd/figma_1.png" alt="Figma image1" width="300">
 
 注意事項:
 上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
@@ -414,7 +420,9 @@ export default function Home() {
 ```
 
 - 見た目は以下となっていることを確認します。
+
   ![PC Home](../static/img/2nd/docs/home_pc.png)
+
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
