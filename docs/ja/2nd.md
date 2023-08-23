@@ -227,7 +227,7 @@ rye sync
 TIPS:
 
 - Figmaとは
-  - [Figma](https://www.figma.com/) は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
+  - [Figma](https://www.figma.com/)は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
   - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単なUIであればエンジニアもFigmaで顧客とのイメージ共有等のためにデザインを作成することもあります。
 
 ### Home とメニュー一覧とメニュー詳細画面を作成
@@ -257,14 +257,12 @@ npm run dev
 - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 ```
 
-開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインで「Ctrl + c」で停止することができます。
+「Ctrl + c」で停止してください。
 
 #### globals.css の設定修正
 
 デフォルトで設定されている globals.cssの設定を修正します。  
 `dish-delight/frontend/app/globals.css`を開き、その内容を以下のコードに置き換えます：
-
-TODO あとでコードの内容確認
 
 ```css
 @tailwind base;
@@ -303,9 +301,27 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-#### Home 画面を実装する
+以下のコマンドを実行してください。
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+```sh
+npm run dev
+```
+
+再度ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
+
+開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインで「Ctrl + c」で停止することができます。
+
+#### Home画面を実装する
+
+`dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
+
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。
+
+注意事項:
+
+- これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
+
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -321,6 +337,18 @@ const stores = [
     name: "Sakura-tei",
     img: "/sakura_tei_logo.jpeg",
     category: "Japanese",
+  },
+  {
+    id: 2,
+    name: "Aroy",
+    img: "/aroy_logo.jpeg",
+    category: "Thai",
+  },
+  {
+    id: 3,
+    name: "Buono",
+    img: "/buono_logo.jpeg",
+    category: "Italian",
   },
 ];
 
@@ -351,6 +379,7 @@ export default function Home() {
           alt="University Cafeteria Image"
           width={500}
           height={375}
+          priority={false}
         />
       </div>
       <div className="text-center mt-6 mx-2">
@@ -358,6 +387,8 @@ export default function Home() {
           Select the store where you would like to see the menu
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
+          {/* For the number of stores list, link to the menu list and display the image component, store name, and category.
+           */}
           {stores.map((store) => (
             <Link href={`/stores/${store.id}`} key={store.id}>
               <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
@@ -382,18 +413,39 @@ export default function Home() {
 }
 ```
 
-TODO:
+- 見た目は以下となっていることを確認します。
+  ![PC Home](../static/img/2nd/docs/home_pc.png)
+- `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
+  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-- Consider mobile first design.
-  - ブラウザの開発者ツールでモバイルレイアウトの表示を説明する。そのあとは、モバイルレイアウトで表示してもらう。
-- how to share static image file
-  - ロゴなどの静的ファイルの共有 or 配布方法を検討する
+このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、モバイルサイズの表示で確認を前提とします。
+
+以下の手順を参考に、ブラウザの開発者ツールにていずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
+
+- ブラウザを開き、`デベロッパーツール`もしくは`開発者ツール`を表示します。
+  - Chromeであれば「メニュー」→「その他のツール」→「デベロッパーツール」
+  - Edgeであれば「メニュー」→「その他のツール」→「開発者ツール」
+  - Windowsであれば、どのブラウザでも共通で、ショートカットキーは`Shift+Ctrl+i`
+- 開発者ツールにてPCとスマホが重なったようなアイコンのボタンをクリックします。
+  - Windowsであれば、ショートカットキーは`Shift+Ctrl+m`
+    ![Developer tool](../static/img/2nd/docs/developer_tool.png)
+- 画面の左上のメニューでシミュレートする端末を選びます(上記の画像の左側を参照)。
+  - もしくは`Responsive`状態で自分で大きさを調整します。
+
+スマホと同等のサイズにした場合、以下の見た目になっていることを確認してください。
+
+- 上記キャプチャーのレイアウトになること
+- 店舗のCardが縦に配置されていること
+  - Sakura-tei、Aroy、Buonoの順
+
+TIPS:
+タブレットサイズにすると、列は2つになります。
 
 #### Navbarをコンポーネント化する
 
 メニュー一覧やメニュー詳細画面でも同じ Navbarを使用したいため、Navbarをコンポーネント化します。
 
-`dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
 // components/Navbar.tsx
@@ -421,7 +473,7 @@ export default function Navbar() {
 }
 ```
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -435,6 +487,18 @@ const stores = [
     name: "Sakura-tei",
     img: "/sakura_tei_logo.jpeg",
     category: "Japanese",
+  },
+  {
+    id: 2,
+    name: "Aroy",
+    img: "/aroy_logo.jpeg",
+    category: "Thai",
+  },
+  {
+    id: 3,
+    name: "Buono",
+    img: "/buono_logo.jpeg",
+    category: "Italian",
   },
 ];
 
@@ -483,40 +547,11 @@ export default function Home() {
 }
 ```
 
-`dish-delight/frontend/public`にロゴを 4 つを配置します：
-
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。
-
-注意事項:
-
-- これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
-
-- 見た目は以下となっていること
-  - TODO キャプチャ添付
-- `Sakura-tei`の Card をクリックすると、メニュー一覧画面に遷移すること
-  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
-
-ブラウザの開発者ツールを開き、いずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
-
-TODO 開発ツールの手順
-
-- コマンド、メニューからの操作方法
-- Responsiveの操作方法
-
-スマホと同等のサイズにした場合、以下の見た目になっていることを確認してください。
-TODO キャプチャーを貼る
-
-注意事項:
-このアプリはモバイルファーストを前提とし、これ以降はこの状態での動作確認を前提とします。
-
-TIPS:
-タブレットサイズにすると、列は2つになります。
-
 #### メニュー一覧画面を実装する
 
 Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 import Image from "next/image";
@@ -538,6 +573,18 @@ export const stores: Store[] = [
     img: "/sakura_tei_logo.jpeg",
     category: "Japanese",
   },
+  {
+    id: 2,
+    name: "Aroy",
+    img: "/aroy_logo.jpeg",
+    category: "Thai",
+  },
+  {
+    id: 3,
+    name: "Buono",
+    img: "/buono_logo.jpeg",
+    category: "Italian",
+  },
 ];
 
 export default function Home() {
@@ -585,7 +632,7 @@ export default function Home() {
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -773,7 +820,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 }
 ```
 
-`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/components/Navbar.tsx
@@ -865,7 +912,7 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
    - レスポンスの型を指定したいので、メニューの型定義も行っています
 1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`は`dish-delight/frontend/lib/api.tsx`の一旦`getMenus`メソッドを呼び、取得するようにする
 
-`dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
 // lib/api.js
@@ -1057,7 +1104,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 注意事項:  
 固定データの取得に非同期処理のための async/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないように async/awaitを付けています。
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -1112,7 +1159,7 @@ export default async function Home() {
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1235,7 +1282,7 @@ TIPS:
 props よりも fetch した方が良さそう。Reactが後ろでメモ化してくれるから
 <https://nextjs.org/docs/app/building-your-application/caching#request-memoization>
 
-`dish-delight/frontend/lib/api.tsx`を作成し、以下のコードを最下部に加えます：
+`dish-delight/frontend/lib/api.tsx`を作成し、以下のコードを最下部に加えます:
 
 ```tsx
 // lib/api.tsx
@@ -1346,7 +1393,7 @@ export default async function Menu({
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
 
-固定のメッセージを格納するために、`dish-delight/frontend/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます：
+固定のメッセージを格納するために、`dish-delight/frontend/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```ts
 // dish-delight/frontend/lib/constants.ts
@@ -1358,7 +1405,7 @@ export const DATA_NOT_FOUND_MESSAGE = {
 };
 ```
 
-`dish-delight/frontend/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/components/DataNotFound.tsx
@@ -1381,7 +1428,7 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1438,7 +1485,7 @@ export default async function StoreMenu({
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1513,7 +1560,7 @@ export default async function Menu({
 TODO
 タイトルのキャプチャ
 
-`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 import "./globals.css";
@@ -1540,7 +1587,7 @@ export default function RootLayout({
 }
 ```
 
-`dish-delight/frontend/app/favicon.ico`を置き換えます：
+`dish-delight/frontend/app/favicon.ico`を置き換えます:
 
 TODO ロゴの配置場所 or 配布場所
 対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd)から取得してください。
@@ -1556,7 +1603,7 @@ TODO ロゴの配置場所 or 配布場所
 
 ORMのSQLAlchemyによるSQLiteデータベースへの接続設定を行います。
 
-`dish-delight/backend/src/backend/database.py`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/backend/src/backend/database.py`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```py
 # dish-delight/backend/src/backend/database.py
@@ -1611,7 +1658,7 @@ TIPS(TODO):
 
 SQLAlchemyによるテーブル(データベースモデル)定義を行います。
 
-`dish-delight/backend/src/backend/models.py`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/backend/src/backend/models.py`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```py
 # dish-delight/backend/src/backend/models.py
@@ -1699,7 +1746,7 @@ TIPS(TODO):
 
 APIで使用するデータの型(Pydanticのモデル)とデータベースから店舗一覧、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
-`dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます：
+`dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```py
 from fastapi import FastAPI, Depends, HTTPException
@@ -1857,7 +1904,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 - `Execute`ボタンを押す
 - `Code`が 200 であることを確認し、`Details`の中身が意図したデータであることを確認する
 
-例：指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
+例:指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
 
 - `Parameters`の`store_id`に`3`を代入する
   - 実行前の画面 TODO キャプチャ貼る
@@ -1915,7 +1962,7 @@ TIPS:
 ### バックエンドのAPIからデータを取得するようにフロントエンドを修正する
 
 バックエンドのAPIからデータを取得するようにフロントエンドを修正します。  
-`dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます:
 
 ```ts
 // dish-delight/frontend/lib/api.ts
