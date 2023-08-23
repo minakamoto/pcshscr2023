@@ -331,7 +331,7 @@ import Image from "next/image";
 import Link from "next/link";
 import jojoUnivLogo from "../public/logo_jojo_univ.svg";
 
-// Store type definition
+// type definition of store
 type Store = {
   id: number;
   name: string;
@@ -568,6 +568,70 @@ export default function Home() {
 
 Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
+`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
+
+```tsx
+// dish-delight/frontend/components/Navbar.tsx
+import Image from "next/image";
+import jojoUnivLogo from "../public/logo_jojo_univ.svg";
+import Link from "next/link";
+
+// type definition of props
+type NavbarProps = {
+  storeName?: string;
+  storeId?: number;
+};
+
+export default function Navbar({ storeName, storeId }: NavbarProps) {
+  return (
+    <>
+      <nav className="flex items-center justify-between flex-wrap bg-sky-500 p-2">
+        <div className="flex items-center flex-shrink-0 text-white mr-6">
+          <Link href="/">
+            <Image
+              src={jojoUnivLogo}
+              alt="Logo of Jojo University"
+              width={45}
+              height={45}
+            />
+          </Link>
+          {/* If the store is not set up (i.e., only for Home), give the name of the university. */}
+          {!storeName && (
+            <span className="font-semibold text-lg md:text-xl tracking-tight pl-2">
+              Jojo University Cafeteria
+            </span>
+          )}
+          {/* Only when the store name is set, the store name and a link to Home are displayed. */}
+          {storeName && (
+            <>
+              <span className="font-semibold text-lg md:text-xl tracking-tight px-2">
+                {storeName}
+              </span>
+              <Link
+                href="/"
+                className="text-gray-200 text-base ml-3 px-1 hover:bg-sky-600"
+              >
+                Home
+              </Link>
+            </>
+          )}
+          {/* Display a link to the menu list only when the store name and store ID are set */}
+          {storeName && storeId && (
+            <Link
+              href={`/stores/${storeId}`}
+              key={storeId}
+              className="text-gray-200 text-base ml-3 px-1 hover:bg-sky-600"
+            >
+              Menus
+            </Link>
+          )}
+        </div>
+      </nav>
+    </>
+  );
+}
+```
+
 `dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
@@ -577,9 +641,8 @@ import Navbar from "../../../components/Navbar";
 import { stores } from "@/app/page";
 import Image from "next/image";
 
-// TODO データが多すぎるので、後で減らす
-// まずはフロントエンドで固定でメニュー情報を保持します。
-// 画像は[Unsplash](https://unsplash.com/)のデータを使用しています。
+// First, the menu information is kept fixed on the frontend.
+// The image uses data from [Unsplash](https://unsplash.com/).
 export const menus = [
   {
     id: 1,
@@ -676,45 +739,6 @@ export const menus = [
     ],
   },
   {
-    id: 5,
-    storeId: 1,
-    name: "Tempura bowl and soba set",
-    img: "https://images.unsplash.com/photo-1593357871477-00fd350cc0f8",
-    author: "@bady",
-    price: "1,200 yen",
-    description:
-      "A set meal consisting of a tempura bowl and a bowl of soba noodles.",
-  },
-  {
-    id: 6,
-    storeId: 1,
-    name: "Seafood bowl",
-    img: "https://images.unsplash.com/photo-1565967531713-45739e0cad63",
-    author: "@jangus231",
-    price: "2,000 yen",
-    description:
-      "A bowl of rice topped with a variety of seafood, such as salmon, tuna, shrimp, and scallops.",
-  },
-  {
-    id: 7,
-    storeId: 1,
-    name: "Daily set lunch",
-    img: "https://images.unsplash.com/photo-1565941072372-0f0f10c8b7dd",
-    author: "@roppongi",
-    price: "1,000 yen",
-    description: "A daily set meal that changes daily.",
-    options: [
-      {
-        name: "Mixed grain rice",
-        price: "100 yen",
-      },
-      {
-        name: "Pork soup",
-        price: "100 yen",
-      },
-    ],
-  },
-  {
     id: 8,
     storeId: 2,
     name: "Khao soi",
@@ -728,12 +752,47 @@ export const menus = [
 
 export default function StoreMenu({ params }: { params: { storeId: string } }) {
   const storeId = Number(params.storeId);
+  // Get the corresponding store from the store list
   const store = stores.find((store) => store.id === storeId);
+  // Get the corresponding menu from the menu list
+  const storeMenus = menus.filter((menu) => menu.storeId === storeId);
+
+  // When there is no matching store
+  if (!store) {
+    return (
+      <div>
+        <Navbar />
+        <div className="m-3">
+          <p>
+            該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  // When there is no matching menu
+  if (storeMenus.length === 0) {
+    return (
+      <div>
+        <Navbar />
+        <div className="m-3">
+          <p>
+            該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
+      {/* Pass store name and store ID to Navbar */}
       <Navbar storeName={store?.name} storeId={store?.id} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-        {menus.map((menu) => (
+        {/* For the number of menus list, link to the menu detail and display the image component, menu.
+         */}
+        {storeMenus.map((menu) => (
           <Link href={`/stores/${storeId}/menus/${menu.id}`} key={menu.id}>
             <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
               <Image
@@ -756,78 +815,22 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 }
 ```
 
-`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
-
-```tsx
-// dish-delight/frontend/components/Navbar.tsx
-import Image from "next/image";
-import jojoUnivLogo from "../public/logo_jojo_univ.svg";
-import Link from "next/link";
-
-// type definition of props
-type NavbarProps = {
-  storeName?: string;
-  storeId?: number;
-};
-
-export default function Navbar({ storeName, storeId }: NavbarProps) {
-  return (
-    <>
-      <nav className="flex items-center justify-between flex-wrap bg-sky-500 p-2">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <Link href="/">
-            <Image
-              src={jojoUnivLogo}
-              alt="Logo of Jojo University"
-              width={45}
-              height={45}
-            />
-          </Link>
-          {/* If the store is not set up (i.e., only for Home), give the name of the university. */}
-          {!storeName && (
-            <span className="font-semibold text-lg md:text-xl tracking-tight pl-2">
-              Jojo University Cafeteria
-            </span>
-          )}
-          {/* Only when the store name is set, the store name and a link to Home are displayed. */}
-          {storeName && (
-            <>
-              <span className="font-semibold text-lg md:text-xl tracking-tight px-2">
-                {storeName}
-              </span>
-              <Link
-                href="/"
-                className="text-gray-200 text-base ml-3 px-1 hover:bg-sky-600"
-              >
-                Home
-              </Link>
-            </>
-          )}
-          {/* Display a link to the menu list only when the store name and store ID are set */}
-          {storeName && storeId && (
-            <Link
-              href={`/stores/${storeId}`}
-              key={storeId}
-              className="text-gray-200 text-base ml-3 px-1 hover:bg-sky-600"
-            >
-              Menus
-            </Link>
-          )}
-        </div>
-      </nav>
-    </>
-  );
-}
-```
-
 動作・見た目を確認します。
 
-- Home 画面にて`Sakura-tei`の Card をクリックすると、メニュー一覧画面に遷移すること
-- 見た目は以下となっていること
-  - TODO キャプチャ添付
+- Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
+  - メニューが4つ表示されること
+    ![Developer tool](../static/img/2nd/docs/menu_list_sakura_tei.png)
 - Navbarの`HOME`を押すとHOME画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
+- Home画面にて`Aroy`のCardをクリックすると、メニュー一覧画面に遷移すること
+  - メニューが1つ表示されること
+- Home画面にて`Bohno`のCardをクリックすると、メニュー一覧画面に遷移すること
+  - メニューがないため、エラーメッセージがでること
+    ![error_store_not_found](../static/img/2nd/docs/store_not_found.png)
+  - 実装に店舗やメニューが存在しない場合の処理を加えています。
+    - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
+      - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
 
 #### リファクタリング(バックエンドのAPI呼び出しのための準備)
 
