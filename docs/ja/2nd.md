@@ -757,28 +757,28 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
   // Get the corresponding menu from the menu list
   const storeMenus = menus.filter((menu) => menu.storeId === storeId);
 
-  // When there is no matching store
+  // When the store does not exist
   if (!store) {
     return (
       <div>
         <Navbar />
         <div className="m-3">
           <p>
-            該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+            The store does not exist, please select the store again from HOME.
           </p>
         </div>
       </div>
     );
   }
 
-  // When there is no matching menu
+  // When the menu for the store does not exist
   if (storeMenus.length === 0) {
     return (
       <div>
         <Navbar />
         <div className="m-3">
           <p>
-            該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+            The menu for that store does not exist, please select the store again from HOME.
           </p>
         </div>
       </div>
@@ -1102,28 +1102,28 @@ export default async function StoreMenu({
   const store = await getStore(storeId);
   const menus = await getMenus(storeId);
 
-  // 該当する店舗が存在しないとき
+  // When the store does not exist
   if (!store) {
     return (
       <div>
         <Navbar />
         <div className="m-3">
           <p>
-            該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+            The store does not exist, please select the store again from HOME.
           </p>
         </div>
       </div>
     );
   }
 
-  // 該当するメニューが存在しないとき
+  // When the menu for the store does not exist
   if (menus.length === 0) {
     return (
       <div>
         <Navbar />
         <div className="m-3">
           <p>
-            該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+            The menu for that store does not exist, please select the store again from HOME.
           </p>
         </div>
       </div>
@@ -1163,15 +1163,11 @@ export default async function StoreMenu({
 
 メニュー一覧画面にてメニューを選択後に表示されるメニュー詳細画面を実装します。
 
-TODO 見直し
-メニュー詳細画面を実装すると、ディレクトリ構成は以下となります。
+メニュー詳細画面を実装すると、ディレクトリ構成は以下となります(関連するファイルのみ抜粋)。
 
 ```sh
 dish-delight/frontend
-├── lib/
-│   ├── api.ts                 // backend APIを呼び出す処理を集める
 ├── app/
-│   ├── _app.ts
 │   ├── index.ts
 │   └── stores/
 │       ├── [storeId]/
@@ -1181,20 +1177,19 @@ dish-delight/frontend
 │               └── page.tsx
 ├── components/
 │   └── Navbar.tsx
+├── lib/
+│   ├── api.ts                 // backend APIを呼び出す処理を集める
+│   └── constants.ts
 ├── public/
+│   ├── aroy_logo.jpeg
+│   ├── buono_logo.jpeg
 │   ├── logo_jojo_univ.svg
-│   ├── sakura_tei_logo.jpeg
-│   ├── xxxxx_logo.jpeg        // TBD
-│   └── yyyyy_logo.jpeg        // TBD
+│   └── sakura_tei_logo.jpeg
 ├── styles/
 │   └── globals.css
+├── next.config.js
 └── tailwind.config.js
 ```
-
-TODO
-TIPS:
-props よりも fetch した方が良さそう。Reactが後ろでメモ化してくれるから
-<https://nextjs.org/docs/app/building-your-application/caching#request-memoization>
 
 `dish-delight/frontend/lib/api.tsx`を作成し、以下のコードを最下部に加えます:
 
@@ -1226,28 +1221,28 @@ export default async function Menu({
   const store = await getStore(storeId);
   const menu = await getMenu(storeId, menuId);
 
-  // 該当する店舗が存在しないとき
+  // When the store does not exist
   if (!store) {
     return (
       <div>
         <Navbar />
         <div className="m-3">
           <p>
-            該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+            The store does not exist, please select the store again from HOME.
           </p>
         </div>
       </div>
     );
   }
 
-  // 該当するメニューが存在しないとき
+  // When the menu for the store does not exist
   if (!menu) {
     return (
       <div>
         <Navbar />
         <div className="m-3">
           <p>
-            該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。
+            The menu for that store does not exist, please select the store again from HOME.
           </p>
         </div>
       </div>
@@ -1294,7 +1289,7 @@ export default async function Menu({
 
 - メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Optionなどが表示されること
-- Navbarの"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面に遷移すること
+- Navbarの`HOME`を押すとHOME画面に、`MENUS`を押すとメニュー一覧画面に遷移すること
 - 店舗やメニューが存在しない場合のエラー画面
   - イメージはメニュー一覧画面と同じ
 
@@ -1314,8 +1309,8 @@ export default async function Menu({
 
 export const DATA_NOT_FOUND_MESSAGE = {
   STORE:
-    "該当する店舗が存在しません。お手数ですが、HOMEから再度店舗を選択してください。",
-  MENU: "該当する店舗のメニューが存在しません。お手数ですが、HOMEから再度店舗を選択してください。",
+    "The store does not exist, please select the store again from HOME.",
+  MENU: "The menu for that store does not exist, please select the store again from HOME.",
 };
 ```
 
@@ -1362,12 +1357,12 @@ export default async function StoreMenu({
   const store = await getStore(storeId);
   const menus = await getMenus(storeId);
 
-  // 該当する店舗が存在しないとき
+  // When the store does not exist
   if (!store) {
     return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.STORE} />;
   }
 
-  // 該当するメニューが存在しないとき
+  // When the menu for the store does not exist
   if (menus.length === 0) {
     return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
   }
@@ -1419,12 +1414,12 @@ export default async function Menu({
   const store = await getStore(storeId);
   const menu = await getMenu(storeId, menuId);
 
-  // 該当する店舗が存在しないとき
+  // When the store does not exist
   if (!store) {
     return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.STORE} />;
   }
 
-  // 該当するメニューが存在しないとき
+  // When the menu does not exist
   if (!menu) {
     return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
   }
