@@ -230,7 +230,7 @@ TIPS:
   - [Figma](https://www.figma.com/)は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
   - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単なUIであればエンジニアもFigmaで顧客とのイメージ共有等のためにデザインを作成することもあります。
 
-### Home とメニュー一覧とメニュー詳細画面を作成
+### Homeとメニュー一覧とメニュー詳細画面を作成
 
 Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー詳細画面を作成します。  
 フロントエンドのみの実装でバックエンドにはまだ接続しません。
@@ -1873,7 +1873,7 @@ TIPS(TODO):
     >
     > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
-## Swagger UIを使用して、APIの動作確認を行う
+### Swagger UIを使用して、APIの動作確認を行う
 
 FastAPIではデフォルトでAPIドキュメントをOpenAPI仕様に基づいて自動で生成されます。Swagger UIを使用して、Web ブラウザで確認することができます。
 FastAPIを起動します。
