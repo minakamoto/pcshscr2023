@@ -426,7 +426,7 @@ export default function Home() {
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズの表示で確認を前提とします。
+このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズの表示での確認を前提とします。
 
 以下の手順を参考に、ブラウザの開発者ツールにていずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
 
@@ -819,7 +819,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 - Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューが4つ表示されること
-    ![Developer tool](../static/img/2nd/docs/menu_list_sakura_tei.png)
+    <img src="../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
 - Navbarの`HOME`を押すとHOME画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
@@ -827,7 +827,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
   - メニューが1つ表示されること
 - Home画面にて`Bohno`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューがないため、エラーメッセージがでること
-    ![error_store_not_found](../static/img/2nd/docs/store_not_found.png)
+    <img src="../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
   - 実装に店舗やメニューが存在しない場合の処理を加えています。
     - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
       - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
@@ -1191,7 +1191,7 @@ dish-delight/frontend
 └── tailwind.config.js
 ```
 
-`dish-delight/frontend/lib/api.tsx`を作成し、以下のコードを最下部に加えます:
+`dish-delight/frontend/lib/api.tsx`ファイルを開き、以下のコードを最下部に加えます:
 
 ```tsx
 // lib/api.tsx
@@ -1289,13 +1289,15 @@ export default async function Menu({
 
 - メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Optionなどが表示されること
+    - 例: 店舗`Aroy`の`Khao Soi`
+    <img src="../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
 - Navbarの`HOME`を押すとHOME画面に、`MENUS`を押すとメニュー一覧画面に遷移すること
 - 店舗やメニューが存在しない場合のエラー画面
   - イメージはメニュー一覧画面と同じ
 
 #### リファクタリング(データ取得のエラー画面のコンポーネント化)
 
-店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長な(今回でいうと同じようなコードが複数ある)ため、コンポーネント化します。
+店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長なため、コンポーネント化します。
 
 リファクタリングの対象は以下の2つです。それぞれ、店舗やメニューのデータ取得時に存在しなかった場合の画面を実装しています。これを共通化します。
 
@@ -1308,8 +1310,7 @@ export default async function Menu({
 // dish-delight/frontend/lib/constants.ts
 
 export const DATA_NOT_FOUND_MESSAGE = {
-  STORE:
-    "The store does not exist, please select the store again from HOME.",
+  STORE: "The store does not exist, please select the store again from HOME.",
   MENU: "The menu for that store does not exist, please select the store again from HOME.",
 };
 ```
