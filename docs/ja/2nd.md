@@ -203,11 +203,20 @@ rye add --dev black flake8
 rye sync
 ```
 
-## 2. １店舗のみを想定したメニューの一覧と詳細表示の実装
+## 2. フロントエンドのみのメニューの一覧と詳細表示の実装
 
-TODO: 「１店舗のみ」構成の見直し
+以下は Figma を利用した UI イメージです。
 
-TODO: Figma で作成したイメージを参考に紹介する
+<img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300">
+
+注意事項:
+上記は構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
+
+TIPS:
+
+- Figma とは
+  - [Figma](https://www.figma.com/) は、Web ベースのグラフィックデザインツールで、UI/UX デザイン、プロトタイピング、コラボレーションなどに使用されます。
+  - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単な UI であればエンジニアも Figma で顧客とのイメージ共有等のためにデザインを作成することもあります。
 
 ### メニュー一覧ページとメニュー詳細ページを作成
 
