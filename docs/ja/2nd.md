@@ -215,6 +215,9 @@ rye sync
 
 ## 2. フロントエンドのみのHomeとメニュー一覧と詳細画面の実装
 
+Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー詳細画面を作成します。  
+フロントエンドのみの実装でバックエンドにはまだ接続しません。
+
 以下はFigmaを利用したUIイメージです。参考として掲載します。
 
 | Home  | メニュー一覧  | メニュー詳細 |
@@ -230,14 +233,7 @@ TIPS:
   - [Figma](https://www.figma.com/)は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
   - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単なUIであればエンジニアもFigmaで顧客とのイメージ共有等のためにデザインを作成することもあります。
 
-### Homeとメニュー一覧とメニュー詳細画面を作成
-
-Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー詳細画面を作成します。  
-フロントエンドのみの実装でバックエンドにはまだ接続しません。
-
-TIPS:
-
-- 今回、Tailwind CSSのインストールや設定は不要です。Nextjsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
+### 設定ファイルの変更
 
 #### 開発サーバーの起動
 
@@ -275,6 +271,10 @@ body {
 }
 ```
 
+TIPS:
+
+- 今回、Tailwind CSSのインストールや設定は不要です。Nextjsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
+
 #### 外部画像サイトの設定
 
 今回、Next.jsが提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.jsの`Imageコンポーネント`は、HTML の`<img>`要素の拡張で、現代のWebのニーズに適応したものです。良いCore Web Vitalsを達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
@@ -311,6 +311,8 @@ npm run dev
 
 開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインで「Ctrl + c」で停止することができます。
 
+### Homeとメニュー一覧とメニュー詳細画面を作成
+
 #### Home画面を実装する
 
 `dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
@@ -329,9 +331,15 @@ import Image from "next/image";
 import Link from "next/link";
 import jojoUnivLogo from "../public/logo_jojo_univ.svg";
 
-// stores info(now, only one store)
-// Support multiple stores with optional issue
-const stores = [
+// Store type definition
+type Store = {
+  id: number;
+  name: string;
+  img: string;
+  category: string;
+};
+
+export const stores: Store[] = [
   {
     id: 1,
     name: "Sakura-tei",
@@ -418,7 +426,7 @@ export default function Home() {
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、モバイルサイズの表示で確認を前提とします。
+このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズの表示で確認を前提とします。
 
 以下の手順を参考に、ブラウザの開発者ツールにていずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
 
@@ -436,7 +444,7 @@ export default function Home() {
 
 - 上記キャプチャーのレイアウトになること
 - 店舗のCardが縦に配置されていること
-  - Sakura-tei、Aroy、Buonoの順
+  - `Sakura-tei`、`Aroy`、`Buono`の順
 
 TIPS:
 タブレットサイズにすると、列は2つになります。
@@ -481,84 +489,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
 
-const stores = [
-  {
-    id: 1,
-    name: "Sakura-tei",
-    img: "/sakura_tei_logo.jpeg",
-    category: "Japanese",
-  },
-  {
-    id: 2,
-    name: "Aroy",
-    img: "/aroy_logo.jpeg",
-    category: "Thai",
-  },
-  {
-    id: 3,
-    name: "Buono",
-    img: "/buono_logo.jpeg",
-    category: "Italian",
-  },
-];
-
-export default function Home() {
-  return (
-    <div>
-      <Navbar />
-      <div className="text-center mt-8">
-        <h1 className="text-3xl font-bold">
-          Welcome to Jojo University Cafeteria!
-        </h1>
-        <Image
-          className="hidden md:block mx-auto mt-4"
-          src={"https://images.unsplash.com/photo-1567521464027-f127ff144326"}
-          alt="University Cafeteria Image"
-          width={500}
-          height={375}
-        />
-      </div>
-      <div className="text-center mt-6 mx-2">
-        <h2 className="text-xl text-gray-500">
-          Select the store where you would like to see the menu
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-10">
-          {stores.map((store) => (
-            <Link href={`/stores/${store.id}`} key={store.id}>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg mx-auto">
-                <Image
-                  className="w-full"
-                  src={store.img}
-                  alt={store.name}
-                  width={300}
-                  height={300}
-                />
-                <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{store.name}</div>
-                  <p className="text-gray-700 text-base">{store.category}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-```
-
-#### メニュー一覧画面を実装する
-
-Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
-
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
-
-```tsx
-import Image from "next/image";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-
-// TODO 型の定義は最初からでも良さそう
 type Store = {
   id: number;
   name: string;
@@ -631,6 +561,12 @@ export default function Home() {
   );
 }
 ```
+
+ブラウザを開き、アプリケーションの動作・見た目に変化がないことを確認します。
+
+#### メニュー一覧画面を実装する
+
+Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
 `dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
