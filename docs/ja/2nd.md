@@ -1,4 +1,4 @@
-# ほんの少しだけ複雑な UI＆独自 API を開発するハンズオン
+# ほんの少しだけ複雑な UI＆独自APIを開発するハンズオン
 
 ## 0. はじめに
 
@@ -6,9 +6,8 @@
 
 ### 作るもの
 
-API を作成し、それらを呼び出し、その情報を画面に表示します。[1st](./1st)よりほんの少し複雑な UI を構築します。  
-具体的なイメージは、学食や社食、自治会レベルの地域の祭りで出す露店のメニューを表示する UI です。
-まず、一店舗のメニュー表示の実装から始め、最終的には複数店舗のメニュー表示(オプション課題)に対応できるようにします。
+APIを作成し、それらを呼び出し、その情報を画面に表示します。[1st](./1st)よりほんの少し複雑なUIを構築します。  
+具体的なイメージは、学食や社食、自治会レベルの地域の祭りで出す露店のメニューを表示するUIです。
 
 ### 主な技術スタック
 
@@ -19,26 +18,26 @@ API を作成し、それらを呼び出し、その情報を画面に表示し�
 
 TIPS:
 
-- Next.js について
-  - Next.js は、Reac をベースにした UI フレームワークで、SSR/SSG、ファイルベースルーティング、Fast Refresh、画像最適化、ゼロコンフィグなどの機能を提供しています。これらの機能により、Web ページの読み込み速度が高速化され、SEO に有利な構造が実現され、開発効率が向上します。Next.js はモダンかつ強力なフロントエンドフレームワークであり、様々な長所を持っています。
-  - また、[React 公式サイト](https://react.dev/learn/start-a-new-react-project#nextjs)においても豊富な機能やコミュニティのサポートなどを理由に、Next.js は
-    あらゆるサイズの React アプリを作成に適しており、Next.js の利用を推奨しています。
-- FastAPI について
-  - FastAPI は、以下の特徴があります。
-    - 高速: FastAPI は、Starlette と Uvicorn に基づいており、非常に高速なパフォーマンスを実現しています。
-      - (Starlette は、Python で書かれた軽量な ASGI フレームワークで、高速な非同期サービスを構築することができます。Uvicorn は、ASGI サーバーの実装であり、非常に高速です。FastAPI は、Starlette の上に構築され、Uvicorn を使用して実行することができます。)
-    - 簡潔: FastAPI は、簡潔な構文を採用しており、コードが読みやすく、書きやすくなっています。
-    - バリデーション: FastAPI は、Pydantic を使用してリクエストとレスポンスのバリデーションを行うことができます。
-      - Pydantic は、データの型安全性を確保するためのライブラリであり、データの型を宣言的に定義することができます。これにより、FastAPI は、タイプセーフな Web アプリケーションの構築をサポートしています。
+- Next.jsについて
+  - Next.jsは、ReactをベースにしたUIフレームワークで、SSR/SSG、ファイルベースルーティング、Fast Refresh、画像最適化、ゼロコンフィグなどの機能を提供しています。これらの機能により、Web ページの読み込み速度が高速化され、SEOに有利な構造が実現され、開発効率が向上します。Next.jsはモダンかつ強力なフロントエンドフレームワークであり、様々な長所を持っています。
+  - また、[React公式サイト](https://react.dev/learn/start-a-new-react-project#nextjs)においても豊富な機能やコミュニティのサポートなどを理由に、Next.jsは
+    あらゆるサイズの Reactアプリを作成に適しており、Next.jsの利用を推奨しています。
+- FastAPIについて
+  - FastAPIは、以下の特徴があります。
+    - 高速: FastAPIは、StarletteとUvicornに基づいており、非常に高速なパフォーマンスを実現しています。
+      - (Starletteは、Pythonで書かれた軽量なASGIフレームワークで、高速な非同期サービスを構築することができます。Uvicornは、ASGIサーバーの実装であり、非常に高速です。FastAPIは、Starletteの上に構築され、Uvicornを使用して実行することができます。)
+    - 簡潔: FastAPIは、簡潔な構文を採用しており、コードが読みやすく、書きやすくなっています。
+    - バリデーション: FastAPIは、Pydanticを使用してリクエストとレスポンスのバリデーションを行うことができます。
+      - Pydanticは、データの型安全性を確保するためのライブラリであり、データの型を宣言的に定義することができます。これにより、FastAPIは、タイプセーフな Web アプリケーションの構築をサポートしています。
       - タイプセーフとは、プログラムが実行される前に型エラーが検出されることを指します。これにより、ランタイムエラーを防ぐことができます。
-    - 自動ドキュメント生成: FastAPI は、Swagger UI と ReDoc を使用して、自動的に API ドキュメントを生成することができます。
-      - Swagger UI と ReDoc は、OpenAPI 仕様に基づいて API ドキュメントを生成するツールです。
-    - 非同期サポート: FastAPI は、非同期処理をサポートしており、非同期コードを簡単に書くことができます。
+    - 自動ドキュメント生成: FastAPIは、Swagger UIとReDocを使用して、自動的にAPIドキュメントを生成することができます。
+      - Swagger UIとReDocは、OpenAPI仕様に基づいてAPIドキュメントを生成するツールです。
+    - 非同期サポート: FastAPIは、非同期処理をサポートしており、非同期コードを簡単に書くことができます。
 
 **注意事項**:
 
-- Python のパッケージマネージャーについて
-  - 今回のハンズオンで使用する Python のパッケージマネージャーは[rye](https://github.com/mitsuhiko/rye)です。依存関係のインストールとアンインストール、仮想環境の管理などを行える、便利なツールです。ただし、以下が公式ページに記載されているとおり、Experimental な状態です。この資料を書いている時点では利用可能ですが、ハンズオンを行う際にその利用可否は保証できません。もし、利用できない場合は、他のツール([poetry](https://python-poetry.org/) や [pip](https://pypi.org/project/pip/) など)の利用を検討してください。
+- Pythonのパッケージマネージャーについて
+  - 今回のハンズオンで使用するPythonのパッケージマネージャーは[rye](https://github.com/mitsuhiko/rye)です。依存関係のインストールとアンインストール、仮想環境の管理などを行える、便利なツールです。ただし、以下が公式ページに記載されているとおり、Experimental な状態です。この資料を書いている時点では利用可能ですが、ハンズオンを行う際にその利用可否は保証できません。もし、利用できない場合は、他のツール([poetry](https://python-poetry.org/) や [pip](https://pypi.org/project/pip/) など)の利用を検討してください。
     > An Experimental Package Management Solution for Python
 - ***
 
@@ -51,39 +50,45 @@ TIPS:
 - Code Editor (e.g., Visual Studio Code)
 
 **注意事項**：  
-ここに記載されている必要なソフトウェアのインストール手順は、Powershell や WSL も使用しない Windows ユーザーを対象としています。
-これは、このハンズオンの最初のターゲットユーザーが、Powershell や WSL を使用しない Windows ユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
+ここに記載されている必要なソフトウェアのインストール手順は、PowershellやWSLも使用しないWindowsユーザーを対象としています。
+これは、このハンズオンの最初のターゲットユーザーが、PowershellやWSLを使用しないWindowsユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
 
-### Windows ユーザー向けの詳細な手順
+### Windowsユーザー向けの詳細な手順
 
 - Node.js のインストール
   - [1st](./1st#1-setup)参照
-- Python のインストール
-  - [Python の公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンの Python をダウンロードします。
+- Pythonのインストール
+  - [Pythonの公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンの Pythonをダウンロードします。
   - ダウンロードしたインストーラーを実行します。
   - インストールウィザードが表示されます。`Add Python to PATH` オプションを選択し、`Install Now` または `Customize installation` をクリックします。
-  - インストールが完了したら、コマンドプロンプトを開き、以下のコマンドを実行して、Python が正しくインストールされていることを確認します。
+  - インストールが完了したら、コマンドプロンプトを開き、以下のコマンドを実行して、Pythonが正しくインストールされていることを確認します。
+
     ```sh
     python --version
     ```
-  - 既に Python がインストールされている場合、上記の手順に従って最新バージョンの Python をインストールすることでアップデートすることができます。ただし、複数のバージョンの Python が同時にインストールされている場合は、環境変数の設定を確認して、適切なバージョンの Python が使用されるようにする必要があります。
+
+  - 既にPythonがインストールされている場合、上記の手順に従って最新バージョンのPythonをインストールすることでアップデートすることができます。ただし、複数のバージョンのPythonが同時にインストールされている場合は、環境変数の設定を確認して、適切なバージョンのPythonが使用されるようにする必要があります。
     - スタートメニューから`システムのプロパティ`を検索し、開きます。
     - `詳細設定`タブをクリックし、`環境変数`ボタンをクリックします。
     - `システム環境変数`セクションで、`Path`変数を選択し、`編集`ボタンをクリックします。
-    - `Path`変数の値に、新しくインストールした Python の実行ファイルがあるディレクトリ（通常は C:\Users\[ユーザー名]\AppData\Local\Programs\Python\Python[バージョン]\）を追加します。
+    - `Path`変数の値に、新しくインストールしたPythonの実行ファイルがあるディレクトリ（通常は C:\Users\[ユーザー名]\AppData\Local\Programs\Python\Python[バージョン]\）を追加します。
     - 変更を保存し、コマンドプロンプトを再起動します。
-    - 以下のコマンドを実行して、新しいバージョンの Python が使用されていることを確認します。
+    - 以下のコマンドを実行して、新しいバージョンのPythonが使用されていることを確認します。
+
       ```sh
       python --version
       ```
+
 - rye のインストール
-  - [rye の公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows 用の exe ファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
+  - [rye の公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows用のexeファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
   - [rye の公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数 Path に shims を登録し、その優先順位を上げます。 TODO Check on windows
   - 変更を保存し、コマンドプロンプトを再起動します。
-  - 以下のコマンドを実行して、エラーが rye のコマンドがエラーなく、実行されることを確認します。
+  - 以下のコマンドを実行して、エラーがryeのコマンドがエラーなく、実行されることを確認します。
+
     ```sh
       rye
     ```
+
 - Visual Studio Code(VS Code)のインストール
   - [1st](./1st#1-setup)参照
 - VS Code の拡張機能のインストール・設定
@@ -95,6 +100,7 @@ TIPS:
         - 設定の中で「Editor: Code Actions On Save」または「editor.codeActionsOnSave」を検索し、「Edit in setting.json」を押します。
           - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
         - 以下の設定に変更します。変更後、忘れずにファイルを保存してください。
+
           ```json
           {
             "editor.codeActionsOnSave": {
@@ -102,28 +108,32 @@ TIPS:
             }
           }
           ```
-  - (Option)Python の開発にあたって、以下の拡張機能をインストールして、Web アプリの開発体験を向上させることをお勧めします：
-    - Visual Studio Code を起動します。 - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensions サイドバーを開きます。
+
+  - (Option)Pythonの開発にあたって、以下の拡張機能をインストールして、Webアプリの開発体験を向上させることをお勧めします：
+    - Visual Studio Codeを起動します。 - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensions サイドバーを開きます。
     - 以下の拡張機能(いずれも Microsoft 社製)を検索し、各拡張機能の横にある「インストール」ボタンをクリックします：
       - Python
-        - Pylance が含まれています。
+        - Pylanceが含まれています。
       - Flake8
-        - こちらをインストールすると、Python ファイルを開いたときに自動的に flake8(Linter)が実行されます。
+        - こちらをインストールすると、Pythonファイルを開いたときに自動的に flake8(Linter)が実行されます。
     - `Python: Language Server`の設定変更 - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
       - 設定の中で「python.languageServer」を検索し、値を「Pylance」にします。
-    - Python ファイルの保存時に自動的に Black Formatter でコードを修正するように設定します。
-      - Ctrl+Shift+P を押して、コマンドパレットを開きます。
-      - `Preferences: Open User Settings(JSON)`を入力、選択して、JSON ファイルを開きます。
+    - Pythonファイルの保存時に自動的にBlack Formatterでコードを修正するように設定します。
+      - Ctrl+Shift+Pを押して、コマンドパレットを開きます。
+      - `Preferences: Open User Settings(JSON)`を入力、選択して、JSONファイルを開きます。
         - **このハンズオン以外でこの設定を使用したくない場合は`Preferences: Open Workspace Settings(JSON)`開いてください。**
-      - 以下のコードを JSON の最後に設定します。
+      - 以下のコードをJSONの最後に設定します。
+
         ```js
           "[python]": {
             "editor.defaultFormatter": "ms-python.black-formatter",
             "editor.formatOnSave": true
           }
         ```
+
         - ほかの設定も行なっている場合には以下のようになります。
+
           ```js
           {
             "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -143,14 +153,14 @@ TIPS:
 
 #### プロジェクトディレクトリの作成
 
-`dish-delight`ディレクトリを作成し、その中に `frontend` ディレクトリと backend ディレクトリを作成します。以下のコマンドを実行します。
+`dish-delight`ディレクトリを作成し、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。
 
 ```sh
 mkdir dish-delight/backend dish-delight/frontend
 cd dish-delight
 ```
 
-#### フロントエンド(Next.js) プロジェクト作成
+#### フロントエンド(Next.js)プロジェクト作成
 
 以下のコマンドを実行してください。
 
@@ -186,7 +196,7 @@ rye sync
 
 以下のコマンドを実行して、`Python 3.11.X`(X は最新のマイナーバージョンの数字。例: `Python 3.11.3`)と表示されることを確認してください。
 
-```
+```sh
 python --version
 ```
 
@@ -205,7 +215,7 @@ rye sync
 
 ## 2. フロントエンドのみのHomeとメニュー一覧と詳細画面の実装
 
-以下は Figma を利用したUIイメージです。参考として掲載します。
+以下はFigmaを利用したUIイメージです。参考として掲載します。
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
@@ -216,18 +226,18 @@ rye sync
 
 TIPS:
 
-- Figma とは
-  - [Figma](https://www.figma.com/) は、Web ベースのグラフィックデザインツールで、UI/UX デザイン、プロトタイピング、コラボレーションなどに使用されます。
-  - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単な UI であればエンジニアも Figma で顧客とのイメージ共有等のためにデザインを作成することもあります。
+- Figmaとは
+  - [Figma](https://www.figma.com/) は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
+  - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単なUIであればエンジニアもFigmaで顧客とのイメージ共有等のためにデザインを作成することもあります。
 
-### メニュー一覧ページとメニュー詳細ページを作成
+### Home とメニュー一覧とメニュー詳細画面を作成
 
-Next.js と Tailwind CSS を使用して、メニュー一覧ページとメニュー詳細ページを作成します。  
+Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー詳細画面を作成します。  
 フロントエンドのみの実装でバックエンドにはまだ接続しません。
 
 TIPS:
 
-- 今回、Tailwind CSS のインストールや設定は不要です。Nextjs プロジェクト作成時に Tailwind CSS を使用するオプションを指定しているためです。
+- 今回、Tailwind CSSのインストールや設定は不要です。Nextjsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
 
 #### 開発サーバーの起動
 
@@ -238,9 +248,9 @@ cd ../frontend
 npm run dev
 ```
 
-ブラウザを開いて http://localhost:3000 にアクセスし、Nextjs のデフォルト画面が表示されることを確認してください。
+ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
 
-**注意事項**:すでに 3000 ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
+**注意事項**:すでに 3000ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
 
 ```sh
 - warn Port 3000 is in use, trying 3001 instead.
@@ -251,7 +261,7 @@ npm run dev
 
 #### globals.css の設定修正
 
-デフォルトで設定されている globals.css の設定を修正します。  
+デフォルトで設定されている globals.cssの設定を修正します。  
 `dish-delight/frontend/app/globals.css`を開き、その内容を以下のコードに置き換えます：
 
 TODO あとでコードの内容確認
@@ -269,7 +279,7 @@ body {
 
 #### 外部画像サイトの設定
 
-今回、Next.js が提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.js の`Imageコンポーネント`は、HTML の`<img>`要素の拡張で、現代の Web のニーズに適応したものです。良い Core Web Vitals を達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
+今回、Next.jsが提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.jsの`Imageコンポーネント`は、HTML の`<img>`要素の拡張で、現代のWebのニーズに適応したものです。良いCore Web Vitalsを達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
 
 また、今回外部画像を使用するため、`next.config.js`にて、`remotePatterns`プロパティの設定が必要です。詳しくは[公式サイトの説明](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)を参照してください。
 
@@ -379,9 +389,9 @@ TODO:
 - how to share static image file
   - ロゴなどの静的ファイルの共有 or 配布方法を検討する
 
-#### Navbar をコンポーネント化する
+#### Navbarをコンポーネント化する
 
-メニュー一覧やメニュー詳細画面でも同じ Navbar を使用したいため、Navbar をコンポーネント化します。
+メニュー一覧やメニュー詳細画面でも同じ Navbarを使用したいため、Navbarをコンポーネント化します。
 
 `dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます：
 
@@ -479,9 +489,7 @@ export default function Home() {
 
 注意事項:
 
-- これらの画像は、Bing 上から`Image Creator`(`DALL-E`)を使用して作成しています。
-
-動作・見た目を確認します。(上記に添付した Figma でも見た目は確認できます)
+- これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
 
 - 見た目は以下となっていること
   - TODO キャプチャ添付
@@ -493,7 +501,7 @@ export default function Home() {
 TODO 開発ツールの手順
 
 - コマンド、メニューからの操作方法
-- Responsive の操作方法
+- Responsiveの操作方法
 
 スマホと同等のサイズにした場合、以下の見た目になっていることを確認してください。
 TODO キャプチャーを貼る
@@ -502,11 +510,11 @@ TODO キャプチャーを貼る
 このアプリはモバイルファーストを前提とし、これ以降はこの状態での動作確認を前提とします。
 
 TIPS:
-タブレットサイズにすると、列は 2 つになります。
+タブレットサイズにすると、列は2つになります。
 
 #### メニュー一覧画面を実装する
 
-Home 画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
+Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
@@ -834,13 +842,13 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 - Home 画面にて`Sakura-tei`の Card をクリックすると、メニュー一覧画面に遷移すること
 - 見た目は以下となっていること
   - TODO キャプチャ添付
-- Navbar の`HOME`を押すと HOME 画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
+- Navbarの`HOME`を押すとHOME画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-#### リファクタリング(Bakcend の API 呼び出しのための準備)
+#### リファクタリング(バックエンドのAPI呼び出しのための準備)
 
-現状フロントエンドで固定でデータを持っていますが、後ほどの手順で Bakcend の API 呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
+現状フロントエンドで固定でデータを持っていますが、後ほどの手順でバックエンドのAPI呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
 
 リファクタリングの流れ(細かなステップ)としては以下のとおりです。  
 ただし、この流れは手順を示すだけにしておきます。これまで通り、修正後のコードを各ファイルに上書きする方法で記載します。  
@@ -1047,7 +1055,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 ```
 
 注意事項:  
-固定データの取得に非同期処理のための async/await を付ける必要はまったくないです。バックエンド API に置き換えたとき、修正が少ないように async/await を付けています。
+固定データの取得に非同期処理のための async/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないように async/awaitを付けています。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます：
 
@@ -1179,7 +1187,7 @@ export default async function StoreMenu({
 
 動作や見た目に変更がないことを確認します。  
 なお、このリファクタリングにて、店舗やメニューが存在しない場合の処理を加えています。  
-一時的にコードを書き換えてみて(例: 取得データを 0 にする、if 文を外すなど)、動作確認をしてみてください。店舗の場合は以下になります。
+一時的にコードを書き換えてみて(例: 取得データを0にする、if文を外すなど)、動作確認をしてみてください。店舗の場合は以下になります。
 
 <div align="center">
 <img src="../static/img/2nd/docs/store_not_found.png" alt="Store not found" width="375">
@@ -1188,7 +1196,7 @@ export default async function StoreMenu({
 注意事項:
 
 - このハンズオンの例外処理について
-  - フロントエンド、バックエンドともに本ハンズオンでは、Web アプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
+  - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
 
 #### メニュー詳細画面を実装する
 
@@ -1197,7 +1205,7 @@ export default async function StoreMenu({
 TODO 見直し
 メニュー詳細画面を実装すると、ディレクトリ構成は以下となります。
 
-```
+```sh
 dish-delight/frontend
 ├── lib/
 │   ├── api.ts                 // backend APIを呼び出す処理を集める
@@ -1224,8 +1232,8 @@ dish-delight/frontend
 
 TODO
 TIPS:
-props よりも fetch した方が良さそう。React が後ろでメモ化してくれるから
-https://nextjs.org/docs/app/building-your-application/caching#request-memoization
+props よりも fetch した方が良さそう。Reactが後ろでメモ化してくれるから
+<https://nextjs.org/docs/app/building-your-application/caching#request-memoization>
 
 `dish-delight/frontend/lib/api.tsx`を作成し、以下のコードを最下部に加えます：
 
@@ -1323,9 +1331,9 @@ export default async function Menu({
 
 動作・見た目を確認します。
 
-- メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
-  - 該当のメニュー画像や説明、Option などが表示されること
-- Navbar の"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面に遷移すること
+- メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
+  - 該当のメニュー画像や説明、Optionなどが表示されること
+- Navbarの"HOME"を押すと HOME 画面に、"MENUS"を押すとメニュー一覧画面に遷移すること
 - 店舗やメニューが存在しない場合のエラー画面
   - イメージはメニュー一覧画面と同じ
 
@@ -1333,7 +1341,7 @@ export default async function Menu({
 
 店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長な(今回でいうと同じようなコードが複数ある)ため、コンポーネント化します。
 
-リファクタリングの対象は以下の 2 つです。それぞれ、店舗やメニューのデータ取得時に存在しなかった場合の画面を実装しています。これを共通化します。
+リファクタリングの対象は以下の2つです。それぞれ、店舗やメニューのデータ取得時に存在しなかった場合の画面を実装しています。これを共通化します。
 
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
@@ -1498,9 +1506,9 @@ export default async function Menu({
 
 動作・見た目に変更がないことを確認します。
 
-#### サイトのタイトルと favicon の設定
+#### サイトのタイトルとfaviconの設定
 
-上記でフロントエンド部分は終わりですが、最後にサイトのタイトルと favicon だけ修正します。
+上記でフロントエンド部分は終わりですが、最後にサイトのタイトルとfaviconだけ修正します。
 
 TODO
 タイトルのキャプチャ
@@ -1539,20 +1547,14 @@ TODO ロゴの配置場所 or 配布場所
 
 動作・見た目を確認します。
 
-- サイトのタイトルと favicon が以下のキャプチャと同じであることを確認する
+- サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
   - TODO キャプチャ
-
-####
-
-####
-
-####
 
 ## 3. データベースに接続してデータを返す
 
 ### データベースの接続設定を行う
 
-`ORM`の`SQLAlchemy`による`SQLite`データベースへの接続設定を行います。
+ORMのSQLAlchemyによるSQLiteデータベースへの接続設定を行います。
 
 `dish-delight/backend/src/backend/database.py`ファイルを作成し、その内容を以下のコードに置き換えます：
 
@@ -1585,18 +1587,19 @@ Base = declarative_base()
 
 TIPS(TODO):
 
-- `ORM`とは
-- `SQLite`について
-  - 今回ハンズオンのデータベースには`SQLite`を使用している。`SQLite`は...
-- `SQLAlchemy`について
-  - 今回ハンズオンの ORM には`SQLAlchemy`を使用している。`SQLAlchemy`は...
-- データベースや SQL 周りのコードや説明は[FastAPI 公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
+- ORMとは
+- SQLiteについて
+  - 今回ハンズオンのデータベースにはSQLiteを使用している。SQLiteは...
+- SQLAlchemyについて
+  - 今回ハンズオンのORMにはSQLAlchemyを使用している。SQLAlchemyは...
+- データベースやSQL周りのコードや説明は[FastAPI公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
 
 注意事項(TODO):
 
-- Pylance が rye 自動構築の仮想環境を認識できておらず、import で警告がでる場合の対処
+- Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
   1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
   1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.json の`"python.languageServer": "Pylance",`の下にを指定、未検証（未解決）
+
   ```json
   "python.analysis.extraPaths": [
       "${workspaceFolder}/dish-delight/backend/.venv/lib/python3.11/site-packages"
@@ -1606,7 +1609,7 @@ TIPS(TODO):
 
 ### テーブル(データベースモデル)定義を行う
 
-`SQLAlchemy`によるテーブル(データベースモデル)定義を行います。
+SQLAlchemyによるテーブル(データベースモデル)定義を行います。
 
 `dish-delight/backend/src/backend/models.py`ファイルを作成し、その内容を以下のコードに置き換えます：
 
@@ -1690,11 +1693,11 @@ TIPS(TODO):
 
 注意事項(TODO):
 
-- 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPI であれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
+- 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPIであれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
 
-### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返す API を作成する
+### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返すAPIを作成する
 
-API で使用するデータの型(`Pydantic`のモデル)とデータベースから店舗一覧、メニュー一覧とメニュー詳細を取得する API を作成します。
+APIで使用するデータの型(Pydanticのモデル)とデータベースから店舗一覧、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
 `dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます：
 
@@ -1802,20 +1805,20 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
 
 TIPS(TODO):
 
-- `models.py`で作成したモデルは`SQLAlchemy`のモデルであり、データベース用のモデルです。
-- 今回のハンズオンではモデルが少ないため、`main.py`の中に API と合わせて、`Pydantic`のモデルを実装しました。しかし、モデルが多いなどの場合は別モジュールにすることを検討してください。
-  - `Pydantic`のモデルは API でデータを読み込んだり、作成したりするときに使用します。
-  - [FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、`SQLAlchemy`のモデルと区別するため、`schemas.py`の中に定義されています。
-- ハンズオンと[FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
-  - [FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では`Pydantic`のモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
+- `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
+- 今回のハンズオンではモデルが少ないため、`main.py`の中にAPIと合わせて、Pydanticのモデルを実装しました。しかし、モデルが多いなどの場合は別モジュールにすることを検討してください。
+  - PydanticのモデルはAPIでデータを読み込んだり、作成したりするときに使用します。
+  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、SQLAlchemyのモデルと区別するため、`schemas.py`の中に定義されています。
+- ハンズオンと[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
+  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)ではPydanticのモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
     - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは 1 つのみ作成しています。
       - CRUD comes from: Create, Read, Update, and Delete.
-  - [FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数の Util モジュールを作成し、それらを各 API 関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
-    - このハンズオンでは Web アプリ開発体験を優先するため、各 API 関数内で直接実装しています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
+  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数の Util モジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
+    - このハンズオンでは Web アプリ開発体験を優先するため、各API関数内で直接実装しています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
 
 注意事項(TODO):
 
-- ハンズオンを記載している時点の[FastAPI の公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
+- ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
   - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
     > These docs are about to be updated. 🎉
     >
@@ -1823,32 +1826,32 @@ TIPS(TODO):
     >
     > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
-## Swagger UI を使用して、API の動作確認を行う
+## Swagger UIを使用して、APIの動作確認を行う
 
-FastAPI ではデフォルトで API ドキュメントを OpenAPI 仕様に基づいて自動で生成されます。Swagger UI を使用して、Web ブラウザで確認することができます。
-FastAPI を起動します。
+FastAPIではデフォルトでAPIドキュメントをOpenAPI仕様に基づいて自動で生成されます。Swagger UIを使用して、Web ブラウザで確認することができます。
+FastAPIを起動します。
 
 ```sh
 rye run uvicorn main:app --reload
 ```
 
-ブラウザを開いて http://127.0.0.1:8000/docs にアクセスし、以下の画面が表示されることを確認してください。
+ブラウザを開いて <http://127.0.0.1:8000/docs> にアクセスし、以下の画面が表示されることを確認してください。
 
 TODO: キャプチャ貼る
 
 注意事項:
 
-もし、該当のポートを使用中であった場合は別のポートに振り返られている可能性があります。FastAPI を起動した際のログを確認してください。起動ポートは以下のように表示されます。
+もし、該当のポートを使用中であった場合は別のポートに振り返られている可能性があります。FastAPIを起動した際のログを確認してください。起動ポートは以下のように表示されます。
 
 ```sh
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 ```
 
-各 API を開いて、必要に応じて`Parameters`を入力して動作を確認してみてください。
+各APIを開いて、必要に応じて`Parameters`を入力して動作を確認してみてください。
 
 手順
 
-- 確認した API を開く
+- 確認したAPIを開く
 - `Try it out`ボタンを押す
 - 確認したい内容に応じて`Parameters`を入力する
 - `Execute`ボタンを押す
@@ -1860,6 +1863,7 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
   - 実行前の画面 TODO キャプチャ貼る
 - `Execute`ボタンを押す
 - `Code`が 200 であることを確認し、`Details`の中身が以下であること
+
   ```sh
   [
   {
@@ -1894,22 +1898,23 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 TIPS:
 
-- API 周りについて
+- API周りについて
 
-  - API はプログラム間の通信インターフェースであり、一般的に RestAPI と GraphQL に大別されます。
-    - RestAPI は HTTP プロトコルを通じてリソースを操作するための形式であり、GraphQL は柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
-  - OpenAPI 仕様は、RestAPI の設計、記述、ドキュメント化、テストを支援するための仕様です。
-  - Swagger UI は OpenAPI 仕様に基づいて API ドキュメントを視覚的に確認し、API をテストするためのツールです。
+  - APIはプログラム間の通信インターフェースであり、一般的に RestAPIと GraphQLに大別されます。
+    - RestAPIは HTTPプロトコルを通じてリソースを操作するための形式であり、GraphQLは柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
+  - OpenAPI仕様は、RestAPIの設計、記述、ドキュメント化、テストを支援するための仕様です。
+  - Swagger UIは OpenAPI仕様に基づいてAPIドキュメントを視覚的に確認し、APIをテストするためのツールです。
 
-- FastAPI の起動について
-  - 今回の rye を使用しているため、`rye run`をつけますが、rye を使用しない場合は以下です。
+- FastAPIの起動について
+  - 今回のryeを使用しているため、`rye run`をつけますが、ryeを使用しない場合は以下です。
+
   ```sh
   uvicorn main:app --reload
   ```
 
-### バックエンドの API からデータを取得するようにフロントエンドを修正する
+### バックエンドのAPIからデータを取得するようにフロントエンドを修正する
 
-バックエンドの API からデータを取得するようにフロントエンドを修正します。  
+バックエンドのAPIからデータを取得するようにフロントエンドを修正します。  
 `dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます：
 
 ```ts
