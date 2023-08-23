@@ -203,15 +203,13 @@ rye add --dev black flake8
 rye sync
 ```
 
-## 2. フロントエンドのみのメニューの一覧と詳細表示の実装
+## 2. フロントエンドのみのHomeとメニュー一覧と詳細画面の実装
 
-以下は Figma を利用した UI イメージです。参考として掲載します。
+以下は Figma を利用したUIイメージです。参考として掲載します。
 
-<div align="center">
-  <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="350"> 
-  <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="350"> 
-  <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="350">
-</div>
+| Home  | メニュー一覧  | メニュー詳細 |
+| --- | --- | --- |
+| <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
 注意事項:
 上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
