@@ -1557,8 +1557,10 @@ TIPS(TODO):
 注意事項(TODO -> 1つ目だけで良さそう):
 
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
-  1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
-  1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.json の`"python.languageServer": "Pylance",`の下にを指定、未検証（未解決）
+  - 下記キャプチャーの警告が出る場合、以下の順番で対応してみてください。1つ目で警告が出なくなれば、以降の対応は不要です。
+    <img src="../static/img/2nd/docs/import_warning.png" alt="Jojo Title And favicon" width="350">
+  1. コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
+  1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.jsonの`"python.languageServer": "Pylance",`の下にを指定。→未検証（未解決）
 
   ```json
   "python.analysis.extraPaths": [
