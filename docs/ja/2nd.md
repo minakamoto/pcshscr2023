@@ -1265,7 +1265,7 @@ export default async function Menu({
           <div className="font-bold text-xl mb-2">{menu.name}</div>
           <p className="text-gray-500 text-base mt-2">{menu.price}</p>
           <div className="text-base mt-3">{menu.description}</div>
-          {menu.options && (
+          {menu.options && menu.options.length > 0 && (
             <div>
               <p className="font-bold text-gray-500 text-lg mt-5">Option</p>
               {menu.options.map((option) => (
@@ -1441,7 +1441,7 @@ export default async function Menu({
           <div className="font-bold text-xl mb-2">{menu.name}</div>
           <p className="text-gray-500 text-base mt-2">{menu.price}</p>
           <div className="text-base mt-3">{menu.description}</div>
-          {menu.options && (
+          {menu.options && menu.options.length > 0 && (
             <div>
               <p className="font-bold text-gray-500 text-lg mt-5">Option</p>
               {menu.options.map((option) => (
