@@ -1674,7 +1674,8 @@ app = FastAPI()
 
 
 # Dependency
-# This dependency will create a new SQLAlchemy SessionLocal that will be used in a single request,
+# This dependency will create a new SQLAlchemy SessionLocal
+# that will be used in a single request,
 # and then close it once the request is finished.
 def get_db():
     db = SessionLocal()
@@ -1721,13 +1722,14 @@ class Option(BaseModel):
 
 
 # API to get a list of stores
-# `@app.get`でGETメソッド, `()`の"/stores"でパスを指定します
+# `@app.get` to indicate that it is a GET method,
+# and its first argument specifies the path.
+# And We can use response_model to define the response type
 @app.get("/stores", response_model=list[Store])
 def read_stores(db: Session = Depends(get_db)):
-    # `-> list[Store]`で戻り値の型を定義
-    # `db.query(store).all()`でStoreテーブルから全件取得
+    # Get all items from Store table
     result = db.query(models.Store).all()
-    # 結果が存在しない場合の例外処理
+    # Exception handling when result does not exist
     if not result:
         raise HTTPException(status_code=404, detail="Store not found")
     return result
@@ -1736,8 +1738,7 @@ def read_stores(db: Session = Depends(get_db)):
 # API to get the specified store ID
 @app.get("/stores/{store_id}", response_model=Store)
 def read_store(store_id: int, db: Session = Depends(get_db)):
-    # `db.query(store).filter(store.id == store_id)`で
-    # Storeテーブルから指定されたstore_idとIdが合致するデータを取得
+    # Get data matching the specified store_id and Id from the Store table
     result = db.query(models.Store).filter(models.Store.id == store_id).first()
     if not result:
         raise HTTPException(status_code=404, detail="Store not found")
@@ -1756,13 +1757,12 @@ def read_menus(store_id: int, db: Session = Depends(get_db)):
 # API to get the menu with the specified store ID and menu ID
 @app.get("/stores/{store_id}/menus/{menu_id}", response_model=Menu)
 def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
-    # MenuテーブルのstoreIdとIDの複数条件を指定
+    # To get data, specify multiple conditions in the Menu table.
     condition = [models.Menu.storeId == store_id, models.Menu.id == menu_id]
     result = db.query(models.Menu).filter(*condition).first()
     if not result:
         raise HTTPException(status_code=404, detail="Menu not found")
     return result
-
 ```
 
 TIPS(TODO):
@@ -1770,7 +1770,7 @@ TIPS(TODO):
 - `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
 - 今回のハンズオンではモデルが少ないため、`main.py`の中にAPIと合わせて、Pydanticのモデルを実装しました。しかし、モデルが多いなどの場合は別モジュールにすることを検討してください。
   - PydanticのモデルはAPIでデータを読み込んだり、作成したりするときに使用します。
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、SQLAlchemyのモデルと区別するため、`schemas.py`の中に定義されています。
+  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、SQLAlchemyのモデルと区別するため、`schemas.py`の中に定義されています。 TODO やっぱりmain.pyと分けるかあとで考える
 - ハンズオンと[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)ではPydanticのモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
     - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは1つのみ作成しています。
@@ -1778,7 +1778,7 @@ TIPS(TODO):
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数のUtilモジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
     - このハンズオンではWebアプリ開発体験を優先するため、簡易的な実装を行っています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
 
-注意事項(TODO):
+注意事項:
 
 - ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
   - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
@@ -1799,30 +1799,31 @@ rye run uvicorn main:app --reload
 
 ブラウザを開いて <http://127.0.0.1:8000/docs> にアクセスし、以下の画面が表示されることを確認してください。
 
-TODO: キャプチャ貼る
+![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
 
 注意事項:
 
-もし、該当のポートを使用中であった場合は別のポートに振り返られている可能性があります。FastAPIを起動した際のログを確認してください。起動ポートは以下のように表示されます。
+もし、該当のポートを使用中であった場合は以下のエラーがでます。ほかのアプリが起動中でないか確認してください。
 
 ```sh
-INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+ERROR:    [Errno 48] Address already in use
 ```
 
 各APIを開いて、必要に応じて`Parameters`を入力して動作を確認してみてください。
 
 手順
 
-- 確認したAPIを開く
+- 確認したいAPIを開く
 - `Try it out`ボタンを押す
 - 確認したい内容に応じて`Parameters`を入力する
 - `Execute`ボタンを押す
 - `Code`が 200 であることを確認し、`Details`の中身が意図したデータであることを確認する
+  - データベースに登録したデータは、フロントエンドの固定データよりもデータを増やしています。登録したデータの内容は、`dish-delight/backend/src/backend`にダウンロードした`data.json`を確認してください。
 
 例:指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
 
 - `Parameters`の`store_id`に`3`を代入する
-  - 実行前の画面 TODO キャプチャ貼る
+  ![Swagger UI menus](../static/img/2nd/docs/swagger_ui_store_menus.png)
 - `Execute`ボタンを押す
 - `Code`が 200 であることを確認し、`Details`の中身が以下であること
 
@@ -1862,10 +1863,10 @@ TIPS:
 
 - API周りについて
 
-  - APIはプログラム間の通信インターフェースであり、一般的に RestAPIと GraphQLに大別されます。
-    - RestAPIは HTTPプロトコルを通じてリソースを操作するための形式であり、GraphQLは柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
+  - APIはプログラム間の通信インターフェースであり、一般的にRestAPIとGraphQLに大別されます。
+    - RestAPIはHTTPプロトコルを通じてリソースを操作するための形式であり、GraphQLは柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
   - OpenAPI仕様は、RestAPIの設計、記述、ドキュメント化、テストを支援するための仕様です。
-  - Swagger UIは OpenAPI仕様に基づいてAPIドキュメントを視覚的に確認し、APIをテストするためのツールです。
+  - Swagger UIはOpenAPI仕様に基づいてAPIドキュメントを視覚的に確認し、APIをテストするためのツールです。
 
 - FastAPIの起動について
   - 今回のryeを使用しているため、`rye run`をつけますが、ryeを使用しない場合は以下です。
@@ -1882,7 +1883,6 @@ TIPS:
 ```ts
 // dish-delight/frontend/lib/api.ts
 
-// 店舗の型定義
 type Store = {
   id: number;
   name: string;
@@ -1890,7 +1890,6 @@ type Store = {
   category: string;
 };
 
-// メニューの型定義
 type Menu = {
   id: number;
   storeId: number;
@@ -1902,7 +1901,6 @@ type Menu = {
   options?: MenuOption[];
 };
 
-// メニューのオプションの型定義
 type MenuOption = {
   name: string;
   price: string;
