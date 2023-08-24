@@ -1544,7 +1544,7 @@ Base = declarative_base()
 
 ```
 
-TIPS(TODO):
+TIPS:
 
 - ORMとは
   - ORMとは、Object-Relational Mappingの略で、プログラム内のオブジェクトとデータベース内のテーブルやレコードとの間のマッピングを自動化する技術です。ORMを使用することで、データベース操作をオブジェクト指向のスタイルで行うことができます。
@@ -1558,9 +1558,9 @@ TIPS(TODO):
 
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
   - 下記キャプチャーの警告が出る場合、以下の順番で対応してみてください。1つ目で警告が出なくなれば、以降の対応は不要です。
-    <img src="../static/img/2nd/docs/import_warning.png" alt="Jojo Title And favicon" width="350">
+    ![Import Warning](../static/img/2nd/docs/import_warning.png)
   1. コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
-  1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.jsonの`"python.languageServer": "Pylance",`の下にを指定。→未検証（未解決）
+  1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.jsonの`"python.languageServer": "Pylance",`の下にを指定。→未検証(Windowsで確認してから、要不要を判断する)
 
   ```json
   "python.analysis.extraPaths": [
@@ -1587,7 +1587,7 @@ from database import Base
 
 # Define a model for each table by inheriting from Base
 class Store(Base):
-    # Storeテーブルの定義
+    # Define Store table
     __tablename__ = "stores"
 
     # Define columns and attributes
@@ -1601,7 +1601,7 @@ class Store(Base):
 
 
 class Menu(Base):
-    # Menuテーブルの定義
+    # Define Menu table
     __tablename__ = "menus"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -1617,7 +1617,7 @@ class Menu(Base):
 
 
 class Option(Base):
-    # Optionテーブルの定義
+    # Define Option table
     __tablename__ = "options"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -1649,11 +1649,11 @@ python insert_initial_data.py
 
 `dish-delight/backend/src/backend`配下に`university.db`ファイルができていれば成功です。
 
-TIPS(TODO):
+TIPS:
 
-- データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。要確認
+- データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。
 
-注意事項(TODO):
+注意事項:
 
 - 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPIであれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
 
