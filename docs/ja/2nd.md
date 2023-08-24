@@ -1289,8 +1289,10 @@ export default async function Menu({
 
 - メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Optionなどが表示されること
-    - 例: 店舗`Aroy`の`Khao Soi`
+    - 例: 店舗`Aroy`の`Khao Soi`(Optionなし)
     <img src="../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    - 例: 店舗`Sakura-tei`の`Sanuki Udon`(Optionあり)
+    <img src="../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - Navbarの`HOME`を押すとHOME画面に、`MENUS`を押すとメニュー一覧画面に遷移すること
 - 店舗やメニューが存在しない場合のエラー画面
   - イメージはメニュー一覧画面と同じ
