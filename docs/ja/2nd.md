@@ -1467,8 +1467,9 @@ export default async function Menu({
 
 上記でフロントエンド部分は終わりですが、最後にサイトのタイトルとfaviconだけ修正します。
 
-TODO
-タイトルのキャプチャ
+現状、以下のとおりNext.jsデフォルトのタイトルとfaviconになっています。これを修正します。
+
+<img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
 `dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1499,15 +1500,16 @@ export default function RootLayout({
 
 `dish-delight/frontend/app/favicon.ico`を置き換えます:
 
-TODO ロゴの配置場所 or 配布場所
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd)から取得してください。
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
 
 動作・見た目を確認します。
 
 - サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
-  - TODO キャプチャ
+  <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
 ## 3. データベースに接続してデータを返す
+
+ここから、いよいよバックエンドの実装に入ります。バックエンドの処理が実装できたら、フロントエンドを修正し、バックエンドにつなげます。
 
 ### データベースの接続設定を行う
 
