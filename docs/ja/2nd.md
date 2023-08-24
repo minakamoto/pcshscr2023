@@ -1547,13 +1547,14 @@ Base = declarative_base()
 TIPS(TODO):
 
 - ORMとは
+  - ORMとは、Object-Relational Mappingの略で、プログラム内のオブジェクトとデータベース内のテーブルやレコードとの間のマッピングを自動化する技術です。ORMを使用することで、データベース操作をオブジェクト指向のスタイルで行うことができます。
 - SQLiteについて
-  - 今回ハンズオンのデータベースにはSQLiteを使用している。SQLiteは...
+  - 今回ハンズオンのデータベースにはSQLiteを使用しています。SQLite(スクウェアライト)は、サーバーが不要で、ディスク上の単一ファイルで動作する軽量な組み込み型リレーショナルデータベース管理システム(RDBMS)です。SQLiteはPythonに標準で含まれているため、Pythonをインストールすると自動的に利用することができます。
 - SQLAlchemyについて
-  - 今回ハンズオンのORMにはSQLAlchemyを使用している。SQLAlchemyは...
+  - 今回ハンズオンのORMにはSQLAlchemyを使用しています。SQLAlchemyはPythonのSQLツールキットおよびORMライブラリです。データベース操作を簡素化し、データベーステーブルをPythonクラスとして表現することができます。これにより、データベース操作をPythonのオブジェクト指向プログラミングスタイルで行うことができます。
 - データベースやSQL周りのコードや説明は[FastAPI公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
 
-注意事項(TODO):
+注意事項(TODO -> 1つ目だけで良さそう):
 
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
   1. コマンドパレットにて、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
@@ -1656,7 +1657,7 @@ TIPS(TODO):
 
 ### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返すAPIを作成する
 
-APIで使用するデータの型(Pydanticのモデル)とデータベースから店舗一覧、メニュー一覧とメニュー詳細を取得するAPIを作成します。
+APIで使用するデータの型(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
 `dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます:
 
@@ -1770,10 +1771,10 @@ TIPS(TODO):
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、SQLAlchemyのモデルと区別するため、`schemas.py`の中に定義されています。
 - ハンズオンと[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)ではPydanticのモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
-    - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは 1 つのみ作成しています。
+    - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは1つのみ作成しています。
       - CRUD comes from: Create, Read, Update, and Delete.
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数の Util モジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
-    - このハンズオンでは Web アプリ開発体験を優先するため、各API関数内で直接実装しています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
+  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数のUtilモジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
+    - このハンズオンではWebアプリ開発体験を優先するため、簡易的な実装を行っています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
 
 注意事項(TODO):
 
@@ -1787,7 +1788,7 @@ TIPS(TODO):
 
 ### Swagger UIを使用して、APIの動作確認を行う
 
-FastAPIではデフォルトでAPIドキュメントをOpenAPI仕様に基づいて自動で生成されます。Swagger UIを使用して、Web ブラウザで確認することができます。
+FastAPIではデフォルトでAPIドキュメントをOpenAPI仕様に基づいて自動で生成されます。Swagger UIを使用して、Webブラウザで確認することができます。
 FastAPIを起動します。
 
 ```sh
