@@ -897,11 +897,11 @@ type Menu = {
   author: string;
   price: string;
   description: string;
-  options?: MenuOption[];
+  options?: Option[];
 };
 
 // type definition of menu's option
-type MenuOption = {
+type Option = {
   name: string;
   price: string;
 };
@@ -1898,10 +1898,10 @@ type Menu = {
   author: string;
   price: string;
   description: string;
-  options?: MenuOption[];
+  options?: Option[];
 };
 
-type MenuOption = {
+type Option = {
   name: string;
   price: string;
 };
