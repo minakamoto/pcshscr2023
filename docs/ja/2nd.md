@@ -1696,6 +1696,17 @@ class Store(BaseModel):
         from_attributes = True
 
 
+# Type definition for menu options
+class Option(BaseModel):
+    id: int
+    menuId: int
+    name: str
+    price: str
+
+    class Config:
+        from_attributes = True
+
+
 # Menu type definition
 class Menu(BaseModel):
     id: int
@@ -1705,17 +1716,7 @@ class Menu(BaseModel):
     author: str
     price: str
     description: str
-
-    class Config:
-        from_attributes = True
-
-
-# Type definition for menu options
-class Option(BaseModel):
-    id: int
-    menuId: int
-    name: str
-    price: str
+    options: list[Option] = []
 
     class Config:
         from_attributes = True
