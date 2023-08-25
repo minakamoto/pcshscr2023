@@ -1612,20 +1612,12 @@ TIPS:
   - 今回ハンズオンのORMにはSQLAlchemyを使用しています。SQLAlchemyはPythonのSQLツールキットおよびORMライブラリです。データベース操作を簡素化し、データベーステーブルをPythonクラスとして表現することができます。これにより、データベース操作をPythonのオブジェクト指向プログラミングスタイルで行うことができます。
 - データベースやSQL周りのコードや説明は[FastAPI公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
 
-注意事項(TODO -> 1つ目だけで良さそう):
+注意事項
 
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
-  - 下記キャプチャーの警告が出る場合、以下の順番で対応してみてください。1つ目で警告が出なくなれば、以降の対応は不要です。
+  - 下記キャプチャーの警告が出る場合、以下の対応をしてみてください。
     ![Import Warning](../static/img/2nd/docs/import_warning.png)
-  1. コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、Windowsの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/Scripts/python.exe)`、Macの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
-  1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.jsonの`"python.languageServer": "Pylance",`の下にを指定。→未検証(Windowsで確認してから、要不要を判断する)
-
-  ```json
-  "python.analysis.extraPaths": [
-      "${workspaceFolder}/dish-delight/backend/.venv/lib/python3.11/site-packages"
-    ],
-    "python.envFile": "${workspaceFolder}/dish-delight/backend/.venv/bin/python"
-  ```
+  - コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、Windowsの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/Scripts/python.exe)`、Macの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
 
 ### テーブル(データベースモデル)定義を行う
 
