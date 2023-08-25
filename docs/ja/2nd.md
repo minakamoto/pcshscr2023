@@ -24,22 +24,27 @@ TIPS:
     あらゆるサイズの Reactアプリを作成に適しており、Next.jsの利用を推奨しています。
 - FastAPIについて
   - FastAPIは、以下の特徴があります。
-    - 高速: FastAPIは、StarletteとUvicornに基づいており、非常に高速なパフォーマンスを実現しています。
-      - (Starletteは、Pythonで書かれた軽量なASGIフレームワークで、高速な非同期サービスを構築することができます。Uvicornは、ASGIサーバーの実装であり、非常に高速です。FastAPIは、Starletteの上に構築され、Uvicornを使用して実行することができます。)
-    - 簡潔: FastAPIは、簡潔な構文を採用しており、コードが読みやすく、書きやすくなっています。
-    - バリデーション: FastAPIは、Pydanticを使用してリクエストとレスポンスのバリデーションを行うことができます。
-      - Pydanticは、データの型安全性を確保するためのライブラリであり、データの型を宣言的に定義することができます。これにより、FastAPIは、タイプセーフな Web アプリケーションの構築をサポートしています。
-      - タイプセーフとは、プログラムが実行される前に型エラーが検出されることを指します。これにより、ランタイムエラーを防ぐことができます。
-    - 自動ドキュメント生成: FastAPIは、Swagger UIとReDocを使用して、自動的にAPIドキュメントを生成することができます。
-      - Swagger UIとReDocは、OpenAPI仕様に基づいてAPIドキュメントを生成するツールです。
-    - 非同期サポート: FastAPIは、非同期処理をサポートしており、非同期コードを簡単に書くことができます。
+    - 高速
+      - FastAPIは、StarletteとUvicornに基づいており、非常に高速なパフォーマンスを実現しています。
+        - Starletteは、Pythonで書かれた軽量なASGIフレームワークで、高速な非同期サービスを構築することができます。Uvicornは、ASGIサーバーの実装であり、非常に高速です。FastAPIは、Starletteの上に構築され、Uvicornを使用して実行することができます。
+    - 簡潔
+      - FastAPIは、簡潔な構文を採用しており、コードが読みやすく、書きやすくなっています。
+    - バリデーション
+      - FastAPIは、Pydanticを使用してリクエストとレスポンスのバリデーションを行うことができます。
+        - Pydanticは、データの型安全性を確保するためのライブラリであり、データの型を宣言的に定義することができます。これにより、FastAPIは、タイプセーフな Web アプリケーションの構築をサポートしています。
+          - タイプセーフとは、プログラムが実行される前に型エラーが検出されることを指します。これにより、ランタイムエラーを防ぐことができます。
+    - 自動ドキュメント生成
+      - FastAPIは、Swagger UIとReDocを使用して、自動的にAPIドキュメントを生成することができます。
+        - Swagger UIとReDocは、OpenAPI仕様に基づいてAPIドキュメントを生成するツールです。
+    - 非同期サポート
+      - FastAPIは、非同期処理をサポートしており、非同期コードを簡単に書くことができます。
 
 **注意事項**:
 
 - Pythonのパッケージマネージャーについて
-  - 今回のハンズオンで使用するPythonのパッケージマネージャーは[rye](https://github.com/mitsuhiko/rye)です。依存関係のインストールとアンインストール、仮想環境の管理などを行える、便利なツールです。ただし、以下が公式ページに記載されているとおり、Experimental な状態です。この資料を書いている時点では利用可能ですが、ハンズオンを行う際にその利用可否は保証できません。もし、利用できない場合は、他のツール([poetry](https://python-poetry.org/) や [pip](https://pypi.org/project/pip/) など)の利用を検討してください。
+  - 今回のハンズオンで使用するPythonのパッケージマネージャーは[rye](https://github.com/mitsuhiko/rye)です。依存関係のインストールとアンインストール、仮想環境の管理などを行える、便利なツールです。
+  - ただし、以下のコメントが公式ページに記載されているとおり、Experimentalな状態です。この資料を書いている時点では利用可能ですが、ハンズオンを行う際にその利用可否は保証できません。もし、利用できない場合は、他のツール([poetry](https://python-poetry.org/) や [pip](https://pypi.org/project/pip/) など)の利用を検討してください。
     > An Experimental Package Management Solution for Python
-- ***
 
 ## 1. Setup
 
@@ -50,17 +55,17 @@ TIPS:
 - Code Editor (e.g., Visual Studio Code)
 
 **注意事項**：  
-ここに記載されている必要なソフトウェアのインストール手順は、PowershellやWSLも使用しないWindowsユーザーを対象としています。
-これは、このハンズオンの最初のターゲットユーザーが、PowershellやWSLを使用しないWindowsユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
+ここに記載されている必要なソフトウェアのインストール手順は、WSLを使用しないWindowsユーザーを対象としています。
+これは、このハンズオンの最初のターゲットユーザーが、WSLを使用しないWindowsユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
 
 ### Windowsユーザー向けの詳細な手順
 
 - Node.js のインストール
   - [1st](./1st#1-setup)参照
 - Pythonのインストール
-  - [Pythonの公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンの Pythonをダウンロードします。
+  - [Pythonの公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンのPythonをダウンロードします。
   - ダウンロードしたインストーラーを実行します。
-  - インストールウィザードが表示されます。`Add Python to PATH` オプションを選択し、`Install Now` または `Customize installation` をクリックします。
+  - インストールウィザードが表示されます。`Add Python to PATH`オプションを選択し、`Install Now`または`Customize installation`をクリックします。
   - インストールが完了したら、コマンドプロンプトを開き、以下のコマンドを実行して、Pythonが正しくインストールされていることを確認します。
 
     ```sh
@@ -81,7 +86,7 @@ TIPS:
 
 - rye のインストール
   - [rye の公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows用のexeファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
-  - [rye の公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数 Path に shims を登録し、その優先順位を上げます。 TODO Check on windows
+  - [rye の公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数`Path`に`shims`を登録し、その優先順位を上げます。 TODO Check on windows
   - 変更を保存し、コマンドプロンプトを再起動します。
   - 以下のコマンドを実行して、エラーがryeのコマンドがエラーなく、実行されることを確認します。
 
@@ -91,13 +96,13 @@ TIPS:
 
 - Visual Studio Code(VS Code)のインストール
   - [1st](./1st#1-setup)参照
-- VS Code の拡張機能のインストール・設定
+- VS Codeの拡張機能のインストール・設定
 
-  - Javascript に関しては[1st](./1st#1-setup)参照
-    - (Option)保存時に自動的に ESLint でコードを修正するように設定します。
+  - Javascriptに関しては[1st](./1st#1-setup)参照
+    - (Option)保存時に自動的にESLintでコードを修正するように設定します。
       - `Editor: Code Actions On Save`の設定変更
-        - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-        - 設定の中で「Editor: Code Actions On Save」または「editor.codeActionsOnSave」を検索し、「Edit in setting.json」を押します。
+        - VSCodeの設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+        - 設定の中で`Editor: Code Actions On Save`または`editor.codeActionsOnSave`を検索し、`Edit in setting.json`を押します。
           - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
         - 以下の設定に変更します。変更後、忘れずにファイルを保存してください。
 
@@ -110,15 +115,15 @@ TIPS:
           ```
 
   - (Option)Pythonの開発にあたって、以下の拡張機能をインストールして、Webアプリの開発体験を向上させることをお勧めします：
-    - Visual Studio Codeを起動します。 - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensions サイドバーを開きます。
-    - 以下の拡張機能(いずれも Microsoft 社製)を検索し、各拡張機能の横にある「インストール」ボタンをクリックします：
+    - Visual Studio Codeを起動します。 - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensionsサイドバーを開きます。
+    - 以下の拡張機能(いずれもMicrosoft社製)を検索し、各拡張機能の横にある`インストール`ボタンをクリックします：
       - Python
         - Pylanceが含まれています。
       - Flake8
         - こちらをインストールすると、Pythonファイルを開いたときに自動的に flake8(Linter)が実行されます。
     - `Python: Language Server`の設定変更 - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
-      - 設定の中で「python.languageServer」を検索し、値を「Pylance」にします。
+      - 設定の中で`python.languageServer`を検索し、値を`Pylance`にします。
     - Pythonファイルの保存時に自動的にBlack Formatterでコードを修正するように設定します。
       - Ctrl+Shift+Pを押して、コマンドパレットを開きます。
       - `Preferences: Open User Settings(JSON)`を入力、選択して、JSONファイルを開きます。
@@ -253,7 +258,7 @@ npm run dev
 - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 ```
 
-「Ctrl + c」で停止してください。
+Ctrl + cで停止してください。
 
 #### globals.css の設定修正
 
@@ -301,6 +306,8 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
+TODO: next/bebelの設定
+
 以下のコマンドを実行してください。
 
 ```sh
@@ -309,7 +316,7 @@ npm run dev
 
 再度ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
 
-開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインで「Ctrl + c」で停止することができます。
+開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインでCtrl + cで停止することができます。
 
 ### Homeとメニュー一覧とメニュー詳細画面を作成
 
@@ -317,7 +324,12 @@ npm run dev
 
 `dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。
+
+- aroy_logo.jpeg
+- buono_logo.jpeg
+- logo_jojo_univ.svg
+- sakura_tei_logo.jpeg
 
 注意事項:
 
@@ -426,7 +438,7 @@ export default function Home() {
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
-このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズの表示での確認を前提とします。
+このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズでの表示確認を前提とします。
 
 以下の手順を参考に、ブラウザの開発者ツールにていずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
 
@@ -451,7 +463,7 @@ TIPS:
 
 #### Navbarをコンポーネント化する
 
-メニュー一覧やメニュー詳細画面でも同じ Navbarを使用したいため、Navbarをコンポーネント化します。
+メニュー一覧やメニュー詳細画面でも同じNavbarを使用したいため、Navbarをコンポーネント化します。
 
 `dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
@@ -460,6 +472,7 @@ TIPS:
 import Image from "next/image";
 import jojoUnivLogo from "../public/logo_jojo_univ.svg";
 
+// Navbar implemented in dish-delight/frontend/app/page.tsx is defined as a component
 export default function Navbar() {
   return (
     <>
@@ -520,6 +533,7 @@ export const stores: Store[] = [
 export default function Home() {
   return (
     <div>
+      {/* call the Navbar component */}
       <Navbar />
       <div className="text-center mt-8">
         <h1 className="text-3xl font-bold">
@@ -568,6 +582,7 @@ export default function Home() {
 
 Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
+メニュー一覧画面では、Navbarに店舗名とメニュー一覧(UI上は`MENUS`)へのLinkを表示したいため、Navbarコンポーネントをまず修正します。
 `dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
@@ -632,6 +647,7 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 }
 ```
 
+メニュー一覧画面を実装します。
 `dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
@@ -1178,7 +1194,7 @@ dish-delight/frontend
 ├── components/
 │   └── Navbar.tsx
 ├── lib/
-│   ├── api.ts                 // backend APIを呼び出す処理を集める
+│   ├── api.ts                 // Call the backend API
 │   └── constants.ts
 ├── public/
 │   ├── aroy_logo.jpeg
@@ -1191,6 +1207,7 @@ dish-delight/frontend
 └── tailwind.config.js
 ```
 
+メニュー詳細画面を表示するために、まずメニューを取得するfunctionを実装します。
 `dish-delight/frontend/lib/api.tsx`ファイルを開き、以下のコードを最下部に加えます:
 
 ```tsx
@@ -1203,6 +1220,7 @@ export async function getMenu(
 }
 ```
 
+メニュー詳細画面を実装します。
 `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を作成し、以下のコードに置き換えます：
 
 ```tsx
@@ -1268,6 +1286,7 @@ export default async function Menu({
           {menu.options && menu.options.length > 0 && (
             <div>
               <p className="font-bold text-gray-500 text-lg mt-5">Option</p>
+              {/* If there are options in the menu, display the number of options */}
               {menu.options.map((option) => (
                 <ul key={option.name}>
                   <li className="list-disc list-inside text-base mt-3">
@@ -1317,6 +1336,7 @@ export const DATA_NOT_FOUND_MESSAGE = {
 };
 ```
 
+エラー画面をコンポーネント化します。
 `dish-delight/frontend/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
@@ -1328,6 +1348,7 @@ type DataNotFoundProps = {
   message: string;
 };
 
+// The message will be passed on from the caller.
 export default function DataNotFound({ message }: DataNotFoundProps) {
   return (
     <>
@@ -1339,6 +1360,8 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
   );
 }
 ```
+
+各画面のエラー画面を作成したコンポーネントに置き変えます。
 
 `dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1473,7 +1496,7 @@ export default async function Menu({
 
 <img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
-`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます:
+`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます。
 
 ```tsx
 import "./globals.css";
