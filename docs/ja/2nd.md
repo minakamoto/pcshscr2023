@@ -63,9 +63,9 @@ TIPS:
 - Node.js のインストール
   - [1st](./1st#1-setup)参照
 - Pythonのインストール
-  - [Pythonの公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンのPythonをダウンロードします。
+  - [Pythonの公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンのPythonのインストーラー(`Windows installer(64-bit)`)をダウンロードします。
   - ダウンロードしたインストーラーを実行します。
-  - インストールウィザードが表示されます。`Add Python to PATH`オプションを選択し、`Install Now`または`Customize installation`をクリックします。
+  - インストールウィザードが表示されます。`Install Now`または`Customize installation`をクリックします。
   - インストールが完了したら、コマンドプロンプトを開き、以下のコマンドを実行して、Pythonが正しくインストールされていることを確認します。
 
     ```sh
@@ -86,7 +86,9 @@ TIPS:
 
 - rye のインストール
   - [rye の公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows用のexeファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
-  - [rye の公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数`Path`に`shims`を登録し、その優先順位を上げます。 TODO Check on windows
+    - `Windows protected your PC`のダイアログが出たら、`more info`を開き、`Run anyway`ボタンを押して、継続してください。
+      - コマンドプロンプトが表示されているとおり、`Windows Developer Mode`([ryeの公式サイト](https://rye-up.com/guide/faq/#windows-developer-mode)を参照)を設定後、`y`を入力し、継続してください。
+  - [rye の公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数`Path`に`shims`を登録し、その優先順位を上げます。
   - 変更を保存し、コマンドプロンプトを再起動します。
   - 以下のコマンドを実行して、エラーがryeのコマンドがエラーなく、実行されることを確認します。
 
@@ -121,6 +123,7 @@ TIPS:
         - Pylanceが含まれています。
       - Flake8
         - こちらをインストールすると、Pythonファイルを開いたときに自動的に flake8(Linter)が実行されます。
+      - Black Formatter
     - `Python: Language Server`の設定変更 - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
       - 設定の中で`python.languageServer`を検索し、値を`Pylance`にします。
@@ -161,7 +164,8 @@ TIPS:
 `dish-delight`ディレクトリを作成し、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。
 
 ```sh
-mkdir dish-delight/backend dish-delight/frontend
+mkdir dish-delight/backend
+mkdir dish-delight/frontend
 cd dish-delight
 ```
 
@@ -185,17 +189,36 @@ npx create-next-app .
 ✔ Would you like to customize the default import alias? … No
 ```
 
+注意事項:
+以下のエラーが出た場合は、`npm i -g npx`を実行してから、再度実行してみてください。詳しくは[Nextjs公式のissue](https://github.com/vercel/next.js/discussions/39997)を参考にしてください。
+
+```sh
+$ npx create-next-app
+Debugger attached.
+npm ERR! code ENOENT
+npm ERR! syscall lstat
+npm ERR! path /home/zxytim/.local/npm
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, lstat '/home/zxytim/.local/npm'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/zxytim/.npm/_logs/2022-08-27T03_37_34_606Z-debug-0.log
+Waiting for the debugger to disconnect...
+```
+
 #### バックエンドプロジェクトの初期化
 
 以下のコマンドを実行してください。
 
 ```sh
 cd ../backend
-# Projectの初期化
+# initialize Project
 rye init --no-pin
-# このProjectで使用するPythonのバージョンを指定
+# specify Python version for this Project
 rye pin 3.11
-# 同期化し、virtualenv作成
+# synchronize and create virtualenv
 rye sync
 ```
 
@@ -210,11 +233,11 @@ python --version
 以下のコマンドを実行してください。
 
 ```sh
-# 必要なライブラリの追加
+# add required libraries
 rye add fastapi uvicorn sqlalchemy
-# 必要な開発用のツールの追加
+# add necessary development tools
 rye add --dev black flake8
-# 同期化し、インストール
+# synchronize and install
 rye sync
 ```
 
@@ -284,7 +307,7 @@ TIPS:
 
 今回、Next.jsが提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.jsの`Imageコンポーネント`は、HTML の`<img>`要素の拡張で、現代のWebのニーズに適応したものです。良いCore Web Vitalsを達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
 
-また、今回外部画像を使用するため、`next.config.js`にて、`remotePatterns`プロパティの設定が必要です。詳しくは[公式サイトの説明](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)を参照してください。
+今回外部画像を使用するため、`next.config.js`にて、`remotePatterns`プロパティの設定が必要です。詳しくは[公式サイトの説明](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)を参照してください。
 
 `dish-delight/frontend/next.config.js`を開き、その内容を以下のコードに置き換えます：
 
@@ -306,7 +329,15 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-TODO: next/bebelの設定
+注意事項:
+
+- `next.config.js`にて、`Parsing error: Cannot find module 'next/babel'`が出ます。このままでも動作に影響しませんが、解消したい場合は`.eslintrc.json`を以下に変更してください。
+
+  ```js
+  {
+  "extends": ["next/core-web-vitals", "next/babel"]
+  }
+  ```
 
 以下のコマンドを実行してください。
 
@@ -324,7 +355,8 @@ npm run dev
 
 `dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。
+対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。  
+なお、svgファイルはNavbarで使うロゴで、jpegファイルのロゴは各店舗のロゴです。各店舗のロゴはstoreデータのimgで指定されています。
 
 - aroy_logo.jpeg
 - buono_logo.jpeg
@@ -582,7 +614,7 @@ export default function Home() {
 
 Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
-メニュー一覧画面では、Navbarに店舗名とメニュー一覧(UI上は`MENUS`)へのLinkを表示したいため、Navbarコンポーネントをまず修正します。
+メニュー一覧画面では、Navbarに店舗名とメニュー一覧(UI上は`MENUS`)へのLinkを表示するため、Navbarコンポーネントをまず修正します。
 `dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
@@ -767,6 +799,7 @@ export const menus = [
 ];
 
 export default function StoreMenu({ params }: { params: { storeId: string } }) {
+  // storeId in params is set to the store ID of the store selected in Home
   const storeId = Number(params.storeId);
   // Get the corresponding store from the store list
   const store = stores.find((store) => store.id === storeId);
@@ -1584,7 +1617,7 @@ TIPS:
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
   - 下記キャプチャーの警告が出る場合、以下の順番で対応してみてください。1つ目で警告が出なくなれば、以降の対応は不要です。
     ![Import Warning](../static/img/2nd/docs/import_warning.png)
-  1. コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
+  1. コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、Windowsの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/Scripts/python.exe)`、Macの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
   1. ワークスペース(各自の作業ディレクトリ)の.vscode/setting.jsonの`"python.languageServer": "Pylance",`の下にを指定。→未検証(Windowsで確認してから、要不要を判断する)
 
   ```json
