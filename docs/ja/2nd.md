@@ -2060,11 +2060,7 @@ export async function getMenu(
 - バックエンドの接続先 URL について
   - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
 
-## (Option)4. フロントエンドのリファクタリング
-
-TBD: Layoutsを活用して、Nabvarコンポーネント呼び出しの共通化
-
-## 5. 終わりに
+## 4. 終わりに
 
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
 
