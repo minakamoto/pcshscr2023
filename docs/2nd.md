@@ -157,11 +157,11 @@ This is because the first target users of this hands-on are Windows users who do
           }
           ```
 
-### プロジェクト作成
+### Creating a project
 
-#### プロジェクトディレクトリの作成
+#### Creating a project directory
 
-`dish-delight`ディレクトリを作成し、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。
+Create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. Run the following commands.
 
 ```sh
 mkdir dish-delight/backend
@@ -169,16 +169,16 @@ mkdir dish-delight/frontend
 cd dish-delight
 ```
 
-#### フロントエンド(Next.js)プロジェクト作成
+#### Creating a frontend(Next.js) project
 
-以下のコマンドを実行してください。
+Run the following commands.
 
 ```sh
 cd frontend
 npx create-next-app .
 ```
 
-上記コマンドを実行すると、プロンプト上で質問されます。以下のとおり、質問に回答してください。
+When you run the above commands, you will be asked a question at the command prompt. Answer the questions as follows
 
 ```sh
 ✔ Would you like to use TypeScript? … Yes
@@ -190,7 +190,7 @@ npx create-next-app .
 ```
 
 **NOTE**:  
-以下のエラーが出た場合は、`npm i -g npx`を実行してから、再度実行してみてください。詳しくは[Nextjs公式のissue](https://github.com/vercel/next.js/discussions/39997)を参考にしてください。
+If you get the following error, run `npm i -g npx` and try again. For more information, see the [Nextjs official issue](https://github.com/vercel/next.js/discussions/39997).
 
 ```sh
 $ npx create-next-app
@@ -208,9 +208,9 @@ npm ERR!     /home/zxytim/.npm/_logs/2022-08-27T03_37_34_606Z-debug-0.log
 Waiting for the debugger to disconnect...
 ```
 
-#### バックエンドプロジェクトの初期化
+#### Initialize the backend project
 
-以下のコマンドを実行してください。
+Run the following command
 
 ```sh
 cd ../backend
@@ -222,15 +222,15 @@ rye pin 3.11
 rye sync
 ```
 
-以下のコマンドを実行して、`Python 3.11.X`(X は最新のマイナーバージョンの数字。例: `Python 3.11.3`)と表示されることを確認してください。
+Run the following command and verify that `Python 3.11.X` (where `X` is the number of the latest minor version. Example: `Python 3.11.3`).
 
 ```sh
 python --version
 ```
 
-#### 必要なライブラリやツールのインストール
+#### Install necessary libraries and tools
 
-以下のコマンドを実行してください。
+Run the following commands.
 
 ```sh
 # add required libraries
@@ -252,7 +252,7 @@ Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー
 | --- | --- | --- |
 | <img src="./static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="./static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="./static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
-注意事項:
+**NOTE**:  
 上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
 
 TIPS:
@@ -329,7 +329,7 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-注意事項:
+**NOTE**:
 
 - `next.config.js`にて、`Parsing error: Cannot find module 'next/babel'`が出ます。このままでも動作に影響しませんが、解消したい場合は`.eslintrc.json`を以下に変更してください。
 
@@ -363,7 +363,7 @@ npm run dev
 - logo_jojo_univ.svg
 - sakura_tei_logo.jpeg
 
-注意事項:
+**NOTE**:
 
 - これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
 
@@ -881,7 +881,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
     - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
       - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
 
-注意事項:
+**NOTE**:
 
 - このハンズオンの例外処理について
   - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
@@ -1075,7 +1075,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 }
 ```
 
-注意事項:  
+**NOTE**:  
 固定データの取得に非同期処理のためのasync/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないようにasync/awaitを付けています。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
@@ -1704,7 +1704,7 @@ TIPS:
 - データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。
 - `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
 
-注意事項:
+**NOTE**:
 
 - 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPIであれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
 
@@ -1874,7 +1874,7 @@ TIPS:
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数のUtilモジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
     - このハンズオンではWebアプリ開発体験を優先するため、簡易的な実装を行っています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
 
-注意事項:
+**NOTE**:
 
 - ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
   - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
@@ -1897,7 +1897,7 @@ rye run uvicorn main:app --reload
 
 ![Swagger UI](./static/img/2nd/docs/swagger_ui_default.png)
 
-注意事項:
+**NOTE**:
 
 もし、該当のポートを使用中であった場合は以下のエラーがでます。ほかのアプリが起動中でないか確認してください。
 
@@ -2055,7 +2055,7 @@ export async function getMenu(
 動作・見た目を確認します。  
 店舗やメニューを変えてひとしきり動作確認を行なってみてください。`Home`だけでなく`Navbar`のボタンも使用してみてください。
 
-注意事項:
+**NOTE**:
 
 - バックエンドの接続先 URL について
   - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
