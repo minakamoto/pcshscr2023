@@ -889,25 +889,25 @@ Check to see how this works and looks.
 - About Exception Handling in this Hands-on
   - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
 
-#### リファクタリング(バックエンドのAPI呼び出しのための準備)
+#### Refactoring (preparing for backend API calls)
 
-現状フロントエンドで固定でデータを持っていますが、後ほどの手順でバックエンドのAPI呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
+Currently, the frontend has fixed data, but we will change this to data by calling the backend API in a later step.
 
-リファクタリングの流れ(細かなステップ)としては以下のとおりです。  
-ただし、この流れは手順を示すだけにしておきます。これまで通り、修正後のコードを各ファイルに上書きする方法で記載します。  
-もし、余力がある方はこの流れに沿ってご自身でリファクタリングを実施し、修正後のコードと比べてみてください。
+The flow (detailed steps) of the refactoring is as follows.  
+However, this flow only shows the steps. As before, the modified code is described by overwriting each file.  
+If you have more time, please follow this flow and refactor the code by yourself and compare it to the modified code.
 
-1. `dish-delight/frontend/app/page.tsx`から店舗の固定データを`dish-delight/frontend/lib/api.tsx`に移動します。
-1. `dish-delight/frontend/lib/api.tsx`に`getStores`メソッドを作って、店舗データをすべて返すようにする
-1. `dish-delight/frontend/app/page.tsx`で店舗の固定データを呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStores`メソッドを呼ぶようにする
-1. `dish-delight/frontend/lib/api.tsx`に`getStore`メソッドを作って指定された店舗だけを返すようにする
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
-1. `dish-delight/frontend/lib/api.tsx`に`getMenus`メソッドを作って指定された店舗のメニューをすべて返すようにする
-   - レスポンスの型を指定したいので、メニューの型定義も行っています
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getMenus`メソッドを呼び、取得するようにする
+1. move the fixed store data from `dish-delight/frontend/app/page.tsx` to `dish-delight/frontend/lib/api.tsx`.
+1. create a `getStores` method in `dish-delight/frontend/lib/api.tx` to return all store data.
+1. call the `getStores` method in `dish-delight/frontend/lib/api.tx` instead of calling fixed store data in `dish-delight/frontend/app/page.tsx`.
+1. create a `getStore` method in `dish-delight/frontend/lib/api.tsx` to return only the specified stores.
+1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `stores` in `dish-delight/frontend/app/page.tsx` to `dish-delight/ frontend/lib/api.tx` to call `getStore` method in `dish-delight/frontend/lib/api.tx`.
+1. move the menu fixed data from `dish-delight/frontend/app/stores/[storeId]/page.tsx` to `dish-delight/frontend/lib/api.tsx.
+1. create a `getMenus` method in `dish-delight/frontend/lib/api.tsx` to return all menus of the specified store.
+   - We want to specify the type of response, so we also define the type of menu.
+1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `menus` in `dish-delight/frontend/app/page.tsx` to calling `getMenus` method in `dish-delight/frontend/lib/api.tsx`
 
-`dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/frontend/lib/api.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/lib/api.tsx
@@ -1079,7 +1079,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 ```
 
 **NOTE**:  
-固定データの取得に非同期処理のためのasync/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないようにasync/awaitを付けています。
+There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend API replaces the async/await, there will be fewer changes.
 
 Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
@@ -1209,13 +1209,13 @@ export default async function StoreMenu({
 }
 ```
 
-動作や見た目に変更がないことを確認します。  
+Verify that there are no changes in behavior or appearance.  
 
-#### メニュー詳細画面を実装する
+#### Implementing the Menu Detail screen
 
-メニュー一覧画面にてメニューを選択後に表示されるメニュー詳細画面を実装します。
+This section implements the menu detail screen that is displayed after a menu item is selected from the menu list screen.
 
-メニュー詳細画面を実装すると、ディレクトリ構成は以下となります(関連するファイルのみ抜粋)。
+The directory structure of the Menu Detail screen is as follows (only relevant files are quoted).
 
 ```sh
 dish-delight/frontend
@@ -1243,8 +1243,8 @@ dish-delight/frontend
 └── tailwind.config.js
 ```
 
-メニュー詳細画面を表示するために、まずメニューを取得するfunctionを実装します。
-`dish-delight/frontend/lib/api.tsx`ファイルを開き、以下のコードを最下部に加えます:
+To display the menu details screen, first implement the menu get function.
+Open the `dish-delight/frontend/lib/api.tsx` file and add the following code at the bottom:
 
 ```tsx
 // lib/api.tsx
@@ -1256,8 +1256,8 @@ export async function getMenu(
 }
 ```
 
-メニュー詳細画面を実装します。
-`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を作成し、以下のコードに置き換えます：
+Implement the Menu Detail screen.
+Create the `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1342,26 +1342,26 @@ export default async function Menu({
 
 Check to see how this works and looks.
 
-- メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
-  - 該当のメニュー画像や説明、Optionなどが表示されること
-    - 例: 店舗`Aroy`の`Khao Soi`(Optionなし)
+- Clicking on any of the menu cards in the menu list screen should take the user to the menu details screen.
+  - The appropriate menu image, description and option should be displayed.
+    - Example: `Khao Soi` at the `Aroy` store (without Option)
     <img src="./static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
-    - 例: 店舗`Sakura-tei`の`Sanuki Udon`(Optionあり)
+    - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
     <img src="./static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
-- Navbarの`HOME`を押すとHOME画面に、`MENUS`を押すとメニュー一覧画面に遷移すること
-- 店舗やメニューが存在しない場合のエラー画面
-  - イメージはメニュー一覧画面と同じ
+- Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
+- Error screen if store or menu does not exist
+  - The image is the same as the menu list screen
 
-#### リファクタリング(データ取得のエラー画面のコンポーネント化)
+#### Refactoring (componentization of error screen for data fetching)
 
-店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長なため、コンポーネント化します。
+The screen for store and menu data get when it does not exist is redundant and should be made into a component.
 
-リファクタリングの対象は以下の2つです。それぞれ、店舗やメニューのデータ取得時に存在しなかった場合の画面を実装しています。これを共通化します。
+The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be standardized.
 
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
 
-固定のメッセージを格納するために、Create the `dish-delight/frontend/lib/constants.ts` file and replace its contents with the following code:
+To store fixed messages, Create the `dish-delight/frontend/lib/constants.ts` file and replace its contents with the following code:
 
 ```ts
 // dish-delight/frontend/lib/constants.ts
@@ -1372,7 +1372,7 @@ export const DATA_NOT_FOUND_MESSAGE = {
 };
 ```
 
-エラー画面をコンポーネント化します。
+Componentize error screen.
 Create the `dish-delight/frontend/components/DataNotFound.tsx` file and replace its contents with the following code:
 
 ```tsx
@@ -1397,7 +1397,7 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
 }
 ```
 
-各画面のエラー画面を作成したコンポーネントに置き変えます。
+Replace the error screen on each screen with the component just created.
 
 Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
 
@@ -1522,17 +1522,17 @@ export default async function Menu({
 }
 ```
 
-動作・見た目に変更がないことを確認します。
+Verify that there are no changes in behavior or appearance.
 
-#### サイトのタイトルとfaviconの設定
+#### Setting the site title and favicon
 
-上記でフロントエンド部分は終わりですが、最後にサイトのタイトルとfaviconだけ修正します。
+The above is the end of the frontend part, but the last step is to change only the site title and favicon.
 
-現状、以下のとおりNext.jsデフォルトのタイトルとfaviconになっています。これを修正します。
+Currently, the Next.js default title and favicon are as follows. Fix this.
 
 <img src="./static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
-`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます。
+Open `dish-delight/frontend/app/layout.tsx` and replace its contents with the following code:
 
 ```tsx
 import "./globals.css";
@@ -1559,13 +1559,14 @@ export default function RootLayout({
 }
 ```
 
-`dish-delight/frontend/app/favicon.ico`を置き換えます:
+Replace `dish-delight/frontend/app/favicon.ico`:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
+Target images should be obtained from [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
 
 Check to see how this works and looks.
 
-- サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
+- Make sure the site title and favicon are the same as in the following image.
+
   <img src="./static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
 ## 3. データベースに接続してデータを返す
