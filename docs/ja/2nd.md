@@ -610,7 +610,7 @@ export default function Home() {
 }
 ```
 
-ブラウザを開き、アプリケーションの動作・見た目に変化がないことを確認します。
+ブラウザを開き、アプリケーションの動作や見た目に変化がないことを確認します。
 
 #### メニュー一覧画面を実装する
 
@@ -868,7 +868,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 }
 ```
 
-動作・見た目を確認します。
+動作や見た目を確認します。
 
 - Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューが4つ表示されること
@@ -908,7 +908,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
    - レスポンスの型を指定したいので、メニューの型定義も行っています
 1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getMenus`メソッドを呼び、取得するようにする
 
-`dish-delight/frontend/lib/api.tsx`を作成し、その内容を以下のコードに置き換えます:
+`dish-delight/frontend/lib/api.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
 // dish-delight/frontend/lib/api.tsx
@@ -1258,7 +1258,7 @@ export async function getMenu(
 ```
 
 メニュー詳細画面を実装します。
-`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を作成し、以下のコードに置き換えます：
+`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`ファイルを作成し、以下のコードに置き換えます：
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1341,7 +1341,7 @@ export default async function Menu({
 }
 ```
 
-動作・見た目を確認します。
+動作や見た目を確認します。
 
 - メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Optionなどが表示されること
@@ -1523,7 +1523,7 @@ export default async function Menu({
 }
 ```
 
-動作・見た目に変更がないことを確認します。
+動作や見た目に変更がないことを確認します。
 
 #### サイトのタイトルとfaviconの設定
 
@@ -1564,7 +1564,7 @@ export default function RootLayout({
 
 対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
 
-動作・見た目を確認します。
+動作や見た目を確認します。
 
 - サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
   <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
@@ -2056,7 +2056,7 @@ export async function getMenu(
 }
 ```
 
-動作・見た目を確認します。  
+動作や見た目を確認します。  
 店舗やメニューを変えてひとしきり動作確認を行なってみてください。`Home`だけでなく`Navbar`のボタンも使用してみてください。
 
 **注意事項**:
