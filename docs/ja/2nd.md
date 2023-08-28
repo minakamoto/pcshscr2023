@@ -6,7 +6,7 @@
 
 ### 作るもの
 
-APIを作成し、それらを呼び出し、その情報を画面に表示します。[1st](./1st)よりほんの少し複雑なUIを構築します。  
+APIを作成し、それらを呼び出し、その情報を画面に表示します。[1st](./1st#0-introduction)よりほんの少し複雑なUIを構築します。  
 具体的なイメージは、学食や社食、自治会レベルの地域の祭りで出す露店のメニューを表示するUIです。
 
 ### 主な技術スタック
@@ -20,13 +20,12 @@ TIPS:
 
 - Next.jsについて
   - Next.jsは、ReactをベースにしたUIフレームワークで、SSR/SSG、ファイルベースルーティング、Fast Refresh、画像最適化、ゼロコンフィグなどの機能を提供しています。これらの機能により、Web ページの読み込み速度が高速化され、SEOに有利な構造が実現され、開発効率が向上します。Next.jsはモダンかつ強力なフロントエンドフレームワークであり、様々な長所を持っています。
-  - また、[React公式サイト](https://react.dev/learn/start-a-new-react-project#nextjs)においても豊富な機能やコミュニティのサポートなどを理由に、Next.jsは
-    あらゆるサイズの Reactアプリを作成に適しており、Next.jsの利用を推奨しています。
+  - また、[React公式サイト](https://react.dev/learn/start-a-new-react-project#nextjs)においても豊富な機能やコミュニティのサポートなどを理由に、Next.jsはあらゆるサイズの Reactアプリを作成に適しており、Next.jsの利用を推奨しています。
 - FastAPIについて
   - FastAPIは、以下の特徴があります。
     - 高速
       - FastAPIは、StarletteとUvicornに基づいており、非常に高速なパフォーマンスを実現しています。
-        - Starletteは、Pythonで書かれた軽量なASGIフレームワークで、高速な非同期サービスを構築することができます。Uvicornは、ASGIサーバーの実装であり、非常に高速です。FastAPIは、Starletteの上に構築され、Uvicornを使用して実行することができます。
+        - (Starletteは、Pythonで書かれた軽量なASGIフレームワークで、高速な非同期サービスを構築することができます。Uvicornは、ASGIサーバーの実装であり、非常に高速です。FastAPIは、Starletteの上に構築され、Uvicornを使用して実行することができます。)
     - 簡潔
       - FastAPIは、簡潔な構文を採用しており、コードが読みやすく、書きやすくなっています。
     - バリデーション
@@ -76,7 +75,7 @@ TIPS:
     - スタートメニューから`システムのプロパティ`を検索し、開きます。
     - `詳細設定`タブをクリックし、`環境変数`ボタンをクリックします。
     - `システム環境変数`セクションで、`Path`変数を選択し、`編集`ボタンをクリックします。
-    - `Path`変数の値に、新しくインストールしたPythonの実行ファイルがあるディレクトリ（通常は C:\Users\[ユーザー名]\AppData\Local\Programs\Python\Python[バージョン]\）を追加します。
+    - `Path`変数の値に、新しくインストールしたPythonの実行ファイルがあるディレクトリ（通常は C:\Users\[ユーザー名]\AppData\Local\Programs\Python\Python[バージョン]\）を追加します。古いバージョンが既にある場合は新しいバージョンに上書きしてください。
     - 変更を保存し、コマンドプロンプトを再起動します。
     - 以下のコマンドを実行して、新しいバージョンのPythonが使用されていることを確認します。
 
@@ -85,12 +84,12 @@ TIPS:
       ```
 
 - rye のインストール
-  - [rye の公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows用のexeファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
+  - [ryeの公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows用のexeファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
     - `Windows protected your PC`のダイアログが出たら、`more info`を開き、`Run anyway`ボタンを押して、継続してください。
       - コマンドプロンプトが表示されているとおり、`Windows Developer Mode`([ryeの公式サイト](https://rye-up.com/guide/faq/#windows-developer-mode)を参照)を設定後、`y`を入力し、継続してください。
-  - [rye の公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数`Path`に`shims`を登録し、その優先順位を上げます。
+  - [ryeの公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数`Path`に`shims`を登録し、その優先順位を上げます。
   - 変更を保存し、コマンドプロンプトを再起動します。
-  - 以下のコマンドを実行して、エラーがryeのコマンドがエラーなく、実行されることを確認します。
+  - 以下のコマンドを実行して、エラーなく、実行されることを確認します。
 
     ```sh
       rye
@@ -117,14 +116,16 @@ TIPS:
           ```
 
   - (Option)Pythonの開発にあたって、以下の拡張機能をインストールして、Webアプリの開発体験を向上させることをお勧めします：
-    - Visual Studio Codeを起動します。 - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensionsサイドバーを開きます。
+    - Visual Studio Codeを起動します。
+    - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensionsサイドバーを開きます。
     - 以下の拡張機能(いずれもMicrosoft社製)を検索し、各拡張機能の横にある`インストール`ボタンをクリックします：
       - Python
         - Pylanceが含まれています。
       - Flake8
         - こちらをインストールすると、Pythonファイルを開いたときに自動的に flake8(Linter)が実行されます。
       - Black Formatter
-    - `Python: Language Server`の設定変更 - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
+    - `Python: Language Server`の設定変更
+      - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
       - 設定の中で`python.languageServer`を検索し、値を`Pylance`にします。
     - Pythonファイルの保存時に自動的にBlack Formatterでコードを修正するように設定します。
@@ -189,7 +190,7 @@ npx create-next-app .
 ✔ Would you like to customize the default import alias? … No
 ```
 
-注意事項:
+**注意事項**:  
 以下のエラーが出た場合は、`npm i -g npx`を実行してから、再度実行してみてください。詳しくは[Nextjs公式のissue](https://github.com/vercel/next.js/discussions/39997)を参考にしてください。
 
 ```sh
@@ -252,7 +253,7 @@ Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー
 | --- | --- | --- |
 | <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
-注意事項:
+**注意事項**:  
 上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
 
 TIPS:
@@ -274,7 +275,8 @@ npm run dev
 
 ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
 
-**注意事項**:すでに 3000ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
+**注意事項**:  
+すでに3000ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
 
 ```sh
 - warn Port 3000 is in use, trying 3001 instead.
@@ -329,7 +331,7 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-注意事項:
+**注意事項**:
 
 - `next.config.js`にて、`Parsing error: Cannot find module 'next/babel'`が出ます。このままでも動作に影響しませんが、解消したい場合は`.eslintrc.json`を以下に変更してください。
 
@@ -363,7 +365,7 @@ npm run dev
 - logo_jojo_univ.svg
 - sakura_tei_logo.jpeg
 
-注意事項:
+**注意事項**:
 
 - これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
 
@@ -881,7 +883,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
     - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
       - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
 
-注意事項:
+**注意事項**:
 
 - このハンズオンの例外処理について
   - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
@@ -1075,7 +1077,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 }
 ```
 
-注意事項:  
+**注意事項**:  
 固定データの取得に非同期処理のためのasync/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないようにasync/awaitを付けています。
 
 `dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
@@ -1612,7 +1614,7 @@ TIPS:
   - 今回ハンズオンのORMにはSQLAlchemyを使用しています。SQLAlchemyはPythonのSQLツールキットおよびORMライブラリです。データベース操作を簡素化し、データベーステーブルをPythonクラスとして表現することができます。これにより、データベース操作をPythonのオブジェクト指向プログラミングスタイルで行うことができます。
 - データベースやSQL周りのコードや説明は[FastAPI公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
 
-注意事項
+**注意事項**:
 
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
   - 下記キャプチャーの警告が出る場合、以下の対応をしてみてください。
@@ -1704,7 +1706,7 @@ TIPS:
 - データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。
 - `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
 
-注意事項:
+**注意事項**:
 
 - 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPIであれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
 
@@ -1874,7 +1876,7 @@ TIPS:
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数のUtilモジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
     - このハンズオンではWebアプリ開発体験を優先するため、簡易的な実装を行っています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
 
-注意事項:
+**注意事項**:
 
 - ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
   - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
@@ -1897,7 +1899,7 @@ rye run uvicorn main:app --reload
 
 ![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
 
-注意事項:
+**注意事項**:
 
 もし、該当のポートを使用中であった場合は以下のエラーがでます。ほかのアプリが起動中でないか確認してください。
 
@@ -2055,7 +2057,7 @@ export async function getMenu(
 動作・見た目を確認します。  
 店舗やメニューを変えてひとしきり動作確認を行なってみてください。`Home`だけでなく`Navbar`のボタンも使用してみてください。
 
-注意事項:
+**注意事項**:
 
 - バックエンドの接続先 URL について
   - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
