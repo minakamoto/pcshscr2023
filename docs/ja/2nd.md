@@ -335,7 +335,7 @@ module.exports = nextConfig;
 
   ```js
   {
-  "extends": ["next/core-web-vitals", "next/babel"]
+    "extends": ["next/core-web-vitals", "next/babel"]
   }
   ```
 
@@ -1681,7 +1681,7 @@ class Option(Base):
 
 ### データベースに初期データを登録する
 
-データベースに初期データを登録します。初期データ登録用に簡単なスクリプトを用意しています。  
+ローカルのデータベースに初期データを登録します。初期データ登録用に簡単なスクリプトを用意しています。  
 [Github リポジトリ](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
 
 対象のファイルは以下の 4 つです。
@@ -1710,7 +1710,7 @@ TIPS:
 
 ### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返すAPIを作成する
 
-APIで使用するデータの型(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
+APIで使用するデータモデル(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
 まず、Pydanticのモデルを作ります。  
 `dish-delight/backend/src/backend/schemas.py`ファイルを作成し、その内容を以下のコードに置き換えます:
@@ -2063,3 +2063,9 @@ export async function getMenu(
 ## (Option)4. フロントエンドのリファクタリング
 
 TBD: Layoutsを活用して、Nabvarコンポーネント呼び出しの共通化
+
+## 5. 終わりに
+
+これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
+
+参考にVSCodeの設定(Workspace用)もコミットしてあります。.vscodeディレクトリ内にあります。
