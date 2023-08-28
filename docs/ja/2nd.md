@@ -1702,6 +1702,7 @@ python insert_initial_data.py
 TIPS:
 
 - データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。
+- `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
 
 注意事項:
 
@@ -1711,6 +1712,53 @@ TIPS:
 
 APIで使用するデータの型(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
+まず、Pydanticのモデルを作ります。  
+`dish-delight/backend/src/backend/schemas.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```py
+# dish-delight/backend/src/backend/schemas.py
+from pydantic import BaseModel
+
+
+# Store type definition
+class Store(BaseModel):
+    id: int
+    name: str
+    img: str
+    category: str
+
+    class Config:
+        from_attributes = True
+
+
+# Type definition for menu options
+class Option(BaseModel):
+    id: int
+    menuId: int
+    name: str
+    price: str
+
+    class Config:
+        from_attributes = True
+
+
+# Menu type definition
+class Menu(BaseModel):
+    id: int
+    storeId: int
+    name: str
+    img: str
+    author: str
+    price: str
+    description: str
+    options: list[Option] = []
+
+    class Config:
+        from_attributes = True
+
+```
+
+APIを作成します。  
 `dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```py
@@ -1816,12 +1864,9 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
     return result
 ```
 
-TIPS(TODO):
+TIPS:
 
-- `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
-- 今回のハンズオンではモデルが少ないため、`main.py`の中にAPIと合わせて、Pydanticのモデルを実装しました。しかし、モデルが多いなどの場合は別モジュールにすることを検討してください。
-  - PydanticのモデルはAPIでデータを読み込んだり、作成したりするときに使用します。
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-the-pydantic-models)の例では、SQLAlchemyのモデルと区別するため、`schemas.py`の中に定義されています。 TODO やっぱりmain.pyと分けるかあとで考える
+- PydanticのモデルはAPIでデータを読み込んだり、作成したりするときに使用します。
 - ハンズオンと[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
   - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)ではPydanticのモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
     - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは1つのみ作成しています。
@@ -2017,6 +2062,4 @@ export async function getMenu(
 
 ## (Option)4. フロントエンドのリファクタリング
 
-TBD：要不要を検討
-
-### フロントエンド店舗の切り替え機能を追加する
+TBD: Layoutsを活用して、Nabvarコンポーネント呼び出しの共通化
