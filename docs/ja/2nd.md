@@ -191,7 +191,7 @@ npx create-next-app .
 ```
 
 **注意事項**:  
-以下のエラーが出た場合は、`npm i -g npx`を実行してから、再度実行してみてください。詳しくは[Nextjs公式のissue](https://github.com/vercel/next.js/discussions/39997)を参考にしてください。
+以下のエラーが出た場合は、`npm i -g npx`を実行してから、再度実行してみてください。詳しくは[Next.js公式のissue](https://github.com/vercel/next.js/discussions/39997)を参考にしてください。
 
 ```sh
 $ npx create-next-app
@@ -273,7 +273,7 @@ cd ../frontend
 npm run dev
 ```
 
-ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
+ブラウザを開いて <http://localhost:3000> にアクセスし、Next.jsのデフォルト画面が表示されることを確認してください。
 
 **注意事項**:  
 すでに3000ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
@@ -303,7 +303,7 @@ body {
 
 TIPS:
 
-- 今回、Tailwind CSSのインストールや設定は不要です。Nextjsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
+- 今回、Tailwind CSSのインストールや設定は不要です。Next.jsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
 
 #### 外部画像サイトの設定
 
@@ -347,7 +347,7 @@ module.exports = nextConfig;
 npm run dev
 ```
 
-再度ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
+再度ブラウザを開いて <http://localhost:3000> にアクセスし、Next.jsのデフォルト画面が表示されることを確認してください。
 
 開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインでCtrl + cで停止することができます。
 
@@ -467,7 +467,7 @@ export default function Home() {
 }
 ```
 
-- 見た目は以下となっていることを確認します。
+- 見た目が以下となっていることを確認します。
   ![PC Home](../static/img/2nd/docs/home_pc.png)
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
@@ -617,6 +617,7 @@ export default function Home() {
 Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
 
 メニュー一覧画面では、Navbarに店舗名とメニュー一覧(UI上は`MENUS`)へのLinkを表示するため、Navbarコンポーネントをまず修正します。
+
 `dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
@@ -682,6 +683,7 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 ```
 
 メニュー一覧画面を実装します。
+
 `dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```tsx
