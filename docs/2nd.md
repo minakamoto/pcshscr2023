@@ -190,7 +190,7 @@ When you run the above commands, you will be asked a question at the command pro
 ```
 
 **NOTE**:  
-If you get the following error, run `npm i -g npx` and try again. For more information, see the [Nextjs official issue](https://github.com/vercel/next.js/discussions/39997).
+If you get the following error, run `npm i -g npx` and try again. For more information, see the [Next.js official issue](https://github.com/vercel/next.js/discussions/39997).
 
 ```sh
 $ npx create-next-app
@@ -241,52 +241,53 @@ rye add --dev black flake8
 rye sync
 ```
 
-## 2. フロントエンドのみのHomeとメニュー一覧と詳細画面の実装
+## 2. Frontend only Home and Menu List and Menu Detail screen implementation
 
-Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー詳細画面を作成します。  
-フロントエンドのみの実装でバックエンドにはまだ接続しません。
+Using Next.js and Tailwind CSS, create Home and Menu List and Menu Detail screens.  
+This is a frontend only implementation and does not connect to the backend yet.
 
-以下はFigmaを利用したUIイメージです。参考として掲載します。
+Below is a UI image using Figma. It is provided here for reference only.
 
-| Home  | メニュー一覧  | メニュー詳細 |
+| Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
 | <img src="./static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="./static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="./static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
 **NOTE**:  
-上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
+The above is a draft design from the hands-on conceptual phase. It may differ in some points from the hands-on implementation.
 
 TIPS:
 
-- Figmaとは
-  - [Figma](https://www.figma.com/)は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
-  - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単なUIであればエンジニアもFigmaで顧客とのイメージ共有等のためにデザインを作成することもあります。
+- About Figma
+  - [Figma](https://www.figma.com/) is a web-based graphic design tool used for UI/UX design, prototyping, and collaboration.
+  - A benefit for engineers is that it facilitates collaboration with designers and smooth translation from design to code. For a simple UI, engineers can also use Figma to create designs to share images with customers, etc.
 
-### 設定ファイルの変更
+### Change configuration file
 
-#### 開発サーバーの起動
+#### Start the development server
 
-以下のコマンドを実行してください。
+Run the following commands.
 
 ```sh
 cd ../frontend
 npm run dev
 ```
 
-ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
+Open a browser and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-**Note**:すでに 3000ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
+**Note**:  
+If port 3000 is already in use, a different port is specified. In this case, the following will appear on the command line.
 
 ```sh
 - warn Port 3000 is in use, trying 3001 instead.
 - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 ```
 
-Ctrl + cで停止してください。
+Press Ctrl + c to stop.
 
-#### globals.css の設定修正
+#### Modifying the globals.css settings
 
-デフォルトで設定されている globals.cssの設定を修正します。  
-`dish-delight/frontend/app/globals.css`を開き、その内容を以下のコードに置き換えます：
+Edit the default globals.css settings.  
+Open `dish-delight/frontend/app/globals.css' and replace its contents with the following code:
 
 ```css
 @tailwind base;
@@ -301,15 +302,15 @@ body {
 
 TIPS:
 
-- 今回、Tailwind CSSのインストールや設定は不要です。Nextjsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
+- This time, there is no need to install or configure Tailwind CSS, because the option to use Tailwind CSS is specified when the Next.js project is created.
 
-#### 外部画像サイトの設定
+#### External Image Site Setup
 
-今回、Next.jsが提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.jsの`Imageコンポーネント`は、HTML の`<img>`要素の拡張で、現代のWebのニーズに適応したものです。良いCore Web Vitalsを達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
+This time, we will use the [Image component](https://nextjs.org/docs/pages/building-your-application/optimizing/images) provided by Next.js, which is an extension of the HTML `<img>` element, adapted to the needs of the modern web. Various built-in performance optimizations are included to achieve good Core Web Vitals.
 
-今回外部画像を使用するため、`next.config.js`にて、`remotePatterns`プロパティの設定が必要です。詳しくは[公式サイトの説明](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)を参照してください。
+To use external images this time, the `remotePatterns` property must be set in `next.config.js`. For details, see the [description on the official website](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options).
 
-`dish-delight/frontend/next.config.js`を開き、その内容を以下のコードに置き換えます：
+Open `dish-delight/frontend/next.config.js` and replace its contents with the following code:
 
 ```js
 /** @type {import('next').NextConfig} */
@@ -331,7 +332,7 @@ module.exports = nextConfig;
 
 **NOTE**:
 
-- `next.config.js`にて、`Parsing error: Cannot find module 'next/babel'`が出ます。このままでも動作に影響しませんが、解消したい場合は`.eslintrc.json`を以下に変更してください。
+- `Parsing error: Cannot find module 'next/babel'` in `next.config.js`. This does not affect the behavior, but if you want to fix it, change `.eslintrc.json` to the following.
 
   ```js
   {
@@ -339,24 +340,24 @@ module.exports = nextConfig;
   }
   ```
 
-以下のコマンドを実行してください。
+Run the following command.
 
 ```sh
 npm run dev
 ```
 
-再度ブラウザを開いて <http://localhost:3000> にアクセスし、Nextjsのデフォルト画面が表示されることを確認してください。
+Open your browser again and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインでCtrl + cで停止することができます。
+Please leave the development server running. If you want to stop it, you can use Ctrl + c on the command line.
 
-### Homeとメニュー一覧とメニュー詳細画面を作成
+### Creating the Home, Menu List, and Menu Detail Screens
 
-#### Home画面を実装する
+#### Implementing the Home Screen
 
-`dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
+Place 4 logo image files to be used on the screens in `dish-delight/frontend/public`:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。  
-なお、svgファイルはNavbarで使うロゴで、jpegファイルのロゴは各店舗のロゴです。各店舗のロゴはstoreデータのimgで指定されています。
+All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo). The following four files are available.  
+The svg file is the logo used in Navbar, and the jpeg file is the logo of each store. The logo of each store is specified in the img of the store data.
 
 - aroy_logo.jpeg
 - buono_logo.jpeg
@@ -365,9 +366,9 @@ npm run dev
 
 **NOTE**:
 
-- これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
+- These images were created from within Bing using `Image Creator` (`DALL-E`).
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -465,39 +466,39 @@ export default function Home() {
 }
 ```
 
-- 見た目は以下となっていることを確認します。
+- Verify that the appearance is as follows
   ![PC Home](./static/img/2nd/docs/home_pc.png)
-- `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
-  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
+- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the menu list screen.
+  - Since the screen has not been created yet, "404 This page could not be found" will be displayed.
 
-このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズでの表示確認を前提とします。
+This hands-on layout will focus on mobile-first UI design. From this point on, we will assume that the display is confirmed to be smartphone size.
 
-以下の手順を参考に、ブラウザの開発者ツールにていずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
+Please follow the instructions below and use the browser's developer tools to resize the screen to the size of a mobile phone or smartphone.
 
-- ブラウザを開き、`デベロッパーツール`もしくは`開発者ツール`を表示します。
-  - Chromeであれば「メニュー」→「その他のツール」→「デベロッパーツール」
-  - Edgeであれば「メニュー」→「その他のツール」→「開発者ツール」
-  - Windowsであれば、どのブラウザでも共通で、ショートカットキーは`Shift+Ctrl+i`
-- 開発者ツールにて上部にあるPCとスマホが重なったようなアイコン(下記画像の右側を参照)のボタンをクリックします。
-  - Windowsであれば、ショートカットキーは`Shift+Ctrl+m`
-    ![Developer tool](./static/img/2nd/docs/developer_tool.png)
-- 画面の左上のメニューでシミュレートする端末を選びます(上記の画像の左側を参照)。
-  - もしくは`Responsive`状態で自分で大きさを調整します。
+- Open your browser and go to `Developer Tools
+  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools
+  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools
+  - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
+- In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
+  - In Windows, the shortcut key is `Shift+Ctrl+m`.
+    ! [Developer tool](. /static/img/2nd/docs/developer_tool.png)
+- Select the terminal to you want to simulate from the menu at the top left of the screen (see the left side of the image above).
+  - Or you can adjust the size yourself in `Responsive` mode.
 
-スマホと同等のサイズにした場合、以下の見た目になっていることを確認してください。
+When you make the size equivalent to a smartphone, make sure it has the following appearance
 
-- 上記キャプチャーのレイアウトになること
-- 店舗のCardが縦に配置されていること
-  - `Sakura-tei`、`Aroy`、`Buono`の順
+- To be in the layout of the above capture.
+- The store's Card must be arranged vertically.
+  - `Sakura-tei`, `Aroy`, `Buono` in that order.
 
 TIPS:
-タブレットサイズにすると、列は2つになります。
+If it is tablet size, there are two columns.
 
-#### Navbarをコンポーネント化する
+#### Making the Navbar into a component
 
-メニュー一覧やメニュー詳細画面でも同じNavbarを使用したいため、Navbarをコンポーネント化します。
+To use the same Navbar in the menu list and menu detail screens, make the Navbar into a component.
 
-`dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/frontend/components/Navbar.tsx` file and replace its contents with the following code:
 
 ```tsx
 // components/Navbar.tsx
@@ -526,7 +527,7 @@ export default function Navbar() {
 }
 ```
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -608,14 +609,15 @@ export default function Home() {
 }
 ```
 
-ブラウザを開き、アプリケーションの動作・見た目に変化がないことを確認します。
+Open the browser and verify that the operation or appearance of the application has not changed.
 
-#### メニュー一覧画面を実装する
+#### Implementing the Menu List screen
 
-Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
+Implement the Menu List screen that is displayed after a store is selected on the Home screen.
 
-メニュー一覧画面では、Navbarに店舗名とメニュー一覧(UI上は`MENUS`)へのLinkを表示するため、Navbarコンポーネントをまず修正します。
-`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
+In the Menu List screen, first modify the Navbar component to display the store name and a link to the menu list (`MENUS` in the UI) in the Navbar.
+
+Open `dish-delight/frontend/components/Navbar.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/components/Navbar.tsx
@@ -679,8 +681,9 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 }
 ```
 
-メニュー一覧画面を実装します。
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Implement the Menu List screen
+
+Create the `dish-delight/frontend/app/stores/[storeId]/page.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -864,27 +867,27 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 }
 ```
 
-動作・見た目を確認します。
+Check to see how this works and looks.
 
-- Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューが4つ表示されること
+- Click on the `Sakura-tei` card on the Home screen to display the menu list screen.
+  - Four menus are displayed.
     <img src="./static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
-- Navbarの`HOME`を押すとHOME画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
-- メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
-  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
-- Home画面にて`Aroy`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューが1つ表示されること
-- Home画面にて`Bohno`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューがないため、エラーメッセージがでること
+- Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
+- Clicking `CARD` on any of the menus on the Menu List screen should take you to the Menu Details screen.
+  - (Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
+- Clicking on the `Aroy` card on the Home screen will take you to the Menu List screen.
+  - A menu should appear.
+- Clicking the `Bohno` card on the Home screen, it should take you to the Menu list screen.
+  - An error message appears because there is no menu.
     <img src="./static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
-  - 実装に店舗やメニューが存在しない場合の処理を加えています。
-    - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
-      - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
+  - Add processing for cases where the store or menu does not exist to the implementation.
+    - The above is the case where the menu does not exist, but please check the operation even if the store does not exist.
+      - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
 
 **NOTE**:
 
-- このハンズオンの例外処理について
-  - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
+- About Exception Handling in this Hands-on
+  - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
 
 #### リファクタリング(バックエンドのAPI呼び出しのための準備)
 
@@ -1078,7 +1081,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 **NOTE**:  
 固定データの取得に非同期処理のためのasync/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないようにasync/awaitを付けています。
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -1133,7 +1136,7 @@ export default async function Home() {
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1337,7 +1340,7 @@ export default async function Menu({
 }
 ```
 
-動作・見た目を確認します。
+Check to see how this works and looks.
 
 - メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Optionなどが表示されること
@@ -1358,7 +1361,7 @@ export default async function Menu({
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
 
-固定のメッセージを格納するために、`dish-delight/frontend/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます:
+固定のメッセージを格納するために、Create the `dish-delight/frontend/lib/constants.ts` file and replace its contents with the following code:
 
 ```ts
 // dish-delight/frontend/lib/constants.ts
@@ -1370,7 +1373,7 @@ export const DATA_NOT_FOUND_MESSAGE = {
 ```
 
 エラー画面をコンポーネント化します。
-`dish-delight/frontend/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/frontend/components/DataNotFound.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/components/DataNotFound.tsx
@@ -1396,7 +1399,7 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
 
 各画面のエラー画面を作成したコンポーネントに置き変えます。
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1453,7 +1456,7 @@ export default async function StoreMenu({
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1560,7 +1563,7 @@ export default function RootLayout({
 
 対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
 
-動作・見た目を確認します。
+Check to see how this works and looks.
 
 - サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
   <img src="./static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
@@ -1573,7 +1576,7 @@ export default function RootLayout({
 
 ORMのSQLAlchemyによるSQLiteデータベースへの接続設定を行います。
 
-`dish-delight/backend/src/backend/database.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/backend/src/backend/database.py` file and replace its contents with the following code:
 
 ```py
 # dish-delight/backend/src/backend/database.py
@@ -1623,7 +1626,7 @@ TIPS:
 
 SQLAlchemyによるテーブル(データベースモデル)定義を行います。
 
-`dish-delight/backend/src/backend/models.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/backend/src/backend/models.py` file and replace its contents with the following code:
 
 ```py
 # dish-delight/backend/src/backend/models.py
@@ -1713,7 +1716,7 @@ TIPS:
 APIで使用するデータモデル(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
 まず、Pydanticのモデルを作ります。  
-`dish-delight/backend/src/backend/schemas.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/backend/src/backend/schemas.py` file and replace its contents with the following code:
 
 ```py
 # dish-delight/backend/src/backend/schemas.py
@@ -1759,7 +1762,7 @@ class Menu(BaseModel):
 ```
 
 APIを作成します。  
-`dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/backend/src/backend/main.py` file and replace its contents with the following code:
 
 ```py
 from fastapi import FastAPI, Depends, HTTPException
@@ -1974,7 +1977,7 @@ TIPS:
 ### バックエンドのAPIからデータを取得するようにフロントエンドを修正する
 
 バックエンドのAPIからデータを取得するようにフロントエンドを修正します。  
-`dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/lib/api.ts` and replace its contents with the following code:
 
 ```ts
 // dish-delight/frontend/lib/api.ts
@@ -2052,7 +2055,7 @@ export async function getMenu(
 }
 ```
 
-動作・見た目を確認します。  
+Check to see how this works and looks.  
 店舗やメニューを変えてひとしきり動作確認を行なってみてください。`Home`だけでなく`Navbar`のボタンも使用してみてください。
 
 **NOTE**:
