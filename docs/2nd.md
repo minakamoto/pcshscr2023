@@ -1569,13 +1569,13 @@ Check to see how this works and looks.
 
   <img src="./static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
-## 3. データベースに接続してデータを返す
+## 3. Connecting to the database and returning data
 
-ここから、いよいよバックエンドの実装に入ります。バックエンドの処理が実装できたら、フロントエンドを修正し、バックエンドにつなげます。
+From here, it is time to implement the backend. Once the backend processing is implemented, modify the frontend and connect it to the backend.
 
-### データベースの接続設定を行う
+### Configure database connection settings
 
-ORMのSQLAlchemyによるSQLiteデータベースへの接続設定を行います。
+Connect to a SQLite database using ORM's SQLAlchemy.
 
 Create the `dish-delight/backend/src/backend/database.py` file and replace its contents with the following code:
 
@@ -1608,20 +1608,20 @@ Base = declarative_base()
 
 TIPS:
 
-- ORMとは
-  - ORMとは、Object-Relational Mappingの略で、プログラム内のオブジェクトとデータベース内のテーブルやレコードとの間のマッピングを自動化する技術です。ORMを使用することで、データベース操作をオブジェクト指向のスタイルで行うことができます。
-- SQLiteについて
-  - 今回ハンズオンのデータベースにはSQLiteを使用しています。SQLite(スクウェアライト)は、サーバーが不要で、ディスク上の単一ファイルで動作する軽量な組み込み型リレーショナルデータベース管理システム(RDBMS)です。SQLiteはPythonに標準で含まれているため、Pythonをインストールすると自動的に利用することができます。
-- SQLAlchemyについて
-  - 今回ハンズオンのORMにはSQLAlchemyを使用しています。SQLAlchemyはPythonのSQLツールキットおよびORMライブラリです。データベース操作を簡素化し、データベーステーブルをPythonクラスとして表現することができます。これにより、データベース操作をPythonのオブジェクト指向プログラミングスタイルで行うことができます。
-- データベースやSQL周りのコードや説明は[FastAPI公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
+- What is ORM?
+  - ORM stands for Object-Relational Mapping, a technology that automates the mapping between objects in a program and tables and records in a database. ORM is an object-oriented way of working with databases.
+- About SQLite
+  - SQLite is a lightweight, embedded relational database management system (RDBMS) that requires no server and runs as a single file on disk. SQLite is included in Python as a standard part of Python, so it can be used automatically when Python is installed.
+- About SQLAlchemy
+  - We use SQLAlchemy for our hands-on ORM, which is a Python SQL toolkit and ORM library. It simplifies database operations and allows database tables to be represented as Python classes. This allows database operations to be performed in Python's object-oriented programming style.
+- Code and explanations about databases and SQL are taken from [FastAPI official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases). If you want to know more details, please check there.
 
-注意事項
+**NOTE**:
 
-- Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
-  - 下記キャプチャーの警告が出る場合、以下の対応をしてみてください。
+- What to do if Pylance does not recognize the rye auto-built virtual environment and warns on import
+  - If you get the warning shown in the screenshot below, please try the following actions.
     ![Import Warning](./static/img/2nd/docs/import_warning.png)
-  - コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、Windowsの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/Scripts/python.exe)`、Macの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
+  - In the command palette (press Ctrl+Shift+P), select `Python: Select Interpreter`, on Windows: `{absolute path to your working directory}/dish-delight/backend/.venv/Scripts/python .exe)`, on Mac: `{absolute path of your working directory}/dish-delight/backend/.venv/bin/python)`.
 
 ### テーブル(データベースモデル)定義を行う
 
