@@ -1623,9 +1623,9 @@ TIPS:
     ![Import Warning](./static/img/2nd/docs/import_warning.png)
   - In the command palette (press Ctrl+Shift+P), select `Python: Select Interpreter`, on Windows: `{absolute path to your working directory}/dish-delight/backend/.venv/Scripts/python .exe)`, on Mac: `{absolute path of your working directory}/dish-delight/backend/.venv/bin/python)`.
 
-### テーブル(データベースモデル)定義を行う
+### Define the tables (database model)
 
-SQLAlchemyによるテーブル(データベースモデル)定義を行います。
+Define the tables (database model) using SQLAlchemy.
 
 Create the `dish-delight/backend/src/backend/models.py` file and replace its contents with the following code:
 
@@ -1683,40 +1683,41 @@ class Option(Base):
 
 ```
 
-### データベースに初期データを登録する
+### Register initial data in the database
 
-ローカルのデータベースに初期データを登録します。初期データ登録用に簡単なスクリプトを用意しています。  
-[Github リポジトリ](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
+Register initial data in the local database.A simple script is provided for registering initial data in the local database.  
+Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/ backend`.
 
-対象のファイルは以下の 4 つです。
+The target files are the following four.
 
 - data.json
 - insert_data.py
 - insert_initial_data.py
 - read_json.py
 
-`dish-delight/backend/src/backend`にて、以下のコマンドを実行します。
+Run the following command in `dish-delight/backend/src/backend`.
 
 ```sh
 python insert_initial_data.py
 ```
 
-`dish-delight/backend/src/backend`配下に`university.db`ファイルができていれば成功です。
+If the `university.db` file is created in `dish-delight/backend/src/backend`, you have succeeded.
 
 TIPS:
 
-- データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。
-- `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
+- If you want to change the data and register it to the database again, delete the `university.db` file and run it again.
+- The models created in `models.py` are SQLAlchemy models and are for the database.
 
 **NOTE**:
 
-- 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPIであれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
+- The purpose of the initial data registration script is only for the one-time initial data registration for this hands-on. In actual development, please consider installing a migration tool (for FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) when dealing with databases.
 
-### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返すAPIを作成する
+### Create the APIs that retrieves and returns store list, menu list, and menu detail data from a database
 
-APIで使用するデータモデル(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
+Create the APIs to retrieve store lists and store details, and menu lists and menu details from the database.
 
-まず、Pydanticのモデルを作ります。  
+First, create a data model (Pydantic's model) for the APIs.
+  
 Create the `dish-delight/backend/src/backend/schemas.py` file and replace its contents with the following code:
 
 ```py
@@ -1762,7 +1763,7 @@ class Menu(BaseModel):
 
 ```
 
-APIを作成します。  
+Create the APIs.  
 Create the `dish-delight/backend/src/backend/main.py` file and replace its contents with the following code:
 
 ```py
@@ -1870,62 +1871,62 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
 
 TIPS:
 
-- PydanticのモデルはAPIでデータを読み込んだり、作成したりするときに使用します。
-- ハンズオンと[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)ではPydanticのモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
-    - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは1つのみ作成しています。
+- Pydantic models are used to read and create data in the API.
+- Differences between hands-on and [FastAPI's official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)
+  - The [official website of FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) explains that a Pydantic model consists of a `Base` class for each model class (e.g. `UserBase` for `User`), a `Create` class (e.g. `UserCreate`) and a `Read` class that inherit from the `Base` class (e.g. `UserBase` for `User`) of each model class. The reason for this is that the information required for `Create` and `Read` is different, as well as the information you do not want to pass on (e.g. `password`).
+    - In this hands-on, only `R(read)` of the `CRUD` function is created. So, only one class is created.
       - CRUD comes from: Create, Read, Update, and Delete.
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数のUtilモジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
-    - このハンズオンではWebアプリ開発体験を優先するため、簡易的な実装を行っています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
+  - On [the official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases), they create a Util module for the `CRUD` functions and call them in each API function. This is for code reusability, ease of testing, and maintainability.
+    - This hands-on session is a simple implementation to give priority to experience in developing web applications. For actual development, please design and implement taking care of requirements, etc.
 
 **NOTE**:
 
-- ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
-  - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
+- The above implementation is based on the [official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of writing this hands-on. At the time of writing this hands-on, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
+  - In addition, the materials used as references when preparing the hands-on materials may have changed to a newer version of the materials that are compatible with `Pydantic v2` at the time of the hands-on.
     > These docs are about to be updated. 🎉
     >
     > The current version assumes Pydantic v1, and SQLAlchemy versions less than 2.0.
     >
     > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
-### Swagger UIを使用して、APIの動作確認を行う
+### Use Swagger UI to check API behavior
 
-FastAPIではデフォルトでAPIドキュメントをOpenAPI仕様に基づいて自動で生成されます。Swagger UIを使用して、Webブラウザで確認することができます。
-FastAPIを起動します。
+By default, FastAPI automatically generates API documentation based on the OpenAPI specification that can be viewed in a web browser using the Swagger UI.
+Run FastAPI.
 
 ```sh
 rye run uvicorn main:app --reload
 ```
 
-ブラウザを開いて <http://127.0.0.1:8000/docs> にアクセスし、以下の画面が表示されることを確認してください。
+Open a browser and go to <http://127.0.0.1:8000/docs> and verify that the following screen appears
 
 ![Swagger UI](./static/img/2nd/docs/swagger_ui_default.png)
 
 **NOTE**:
 
-もし、該当のポートを使用中であった場合は以下のエラーがでます。ほかのアプリが起動中でないか確認してください。
+If the port is in use, you will receive the following error message. Please make sure that no other application is running.
 
 ```sh
 ERROR:    [Errno 48] Address already in use
 ```
 
-各APIを開いて、必要に応じて`Parameters`を入力して動作を確認してみてください。
+Open each API and enter `Parameters` as needed to see how it works.
 
-手順
+Testing Procedure
 
-- 確認したいAPIを開く
-- `Try it out`ボタンを押す
-- 確認したい内容に応じて`Parameters`を入力する
-- `Execute`ボタンを押す
-- `Code`が 200 であることを確認し、`Details`の中身が意図したデータであることを確認する
-  - データベースに登録したデータは、フロントエンドの固定データよりもデータを増やしています。登録したデータの内容は、`dish-delight/backend/src/backend`にダウンロードした`data.json`を確認してください。
+- Open the API you want to check
+- Press the Try button.
+- Enter `Parameters` according to what you want to check.
+- Press the 'Execute' button.
+- Verify that `Code` is 200 and that the contents of `Details` are the intended data.
+  - The data registered in the database is more data than the fixed data in the frontend. Please check the `data.json` downloaded in `dish-delight/backend/src/backend` for the content of the registered data.
 
-例:指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
+Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`) is shown below.
 
-- `Parameters`の`store_id`に`3`を代入する
+- Assign `3` to `store_id` in `Parameters`.
   ![Swagger UI menus](./static/img/2nd/docs/swagger_ui_store_menus.png)
-- `Execute`ボタンを押す
-- `Code`が 200 であることを確認し、`Details`の中身が以下であること
+- Press the `Execute` button.
+- Verify that the `Code` is 200 and the contents of the `Details` are as follows
 
   ```sh
   [
@@ -1961,23 +1962,24 @@ ERROR:    [Errno 48] Address already in use
 
 TIPS:
 
-- API周りについて
+- About API
 
-  - APIはプログラム間の通信インターフェースであり、一般的にRestAPIとGraphQLに大別されます。
-    - RestAPIはHTTPプロトコルを通じてリソースを操作するための形式であり、GraphQLは柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
-  - OpenAPI仕様は、RestAPIの設計、記述、ドキュメント化、テストを支援するための仕様です。
-  - Swagger UIはOpenAPI仕様に基づいてAPIドキュメントを視覚的に確認し、APIをテストするためのツールです。
+  - APIs are communication interfaces between programs and are generally broadly divided into RestAPI and GraphQL.
+    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing share and communicating information between different applications and services.
+  - The OpenAPI specification is intended to support the design, description, documentation, and testing of RestAPI.
+  - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
 
-- FastAPIの起動について
-  - 今回のryeを使用しているため、`rye run`をつけますが、ryeを使用しない場合は以下です。
+- About running FastAPI
+- Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
 
   ```sh
   uvicorn main:app --reload
   ```
 
-### バックエンドのAPIからデータを取得するようにフロントエンドを修正する
+### Modify the frontend to get data from the backend API
 
-バックエンドのAPIからデータを取得するようにフロントエンドを修正します。  
+Modify the frontend to get data from the backend API.
+
 Open `dish-delight/frontend/lib/api.ts` and replace its contents with the following code:
 
 ```ts
@@ -2057,15 +2059,15 @@ export async function getMenu(
 ```
 
 Check to see how this works and looks.  
-店舗やメニューを変えてひとしきり動作確認を行なってみてください。`Home`だけでなく`Navbar`のボタンも使用してみてください。
+Try changing the store and the menu to check the operation. Try using the `Navbar` button as well as the `Home` button.
 
 **NOTE**:
 
-- バックエンドの接続先 URL について
-  - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
+- About the URL to connect to the backend
+  - In this hands-on, this is a simple implementation to work in the local environment only. For actual development, please define it in an `env` file. The same goes for the backend (FastAPI) (e.g., you need to configure `CORS` when deploying it).
 
 ## 4. 終わりに
 
-これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
+This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
-参考にVSCodeの設定(Workspace用)もコミットしてあります。.vscodeディレクトリ内にあります。
+The VSCode configuration (for Workspace) is also committed for your reference. It is located in the `.vscode` directory.
