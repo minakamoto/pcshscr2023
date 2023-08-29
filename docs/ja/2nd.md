@@ -1,4 +1,4 @@
-# ほんの少しだけ複雑な UI＆独自APIを開発するハンズオン
+# ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン
 
 ## 0. はじめに
 
@@ -1714,9 +1714,9 @@ TIPS:
 
 ### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返すAPIを作成する
 
-APIで使用するデータモデル(Pydanticのモデル)とデータベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
+データベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
 
-まず、Pydanticのモデルを作ります。  
+まず、API用にデータモデル(Pydanticのモデル)を作ります。  
 `dish-delight/backend/src/backend/schemas.py`ファイルを作成し、その内容を以下のコードに置き換えます:
 
 ```py
@@ -1880,7 +1880,7 @@ TIPS:
 
 **注意事項**:
 
-- ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異な実装をしているところもあります。
+- ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異なる実装をしているところもあります。
   - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
     > These docs are about to be updated. 🎉
     >
@@ -2061,11 +2061,11 @@ export async function getMenu(
 
 **注意事項**:
 
-- バックエンドの接続先 URL について
+- バックエンドの接続先URLについて
   - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
 
 ## 4. 終わりに
 
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
 
-参考にVSCodeの設定(Workspace用)もコミットしてあります。.vscodeディレクトリ内にあります。
+参考にVSCodeの設定(Workspace用)もコミットしてあります。`.vscode`ディレクトリ内にあります。
