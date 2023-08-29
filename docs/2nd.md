@@ -1,15 +1,15 @@
-# ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン
+# Hands-on to develop a slightly more complex UI & own API
 
-## 0. はじめに
+## 0. Introduction
 
-このハンズオンの目的と趣旨は[1st](./1st#0-はじめに)と同じであるため、割愛します。
+The purpose and objectives of this hands-on are the same as in [1st](./1st#0-introduction) and will therefore be omitted.
 
-### 作るもの
+### What we make
 
-APIを作成し、それらを呼び出し、その情報を画面に表示します。[1st](./1st#0-introduction)よりほんの少し複雑なUIを構築します。  
-具体的なイメージは、学食や社食、自治会レベルの地域の祭りで出す露店のメニューを表示するUIです。
+Create APIs, call them, and display that information on the screen. Build a UI that is slightly more complex than [1st](./1st).  
+A concrete image is a UI that displays menus for a school cafeteria, a company cafeteria, or a booth at a neighborhood festival.
 
-### 主な技術スタック
+### Main Technology Stack
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
 - [Next.js](https://nextjs.org/)
@@ -18,94 +18,93 @@ APIを作成し、それらを呼び出し、その情報を画面に表示し�
 
 TIPS:
 
-- Next.jsについて
-  - Next.jsは、ReactをベースにしたUIフレームワークで、SSR/SSG、ファイルベースルーティング、Fast Refresh、画像最適化、ゼロコンフィグなどの機能を提供しています。これらの機能により、Web ページの読み込み速度が高速化され、SEOに有利な構造が実現され、開発効率が向上します。Next.jsはモダンかつ強力なフロントエンドフレームワークであり、様々な長所を持っています。
-  - また、[React公式サイト](https://react.dev/learn/start-a-new-react-project#nextjs)においても豊富な機能やコミュニティのサポートなどを理由に、Next.jsはあらゆるサイズの Reactアプリを作成に適しており、Next.jsの利用を推奨しています。
-- FastAPIについて
-  - FastAPIは、以下の特徴があります。
-    - 高速
-      - FastAPIは、StarletteとUvicornに基づいており、非常に高速なパフォーマンスを実現しています。
-        - (Starletteは、Pythonで書かれた軽量なASGIフレームワークで、高速な非同期サービスを構築することができます。Uvicornは、ASGIサーバーの実装であり、非常に高速です。FastAPIは、Starletteの上に構築され、Uvicornを使用して実行することができます。)
-    - 簡潔
-      - FastAPIは、簡潔な構文を採用しており、コードが読みやすく、書きやすくなっています。
-    - バリデーション
-      - FastAPIは、Pydanticを使用してリクエストとレスポンスのバリデーションを行うことができます。
-        - Pydanticは、データの型安全性を確保するためのライブラリであり、データの型を宣言的に定義することができます。これにより、FastAPIは、タイプセーフな Web アプリケーションの構築をサポートしています。
-          - タイプセーフとは、プログラムが実行される前に型エラーが検出されることを指します。これにより、ランタイムエラーを防ぐことができます。
-    - 自動ドキュメント生成
-      - FastAPIは、Swagger UIとReDocを使用して、自動的にAPIドキュメントを生成することができます。
-        - Swagger UIとReDocは、OpenAPI仕様に基づいてAPIドキュメントを生成するツールです。
-    - 非同期サポート
-      - FastAPIは、非同期処理をサポートしており、非同期コードを簡単に書くことができます。
+- About Next.js
+  - Next.js is a React-based UI framework that provides features such as SSR/SSG, file-based routing, Fast Refresh, image optimization, and zero configuration. These features speed up the loading of web pages, provide SEO-friendly structures, and improve development efficiency. Next.js is a modern and powerful frontend framework with a variety of advantages.
+  - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support. Next.js is good for developing React apps of all sizes, and they recommend using Next.js.
+- About FastAPI
+  - FastAPI has the following features
+    - Fast
+      - FastAPI is based on Starlette and Uvicorn for extremely fast performance.
+        - Starlette is a lightweight ASGI framework written in Python that allows building fast asynchronous services; Uvicorn is an ASGI server implementation that is very fast; FastAPI is built on top of Starlette and can be run using Uvicorn. FastAPI is built on top of Starlette and can be run with Uvicorn.
+    - Easy
+      - FastAPI uses a simple syntax that makes the code easy to read and write.
+      - FastAPI can use Pydantic to perform request and response validation.
+        - Pydantic is a data type safety library that allows declarative definition of data types, which helps FastAPI to build type-safe web applications.
+          - Type-safe means that type errors are detected before the program is executed. This prevents runtime errors.
+    - Automatic Documentation Generation
+      - FastAPI can automatically generate API documentation using Swagger UI and ReDoc.
+        - Swagger UI and ReDoc are tools that generate API documentation based on the OpenAPI specification.
+    - Asynchronous Support
+      - FastAPI supports asynchronous processing, making it easy to write asynchronous code.
 
-**注意事項**:
+**Note**:
 
-- Pythonのパッケージマネージャーについて
-  - 今回のハンズオンで使用するPythonのパッケージマネージャーは[rye](https://github.com/mitsuhiko/rye)です。依存関係のインストールとアンインストール、仮想環境の管理などを行える、便利なツールです。
-  - ただし、以下のコメントが公式ページに記載されているとおり、Experimentalな状態です。この資料を書いている時点では利用可能ですが、ハンズオンを行う際にその利用可否は保証できません。もし、利用できない場合は、他のツール([poetry](https://python-poetry.org/) や [pip](https://pypi.org/project/pip/) など)の利用を検討してください。
+- About the Python Package Manager
+  - The Python package manager used in this hands-on is [rye](https://github.com/mitsuhiko/rye). It is a useful tool that can install and uninstall dependencies and manage virtual environments.
+  - However, it is in Experimental status, as the following comment is stated on its official page. It is available at the time of this writing, but its availability for hands-on activities cannot be guaranteed. If it is not available, please consider using other tools such as [poetry](https://python-poetry.org/) or [pip](https://pypi.org/project/pip/).
     > An Experimental Package Management Solution for Python
 
 ## 1. Setup
 
-### 前提条件
+### Prerequisites
 
 - Node.js 16 or above
 - Python 3.8 or above
 - Code Editor (e.g., Visual Studio Code)
 
-**注意事項**：  
-ここに記載されている必要なソフトウェアのインストール手順は、WSLを使用しないWindowsユーザーを対象としています。
-これは、このハンズオンの最初のターゲットユーザーが、WSLを使用しないWindowsユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
+**Note**：  
+The required software installation instructions listed here are intended for Windows users who do not also use WSL.
+This is because the first target users of this hands-on are Windows users who do not use  WSL. Please follow the installation procedure for your environment when actually installing the software.
 
-### Windowsユーザー向けの詳細な手順
+### Detailed procedure for Windows users
 
-- Node.js のインストール
-  - [1st](./1st#1-setup)参照
-- Pythonのインストール
-  - [Pythonの公式サイト](https://www.python.org/downloads/windows/)にアクセスし、最新バージョンのPythonのインストーラー(`Windows installer(64-bit)`)をダウンロードします。
-  - ダウンロードしたインストーラーを実行します。
-  - インストールウィザードが表示されます。`Install Now`または`Customize installation`をクリックします。
-  - インストールが完了したら、コマンドプロンプトを開き、以下のコマンドを実行して、Pythonが正しくインストールされていることを確認します。
+- Install Node.js
+  - See [1st](./1st#1-setup)
+- Install Python
+  - Go to the [official Python website](https://www.python.org/downloads/windows/) and download the latest version of Python installer (`Windows installer(64-bit)`).
+  - Run the downloaded installer.
+  - The installation wizard will appear. Click `Install Now` or `Customize installation`.
+  - After the installation is complete, open a command prompt and run the following command to verify that Python is installed correctly.
 
     ```sh
     python --version
     ```
 
-  - 既にPythonがインストールされている場合、上記の手順に従って最新バージョンのPythonをインストールすることでアップデートすることができます。ただし、複数のバージョンのPythonが同時にインストールされている場合は、環境変数の設定を確認して、適切なバージョンのPythonが使用されるようにする必要があります。
-    - スタートメニューから`システムのプロパティ`を検索し、開きます。
-    - `詳細設定`タブをクリックし、`環境変数`ボタンをクリックします。
-    - `システム環境変数`セクションで、`Path`変数を選択し、`編集`ボタンをクリックします。
-    - `Path`変数の値に、新しくインストールしたPythonの実行ファイルがあるディレクトリ（通常は `C:\Users\[ユーザー名]\AppData\Local\Programs\Python\Python[バージョン]\`）を追加します。古いバージョンが既にある場合は新しいバージョンに上書きしてください。
-    - 変更を保存し、コマンドプロンプトを再起動します。
-    - 以下のコマンドを実行して、新しいバージョンのPythonが使用されていることを確認します。
+  - If Python is already installed, it can be upgraded by following the procedure above to install the latest version of Python. However, if multiple versions of Python are installed at the same time, you will need to check the environment variable settings to ensure that the appropriate version of Python is being used.
+    - Open the Start menu, search for `View advanced system settings` and open it. The `System Properties` dialog will appear.
+    - Click on the `Environment Variables Path` button
+    - Select the `Path` variable and click the `Edit` button.
+    - Add to the value of the `Path` variable the directory where the newly installed Python executable is located (usually `C:\Users\[username]\AppData\Local\Programs\Python\Python [Version]\`). If an older version already exists, overwrite it with the newer version.
+    - Save your changes and restart the command prompt.
+    - Verify that a new version of Python is used by running the following command
 
       ```sh
       python --version
       ```
 
-- rye のインストール
-  - [ryeの公式サイト](https://rye-up.com/guide/installation/)にアクセスし、Windows用のexeファイル(`rye-x86_64-windows.exe for 64bit Intel Windows`)をダウンロードし、インストールします。
-    - `Windows protected your PC`のダイアログが出たら、`more info`を開き、`Run anyway`ボタンを押して、継続してください。
-      - コマンドプロンプトが表示されているとおり、`Windows Developer Mode`([ryeの公式サイト](https://rye-up.com/guide/faq/#windows-developer-mode)を参照)を設定後、`y`を入力し、継続してください。
-  - [ryeの公式サイト](https://rye-up.com/guide/installation/#add-shims-to-path)の説明のとおり、環境変数`Path`に`shims`を登録し、その優先順位を上げます。
-  - 変更を保存し、コマンドプロンプトを再起動します。
-  - 以下のコマンドを実行して、エラーなく、実行されることを確認します。
+- Install rye
+  - Go to [rye's official website](https://rye-up.com/guide/installation/) and download the exe file for Windows (`rye-x86_64-windows.exe for 64-bit Intel Windows`), install it.
+    - When the `Windows protected your PC` dialog appears, open `more info` and press the `Run anyway` button to continue.
+      - As the command prompt appears, set `Windows Developer Mode` (see [rye's official website](https://rye-up.com/guide/faq/#windows-developer-mode)), then type `y` and continue. Please enter `y` to continue.
+  - Register `shims` in the environment variable `Path` and increase its priority as described on [rye's official website](https://rye-up.com/guide/installation/#add-shims-to-path).
+  - Save the changes and restart the command prompt.
+  - Run the following command and verify that it runs, without errors.
 
     ```sh
       rye
     ```
 
-- Visual Studio Code(VS Code)のインストール
-  - [1st](./1st#1-setup)参照
-- VS Codeの拡張機能のインストール・設定
+- Install Visual Studio Code(VS Code)
+  - See [1st](./1st#1-setup)
+- Install and configure VS Code extensions
 
-  - Javascriptに関しては[1st](./1st#1-setup)参照
-    - (Option)保存時に自動的にESLintでコードを修正するように設定します。
-      - `Editor: Code Actions On Save`の設定変更
-        - VSCodeの設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-        - 設定の中で`Editor: Code Actions On Save`または`editor.codeActionsOnSave`を検索し、`Edit in setting.json`を押します。
-          - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
-        - 以下の設定に変更します。変更後、忘れずにファイルを保存してください。
+  - About Javascript, see [1st](./1st#1-setup)
+    - (Option)Set up ESLint to automatically modify code on save.
+      - Change the setting of `Editor: Code Actions On Save`
+        - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
+        - Search for `Editor: Code Actions On Save` or `editor.codeActionsOnSave` in the settings and press `Edit in setting.json`.
+          - **If you do not want to use this setting outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
+        - Change to the following settings. Remember to save the file after making the changes.
 
           ```json
           {
@@ -115,24 +114,24 @@ TIPS:
           }
           ```
 
-  - (Option)Pythonの開発にあたって、以下の拡張機能をインストールして、Webアプリの開発体験を向上させることをお勧めします：
-    - Visual Studio Codeを起動します。
-    - 左サイドバーの四角いアイコンをクリックするか、Ctrl+Shift+X を押して、Extensionsサイドバーを開きます。
-    - 以下の拡張機能(いずれもMicrosoft社製)を検索し、各拡張機能の横にある`インストール`ボタンをクリックします：
+  - (Option)For Python development, it is recommended that you install the following extensions to enhance your web app development experience:
+    - Launch Visual Studio Code
+    - Open the Extensions sidebar by clicking on the square icon in the left sidebar or pressing Ctrl+Shift+X.
+    - Search for the following extensions (all from Microsoft) and click the `Install` button next to each extension:
       - Python
-        - Pylanceが含まれています。
+        - Pylance is included.
       - Flake8
-        - こちらをインストールすると、Pythonファイルを開いたときに自動的に flake8(Linter)が実行されます。
+        - If you install this one, flake8 (Linter) will run automatically when you open a Python file.
       - Black Formatter
-    - `Python: Language Server`の設定変更
-      - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
-      - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
-      - 設定の中で`python.languageServer`を検索し、値を`Pylance`にします。
-    - Pythonファイルの保存時に自動的にBlack Formatterでコードを修正するように設定します。
-      - Ctrl+Shift+Pを押して、コマンドパレットを開きます。
-      - `Preferences: Open User Settings(JSON)`を入力、選択して、JSONファイルを開きます。
-        - **このハンズオン以外でこの設定を使用したくない場合は`Preferences: Open Workspace Settings(JSON)`開いてください。**
-      - 以下のコードをJSONの最後に設定します。
+    - Changing the settings of the `Python: Language Server`
+      - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
+        - **If you do not want to use these settings outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
+      - Find `python.languageServer` in the settings and set the value to `Pylance`.
+    - Set the Python file to automatically change the code in Black Formatter when you save it.
+      - Press Ctrl+Shift+P to open the command palette.
+      - Type and select `Preferences: Open User Settings(JSON)` to open the JSON file.
+        - **If you do not want to use this setting outside of this hands-on, open `Preferences: Open Workspace Settings(JSON)`.**
+      - Add the following code to the end of the JSON
 
         ```js
           "[python]": {
@@ -141,7 +140,7 @@ TIPS:
           }
         ```
 
-        - ほかの設定も行なっている場合には以下のようになります。
+        - If other settings are also in place, the following applies.
 
           ```js
           {
@@ -158,11 +157,11 @@ TIPS:
           }
           ```
 
-### プロジェクト作成
+### Creating a project
 
-#### プロジェクトディレクトリの作成
+#### Creating a project directory
 
-`dish-delight`ディレクトリを作成し、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。
+Create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. Run the following commands.
 
 ```sh
 mkdir dish-delight/backend
@@ -170,16 +169,16 @@ mkdir dish-delight/frontend
 cd dish-delight
 ```
 
-#### フロントエンド(Next.js)プロジェクト作成
+#### Creating a frontend(Next.js) project
 
-以下のコマンドを実行してください。
+Run the following commands.
 
 ```sh
 cd frontend
 npx create-next-app .
 ```
 
-上記コマンドを実行すると、プロンプト上で質問されます。以下のとおり、質問に回答してください。
+When you run the above commands, you will be asked a question at the command prompt. Answer the questions as follows
 
 ```sh
 ✔ Would you like to use TypeScript? … Yes
@@ -190,8 +189,8 @@ npx create-next-app .
 ✔ Would you like to customize the default import alias? … No
 ```
 
-**注意事項**:  
-以下のエラーが出た場合は、`npm i -g npx`を実行してから、再度実行してみてください。詳しくは[Next.js公式のissue](https://github.com/vercel/next.js/discussions/39997)を参考にしてください。
+**NOTE**:  
+If you get the following error, run `npm i -g npx` and try again. For more information, see the [Next.js official issue](https://github.com/vercel/next.js/discussions/39997).
 
 ```sh
 $ npx create-next-app
@@ -209,9 +208,9 @@ npm ERR!     /home/zxytim/.npm/_logs/2022-08-27T03_37_34_606Z-debug-0.log
 Waiting for the debugger to disconnect...
 ```
 
-#### バックエンドプロジェクトの初期化
+#### Initialize the backend project
 
-以下のコマンドを実行してください。
+Run the following command
 
 ```sh
 cd ../backend
@@ -223,15 +222,15 @@ rye pin 3.11
 rye sync
 ```
 
-以下のコマンドを実行して、`Python 3.11.X`(X は最新のマイナーバージョンの数字。例: `Python 3.11.3`)と表示されることを確認してください。
+Run the following command and verify that `Python 3.11.X` (where `X` is the number of the latest minor version. Example: `Python 3.11.3`).
 
 ```sh
 python --version
 ```
 
-#### 必要なライブラリやツールのインストール
+#### Install necessary libraries and tools
 
-以下のコマンドを実行してください。
+Run the following commands.
 
 ```sh
 # add required libraries
@@ -242,53 +241,53 @@ rye add --dev black flake8
 rye sync
 ```
 
-## 2. フロントエンドのみのHomeとメニュー一覧と詳細画面の実装
+## 2. Frontend only Home and Menu List and Menu Detail screen implementation
 
-Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー詳細画面を作成します。  
-フロントエンドのみの実装でバックエンドにはまだ接続しません。
+Using Next.js and Tailwind CSS, create Home and Menu List and Menu Detail screens.  
+This is a frontend only implementation and does not connect to the backend yet.
 
-以下はFigmaを利用したUIイメージです。参考として掲載します。
+Below is a UI image using Figma. It is provided here for reference only.
 
-| Home  | メニュー一覧  | メニュー詳細 |
+| Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
+| <img src="./static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="./static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="./static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
-**注意事項**:  
-上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
+**NOTE**:  
+The above is a draft design from the hands-on conceptual phase. It may differ in some points from the hands-on implementation.
 
 TIPS:
 
-- Figmaとは
-  - [Figma](https://www.figma.com/)は、Webベースのグラフィックデザインツールで、UI/UXデザイン、プロトタイピング、コラボレーションなどに使用されます。
-  - エンジニアにとってのメリットとしては、デザイナーとのコラボレーションが容易になり、デザインからコードへの変換がスムーズになることが挙げられます。また、簡単なUIであればエンジニアもFigmaで顧客とのイメージ共有等のためにデザインを作成することもあります。
+- About Figma
+  - [Figma](https://www.figma.com/) is a web-based graphic design tool used for UI/UX design, prototyping, and collaboration.
+  - A benefit for engineers is that it facilitates collaboration with designers and smooth translation from design to code. For a simple UI, engineers can also use Figma to create designs to share images with customers, etc.
 
-### 設定ファイルの変更
+### Change configuration file
 
-#### 開発サーバーの起動
+#### Start the development server
 
-以下のコマンドを実行してください。
+Run the following commands.
 
 ```sh
 cd ../frontend
 npm run dev
 ```
 
-ブラウザを開いて <http://localhost:3000> にアクセスし、Next.jsのデフォルト画面が表示されることを確認してください。
+Open a browser and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-**注意事項**:  
-すでに3000ポートを使用している場合は、別のポートが指定されます。その場合は、以下のようにコマンドライン上に表示されます
+**Note**:  
+If port 3000 is already in use, a different port is specified. In this case, the following will appear on the command line.
 
 ```sh
 - warn Port 3000 is in use, trying 3001 instead.
 - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 ```
 
-Ctrl + cで停止してください。
+Press Ctrl + c to stop.
 
-#### globals.css の設定修正
+#### Modifying the globals.css settings
 
-デフォルトで設定されている globals.cssの設定を修正します。  
-`dish-delight/frontend/app/globals.css`を開き、その内容を以下のコードに置き換えます：
+Edit the default globals.css settings.  
+Open `dish-delight/frontend/app/globals.css' and replace its contents with the following code:
 
 ```css
 @tailwind base;
@@ -303,15 +302,15 @@ body {
 
 TIPS:
 
-- 今回、Tailwind CSSのインストールや設定は不要です。Next.jsプロジェクト作成時にTailwind CSSを使用するオプションを指定しているためです。
+- This time, there is no need to install or configure Tailwind CSS, because the option to use Tailwind CSS is specified when the Next.js project is created.
 
-#### 外部画像サイトの設定
+#### External Image Site Setup
 
-今回、Next.jsが提供する[Image コンポーネント](https://nextjs.org/docs/pages/building-your-application/optimizing/images)を使用します。Next.jsの`Imageコンポーネント`は、HTML の`<img>`要素の拡張で、現代のWebのニーズに適応したものです。良いCore Web Vitalsを達成するため、様々な組み込みのパフォーマンス最適化が含まれています。
+This time, we will use the [Image component](https://nextjs.org/docs/pages/building-your-application/optimizing/images) provided by Next.js, which is an extension of the HTML `<img>` element, adapted to the needs of the modern web. Various built-in performance optimizations are included to achieve good Core Web Vitals.
 
-今回外部画像を使用するため、`next.config.js`にて、`remotePatterns`プロパティの設定が必要です。詳しくは[公式サイトの説明](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)を参照してください。
+To use external images this time, the `remotePatterns` property must be set in `next.config.js`. For details, see the [description on the official website](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options).
 
-`dish-delight/frontend/next.config.js`を開き、その内容を以下のコードに置き換えます：
+Open `dish-delight/frontend/next.config.js` and replace its contents with the following code:
 
 ```js
 /** @type {import('next').NextConfig} */
@@ -331,9 +330,9 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-**注意事項**:
+**NOTE**:
 
-- `next.config.js`にて、`Parsing error: Cannot find module 'next/babel'`が出ます。このままでも動作に影響しませんが、解消したい場合は`.eslintrc.json`を以下に変更してください。
+- `Parsing error: Cannot find module 'next/babel'` in `next.config.js`. This does not affect the behavior, but if you want to fix it, change `.eslintrc.json` to the following.
 
   ```js
   {
@@ -341,35 +340,35 @@ module.exports = nextConfig;
   }
   ```
 
-以下のコマンドを実行してください。
+Run the following command.
 
 ```sh
 npm run dev
 ```
 
-再度ブラウザを開いて <http://localhost:3000> にアクセスし、Next.jsのデフォルト画面が表示されることを確認してください。
+Open your browser again and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-開発サーバーはそのまま起動しておいてください。停止したい場合は、コマンドラインでCtrl + cで停止することができます。
+Please leave the development server running. If you want to stop it, you can use Ctrl + c on the command line.
 
-### Homeとメニュー一覧とメニュー詳細画面を作成
+### Creating the Home, Menu List, and Menu Detail Screens
 
-#### Home画面を実装する
+#### Implementing the Home Screen
 
-`dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
+Place 4 logo image files to be used on the screens in `dish-delight/frontend/public`:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。  
-なお、svgファイルはNavbarで使うロゴで、jpegファイルのロゴは各店舗のロゴです。各店舗のロゴはstoreデータのimgで指定されています。
+All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo). The following four files are available.  
+The svg file is the logo used in Navbar, and the jpeg file is the logo of each store. The logo of each store is specified in the img of the store data.
 
 - aroy_logo.jpeg
 - buono_logo.jpeg
 - logo_jojo_univ.svg
 - sakura_tei_logo.jpeg
 
-**注意事項**:
+**NOTE**:
 
-- これらの画像は、Bing上から`Image Creator`(`DALL-E`)を使用して作成しています。
+- These images were created from within Bing using `Image Creator` (`DALL-E`).
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -467,39 +466,39 @@ export default function Home() {
 }
 ```
 
-- 見た目が以下となっていることを確認します。
-  ![PC Home](../static/img/2nd/docs/home_pc.png)
-- `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
-  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
+- Verify that the appearance is as follows
+  ![PC Home](./static/img/2nd/docs/home_pc.png)
+- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the menu list screen.
+  - Since the screen has not been created yet, "404 This page could not be found" will be displayed.
 
-このハンズオンのレイアウトはモバイルファーストなUIデザインを目指します。これ以降、スマホサイズでの表示確認を前提とします。
+This hands-on layout will focus on mobile-first UI design. From this point on, we will assume that the display is confirmed to be smartphone size.
 
-以下の手順を参考に、ブラウザの開発者ツールにていずれかのスマホもしくはスマホのサイズになるように画面を調節してください。
+Please follow the instructions below and use the browser's developer tools to resize the screen to the size of a mobile phone or smartphone.
 
-- ブラウザを開き、`デベロッパーツール`もしくは`開発者ツール`を表示します。
-  - Chromeであれば「メニュー」→「その他のツール」→「デベロッパーツール」
-  - Edgeであれば「メニュー」→「その他のツール」→「開発者ツール」
-  - Windowsであれば、どのブラウザでも共通で、ショートカットキーは`Shift+Ctrl+i`
-- 開発者ツールにて上部にあるPCとスマホが重なったようなアイコン(下記画像の右側を参照)のボタンをクリックします。
-  - Windowsであれば、ショートカットキーは`Shift+Ctrl+m`
-    ![Developer tool](../static/img/2nd/docs/developer_tool.png)
-- 画面の左上のメニューでシミュレートする端末を選びます(上記の画像の左側を参照)。
-  - もしくは`Responsive`状態で自分で大きさを調整します。
+- Open your browser and go to `Developer Tools
+  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools
+  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools
+  - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
+- In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
+  - In Windows, the shortcut key is `Shift+Ctrl+m`.
+    ![Developer tool](./static/img/2nd/docs/developer_tool.png)
+- Select the terminal to you want to simulate from the menu at the top left of the screen (see the left side of the image above).
+  - Or you can adjust the size yourself in `Responsive` mode.
 
-スマホと同等のサイズにした場合、以下の見た目になっていることを確認してください。
+When you make the size equivalent to a smartphone, make sure it has the following appearance
 
-- 上記キャプチャーのレイアウトになること
-- 店舗のCardが縦に配置されていること
-  - `Sakura-tei`、`Aroy`、`Buono`の順
+- To be in the layout of the above capture.
+- The store's Card must be arranged vertically.
+  - `Sakura-tei`, `Aroy`, `Buono` in that order.
 
 TIPS:
-タブレットサイズにすると、列は2つになります。
+If it is tablet size, there are two columns.
 
-#### Navbarをコンポーネント化する
+#### Making the Navbar into a component
 
-メニュー一覧やメニュー詳細画面でも同じNavbarを使用したいため、Navbarをコンポーネント化します。
+To use the same Navbar in the menu list and menu detail screens, make the Navbar into a component.
 
-`dish-delight/frontend/components/Navbar.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/frontend/components/Navbar.tsx` file and replace its contents with the following code:
 
 ```tsx
 // components/Navbar.tsx
@@ -528,7 +527,7 @@ export default function Navbar() {
 }
 ```
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -610,15 +609,15 @@ export default function Home() {
 }
 ```
 
-ブラウザを開き、アプリケーションの動作や見た目に変化がないことを確認します。
+Open the browser and verify that the operation or appearance of the application has not changed.
 
-#### メニュー一覧画面を実装する
+#### Implementing the Menu List screen
 
-Home画面で店舗を選択後に表示されるメニュー一覧画面を実装します。
+Implement the Menu List screen that is displayed after a store is selected on the Home screen.
 
-メニュー一覧画面では、Navbarに店舗名とメニュー一覧(UI上は`MENUS`)へのLinkを表示するため、Navbarコンポーネントをまず修正します。
+In the Menu List screen, first modify the Navbar component to display the store name and a link to the menu list (`MENUS` in the UI) in the Navbar.
 
-`dish-delight/frontend/components/Navbar.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/components/Navbar.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/components/Navbar.tsx
@@ -682,9 +681,9 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 }
 ```
 
-メニュー一覧画面を実装します。
+Implement the Menu List screen
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/frontend/app/stores/[storeId]/page.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -868,47 +867,47 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 }
 ```
 
-動作や見た目を確認します。
+Check to see how this works and looks.
 
-- Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューが4つ表示されること
-    <img src="../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
-- Navbarの`HOME`を押すとHOME画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
-- メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
-  - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
-- Home画面にて`Aroy`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューが1つ表示されること
-- Home画面にて`Bohno`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューがないため、エラーメッセージがでること
-    <img src="../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
-  - 実装に店舗やメニューが存在しない場合の処理を加えています。
-    - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
-      - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
+- Click on the `Sakura-tei` card on the Home screen to display the menu list screen.
+  - Four menus are displayed.
+    <img src="./static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
+- Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
+- Clicking `CARD` on any of the menus on the Menu List screen should take you to the Menu Details screen.
+  - (Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
+- Clicking on the `Aroy` card on the Home screen will take you to the Menu List screen.
+  - A menu should appear.
+- Clicking the `Bohno` card on the Home screen, it should take you to the Menu list screen.
+  - An error message appears because there is no menu.
+    <img src="./static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
+  - Add processing for cases where the store or menu does not exist to the implementation.
+    - The above is the case where the menu does not exist, but please check the operation even if the store does not exist.
+      - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
 
-**注意事項**:
+**NOTE**:
 
-- このハンズオンの例外処理について
-  - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
+- About Exception Handling in this Hands-on
+  - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
 
-#### リファクタリング(バックエンドのAPI呼び出しのための準備)
+#### Refactoring (preparing for backend API calls)
 
-現状フロントエンドで固定でデータを持っていますが、後ほどの手順でバックエンドのAPI呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。
+Currently, the frontend has fixed data, but we will change this to data by calling the backend API in a later step.
 
-リファクタリングの流れ(細かなステップ)としては以下のとおりです。  
-ただし、この流れは手順を示すだけにしておきます。これまで通り、修正後のコードを各ファイルに上書きする方法で記載します。  
-もし、余力がある方はこの流れに沿ってご自身でリファクタリングを実施し、修正後のコードと比べてみてください。
+The flow (detailed steps) of the refactoring is as follows.  
+However, this flow only shows the steps. As before, the modified code is described by overwriting each file.  
+If you have more time, please follow this flow and refactor the code by yourself and compare it to the modified code.
 
-1. `dish-delight/frontend/app/page.tsx`から店舗の固定データを`dish-delight/frontend/lib/api.tsx`に移動します。
-1. `dish-delight/frontend/lib/api.tsx`に`getStores`メソッドを作って、店舗データをすべて返すようにする
-1. `dish-delight/frontend/app/page.tsx`で店舗の固定データを呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStores`メソッドを呼ぶようにする
-1. `dish-delight/frontend/lib/api.tsx`に`getStore`メソッドを作って指定された店舗だけを返すようにする
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`stores`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getStore`メソッドを呼ぶようにする
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`からメニューの固定データを`dish-delight/frontend/lib/api.tsx`に移動する
-1. `dish-delight/frontend/lib/api.tsx`に`getMenus`メソッドを作って指定された店舗のメニューをすべて返すようにする
-   - レスポンスの型を指定したいので、メニューの型定義も行っています
-1. `dish-delight/frontend/app/stores/[storeId]/page.tsx`で`dish-delight/frontend/app/page.tsx`の`menus`を呼び出していたところを`dish-delight/frontend/lib/api.tsx`の`getMenus`メソッドを呼び、取得するようにする
+1. move the fixed store data from `dish-delight/frontend/app/page.tsx` to `dish-delight/frontend/lib/api.tsx`.
+1. create a `getStores` method in `dish-delight/frontend/lib/api.tx` to return all store data.
+1. call the `getStores` method in `dish-delight/frontend/lib/api.tx` instead of calling fixed store data in `dish-delight/frontend/app/page.tsx`.
+1. create a `getStore` method in `dish-delight/frontend/lib/api.tsx` to return only the specified stores.
+1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `stores` in `dish-delight/frontend/app/page.tsx` to `dish-delight/frontend/lib/api.tx` to call `getStore` method in `dish-delight/frontend/lib/api.tx`.
+1. move the menu fixed data from `dish-delight/frontend/app/stores/[storeId]/page.tsx` to `dish-delight/frontend/lib/api.tsx.
+1. create a `getMenus` method in `dish-delight/frontend/lib/api.tsx` to return all menus of the specified store.
+   - We want to specify the type of response, so we also define the type of menu.
+1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `menus` in `dish-delight/frontend/app/page.tsx` to calling `getMenus` method in `dish-delight/frontend/lib/api.tsx`
 
-`dish-delight/frontend/lib/api.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/frontend/lib/api.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/lib/api.tsx
@@ -1079,10 +1078,10 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 }
 ```
 
-**注意事項**:  
-固定データの取得に非同期処理のためのasync/awaitを付ける必要はまったくないです。バックエンドAPIに置き換えたとき、修正が少ないようにasync/awaitを付けています。
+**NOTE**:  
+There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend APIs are replaced, there are fewer changes.
 
-`dish-delight/frontend/app/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -1137,7 +1136,7 @@ export default async function Home() {
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1210,13 +1209,13 @@ export default async function StoreMenu({
 }
 ```
 
-動作や見た目に変更がないことを確認します。  
+Verify that there are no changes in behavior or appearance.  
 
-#### メニュー詳細画面を実装する
+#### Implementing the Menu Detail screen
 
-メニュー一覧画面にてメニューを選択後に表示されるメニュー詳細画面を実装します。
+This section implements the menu detail screen that is displayed after a menu item is selected from the menu list screen.
 
-メニュー詳細画面を実装すると、ディレクトリ構成は以下となります(関連するファイルのみ抜粋)。
+The directory structure of the Menu Detail screen is as follows (only relevant files are quoted).
 
 ```sh
 dish-delight/frontend
@@ -1244,8 +1243,8 @@ dish-delight/frontend
 └── tailwind.config.js
 ```
 
-メニュー詳細画面を表示するために、まずメニューを取得するfunctionを実装します。
-`dish-delight/frontend/lib/api.tsx`ファイルを開き、以下のコードを最下部に加えます:
+To display the menu details screen, first implement the menu get function.
+Open the `dish-delight/frontend/lib/api.tsx` file and add the following code at the bottom:
 
 ```tsx
 // lib/api.tsx
@@ -1257,8 +1256,8 @@ export async function getMenu(
 }
 ```
 
-メニュー詳細画面を実装します。
-`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`ファイルを作成し、以下のコードに置き換えます：
+Implement the Menu Detail screen.
+Create the `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1341,28 +1340,28 @@ export default async function Menu({
 }
 ```
 
-動作や見た目を確認します。
+Check to see how this works and looks.
 
-- メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
-  - 該当のメニュー画像や説明、Optionなどが表示されること
-    - 例: 店舗`Aroy`の`Khao Soi`(Optionなし)
-    <img src="../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
-    - 例: 店舗`Sakura-tei`の`Sanuki Udon`(Optionあり)
-    <img src="../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
-- Navbarの`HOME`を押すとHOME画面に、`MENUS`を押すとメニュー一覧画面に遷移すること
-- 店舗やメニューが存在しない場合のエラー画面
-  - イメージはメニュー一覧画面と同じ
+- Clicking on any of the menu cards in the menu list screen should take the user to the menu details screen.
+  - The appropriate menu image, description and option should be displayed.
+    - Example: `Khao Soi` at the `Aroy` store (without Option)
+    <img src="./static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
+    <img src="./static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+- Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
+- Error screen if store or menu does not exist
+  - The image is the same as the menu list screen
 
-#### リファクタリング(データ取得のエラー画面のコンポーネント化)
+#### Refactoring (componentization of error screen for data fetching)
 
-店舗やメニューのデータ取得時に存在しなかった場合の画面が冗長なため、コンポーネント化します。
+The screen for store and menu data get when it does not exist is redundant and should be made into a component.
 
-リファクタリングの対象は以下の2つです。それぞれ、店舗やメニューのデータ取得時に存在しなかった場合の画面を実装しています。これを共通化します。
+The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be componentized.
 
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
 
-固定のメッセージを格納するために、`dish-delight/frontend/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます:
+To store fixed messages, Create the `dish-delight/frontend/lib/constants.ts` file and replace its contents with the following code:
 
 ```ts
 // dish-delight/frontend/lib/constants.ts
@@ -1373,8 +1372,8 @@ export const DATA_NOT_FOUND_MESSAGE = {
 };
 ```
 
-エラー画面をコンポーネント化します。
-`dish-delight/frontend/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Componentize error screen.
+Create the `dish-delight/frontend/components/DataNotFound.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/components/DataNotFound.tsx
@@ -1398,9 +1397,9 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
 }
 ```
 
-各画面のエラー画面を作成したコンポーネントに置き変えます。
+Replace the error screen on each screen with the component just created.
 
-`dish-delight/frontend/app/stores/[storeId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1457,7 +1456,7 @@ export default async function StoreMenu({
 }
 ```
 
-`dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1523,17 +1522,17 @@ export default async function Menu({
 }
 ```
 
-動作や見た目に変更がないことを確認します。
+Verify that there are no changes in behavior or appearance.
 
-#### サイトのタイトルとfaviconの設定
+#### Setting the site title and favicon
 
-上記でフロントエンド部分は終わりですが、最後にサイトのタイトルとfaviconだけ修正します。
+The above is the end of the frontend part, but the last step is to change only the site title and favicon.
 
-現状、以下のとおりNext.jsデフォルトのタイトルとfaviconになっています。これを修正します。
+Currently, the Next.js default title and favicon are as follows. Fix this.
 
-<img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
+<img src="./static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
-`dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます。
+Open `dish-delight/frontend/app/layout.tsx` and replace its contents with the following code:
 
 ```tsx
 import "./globals.css";
@@ -1560,24 +1559,25 @@ export default function RootLayout({
 }
 ```
 
-`dish-delight/frontend/app/favicon.ico`を置き換えます:
+Replace `dish-delight/frontend/app/favicon.ico`:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
+Target images should be obtained from [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
 
-動作や見た目を確認します。
+Check to see how this works and looks.
 
-- サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
-  <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
+- Make sure the site title and favicon are the same as in the following image.
 
-## 3. データベースに接続してデータを返す
+  <img src="./static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
-ここから、いよいよバックエンドの実装に入ります。バックエンドの処理が実装できたら、フロントエンドを修正し、バックエンドにつなげます。
+## 3. Connecting to the database and returning data
 
-### データベースの接続設定を行う
+From here, it is time to implement the backend. Once the backend processing is implemented, modify the frontend and connect it to the backend.
 
-ORMのSQLAlchemyによるSQLiteデータベースへの接続設定を行います。
+### Configure database connection settings
 
-`dish-delight/backend/src/backend/database.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Connect to a SQLite database using ORM's SQLAlchemy.
+
+Create the `dish-delight/backend/src/backend/database.py` file and replace its contents with the following code:
 
 ```py
 # dish-delight/backend/src/backend/database.py
@@ -1608,26 +1608,26 @@ Base = declarative_base()
 
 TIPS:
 
-- ORMとは
-  - ORMとは、Object-Relational Mappingの略で、プログラム内のオブジェクトとデータベース内のテーブルやレコードとの間のマッピングを自動化する技術です。ORMを使用することで、データベース操作をオブジェクト指向のスタイルで行うことができます。
-- SQLiteについて
-  - 今回ハンズオンのデータベースにはSQLiteを使用しています。SQLite(スクウェアライト)は、サーバーが不要で、ディスク上の単一ファイルで動作する軽量な組み込み型リレーショナルデータベース管理システム(RDBMS)です。SQLiteはPythonに標準で含まれているため、Pythonをインストールすると自動的に利用することができます。
-- SQLAlchemyについて
-  - 今回ハンズオンのORMにはSQLAlchemyを使用しています。SQLAlchemyはPythonのSQLツールキットおよびORMライブラリです。データベース操作を簡素化し、データベーステーブルをPythonクラスとして表現することができます。これにより、データベース操作をPythonのオブジェクト指向プログラミングスタイルで行うことができます。
-- データベースやSQL周りのコードや説明は[FastAPI公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を引用しています。詳しく知りたい方はそちらをご確認ください。
+- What is ORM?
+  - ORM stands for Object-Relational Mapping, a technology that automates the mapping between objects in a program and tables and records in a database. ORM is an object-oriented way of working with databases.
+- About SQLite
+  - SQLite is a lightweight, embedded relational database management system (RDBMS) that requires no server and runs as a single file on disk. SQLite is included in Python as a standard part of Python, so it can be used automatically when Python is installed.
+- About SQLAlchemy
+  - We use SQLAlchemy for our hands-on ORM, which is a Python SQL toolkit and ORM library. It simplifies database operations and allows database tables to be represented as Python classes. This allows database operations to be performed in Python's object-oriented programming style.
+- Code and explanations about databases and SQL are taken from [FastAPI official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases). If you want to know more details, please check there.
 
-**注意事項**:
+**NOTE**:
 
-- Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
-  - 下記キャプチャーの警告が出る場合、以下の対応をしてみてください。
-    ![Import Warning](../static/img/2nd/docs/import_warning.png)
-  - コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、Windowsの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/Scripts/python.exe)`、Macの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
+- What to do if Pylance does not recognize the rye auto-built virtual environment and warns on import
+  - If you get the warning shown in the screenshot below, please try the following actions.
+    ![Import Warning](./static/img/2nd/docs/import_warning.png)
+  - In the command palette (press Ctrl+Shift+P), select `Python: Select Interpreter`, on Windows: `{absolute path to your working directory}/dish-delight/backend/.venv/Scripts/python .exe)`, on Mac: `{absolute path of your working directory}/dish-delight/backend/.venv/bin/python)`.
 
-### テーブル(データベースモデル)定義を行う
+### Define the tables (database model)
 
-SQLAlchemyによるテーブル(データベースモデル)定義を行います。
+Define the tables (database model) using SQLAlchemy.
 
-`dish-delight/backend/src/backend/models.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/backend/src/backend/models.py` file and replace its contents with the following code:
 
 ```py
 # dish-delight/backend/src/backend/models.py
@@ -1683,41 +1683,42 @@ class Option(Base):
 
 ```
 
-### データベースに初期データを登録する
+### Register initial data in the database
 
-ローカルのデータベースに初期データを登録します。初期データ登録用に簡単なスクリプトを用意しています。  
-[Github リポジトリ](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
+Register initial data in the local database. A simple script is provided for registering initial data in the local database.  
+Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/ backend`.
 
-対象のファイルは以下の 4 つです。
+The target files are the following four.
 
 - data.json
 - insert_data.py
 - insert_initial_data.py
 - read_json.py
 
-`dish-delight/backend/src/backend`にて、以下のコマンドを実行します。
+Run the following command in `dish-delight/backend/src/backend`.
 
 ```sh
 python insert_initial_data.py
 ```
 
-`dish-delight/backend/src/backend`配下に`university.db`ファイルができていれば成功です。
+If the `university.db` file is created in `dish-delight/backend/src/backend`, you have succeeded.
 
 TIPS:
 
-- データを変えて、再度データベースに登録したい場合は`university.db`ファイルを消して、もう一度実行します。
-- `models.py`で作成したモデルはSQLAlchemyのモデルであり、データベース用のモデルです。
+- If you want to change the data and register it to the database again, delete the `university.db` file and run it again.
+- The models created in `models.py` are SQLAlchemy models and are for the database.
 
-**注意事項**:
+**NOTE**:
 
-- 初期データ登録のスクリプトの目的は今回のハンズオンの初期データ登録の一度きりのみです。実際の開発において、データベースを扱う場合にはマイグレーションツール(FastAPIであれば、[Alembic](https://alembic.sqlalchemy.org/en/latest/))の導入を検討してください。
+- The purpose of the initial data registration script is only for the one-time initial data registration for this hands-on. In actual development, please consider installing a migration tool (for FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) when dealing with databases.
 
-### データベースから店舗一覧とメニュー一覧とメニュー詳細のデータを取得して返すAPIを作成する
+### Create the APIs that retrieves and returns store list, menu list, and menu detail data from a database
 
-データベースから店舗一覧と店舗詳細、メニュー一覧とメニュー詳細を取得するAPIを作成します。
+Create the APIs to retrieve store lists and store details, and menu lists and menu details from the database.
 
-まず、API用にデータモデル(Pydanticのモデル)を作ります。  
-`dish-delight/backend/src/backend/schemas.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+First, create a data model (Pydantic's model) for the APIs.
+  
+Create the `dish-delight/backend/src/backend/schemas.py` file and replace its contents with the following code:
 
 ```py
 # dish-delight/backend/src/backend/schemas.py
@@ -1762,8 +1763,8 @@ class Menu(BaseModel):
 
 ```
 
-APIを作成します。  
-`dish-delight/backend/src/backend/main.py`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the APIs.  
+Create the `dish-delight/backend/src/backend/main.py` file and replace its contents with the following code:
 
 ```py
 from fastapi import FastAPI, Depends, HTTPException
@@ -1870,62 +1871,62 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
 
 TIPS:
 
-- PydanticのモデルはAPIでデータを読み込んだり、作成したりするときに使用します。
-- ハンズオンと[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)との相違点
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)ではPydanticのモデルは各モデルクラスの`Base`クラス(例:`User`なら`UserBase`)とそれらを継承した`Create`用クラス(例:`UserCreate`)と`Read`用クラス(例:`User`)を作る説明がされています。`Create`時と`Read`時で必要な情報、渡したくない情報(例:`password`)が異なるためです。
-    - このハンズオンでは`CRUD`関数のうち、`R(read)`のみを作成します。そのため、クラスは1つのみ作成しています。
+- Pydantic models are used to read and create data in the API.
+- Differences between hands-on and [FastAPI's official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)
+  - The [official website of FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) explains that a Pydantic model consists of a `Base` class for each model class (e.g. `UserBase` for `User`), a `Create` class (e.g. `UserCreate`) and a `Read` class that inherit from the `Base` class (e.g. `UserBase` for `User`) of each model class. The reason for this is that the information required for `Create` and `Read` is different, as well as the information you do not want to pass on (e.g. `password`).
+    - In this hands-on, only `R(read)` of the `CRUD` function is created. So, only one class is created.
       - CRUD comes from: Create, Read, Update, and Delete.
-  - [FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)では、`CRUD`関数のUtilモジュールを作成し、それらを各API関数で呼ぶようにしています。コードの再利用性、テスト容易性、保守性などを考慮したためです。
-    - このハンズオンではWebアプリ開発体験を優先するため、簡易的な実装を行っています。実際の開発にあたっては、要件等を勘案して設計・実装を行なってください。
+  - On [the official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases), they create a Util module for the `CRUD` functions and call them in each API function. This is for code reusability, ease of testing, and maintainability.
+    - This hands-on session is a simple implementation to give priority to experience in developing web applications. For actual development, please design and implement taking care of requirements, etc.
 
-**注意事項**:
+**NOTE**:
 
-- ハンズオンを記載している時点の[FastAPIの公式サイト](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)を参考に、上記の実装をしています。このハンズオンを書いている時点で、以下のとおり記載があり、`Pydantic v2`に対応するため説明と異なる実装をしているところもあります。
-  - また、ハンズオン資料の作成時に参考にした資料は、ハンズオン実施時に`Pydantic v2`に対応した新しい Version の資料に変わっている可能性があります。
+- The above implementation is based on the [official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of this writing. At the time of this writing, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
+  - In addition, the materials used as references when preparing the hands-on materials may have changed to a newer version of the materials that are compatible with `Pydantic v2` at the time of the hands-on.
     > These docs are about to be updated. 🎉
     >
     > The current version assumes Pydantic v1, and SQLAlchemy versions less than 2.0.
     >
     > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
-### Swagger UIを使用して、APIの動作確認を行う
+### Use Swagger UI to check API behavior
 
-FastAPIではデフォルトでAPIドキュメントをOpenAPI仕様に基づいて自動で生成されます。Swagger UIを使用して、Webブラウザで確認することができます。
-FastAPIを起動します。
+By default, FastAPI automatically generates API documentation based on the OpenAPI specification that can be viewed in a web browser using the Swagger UI.
+Run FastAPI.
 
 ```sh
 rye run uvicorn main:app --reload
 ```
 
-ブラウザを開いて <http://127.0.0.1:8000/docs> にアクセスし、以下の画面が表示されることを確認してください。
+Open a browser and go to <http://127.0.0.1:8000/docs> and verify that the following screen appears
 
-![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
+![Swagger UI](./static/img/2nd/docs/swagger_ui_default.png)
 
-**注意事項**:
+**NOTE**:
 
-もし、該当のポートを使用中であった場合は以下のエラーがでます。ほかのアプリが起動中でないか確認してください。
+If the port is in use, you will receive the following error message. Please make sure that no other application is running.
 
 ```sh
 ERROR:    [Errno 48] Address already in use
 ```
 
-各APIを開いて、必要に応じて`Parameters`を入力して動作を確認してみてください。
+Open each API and enter `Parameters` as needed to see how it works.
 
-手順
+Testing Procedure
 
-- 確認したいAPIを開く
-- `Try it out`ボタンを押す
-- 確認したい内容に応じて`Parameters`を入力する
-- `Execute`ボタンを押す
-- `Code`が 200 であることを確認し、`Details`の中身が意図したデータであることを確認する
-  - データベースに登録したデータは、フロントエンドの固定データよりもデータを増やしています。登録したデータの内容は、`dish-delight/backend/src/backend`にダウンロードした`data.json`を確認してください。
+- Open the API you want to check
+- Press the Try button.
+- Enter `Parameters` according to what you want to check.
+- Press the 'Execute' button.
+- Verify that `Code` is 200 and that the contents of `Details` are the intended data.
+  - The data registered in the database is more data than the fixed data in the frontend. Please check the `data.json` downloaded in `dish-delight/backend/src/backend` for the content of the registered data.
 
-例:指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
+Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`) is shown below.
 
-- `Parameters`の`store_id`に`3`を代入する
-  ![Swagger UI menus](../static/img/2nd/docs/swagger_ui_store_menus.png)
-- `Execute`ボタンを押す
-- `Code`が 200 であることを確認し、`Details`の中身が以下であること
+- Assign `3` to `store_id` in `Parameters`.
+  ![Swagger UI menus](./static/img/2nd/docs/swagger_ui_store_menus.png)
+- Press the `Execute` button.
+- Verify that the `Code` is 200 and the contents of the `Details` are as follows
 
   ```sh
   [
@@ -1961,24 +1962,25 @@ ERROR:    [Errno 48] Address already in use
 
 TIPS:
 
-- API周りについて
+- About API
 
-  - APIはプログラム間の通信インターフェースであり、一般的にRestAPIとGraphQLに大別されます。
-    - RestAPIはHTTPプロトコルを通じてリソースを操作するための形式であり、GraphQLは柔軟なデータ取得と操作を行うためのクエリ言語とエンジンを提供する形式です。どちらも異なるアプリケーションやサービス間で情報の共有や通信を行う際に使用される一般的な手段です。
-  - OpenAPI仕様は、RestAPIの設計、記述、ドキュメント化、テストを支援するための仕様です。
-  - Swagger UIはOpenAPI仕様に基づいてAPIドキュメントを視覚的に確認し、APIをテストするためのツールです。
+  - APIs are communication interfaces between programs and are generally broadly divided into RestAPI and GraphQL.
+    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing share and communicating information between different applications and services.
+  - The OpenAPI specification is intended to support the design, description, documentation, and testing of RestAPI.
+  - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
 
-- FastAPIの起動について
-  - 今回のryeを使用しているため、`rye run`をつけますが、ryeを使用しない場合は以下です。
+- About running FastAPI
+- Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
 
   ```sh
   uvicorn main:app --reload
   ```
 
-### バックエンドのAPIからデータを取得するようにフロントエンドを修正する
+### Modify the frontend to get data from the backend API
 
-バックエンドのAPIからデータを取得するようにフロントエンドを修正します。  
-`dish-delight/frontend/lib/api.ts`を開き、その内容を以下のコードに置き換えます:
+Modify the frontend to get data from the backend API.
+
+Open `dish-delight/frontend/lib/api.ts` and replace its contents with the following code:
 
 ```ts
 // dish-delight/frontend/lib/api.ts
@@ -2056,16 +2058,16 @@ export async function getMenu(
 }
 ```
 
-動作や見た目を確認します。  
-店舗やメニューを変えてひとしきり動作確認を行なってみてください。`Home`だけでなく`Navbar`のボタンも使用してみてください。
+Check to see how this works and looks.  
+Try changing the store and the menu to check the operation. Try using the `Navbar` button as well as the `Home` button.
 
-**注意事項**:
+**NOTE**:
 
-- バックエンドの接続先URLについて
-  - 本ハンズオンでは、ローカル環境でのみ動作させるため、簡易的に実装しています。実際の開発では、`env`ファイル等に定義するようにしてください。なお、バックエンド(FastAPI)も同様です(デプロイする場合には、`CORS`の設定を行う必要がある、など)。
+- About the URL to connect to the backend
+  - In this hands-on, this is a simple implementation to work in the local environment only. For actual development, please define it in an `env` file. The same goes for the backend (FastAPI) (e.g., you need to configure `CORS` when deploying it).
 
-## 4. 終わりに
+## 4. At the end
 
-これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
+This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
-参考にVSCodeの設定(Workspace用)もコミットしてあります。`.vscode`ディレクトリ内にあります。
+The VSCode configuration (for Workspace) is also committed for your reference. It is located in the `.vscode` directory.
