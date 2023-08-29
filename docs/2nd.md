@@ -19,7 +19,7 @@ A concrete image is a UI that displays menus for a school cafeteria, a company c
 TIPS:
 
 - About Next.js
-  - Next.js is a React-based UI framework that provides features such as SSR/SSG, file-based routing, Fast Refresh, image optimization, and zero configuration. These features speed up the loading of web pages, provide SEO-friendly structures, and improve development efficiency. Next.js is a modern and powerful front-end framework with a variety of advantages.
+  - Next.js is a React-based UI framework that provides features such as SSR/SSG, file-based routing, Fast Refresh, image optimization, and zero configuration. These features speed up the loading of web pages, provide SEO-friendly structures, and improve development efficiency. Next.js is a modern and powerful frontend framework with a variety of advantages.
   - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support. Next.js is good for developing React apps of all sizes, and they recommend using Next.js.
 - About FastAPI
   - FastAPI has the following features
@@ -56,7 +56,7 @@ TIPS:
 The required software installation instructions listed here are intended for Windows users who do not also use WSL.
 This is because the first target users of this hands-on are Windows users who do not use  WSL. Please follow the installation procedure for your environment when actually installing the software.
 
-### Detailed procedure for windows users
+### Detailed procedure for Windows users
 
 - Install Node.js
   - See [1st](./1st#1-setup)
@@ -74,7 +74,7 @@ This is because the first target users of this hands-on are Windows users who do
     - Open the Start menu, search for `View advanced system settings` and open it. The `System Properties` dialog will appear.
     - Click on the `Environment Variables Path` button
     - Select the `Path` variable and click the `Edit` button.
-    - Add to the value of the `Path` variable the directory where the newly installed Python executable is located (usually C:\Users\[username]\AppData\Local\Programs\Python\Python [Version]\). If an older version already exists, overwrite it with the newer version.
+    - Add to the value of the `Path` variable the directory where the newly installed Python executable is located (usually `C:\Users\[username]\AppData\Local\Programs\Python\Python [Version]\`). If an older version already exists, overwrite it with the newer version.
     - Save your changes and restart the command prompt.
     - Verify that a new version of Python is used by running the following command
 
@@ -481,7 +481,7 @@ Please follow the instructions below and use the browser's developer tools to re
   - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
 - In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
   - In Windows, the shortcut key is `Shift+Ctrl+m`.
-    ! [Developer tool](. /static/img/2nd/docs/developer_tool.png)
+    ![Developer tool](./static/img/2nd/docs/developer_tool.png)
 - Select the terminal to you want to simulate from the menu at the top left of the screen (see the left side of the image above).
   - Or you can adjust the size yourself in `Responsive` mode.
 
@@ -901,7 +901,7 @@ If you have more time, please follow this flow and refactor the code by yourself
 1. create a `getStores` method in `dish-delight/frontend/lib/api.tx` to return all store data.
 1. call the `getStores` method in `dish-delight/frontend/lib/api.tx` instead of calling fixed store data in `dish-delight/frontend/app/page.tsx`.
 1. create a `getStore` method in `dish-delight/frontend/lib/api.tsx` to return only the specified stores.
-1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `stores` in `dish-delight/frontend/app/page.tsx` to `dish-delight/ frontend/lib/api.tx` to call `getStore` method in `dish-delight/frontend/lib/api.tx`.
+1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `stores` in `dish-delight/frontend/app/page.tsx` to `dish-delight/frontend/lib/api.tx` to call `getStore` method in `dish-delight/frontend/lib/api.tx`.
 1. move the menu fixed data from `dish-delight/frontend/app/stores/[storeId]/page.tsx` to `dish-delight/frontend/lib/api.tsx.
 1. create a `getMenus` method in `dish-delight/frontend/lib/api.tsx` to return all menus of the specified store.
    - We want to specify the type of response, so we also define the type of menu.
@@ -1079,7 +1079,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 ```
 
 **NOTE**:  
-There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend API replaces the async/await, there will be fewer changes.
+There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend APIs are replaced, there are fewer changes.
 
 Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
@@ -1356,7 +1356,7 @@ Check to see how this works and looks.
 
 The screen for store and menu data get when it does not exist is redundant and should be made into a component.
 
-The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be standardized.
+The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be componentized.
 
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
@@ -1685,7 +1685,7 @@ class Option(Base):
 
 ### Register initial data in the database
 
-Register initial data in the local database.A simple script is provided for registering initial data in the local database.  
+Register initial data in the local database. A simple script is provided for registering initial data in the local database.  
 Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/ backend`.
 
 The target files are the following four.
@@ -1881,7 +1881,7 @@ TIPS:
 
 **NOTE**:
 
-- The above implementation is based on the [official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of writing this hands-on. At the time of writing this hands-on, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
+- The above implementation is based on the [official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of this writing. At the time of this writing, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
   - In addition, the materials used as references when preparing the hands-on materials may have changed to a newer version of the materials that are compatible with `Pydantic v2` at the time of the hands-on.
     > These docs are about to be updated. 🎉
     >
@@ -2066,7 +2066,7 @@ Try changing the store and the menu to check the operation. Try using the `Navba
 - About the URL to connect to the backend
   - In this hands-on, this is a simple implementation to work in the local environment only. For actual development, please define it in an `env` file. The same goes for the backend (FastAPI) (e.g., you need to configure `CORS` when deploying it).
 
-## 4. 終わりに
+## 4. At the end
 
 This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
