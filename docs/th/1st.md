@@ -20,6 +20,7 @@ API ภายนอกสำหรับ hands-on นี้ คือ [PokéAPI]
 - [Vite](https://vitejs.dev/)
 
 ---
+
 - คำแนะนำ:
   - เหตุผลที่ Typescript ถูกเลือกสำหรับ hands-on และเหตุผลที่ผู้เริ่มต้น JavaScript ควรเรียนรู้ Typescript
     - มีหลายเหตุผลที่ผู้เริ่มต้น JavaScript ควรเรียนรู้ Typescript พร้อมกับ JavaScript
@@ -48,16 +49,17 @@ API ภายนอกสำหรับ hands-on นี้ คือ [PokéAPI]
 เนื่องจากผู้ใช้เป้าหมายรายแรกของ hands-on นี้คือผู้ใช้ Windows ที่ไม่ได้ใช้ Powershell หรือ WSL  
 โปรดทำตามขั้นตอนการติดตั้งซอฟต์แวร์สำหรับสภาพแวดล้อมของคุณเมื่อติดตั้งซอฟต์แวร์จริง
 
-
 ### ขั้นตอนโดยละเอียดสำหรับผู้ใช้ windows
 
 - ติดตั้ง Node.js
   - ไปที่[เว็บไซต์ Node.js](https://nodejs.org/en/) และดาวน์โหลด LTS (Long-Term Support) ล่าสุดของ Node.js สำหรับ Windows เรียกใช้ตัวติดตั้งและปฏิบัติตามคำแนะนำในการติดตั้ง Node.js ในระบบของคุณ
   - เปิด command prompt และยืนยันว่า Node.js และ npm (Node Package Manager) ติดตั้งถูกต้องโดยเรียกใช้คำสั่งต่อไปนี้:
+
   ```sh
   node --version
   npm --version
   ```
+
   - ทั้งสองคำสั่งควรแสดง version ที่ติดตั้งบนระบบของคุณ
 - ติดตั้ง Visual Studio Code (VS Code)
   - ไปที่ [เว็บไซต์ Visual Studio Code](https://code.visualstudio.com/) และดาวน์โหลดเวอร์ชันล่าสุดของ Visual Studio Code สำหรับ Windows เรียกใช้ตัวติดตั้งและปฏิบัติตามคำแนะนำในการติดตั้ง Visual Studio Code ในระบบของคุณ
@@ -109,7 +111,7 @@ npm run dev
 
 คุณสามารถใช้ Ctrl + c เพื่อหยุดการทำงานของแอป React+Vite ใน command line ของคุณ
 
-#### 3. ติดตั้ง axios library เพื่อทำ HTTP requests:
+#### 3. ติดตั้ง axios library เพื่อทำ HTTP requests
 
 ```sh
 npm install axios
@@ -119,7 +121,7 @@ npm install axios
 
 ### สร้าง component เพื่อแสดง Pokemon แบบสุ่ม
 
-#### 1. เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+#### 1. เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 import { useState } from "react";
@@ -180,7 +182,7 @@ export default App;
     - คำอธิบายอย่างตรงไปตรงมาของ React Component คือองค์ประกอบ UI ที่นำมาใช้ซ้ำได้
     - แนวคิดของ component เป็นแนวคิดทั่วไปใน frameworks และ libraries UI สมัยใหม่อื่นๆ เช่น Vue.js, Svelte, Angular เป็นต้น
 
-#### 2. เปิดเบราว์เซอร์และไปที่ http://localhost:5173 เพื่อดูแอปพลิเคชัน คลิกที่ปุ่ม "Get Random Pokémon" เพื่อดึงข้อมูล Pokemon สุ่มจาก PokeAPI และแสดงชื่อและรูปภาพของ  Pokemon
+#### 2. เปิดเบราว์เซอร์และไปที่ <http://localhost:5173> เพื่อดูแอปพลิเคชัน คลิกที่ปุ่ม "Get Random Pokémon" เพื่อดึงข้อมูล Pokemon สุ่มจาก PokeAPI และแสดงชื่อและรูปภาพของ  Pokemon
 
 หากคุณหยุดแอปไปแล้ว คุณสามารถเรียกใช้คำสั่งต่อไปนี้ได้  
 ตรวจสอบให้แน่ใจว่าไดเร็กทอรีปัจจุบันอยู่ภายใต้โปรเจ็กต์ React ที่คุณสร้างขึ้นโดยตรง
@@ -201,8 +203,8 @@ npm run dev
 ในกรณีของเรา เราเริ่มต้นด้วยการเขียนกระบวนการแสดงรูปภาพและเนื้อหาของ Pokemon โดยตรงในไฟล์ App.tsx อย่างไรก็ตาม เมื่อแอปพลิเคชันเริ่มซับซ้อนมากขึ้น เป็นความคิดที่ดีที่จะแยกมันออกเป็นไฟล์ของตัวเองในรูปแบบของ component เพื่อให้โค้ดเป็นระเบียบและเป็นโมดูล
 
 - คำแนะนำ:
-    - เกี่ยวกับการ Refactoring ของ component
-      - การแยกส่วนรายละเอียดของโค้ดเป็นคอมโพเนนต์สนับสนุนการใช้ซ้ำ การแยกงาน และการบำรุงรักษา อย่างไรก็ตาม การแยกส่วนนี้อาจมีความซับซ้อนและภาระการทำงานเพิ่มขึ้น การตัดสินใจว่าจะแยกส่วนอย่างไรขึ้นอยู่กับขนาด ความซับซ้อน และความต้องการเฉพาะของแอปพลิเคชันของคุณ
+  - เกี่ยวกับการ Refactoring ของ component
+    - การแยกส่วนรายละเอียดของโค้ดเป็นคอมโพเนนต์สนับสนุนการใช้ซ้ำ การแยกงาน และการบำรุงรักษา อย่างไรก็ตาม การแยกส่วนนี้อาจมีความซับซ้อนและภาระการทำงานเพิ่มขึ้น การตัดสินใจว่าจะแยกส่วนอย่างไรขึ้นอยู่กับขนาด ความซับซ้อน และความต้องการเฉพาะของแอปพลิเคชันของคุณ
 
 #### 1. นิยามทุกอย่างที่เกี่ยวข้องกับกระบวนการแสดงรูปภาพแบบสุ่มในไฟล์ App.tsx เป็นฟังก์ชันแยกต่างหากในไฟล์ App.tsx
 
@@ -210,7 +212,7 @@ npm run dev
 การ Refactoring ถูกทำครั้งเดียวในไฟล์เดียวเพื่อทำให้โค้ดง่ายต่อการติดตาม  
 ขั้นตอนนี้สามารถข้ามไปยังขั้นตอนถัดไปได้
 
-#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // App.tsx
@@ -273,7 +275,7 @@ export default App;
 
 #### 2. แยก PokemonContainer component จาก App.tsx
 
-##### สร้างไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+##### สร้างไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // PokemonContainer.tsx
@@ -322,7 +324,7 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // App.tsx
@@ -350,7 +352,7 @@ export default App;
   - การ Refactoring นี้ยังดำเนินการครั้งเดียวในไฟล์เดียวกันเพื่อให้โค้ดติดตามได้ง่ายขึ้น ขั้นตอนนี้สามารถข้ามไปยังขั้นตอนถัดไปได้
   - ว่าจะ Refactoring ถึงขั้นนี้ในแอปพลิเคชันจริงควรพิจารณาจากขนาดของแอปพลิเคชัน ความซับซ้อนของโค้ด และว่าคอมโพเนนต์มีการใช้ซ้ำหรือไม่
 
-##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // PokemonContainer.tsx
@@ -418,7 +420,7 @@ export default PokemonContainer;
 
 #### 4. แยกคอมโพเนนต์ PokemonDisplay จาก PokemonContainer.tsx
 
-##### สร้างไฟล์ src/PokemonDisplay.tsx และแทนที่เนื้อหาด้วยรหัสต่อไปนี้:
+##### สร้างไฟล์ src/PokemonDisplay.tsx และแทนที่เนื้อหาด้วยรหัสต่อไปนี้
 
 ```jsx
 // PokemonDisplay.tsx
@@ -453,7 +455,7 @@ function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
 export default PokemonDisplay;
 ```
 
-##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // PokemonContainer.tsx
@@ -498,7 +500,7 @@ export default PokemonContainer;
 
 คอมโพเนนต์ PokemonDisplay สามารถใช้ได้กับตัวละครอื่นๆนอกเหนือจาก Pokémon ดังนั้นเราจะเปลี่ยนชื่อให้เป็นชื่อทั่วไปมากขึ้น
 
-##### เปลี่ยนชื่อไฟล์ src/PokemonDisplay.tsx เป็น src/ItemDisplay.tsx และเปลี่ยนเนื้อหาในไฟล์เป็นโค้ดต่อไปนี้:
+##### เปลี่ยนชื่อไฟล์ src/PokemonDisplay.tsx เป็น src/ItemDisplay.tsx และเปลี่ยนเนื้อหาในไฟล์เป็นโค้ดต่อไปนี้
 
 **หมายเหตุ:** หลังจากเปลี่ยนชื่อไฟล์แล้ว คุณจะถูกถามว่าต้องการเปลี่ยนการนำเข้า (import) จาก VS Code หรือไม่ ในกรณีนี้ เลือก ไม่
 
@@ -530,8 +532,7 @@ function ItemDisplay({ item }: ItemDisplayProps) {
 export default ItemDisplay;
 ```
 
-##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
-
+##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // PokemonContainer.tsx
@@ -628,8 +629,7 @@ export default {
 
 #### 2. ปรับใช้ CSS
 
-##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
-
+##### เปิดไฟล์ src/PokemonContainer.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // PokemonContainer.tsx
@@ -693,8 +693,7 @@ export default PokemonContainer;
 +      {pokemon && <ItemDisplay item={pokemon} />}
 ```
 
-##### เปิดไฟล์ src/ItemDisplay.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
-
+##### เปิดไฟล์ src/ItemDisplay.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // ItemDisplay.tsx
@@ -745,7 +744,7 @@ export default ItemDisplay;
 npm run dev
 ```
 
-##### 
+#####
 
 **หมายเหตุ**: การแสดงผลเปลี่ยนแปลงเป็นดังต่อไปนี้
 
@@ -756,6 +755,7 @@ npm run dev
 เราจะเพิ่มเมนูนำทาง (navbar) และเพิ่มเมนูสุนัขนอกเหนือจาก Pokemon เพื่อทำให้เหมือน SPA มากขึ้น
 
 #### 1. เตรียมการใช้งาน react-router
+
 ##### ติดตั้ง react-router
 
 ตรวจสอบให้แน่ใจว่าไดเร็กทอรีปัจจุบันอยู่ภายใต้โปรเจ็กต์ React ที่คุณสร้างขึ้นโดยตรง และเรียกใช้คำสั่งต่อไปนี้:
@@ -771,14 +771,14 @@ npm install react-router-dom
     - การกำหนดเส้นทางเป็นแนวคิดที่ใช้กับไลบรารีและเฟรมเวิร์กต่างๆ นอกเหนือจาก React
       - ในบริบทของการพัฒนาเว็บ การกำหนดเส้นทางเกี่ยวข้องกับการจัดการ URL หรือเส้นทางต่างๆ และ mapping กับส่วน component หรือการดำเนินการเฉพาะภายในแอปพลิเคชันของคุณ ช่วยให้คุณนำทางระหว่าง views หรือ pages และรักษาสถานะของแอปพลิเคชันตาม URL ปัจจุบัน
 
-**หมายเหตุ:**   
+**หมายเหตุ:**
 ในขณะที่เขียนข้อความนี้ React Router เวอร์ชันที่ใช้งานคือ v6 หากคุณติดตั้งตามคำอธิบายข้างต้นคุณควรสามารถใช้ v6 ได้ หากคุณติดตั้งโดยระบุเวอร์ชันเฉพาะ โปรดทราบว่าการตั้งค่าแตกต่างกันระหว่าง v5 และ v6
 
 #### 2. การใช้งาน navbar
 
 ตอนนี้เมนูมีเฉพาะ Pokémon เท่านั้น  แต่เราจะแนะนำ navbar
 
-#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
+#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // App.tsx
@@ -809,7 +809,7 @@ function App() {
 export default App;
 ```
 
-##### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณแล้วไปที่ http://localhost:5173 เพื่อดูแอปพลิเคชัน คลิกที่ "Pokemon" ในเมนูบาร์ด้านบนและตรวจสอบว่าหน้า "Get Random Pokemon" ปรากฏขึ้น
+##### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณแล้วไปที่ <http://localhost:5173> เพื่อดูแอปพลิเคชัน คลิกที่ "Pokemon" ในเมนูบาร์ด้านบนและตรวจสอบว่าหน้า "Get Random Pokemon" ปรากฏขึ้น
 
 ![Implementation of a navbar](../static/img/1th/implementation_navbar.png)
 
@@ -817,12 +817,11 @@ export default App;
 
 เพิ่มเมนูที่แสดงภาพสุนัขแบบสุ่มเหมือนกับ Pokemon
 
-##### สร้างไฟล์ src/DogContainer.tsx และแทนที่เนื้อหาด้วยรหัสต่อไปนี้:
+##### สร้างไฟล์ src/DogContainer.tsx และแทนที่เนื้อหาด้วยรหัสต่อไปนี้
 
 ในไฟล์ DogContainer.tsx ภาพสุนัขจะถูกเรียกแบบสุ่ม คล้ายกับ PokemonContainer.tsx
 UI ก็เหมือนกัน  
 เราใช้ไฟล์ที่ถูก Refactor และทำเป็น Component อย่าง ItemDisplay.tsx ในทั้ง DogContainer.tsx และ PokemonContainer.tsx
-
 
 ```jsx
 // DogContainer
@@ -866,8 +865,7 @@ function DogContainer() {
 export default DogContainer;
 ```
 
-#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
-
+#### เปิดไฟล์ src/App.tsx และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```jsx
 // App.tsx
@@ -902,11 +900,12 @@ function App() {
 export default App;
 ```
 
-##### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณ ไปที่ http://localhost:5173 เพื่อดูแอปพลิเคชัน
+##### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณ ไปที่ <http://localhost:5173> เพื่อดูแอปพลิเคชัน
 
 "Dog" เมนูถูกเพิ่มเข้าไปใน Navbar ติดตั้งกับ "Pokemon" กดที่เมนู "Dog" เพื่อตรวจสอบว่าหน้าจอแสดงผลและประมวลผลสามารถทำได้เหมือนกับ "Pokemon"
 
 ## 3. ในปิดท้าย
+
 นี่เป็นการสรุป hands-on ขอบคุณสำหรับความพยายามของคุณ โค้ดที่สมบูรณ์มีอยู่ [ที่นี่](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)  
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)
 
@@ -915,6 +914,7 @@ export default App;
 ### คำแนะนำสำหรับผู้ที่สนใจในการพัฒนา frontend
 
 ในความคิดของฉัน เพื่อเพิ่มทักษะทางเทคนิคด้าน frontend ได้ด้วยตัวคุณเอง คุณควรทำตามขั้นตอนต่อไปนี้
+
 1. เรียนรู้พื้นฐานของ Javascript/Typescript, HTML, CSS
 1. คิดแอปพลิเคชันที่คุณต้องการสร้างและลองพัฒนาด้วยตนเอง
 1. (หากคุณไม่สามารถคิดขึ้นมาได้) ค้นหา UI หรือแอปพลิเคชันที่คุณต้องการเรียนรู้หรือดัดแปลงจากเว็บ ลอกเลียนแบบและนำมาปรับใช้เอง(แน่นอนว่าการคัดลอกมีไว้เพื่อการศึกษาเท่านั้น)
