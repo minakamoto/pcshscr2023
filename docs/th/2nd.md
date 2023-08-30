@@ -1,67 +1,68 @@
 # ภาคปฏิบัติ(hands-on)เพื่อพัฒนา UI ที่ซับซ้อนขึ้นเล็กน้อยและ API ของตัวเอง
 
-## 0. Introduction
+## 0. บทนำ
 
-The purpose and objectives of this hands-on are the same as in [1st](./1st#0-introduction) and will therefore be omitted.
+วัตถุประสงค์และเป้าหมายของ hands-on นี้เหมือนกับใน [1st](./1st#0-introduction) และจะถูกข้ามไป
 
-### What we make
+### สิ่งที่เราจะสร้าง
 
-Create APIs, call them, and display that information on the screen. Build a UI that is slightly more complex than [1st](./1st).  
-A concrete image is a UI that displays menus for a school cafeteria, a company cafeteria, or a booth at a neighborhood festival.
+สร้าง API เรียกใช้ และแสดงข้อมูลนั้นบนหน้าจอ สร้าง UI ที่ซับซ้อนกว่า [1st](./1st) เล็กน้อย  
+ภาพที่เป็นรูปธรรมคือ UI ที่แสดงเมนูสำหรับโรงอาหารของโรงเรียน โรงอาหารของบริษัท หรือบูธในงานเทศกาลในชุมชน
 
-### Main Technology Stack
+### สแต็คเทคโนโลยีหลัก
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
 - [Next.js](https://nextjs.org/)
 - [Python](https://www.python.org/)
 - [FastAPI](https://fastapi.tiangolo.com/)
 
-TIPS:
+คำแนะนำ:
 
-- About Next.js
-  - Next.js is a React-based UI framework that provides features such as SSR/SSG, file-based routing, Fast Refresh, image optimization, and zero configuration. These features speed up the loading of web pages, provide SEO-friendly structures, and improve development efficiency. Next.js is a modern and powerful frontend framework with a variety of advantages.
-  - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support. Next.js is good for developing React apps of all sizes, and they recommend using Next.js.
-- About FastAPI
-  - FastAPI has the following features
-    - Fast
-      - FastAPI is based on Starlette and Uvicorn for extremely fast performance.
-        - Starlette is a lightweight ASGI framework written in Python that allows building fast asynchronous services; Uvicorn is an ASGI server implementation that is very fast; FastAPI is built on top of Starlette and can be run using Uvicorn. FastAPI is built on top of Starlette and can be run with Uvicorn.
-    - Easy
-      - FastAPI uses a simple syntax that makes the code easy to read and write.
-      - FastAPI can use Pydantic to perform request and response validation.
-        - Pydantic is a data type safety library that allows declarative definition of data types, which helps FastAPI to build type-safe web applications.
-          - Type-safe means that type errors are detected before the program is executed. This prevents runtime errors.
-    - Automatic Documentation Generation
-      - FastAPI can automatically generate API documentation using Swagger UI and ReDoc.
-        - Swagger UI and ReDoc are tools that generate API documentation based on the OpenAPI specification.
-    - Asynchronous Support
-      - FastAPI supports asynchronous processing, making it easy to write asynchronous code.
+- เกี่ยวกับ Next.js
+  - Next.js เป็นเฟรมเวิร์ก UI ที่ใช้ React ซึ่งมีคุณสมบัติต่างๆ เช่น SSR/SSG, file-based routing, Fast Refresh, การเพิ่มประสิทธิภาพรูปภาพ, และ zero configuration คุณสมบัติเหล่านี้ช่วยเพิ่มความเร็วในการโหลดหน้าเว็บ มีโครงสร้างที่เป็นมิตรกับ SEO และปรับปรุงประสิทธิภาพการพัฒนา Next.js เป็นเฟรมเวิร์ก frontend ที่ทันสมัยและทรงพลังพร้อมข้อดีหลายประการ
+  - [เว็บไซต์ React อย่างเป็นทางการ](https://react.dev/learn/start-a-new-react-project#nextjs) ยังแนะนำ Next.js สำหรับการพัฒนาแอปพลิเคชัน React ทุกขนาด เนื่องจากมีคุณสมบัติที่หลากหลายและมีการสนับสนุนจากชุมชน  Next.js เหมาะสำหรับการพัฒนาแอปพลิเคชัน React ทุกขนาด และพวกเขาแนะนำให้ใช้ Next.js
+- เกี่ยวกับ FastAPI
+  - FastAPI มีคุณสมบัติดังต่อไปนี้
+    - เร็ว
+      - FastAPI ใช้ Starlette และ Uvicorn เพื่อประสิทธิภาพที่รวดเร็วเป็นพิเศษ
+        - Starlette เป็นเฟรมเวิร์ก ASGI น้ำหนักเบาที่เขียนด้วย Python ซึ่งช่วยให้สามารถสร้างบริการ asynchronous ที่รวดเร็ว Uvicorn เป็นการใช้งานเซิร์ฟเวอร์ ASGI ที่รวดเร็วมาก FastAPI สร้างขึ้นบน Starlette และสามารถรันได้โดยใช้ Uvicorn FastAPI สร้างขึ้นบน Starlette และสามารถรันด้วย Uvicorn ได้
+    - ง่าย
+      - FastAPI ใช้ไวยากรณ์ง่ายๆ ที่ทำให้โค้ดอ่านและเขียนได้ง่าย
+      - FastAPI สามารถใช้ Pydantic เพื่อทำการตรวจสอบคำขอและการตอบกลับ
+        - Pydantic เป็นไลบรารีความปลอดภัยของประเภทข้อมูลที่ช่วยให้สามารถกำหนดคำจำกัดความของประเภทข้อมูลได้ ซึ่งช่วยให้ FastAPI สร้างแอปพลิเคชันเว็บที่ปลอดภัยต่อประเภทข้อมูล
+          - Type-safe หมายถึง ตรวจพบข้อผิดพลาดของประเภทก่อนที่โปรแกรมจะดำเนินการ สิ่งนี้จะป้องกันข้อผิดพลาดรันไทม์
+    - การสร้างเอกสารอัตโนมัติ
+      - FastAPI สามารถสร้างเอกสาร API ได้โดยอัตโนมัติโดยใช้ Swagger UI และ ReDoc
+        - Swagger UI และ ReDoc เป็นเครื่องมือที่สร้างเอกสาร API ตามข้อกำหนด OpenAPI
+    - การสนับสนุนแบบ Asynchronous(อะซิงโครนัส)
+      - FastAPI รองรับการประมวลผลแบบอะซิงโครนัส ทำให้ง่ายต่อการเขียนโค้ดแบบอะซิงโครนัส
 
-**Note**:
+**หมายเหตุ**:
 
-- About the Python Package Manager
+- เกี่ยวกับ Python Package Manager
   - The Python package manager used in this hands-on is [rye](https://github.com/mitsuhiko/rye). It is a useful tool that can install and uninstall dependencies and manage virtual environments.
   - However, it is in Experimental status, as the following comment is stated on its official page. It is available at the time of this writing, but its availability for hands-on activities cannot be guaranteed. If it is not available, please consider using other tools such as [poetry](https://python-poetry.org/) or [pip](https://pypi.org/project/pip/).
     > An Experimental Package Management Solution for Python
 
-## 1. Setup
+## 1. การตั้งค่า
 
-### Prerequisites
+### ข้อกำหนดเบื้องต้น
 
-- Node.js 16 or above
-- Python 3.8 or above
-- Code Editor (e.g., Visual Studio Code)
+- Node.js 16 หรือสูงกว่า
+- Python 3.8 หรือสูงกว่า
+- Code Editor (เช่น Visual Studio Code)
 
-**Note**：  
-The required software installation instructions listed here are intended for Windows users who do not also use WSL.
-This is because the first target users of this hands-on are Windows users who do not use  WSL. Please follow the installation procedure for your environment when actually installing the software.
+**หมายเหตุ**:  
+คำแนะนำในการติดตั้งซอฟต์แวร์ที่จำเป็นซึ่งระบุไว้ที่นี่มีไว้สำหรับผู้ใช้ Windows ที่ไม่ได้ใช้ WSL  
+เนื่องจากผู้ใช้เป้าหมายรายแรกของ hands-on นี้คือผู้ใช้ Windows ที่ไม่ได้ใช้ WSL  
+โปรดทำตามขั้นตอนการติดตั้งซอฟต์แวร์สำหรับสภาพแวดล้อมของคุณเมื่อติดตั้งซอฟต์แวร์จริง
 
-### Detailed procedure for Windows users
+### ขั้นตอนโดยละเอียดสำหรับผู้ใช้ Windows
 
-- Install Node.js
-  - See [1st](./1st#1-setup)
-- Install Python
-  - Go to the [official Python website](https://www.python.org/downloads/windows/) and download the latest version of Python installer (`Windows installer(64-bit)`).
+- ติดตั้ง Node.js
+  - ดู [1st](./1st#1-setup)
+- ติดตั้ง Python
+  - Go to [เว็บไซต์ Python อย่างเป็นทางการ](https://www.python.org/downloads/windows/) and download the latest version of Python installer (`Windows installer(64-bit)`).
   - Run the downloaded installer.
   - The installation wizard will appear. Click `Install Now` or `Customize installation`.
   - After the installation is complete, open a command prompt and run the following command to verify that Python is installed correctly.
@@ -82,7 +83,7 @@ This is because the first target users of this hands-on are Windows users who do
       python --version
       ```
 
-- Install rye
+- ติดตั้ง rye
   - Go to [rye's official website](https://rye-up.com/guide/installation/) and download the exe file for Windows (`rye-x86_64-windows.exe for 64-bit Intel Windows`), install it.
     - When the `Windows protected your PC` dialog appears, open `more info` and press the `Run anyway` button to continue.
       - As the command prompt appears, set `Windows Developer Mode` (see [rye's official website](https://rye-up.com/guide/faq/#windows-developer-mode)), then type `y` and continue. Please enter `y` to continue.
@@ -94,12 +95,12 @@ This is because the first target users of this hands-on are Windows users who do
       rye
     ```
 
-- Install Visual Studio Code(VS Code)
-  - See [1st](./1st#1-setup)
-- Install and configure VS Code extensions
+- ติดตั้ง Visual Studio Code(VS Code)
+  - ดู [1st](./1st#1-setup)
+- ติดตั้ง and configure VS Code extensions
 
-  - About Javascript, see [1st](./1st#1-setup)
-    - (Option)Set up ESLint to automatically modify code on save.
+  - เกี่ยวกับ Javascript ดู [1st](./1st#1-setup)
+    - (ตัวเลือก)Set up ESLint to automatically modify code on save.
       - Change the setting of `Editor: Code Actions On Save`
         - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
         - Search for `Editor: Code Actions On Save` or `editor.codeActionsOnSave` in the settings and press `Edit in setting.json`.
@@ -114,7 +115,7 @@ This is because the first target users of this hands-on are Windows users who do
           }
           ```
 
-  - (Option)For Python development, it is recommended that you install the following extensions to enhance your web app development experience:
+  - (ตัวเลือก)For Python development, it is recommended that you install the following extensions to enhance your web app development experience:
     - Launch Visual Studio Code
     - Open the Extensions sidebar by clicking on the square icon in the left sidebar or pressing Ctrl+Shift+X.
     - Search for the following extensions (all from Microsoft) and click the `Install` button next to each extension:
@@ -189,7 +190,7 @@ When you run the above commands, you will be asked a question at the command pro
 ✔ Would you like to customize the default import alias? … No
 ```
 
-**NOTE**:  
+**หมายเหตุ**:  
 If you get the following error, run `npm i -g npx` and try again. For more information, see the [Next.js official issue](https://github.com/vercel/next.js/discussions/39997).
 
 ```sh
@@ -252,12 +253,12 @@ Below is a UI image using Figma. It is provided here for reference only.
 | --- | --- | --- |
 | <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
-**NOTE**:  
+**หมายเหตุ**:  
 The above is a draft design from the hands-on conceptual phase. It may differ in some points from the hands-on implementation.
 
-TIPS:
+คำแนะนำ:
 
-- About Figma
+- เกี่ยวกับ Figma
   - [Figma](https://www.figma.com/) is a web-based graphic design tool used for UI/UX design, prototyping, and collaboration.
   - A benefit for engineers is that it facilitates collaboration with designers and smooth translation from design to code. For a simple UI, engineers can also use Figma to create designs to share images with customers, etc.
 
@@ -274,7 +275,7 @@ npm run dev
 
 Open a browser and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-**Note**:  
+**หมายเหตุ**:  
 If port 3000 is already in use, a different port is specified. In this case, the following will appear on the command line.
 
 ```sh
@@ -300,7 +301,7 @@ body {
 }
 ```
 
-TIPS:
+คำแนะนำ:
 
 - This time, there is no need to install or configure Tailwind CSS, because the option to use Tailwind CSS is specified when the Next.js project is created.
 
@@ -330,7 +331,7 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-**NOTE**:
+**หมายเหตุ**:
 
 - `Parsing error: Cannot find module 'next/babel'` in `next.config.js`. This does not affect the behavior, but if you want to fix it, change `.eslintrc.json` to the following.
 
@@ -364,7 +365,7 @@ The svg file is the logo used in Navbar, and the jpeg file is the logo of each s
 - logo_jojo_univ.svg
 - sakura_tei_logo.jpeg
 
-**NOTE**:
+**หมายเหตุ**:
 
 - These images were created from within Bing using `Image Creator` (`DALL-E`).
 
@@ -491,7 +492,7 @@ When you make the size equivalent to a smartphone, make sure it has the followin
 - The store's Card must be arranged vertically.
   - `Sakura-tei`, `Aroy`, `Buono` in that order.
 
-TIPS:
+คำแนะนำ:
 If it is tablet size, there are two columns.
 
 #### Making the Navbar into a component
@@ -867,7 +868,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 }
 ```
 
-Check to see how this works and looks.
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
 - Click on the `Sakura-tei` card on the Home screen to display the menu list screen.
   - Four menus are displayed.
@@ -884,7 +885,7 @@ Check to see how this works and looks.
     - The above is the case where the menu does not exist, but please check the operation even if the store does not exist.
       - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
 
-**NOTE**:
+**หมายเหตุ**:
 
 - About Exception Handling in this Hands-on
   - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
@@ -1078,7 +1079,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 }
 ```
 
-**NOTE**:  
+**หมายเหตุ**:  
 There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend APIs are replaced, there are fewer changes.
 
 Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
@@ -1340,7 +1341,7 @@ export default async function Menu({
 }
 ```
 
-Check to see how this works and looks.
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
 - Clicking on any of the menu cards in the menu list screen should take the user to the menu details screen.
   - The appropriate menu image, description and option should be displayed.
@@ -1563,7 +1564,7 @@ Replace `dish-delight/frontend/app/favicon.ico`:
 
 Target images should be obtained from [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
 
-Check to see how this works and looks.
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
 - Make sure the site title and favicon are the same as in the following image.
 
@@ -1582,7 +1583,7 @@ Create the `dish-delight/backend/src/backend/database.py` file and replace its c
 ```py
 # dish-delight/backend/src/backend/database.py
 
-# Quoting the official [FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/)
+# Quoting [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases/)
 
 # import the SQLAlchemy parts
 from sqlalchemy import create_engine
@@ -1606,7 +1607,7 @@ Base = declarative_base()
 
 ```
 
-TIPS:
+คำแนะนำ:
 
 - What is ORM?
   - ORM stands for Object-Relational Mapping, a technology that automates the mapping between objects in a program and tables and records in a database. ORM is an object-oriented way of working with databases.
@@ -1614,9 +1615,9 @@ TIPS:
   - SQLite is a lightweight, embedded relational database management system (RDBMS) that requires no server and runs as a single file on disk. SQLite is included in Python as a standard part of Python, so it can be used automatically when Python is installed.
 - About SQLAlchemy
   - We use SQLAlchemy for our hands-on ORM, which is a Python SQL toolkit and ORM library. It simplifies database operations and allows database tables to be represented as Python classes. This allows database operations to be performed in Python's object-oriented programming style.
-- Code and explanations about databases and SQL are taken from [FastAPI official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases). If you want to know more details, please check there.
+- Code and explanations about databases and SQL are taken from [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases). If you want to know more details, please check there.
 
-**NOTE**:
+**หมายเหตุ**:
 
 - What to do if Pylance does not recognize the rye auto-built virtual environment and warns on import
   - If you get the warning shown in the screenshot below, please try the following actions.
@@ -1703,12 +1704,12 @@ python insert_initial_data.py
 
 If the `university.db` file is created in `dish-delight/backend/src/backend`, you have succeeded.
 
-TIPS:
+คำแนะนำ:
 
 - If you want to change the data and register it to the database again, delete the `university.db` file and run it again.
 - The models created in `models.py` are SQLAlchemy models and are for the database.
 
-**NOTE**:
+**หมายเหตุ**:
 
 - The purpose of the initial data registration script is only for the one-time initial data registration for this hands-on. In actual development, please consider installing a migration tool (for FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) when dealing with databases.
 
@@ -1869,19 +1870,19 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
     return result
 ```
 
-TIPS:
+คำแนะนำ:
 
 - Pydantic models are used to read and create data in the API.
 - Differences between hands-on and [FastAPI's official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)
   - The [official website of FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) explains that a Pydantic model consists of a `Base` class for each model class (e.g. `UserBase` for `User`), a `Create` class (e.g. `UserCreate`) and a `Read` class that inherit from the `Base` class (e.g. `UserBase` for `User`) of each model class. The reason for this is that the information required for `Create` and `Read` is different, as well as the information you do not want to pass on (e.g. `password`).
     - In this hands-on, only `R(read)` of the `CRUD` function is created. So, only one class is created.
       - CRUD comes from: Create, Read, Update, and Delete.
-  - On [the official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases), they create a Util module for the `CRUD` functions and call them in each API function. This is for code reusability, ease of testing, and maintainability.
+  - On [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases), they create a Util module for the `CRUD` functions and call them in each API function. This is for code reusability, ease of testing, and maintainability.
     - This hands-on session is a simple implementation to give priority to experience in developing web applications. For actual development, please design and implement taking care of requirements, etc.
 
-**NOTE**:
+**หมายเหตุ**:
 
-- The above implementation is based on the [official FastAPI website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of this writing. At the time of this writing, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
+- The above implementation is based on [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of this writing. At the time of this writing, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
   - In addition, the materials used as references when preparing the hands-on materials may have changed to a newer version of the materials that are compatible with `Pydantic v2` at the time of the hands-on.
     > These docs are about to be updated. 🎉
     >
@@ -1902,7 +1903,7 @@ Open a browser and go to <http://127.0.0.1:8000/docs> and verify that the follow
 
 ![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
 
-**NOTE**:
+**หมายเหตุ**:
 
 If the port is in use, you will receive the following error message. Please make sure that no other application is running.
 
@@ -1960,7 +1961,7 @@ Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`)
   ]
   ```
 
-TIPS:
+คำแนะนำ:
 
 - About API
 
@@ -2058,10 +2059,10 @@ export async function getMenu(
 }
 ```
 
-Check to see how this works and looks.  
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร  
 Try changing the store and the menu to check the operation. Try using the `Navbar` button as well as the `Home` button.
 
-**NOTE**:
+**หมายเหตุ**:
 
 - About the URL to connect to the backend
   - In this hands-on, this is a simple implementation to work in the local environment only. For actual development, please define it in an `env` file. The same goes for the backend (FastAPI) (e.g., you need to configure `CORS` when deploying it).
