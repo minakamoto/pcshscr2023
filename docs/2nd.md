@@ -37,7 +37,7 @@ TIPS:
     - Asynchronous Support
       - FastAPI supports asynchronous processing, making it easy to write asynchronous code.
 
-**Note**:
+**NOTE**:
 
 - About the Python Package Manager
   - The Python package manager used in this hands-on is [rye](https://github.com/mitsuhiko/rye). It is a useful tool that can install and uninstall dependencies and manage virtual environments.
@@ -52,7 +52,7 @@ TIPS:
 - Python 3.8 or above
 - Code Editor (e.g., Visual Studio Code)
 
-**Note**：  
+**NOTE**:  
 The required software installation instructions listed here are intended for Windows users who do not also use WSL.
 This is because the first target users of this hands-on are Windows users who do not use  WSL. Please follow the installation procedure for your environment when actually installing the software.
 
@@ -274,7 +274,7 @@ npm run dev
 
 Open a browser and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-**Note**:  
+**NOTE**:  
 If port 3000 is already in use, a different port is specified. In this case, the following will appear on the command line.
 
 ```sh
