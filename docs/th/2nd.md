@@ -40,8 +40,8 @@
 **หมายเหตุ**:
 
 - เกี่ยวกับ Python Package Manager
-  - The Python package manager used in this hands-on is [rye](https://github.com/mitsuhiko/rye). It is a useful tool that can install and uninstall dependencies and manage virtual environments.
-  - However, it is in Experimental status, as the following comment is stated on its official page. It is available at the time of this writing, but its availability for hands-on activities cannot be guaranteed. If it is not available, please consider using other tools such as [poetry](https://python-poetry.org/) or [pip](https://pypi.org/project/pip/).
+  - เครื่องมือจัดการแพ็คเกจ Python ที่ใช้ในการทำ hands-on นี้คือ [rye](https://github.com/mitsuhiko/rye) นั้นเป็นเครื่องมือที่มีประโยชน์ที่สามารถติดตั้งและถอดการติดตั้งของ dependencies และจัดการกับสภาพแวดล้อมเสมือนได้
+  - อย่างไรก็ตาม ตอนนี้เครื่องมือนี้อยู่ในสถานะทดลองใช้ (Experimental) ตามคำแสดงความคิดเห็นที่แจ้งไว้ในหน้าเว็บไซต์อย่างเป็นทางการ ในขณะที่เขียนข้อความนี้ มีความพร้อมให้ใช้งาน แต่ความพร้อมในการใช้งานสำหรับกิจกรรม hands-on อาจจะไม่สามารถรับรองได้เป็นอย่างแน่นอน หากไม่สามารถใช้งานได้ โปรดพิจารณาใช้เครื่องมืออื่น ๆ เช่น [poetry](https://python-poetry.org/) หรือ [pip](https://pypi.org/project/pip/) แทน
     > An Experimental Package Management Solution for Python
 
 ## 1. การตั้งค่า
@@ -62,34 +62,34 @@
 - ติดตั้ง Node.js
   - ดู [1st](./1st#1-setup)
 - ติดตั้ง Python
-  - Go to [เว็บไซต์ Python อย่างเป็นทางการ](https://www.python.org/downloads/windows/) and download the latest version of Python installer (`Windows installer(64-bit)`).
-  - Run the downloaded installer.
-  - The installation wizard will appear. Click `Install Now` or `Customize installation`.
-  - After the installation is complete, open a command prompt and run the following command to verify that Python is installed correctly.
+  - ไปที่ [เว็บไซต์ Python อย่างเป็นทางการ](https://www.python.org/downloads/windows/) และดาวน์โหลดตัวติดตั้ง Python เวอร์ชันล่าสุด (`Windows installer(64-bit)`)
+  - เรียกใช้ตัวติดตั้งที่ดาวน์โหลดมา
+  - วิซาร์ดการติดตั้งจะปรากฏขึ้น คลิก 'Install Now' หรือ 'Customize installation'
+  - หลังจากการติดตั้งเสร็จสมบูรณ์ ให้เปิดพรอมต์คำสั่งแล้วรันคำสั่งต่อไปนี้เพื่อตรวจสอบว่าติดตั้ง Python อย่างถูกต้อง
 
     ```sh
     python --version
     ```
 
-  - If Python is already installed, it can be upgraded by following the procedure above to install the latest version of Python. However, if multiple versions of Python are installed at the same time, you will need to check the environment variable settings to ensure that the appropriate version of Python is being used.
-    - Open the Start menu, search for `View advanced system settings` and open it. The `System Properties` dialog will appear.
-    - Click on the `Environment Variables Path` button
-    - Select the `Path` variable and click the `Edit` button.
-    - Add to the value of the `Path` variable the directory where the newly installed Python executable is located (usually `C:\Users\[username]\AppData\Local\Programs\Python\Python [Version]\`). If an older version already exists, overwrite it with the newer version.
-    - Save your changes and restart the command prompt.
-    - Verify that a new version of Python is used by running the following command
+  - หากติดตั้ง Python ไว้แล้ว สามารถอัปเกรดได้โดยทำตามขั้นตอนด้านบนเพื่อติดตั้ง Python เวอร์ชันล่าสุด อย่างไรก็ตาม หากมีการติดตั้ง Python หลายเวอร์ชันพร้อมกัน คุณจะต้องตรวจสอบการตั้งค่าตัวแปรสภาพแวดล้อมเพื่อให้แน่ใจว่ามีการใช้ Python เวอร์ชันที่เหมาะสม
+    - เปิดเมนู Start ค้นหา "View advanced system settings" แล้วเปิดขึ้นมา กล่องโต้ตอบ `System Properties` จะปรากฏขึ้น
+    - คลิกที่ปุ่ม 'Environment Variables Path'
+    - เลือกตัวแปร `Path` และคลิกปุ่ม 'Edit'
+    - เพิ่มค่าของตัวแปร `Path` ไปยังไดเร็กทอรีที่มีไฟล์ปฏิบัติการ Python ที่ติดตั้งใหม่ (โดยปกติคือ `C:\Users\[username]\AppData\Local\Programs\Python\Python [เวอร์ชัน]\`) หากมีเวอร์ชันเก่าอยู่แล้ว ให้เขียนทับด้วยเวอร์ชันที่ใหม่กว่า
+    - บันทึกการเปลี่ยนแปลงของคุณและรีสตาร์ทพรอมต์คำสั่ง
+    - ตรวจสอบว่ามีการใช้ Python เวอร์ชันใหม่โดยการรันคำสั่งต่อไปนี้
 
       ```sh
       python --version
       ```
 
 - ติดตั้ง rye
-  - Go to [rye's official website](https://rye-up.com/guide/installation/) and download the exe file for Windows (`rye-x86_64-windows.exe for 64-bit Intel Windows`), install it.
-    - When the `Windows protected your PC` dialog appears, open `more info` and press the `Run anyway` button to continue.
-      - As the command prompt appears, set `Windows Developer Mode` (see [rye's official website](https://rye-up.com/guide/faq/#windows-developer-mode)), then type `y` and continue. Please enter `y` to continue.
-  - Register `shims` in the environment variable `Path` and increase its priority as described on [rye's official website](https://rye-up.com/guide/installation/#add-shims-to-path).
-  - Save the changes and restart the command prompt.
-  - Run the following command and verify that it runs, without errors.
+  - ไปที่ [เว็บไซต์อย่างเป็นทางการของ rye](https://rye-up.com/guide/installation/) และดาวน์โหลดไฟล์ exe สำหรับ Windows (`rye-x86_64-windows.exe for 64-bit Intel Windows`) จากนั้นติดตั้ง
+    - เมื่อกล่องโต้ตอบ `Windows protected your PC` ปรากฏขึ้น ให้เปิด 'more info' แล้วกดปุ่ม 'Run anyway' เพื่อดำเนินการต่อ
+      - เมื่อพรอมต์คำสั่งปรากฏขึ้น ให้ตั้งค่า `Windows Developer Mode` (ดู [เว็บไซต์อย่างเป็นทางการของ rye](https://rye-up.com/guide/faq/#windows-developer-mode)) จากนั้นพิมพ์ `y` และ ดำเนินการต่อ. กรุณากรอก `y` เพื่อดำเนินการต่อ
+  - ลงทะเบียน `shims` ในตัวแปรสภาพแวดล้อม `Path` และเพิ่มลำดับความสำคัญตามที่อธิบายไว้ใน [เว็บไซต์อย่างเป็นทางการของ rye](https://rye-up.com/guide/installation/#add-shims-to-path)
+  - บันทึกการเปลี่ยนแปลงและรีสตาร์ทพรอมต์คำสั่ง
+  - รันคำสั่งต่อไปนี้และตรวจสอบว่ารันโดยไม่มีข้อผิดพลาด
 
     ```sh
       rye
@@ -97,15 +97,15 @@
 
 - ติดตั้ง Visual Studio Code(VS Code)
   - ดู [1st](./1st#1-setup)
-- ติดตั้ง and configure VS Code extensions
+- ติดตั้งและกำหนดค่าส่วนขยาย VS Code
 
   - เกี่ยวกับ Javascript ดู [1st](./1st#1-setup)
-    - (ตัวเลือก)Set up ESLint to automatically modify code on save.
-      - Change the setting of `Editor: Code Actions On Save`
-        - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
-        - Search for `Editor: Code Actions On Save` or `editor.codeActionsOnSave` in the settings and press `Edit in setting.json`.
-          - **If you do not want to use this setting outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
-        - Change to the following settings. Remember to save the file after making the changes.
+    - (ตัวเลือก)ตั้งค่า ESLint เพื่อแก้ไขโค้ดโดยอัตโนมัติเมื่อบันทึก
+      - เปลี่ยนการตั้งค่าของ `Editor: Code Actions On Save`
+        - เปิดการตั้งค่า VSCode(File > Preferences > Settings) หรือใช้ทางลัด (Ctrl+,)
+        - ค้นหา `Editor: Code Actions On Save` หรือ `editor.codeActionsOnSave` ในการตั้งค่า แล้วกด `Edit in setting.json`
+          - **หากคุณไม่ต้องการใช้การตั้งค่านี้นอกเหนือจาก hands-on นี้ ให้เปลี่ยนจากแท็บ `User` เป็นแท็บ `Workspace`**
+        - เปลี่ยนเป็นการตั้งค่าต่อไปนี้ อย่าลืมบันทึกไฟล์หลังจากทำการเปลี่ยนแปลง
 
           ```json
           {
@@ -115,24 +115,24 @@
           }
           ```
 
-  - (ตัวเลือก)For Python development, it is recommended that you install the following extensions to enhance your web app development experience:
-    - Launch Visual Studio Code
-    - Open the Extensions sidebar by clicking on the square icon in the left sidebar or pressing Ctrl+Shift+X.
-    - Search for the following extensions (all from Microsoft) and click the `Install` button next to each extension:
+  - (ตัวเลือก)สำหรับการพัฒนา Python ขอแนะนำให้คุณติดตั้งส่วนขยายต่อไปนี้เพื่อปรับปรุงประสบการณ์การพัฒนาเว็บแอปของคุณ:
+    - เปิด VS Code
+    - เปิดแถบด้านข้างส่วนขยายโดยคลิกที่ไอคอนสี่เหลี่ยมในแถบด้านข้างซ้ายหรือกด Ctrl+Shift+X
+    - ค้นหาส่วนขยายต่อไปนี้ (ทั้งหมดมาจาก Microsoft) และคลิกปุ่ม `Install` ถัดจากส่วนขยายแต่ละรายการ:
       - Python
-        - Pylance is included.
+        - มี Pylance ด้วย
       - Flake8
-        - If you install this one, flake8 (Linter) will run automatically when you open a Python file.
+        - หากคุณติดตั้งสิ่งนี้ flake8 (Linter) จะทำงานโดยอัตโนมัติเมื่อคุณเปิดไฟล์ Python
       - Black Formatter
-    - Changing the settings of the `Python: Language Server`
-      - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
-        - **If you do not want to use these settings outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
-      - Find `python.languageServer` in the settings and set the value to `Pylance`.
-    - Set the Python file to automatically change the code in Black Formatter when you save it.
-      - Press Ctrl+Shift+P to open the command palette.
-      - Type and select `Preferences: Open User Settings(JSON)` to open the JSON file.
-        - **If you do not want to use this setting outside of this hands-on, open `Preferences: Open Workspace Settings(JSON)`.**
-      - Add the following code to the end of the JSON
+    - การเปลี่ยนการตั้งค่าของ `Python: Language Server`
+      - เปิดการตั้งค่า VSCode (File > Preferences > Settings) หรือใช้ทางลัด (Ctrl+,)
+        - **หากคุณไม่ต้องการใช้การตั้งค่านี้นอกเหนือจาก hands-on นี้ ให้เปลี่ยนจากแท็บ `User` เป็นแท็บ `Workspace`**
+      - ค้นหา `python. languageServer` ในการตั้งค่า และตั้งค่าเป็น `Pylance`
+    - ตั้งค่า Black Formatter ให้แก้ไขโค้ดโดยอัตโนมัติเมื่อบันทึกไฟล์ Python
+      - กด Ctrl+Shift+P เพื่อเปิด Command palette
+      - พิมพ์และเลือก `Preferences: Open User Settings(JSON)` เพื่อเปิดไฟล์ JSON
+        - **หากคุณไม่ต้องการใช้การตั้งค่านี้นอกเหนือจาก hands-on นี้ ให้เปิด `Preferences: Open Workspace Settings(JSON)`**
+      - เพิ่มโค้ดต่อไปนี้ที่ส่วนท้ายของ JSON
 
         ```js
           "[python]": {
@@ -141,7 +141,7 @@
           }
         ```
 
-        - If other settings are also in place, the following applies.
+        - หากคุณมีการตั้งค่าอื่นๆ เช่นกัน จะมีลักษณะเช่นนี้:
 
           ```js
           {
@@ -162,7 +162,7 @@
 
 #### Creating a project directory
 
-Create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. Run the following commands.
+Create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. รันคำสั่งต่อไปนี้
 
 ```sh
 mkdir dish-delight/backend
@@ -172,7 +172,7 @@ cd dish-delight
 
 #### Creating a frontend(Next.js) project
 
-Run the following commands.
+รันคำสั่งต่อไปนี้
 
 ```sh
 cd frontend
@@ -211,7 +211,7 @@ Waiting for the debugger to disconnect...
 
 #### Initialize the backend project
 
-Run the following command
+รันคำสั่งต่อไปนี้
 
 ```sh
 cd ../backend
@@ -231,7 +231,7 @@ python --version
 
 #### Install necessary libraries and tools
 
-Run the following commands.
+รันคำสั่งต่อไปนี้
 
 ```sh
 # add required libraries
@@ -266,7 +266,7 @@ The above is a draft design from the hands-on conceptual phase. It may differ in
 
 #### Start the development server
 
-Run the following commands.
+รันคำสั่งต่อไปนี้
 
 ```sh
 cd ../frontend
@@ -341,7 +341,7 @@ module.exports = nextConfig;
   }
   ```
 
-Run the following command.
+รันคำสั่งต่อไปนี้
 
 ```sh
 npm run dev

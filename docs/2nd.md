@@ -115,7 +115,7 @@ This is because the first target users of this hands-on are Windows users who do
           ```
 
   - (Option)For Python development, it is recommended that you install the following extensions to enhance your web app development experience:
-    - Launch Visual Studio Code
+    - Launch VS Code
     - Open the Extensions sidebar by clicking on the square icon in the left sidebar or pressing Ctrl+Shift+X.
     - Search for the following extensions (all from Microsoft) and click the `Install` button next to each extension:
       - Python
@@ -127,7 +127,7 @@ This is because the first target users of this hands-on are Windows users who do
       - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
         - **If you do not want to use these settings outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
       - Find `python.languageServer` in the settings and set the value to `Pylance`.
-    - Set the Python file to automatically change the code in Black Formatter when you save it.
+    - Set Black Formatter to automatically modify code when saving Python files.
       - Press Ctrl+Shift+P to open the command palette.
       - Type and select `Preferences: Open User Settings(JSON)` to open the JSON file.
         - **If you do not want to use this setting outside of this hands-on, open `Preferences: Open Workspace Settings(JSON)`.**
@@ -210,7 +210,7 @@ Waiting for the debugger to disconnect...
 
 #### Initialize the backend project
 
-Run the following command
+Run the following command.
 
 ```sh
 cd ../backend
