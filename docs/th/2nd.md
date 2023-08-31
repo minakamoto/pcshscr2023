@@ -242,29 +242,29 @@ rye add --dev black flake8
 rye sync
 ```
 
-## 2. Frontend only Home and Menu List and Menu Detail screen implementation
+## 2. การสร้างหน้าจอ Home และ Menu List และหน้าจอ Menu Detail ไปใช้เฉพาะ frontend
 
-Using Next.js and Tailwind CSS, create Home and Menu List and Menu Detail screens.  
-This is a frontend only implementation and does not connect to the backend yet.
+ใช้ Next.js และ Tailwind CSS สร้างหน้าจอ Home และ Menu List และ Menu Detail  
+นี่เป็นการใช้งาน frontend เท่านั้นและยังไม่ได้เชื่อมต่อกับ backend
 
-Below is a UI image using Figma. It is provided here for reference only.
+ด้านล่างนี้เป็นรูปภาพ UI ที่ใช้ Figma มีไว้ที่นี่เพื่อใช้อ้างอิงเท่านั้น
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
 | <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
 **หมายเหตุ**:  
-The above is a draft design from the hands-on conceptual phase. It may differ in some points from the hands-on implementation.
+ข้างต้นเป็นการออกแบบร่างจากระยะแนวความคิดแบบลงมือปฏิบัติจริง อาจแตกต่างไปจากการปฏิบัติจริงในบางจุด
 
 คำแนะนำ:
 
 - เกี่ยวกับ Figma
-  - [Figma](https://www.figma.com/) is a web-based graphic design tool used for UI/UX design, prototyping, and collaboration.
-  - A benefit for engineers is that it facilitates collaboration with designers and smooth translation from design to code. For a simple UI, engineers can also use Figma to create designs to share images with customers, etc.
+  - [Figma](https://www.figma.com/) เป็นเครื่องมือออกแบบกราฟิกบนเว็บที่ใช้สำหรับการออกแบบ UI/UX การสร้างต้นแบบ และการทำงานร่วมกัน
+  - ประโยชน์สำหรับวิศวกรคืออำนวยความสะดวกในการทำงานร่วมกันกับนักออกแบบและการแปลตั้งแต่การออกแบบไปจนถึงการเขียนโค้ดได้อย่างราบรื่น สำหรับ UI ที่เรียบง่าย วิศวกรยังสามารถใช้ Figma เพื่อสร้างการออกแบบเพื่อแบ่งปันรูปภาพกับลูกค้า ฯลฯ
 
-### Change configuration file
+### เปลี่ยนไฟล์การกำหนดค่า
 
-#### Start the development server
+#### เริ่มเซิร์ฟเวอร์การพัฒนา
 
 รันคำสั่งต่อไปนี้
 
@@ -273,22 +273,22 @@ cd ../frontend
 npm run dev
 ```
 
-Open a browser and go to <http://localhost:3000> and verify that the Next.js default screen appears.
+เปิดเบราว์เซอร์และไปที่ <http://localhost:3000> และตรวจสอบว่าหน้าจอค่าเริ่มต้นของ Next.js ปรากฏขึ้น
 
 **หมายเหตุ**:  
-If port 3000 is already in use, a different port is specified. In this case, the following will appear on the command line.
+หากมีการใช้งานพอร์ต 3000 อยู่แล้ว จะมีการระบุพอร์ตอื่น ในกรณีนี้ สิ่งต่อไปนี้จะปรากฏบนบรรทัดคำสั่ง
 
 ```sh
 - warn Port 3000 is in use, trying 3001 instead.
 - ready started server on 0.0.0.0:3001, url: http://localhost:3001
 ```
 
-Press Ctrl + c to stop.
+กด Ctrl + c เพื่อหยุด
 
-#### Modifying the globals.css settings
+#### การปรับเปลี่ยนการตั้งค่า globals.css
 
-Edit the default globals.css settings.  
-Open `dish-delight/frontend/app/globals.css` and replace its contents with the following code:
+แก้ไขการตั้งค่าเริ่มต้น globals.css  
+เปิด `dish-delight/frontend/app/globals.css` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```css
 @tailwind base;
@@ -303,15 +303,15 @@ body {
 
 คำแนะนำ:
 
-- This time, there is no need to install or configure Tailwind CSS, because the option to use Tailwind CSS is specified when the Next.js project is created.
+- ครั้งนี้ไม่จำเป็นต้องติดตั้งหรือกำหนดค่า Tailwind CSS เนื่องจากมีการระบุตัวเลือกในการใช้ Tailwind CSS เมื่อสร้างโปรเจ็กต์ Next.js
 
-#### External Image Site Setup
+#### การตั้งค่าไซต์รูปภาพภายนอก
 
-This time, we will use the [Image component](https://nextjs.org/docs/pages/building-your-application/optimizing/images) provided by Next.js, which is an extension of the HTML `<img>` element, adapted to the needs of the modern web. Various built-in performance optimizations are included to achieve good Core Web Vitals.
+คราวนี้ เราจะใช้ [Image component](https://nextjs.org/docs/pages/building-your-application/optimizing/images) ที่ได้รับจาก Next.js ซึ่งเป็นส่วนขยายของ HTML `<img >` องค์ประกอบ ปรับให้เข้ากับความต้องการของเว็บยุคใหม่ มีการเพิ่มประสิทธิภาพการทำงานในตัวต่างๆ เพื่อให้ได้ Core Web Vitals ที่ดี
 
-To use external images this time, the `remotePatterns` property must be set in `next.config.js`. For details, see the [description on the official website](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options).
+เพื่อใช้รูปภาพภายนอกในครั้งนี้ ต้องตั้งค่าคุณสมบัติ `remotePatterns` ใน `next.config.js` สำหรับรายละเอียด โปรดดู [คำอธิบายบนเว็บไซต์อย่างเป็นทางการ](https://nextjs.org/docs/pages/api-reference/components/image#configuration-options)
 
-Open `dish-delight/frontend/next.config.js` and replace its contents with the following code:
+เปิด `dish-delight/frontend/next.config.js` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```js
 /** @type {import('next').NextConfig} */
@@ -333,7 +333,7 @@ module.exports = nextConfig;
 
 **หมายเหตุ**:
 
-- `Parsing error: Cannot find module 'next/babel'` in `next.config.js`. This does not affect the behavior, but if you want to fix it, change `.eslintrc.json` to the following.
+- `Parsing error: Cannot find module 'next/babel'` ใน `next.config.js` สิ่งนี้ไม่ส่งผลกระทบต่อพฤติกรรม แต่หากคุณต้องการแก้ไข ให้เปลี่ยน `.eslintrc.json` เป็นดังต่อไปนี้
 
   ```js
   {
@@ -347,9 +347,9 @@ module.exports = nextConfig;
 npm run dev
 ```
 
-Open your browser again and go to <http://localhost:3000> and verify that the Next.js default screen appears.
+เปิดเบราว์เซอร์ของคุณอีกครั้งและไปที่ <http://localhost:3000> และตรวจสอบว่าหน้าจอค่าเริ่มต้นของ Next.js ปรากฏขึ้น
 
-Please leave the development server running. If you want to stop it, you can use Ctrl + c on the command line.
+โปรดปล่อยให้เซิร์ฟเวอร์การพัฒนาทำงานต่อไป หากคุณต้องการหยุดคุณสามารถใช้ Ctrl + c บนบรรทัดคำสั่ง
 
 ### Creating the Home, Menu List, and Menu Detail Screens
 
