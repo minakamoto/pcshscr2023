@@ -890,6 +890,15 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 - このハンズオンの例外処理について
   - フロントエンド、バックエンドともに本ハンズオンでは、Webアプリ開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
 
+TIPS:
+
+- Next.js(ver.13)のRoutingについて
+  - Next.js(ver.13)のRoutingは、AppRouterという名前であり、ファイルシステムの階層に基づいてルートを定義するファイルベースのルーターを使用しています。`app`ディレクトリで動作します。フォルダ(ディレクトリ)はルートを定義するために使われます。ルートはルートフォルダーからpage.jsファイルを含む最終的なリーフフォルダーまでの入れ子になったフォルダーの単一パスです。page.jsファイルは、ルートセグメントに表示されるUIを定義します。
+    - 詳しくは[Next.js公式サイト](https://nextjs.org/docs/app/building-your-application/routing)を確認してください。
+    - 動的なデータからルートを作成したい場合は、フォルダ名を`[]`で囲むことで作成できます。
+      - 上記のメニュー一覧画面であれば、`[storeId]`(`storeId`はHOME画面で選択された店舗ID)、パスは`app/stores/[storeId]/page.tsx`です。
+      - 詳しくは[Next.js公式サイト](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)を確認してください。
+
 #### リファクタリング(バックエンドのAPI呼び出しのための準備)
 
 現状フロントエンドで固定でデータを持っていますが、後ほどの手順でバックエンドのAPI呼び出しによるデータ取得に変更するため、メニュー詳細画面に入る前に、まずはそのための準備のリファクタリングをします。

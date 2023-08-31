@@ -889,6 +889,15 @@ Check to see how this works and looks.
 - About Exception Handling in this Hands-on
   - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
 
+TIPS:
+
+- About Routing in Next.js(ver.13)
+  - Routing in Next.js(ver.13) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app' directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
+    - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing).
+    - If you want to create a route from dynamic data, you can do so by enclosing the folder name in `[]`.
+    - For the Menu List screen above, `[storeId]` (`storeId` is the store ID selected on the HOME screen) and the path is `app/stores/[storeId]/page.tsx`.
+      - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)
+
 #### Refactoring (preparing for backend API calls)
 
 Currently, the frontend has fixed data, but we will change this to data by calling the backend API in a later step.
