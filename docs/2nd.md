@@ -287,7 +287,7 @@ Press Ctrl + c to stop.
 #### Modifying the globals.css settings
 
 Edit the default globals.css settings.  
-Open `dish-delight/frontend/app/globals.css' and replace its contents with the following code:
+Open `dish-delight/frontend/app/globals.css` and replace its contents with the following code:
 
 ```css
 @tailwind base;

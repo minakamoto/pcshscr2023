@@ -158,11 +158,11 @@
           }
           ```
 
-### Creating a project
+### การสร้างโครงการ
 
-#### Creating a project directory
+#### การสร้างไดเร็กทอรีโครงการ
 
-Create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. รันคำสั่งต่อไปนี้
+สร้างไดเร็กทอรี `dish-delight` และสร้างไดเร็กทอรี `frontend` และไดเร็กทอรี `backend` ในนั้น รันคำสั่งต่อไปนี้
 
 ```sh
 mkdir dish-delight/backend
@@ -170,7 +170,7 @@ mkdir dish-delight/frontend
 cd dish-delight
 ```
 
-#### Creating a frontend(Next.js) project
+#### การสร้างโครง frontend (Next.js)
 
 รันคำสั่งต่อไปนี้
 
@@ -179,7 +179,7 @@ cd frontend
 npx create-next-app .
 ```
 
-When you run the above commands, you will be asked a question at the command prompt. Answer the questions as follows
+เมื่อคุณรันคำสั่งข้างต้น คุณจะถูกถามคำถามที่พรอมต์คำสั่ง ตอบคำถามดังนี้
 
 ```sh
 ✔ Would you like to use TypeScript? … Yes
@@ -191,7 +191,7 @@ When you run the above commands, you will be asked a question at the command pro
 ```
 
 **หมายเหตุ**:  
-If you get the following error, run `npm i -g npx` and try again. For more information, see the [Next.js official issue](https://github.com/vercel/next.js/discussions/39997).
+หากคุณได้รับข้อผิดพลาดต่อไปนี้ ให้เรียกใช้ `npm i -g npx` แล้วลองอีกครั้ง สำหรับข้อมูลเพิ่มเติม โปรดดูที่ [ปัญหาทางเทคนิคอย่างเป็นทางการของ Next.js](https://github.com/vercel/next.js/discussions/39997)
 
 ```sh
 $ npx create-next-app
@@ -209,7 +209,7 @@ npm ERR!     /home/zxytim/.npm/_logs/2022-08-27T03_37_34_606Z-debug-0.log
 Waiting for the debugger to disconnect...
 ```
 
-#### Initialize the backend project
+#### เริ่มต้นโครงการ backend
 
 รันคำสั่งต่อไปนี้
 
@@ -223,13 +223,13 @@ rye pin 3.11
 rye sync
 ```
 
-Run the following command and verify that `Python 3.11.X` (where `X` is the number of the latest minor version. Example: `Python 3.11.3`).
+รันคำสั่งต่อไปนี้และตรวจสอบว่า `Python 3.11.X` (โดยที่ `X` คือหมายเลขของเวอร์ชันรองล่าสุด ตัวอย่าง: `Python 3.11.3`)
 
 ```sh
 python --version
 ```
 
-#### Install necessary libraries and tools
+#### ติดตั้งไลบรารีและเครื่องมือที่จำเป็น
 
 รันคำสั่งต่อไปนี้
 
@@ -288,7 +288,7 @@ Press Ctrl + c to stop.
 #### Modifying the globals.css settings
 
 Edit the default globals.css settings.  
-Open `dish-delight/frontend/app/globals.css' and replace its contents with the following code:
+Open `dish-delight/frontend/app/globals.css` and replace its contents with the following code:
 
 ```css
 @tailwind base;
