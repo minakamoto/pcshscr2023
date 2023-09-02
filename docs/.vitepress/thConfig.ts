@@ -3,7 +3,7 @@ import { DefaultTheme, LocaleSpecificConfig } from "vitepress";
 export const thConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
   themeConfig: {
     nav: [
-      { text: "Home", link: "/" },
+      { text: "Home", link: "/th" },
       { text: "Web App", link: "/th/README" },
     ],
 
