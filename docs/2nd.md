@@ -475,9 +475,9 @@ This hands-on layout will focus on mobile-first UI design. From this point on, w
 
 Please follow the instructions below and use the browser's developer tools to resize the screen to the size of a mobile phone or smartphone.
 
-- Open your browser and go to `Developer Tools
-  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools
-  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools
+- Open your browser and go to `Developer Tools`
+  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools"
+  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools"
   - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
 - In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
   - In Windows, the shortcut key is `Shift+Ctrl+m`.

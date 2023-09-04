@@ -351,14 +351,14 @@ npm run dev
 
 โปรดปล่อยให้เซิร์ฟเวอร์การพัฒนาทำงานต่อไป หากคุณต้องการหยุดคุณสามารถใช้ Ctrl + c บนบรรทัดคำสั่ง
 
-### Creating the Home, Menu List, and Menu Detail Screens
+### การสร้างหน้าจอ Home และ Menu List และหน้าจอ Menu Detail
 
-#### Implementing the Home Screen
+#### การสสร้างหน้าจอ Home
 
-Place 4 logo image files to be used on the screens in `dish-delight/frontend/public`:
+วางไฟล์ภาพโลโก้ 4 ไฟล์ที่จะใช้บนหน้าจอใน `dish-delight/frontend/public`:
 
-All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo). The following four files are available.  
-The svg file is the logo used in Navbar, and the jpeg file is the logo of each store. The logo of each store is specified in the img of the store data.
+ภาพเป้าหมายทั้งหมดควรได้รับจาก [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo). มีสี่ไฟล์ต่อไปนี้  
+ไฟล์ svg คือโลโก้ที่ใช้ใน Navbar และไฟล์ jpeg คือโลโก้ของแต่ละร้าน โลโก้ของแต่ละร้านค้าระบุไว้ใน img ของ store data
 
 - aroy_logo.jpeg
 - buono_logo.jpeg
@@ -367,9 +367,9 @@ The svg file is the logo used in Navbar, and the jpeg file is the logo of each s
 
 **หมายเหตุ**:
 
-- These images were created from within Bing using `Image Creator` (`DALL-E`).
+- รูปภาพเหล่านี้สร้างขึ้นจากภายใน Bing โดยใช้ `Image Creator`(`DALL-E`).
 
-Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -467,33 +467,33 @@ export default function Home() {
 }
 ```
 
-- Verify that the appearance is as follows
+- ตรวจสอบว่าลักษณะที่ปรากฏมีดังนี้
   ![PC Home](../static/img/2nd/docs/home_pc.png)
-- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the menu list screen.
-  - Since the screen has not been created yet, "404 This page could not be found" will be displayed.
+- การคลิกที่การ์ด `Sakura-tei`, `Aroy` หรือ `Buono` จะนำคุณไปยังหน้าจอ Menu List
+  - เนื่องจากยังไม่ได้สร้างหน้าจอ ข้อความ "404 This page could not be found" จะปรากฏขึ้น
 
-This hands-on layout will focus on mobile-first UI design. From this point on, we will assume that the display is confirmed to be smartphone size.
+เค้าโครงแบบ hands-on นี้จะมุ่งเน้นไปที่การออกแบบ UI บนมือถือเป็นหลัก จากจุดนี้เป็นต้นไป เราจะถือว่าจอแสดงผลมีขนาดเท่ากับสมาร์ทโฟน
 
-Please follow the instructions below and use the browser's developer tools to resize the screen to the size of a mobile phone or smartphone.
+โปรดปฏิบัติตามคำแนะนำด้านล่างและใช้เครื่องมือสำหรับนักพัฒนาเบราว์เซอร์เพื่อปรับขนาดหน้าจอให้เป็นขนาดของโทรศัพท์มือถือหรือสมาร์ทโฟน
 
-- Open your browser and go to `Developer Tools
-  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools
-  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools
-  - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
-- In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
-  - In Windows, the shortcut key is `Shift+Ctrl+m`.
+- เปิดเบราว์เซอร์ของคุณแล้วไปที่ `Developer Tools`
+  - หากคุณใช้ Chrome ไปที่ "Menu" -> "Other Tools" -> "Developer Tools"
+  - หากคุณใช้ Edge ไปที่ "Menu" -> "Other Tools" -> "Developer Tools"
+  - หากคุณใช้ Windows ทางลัดจะเหมือนกันสำหรับเบราว์เซอร์ทั้งหมด: `Shift+Ctrl+i`
+- ในเครื่องมือสำหรับนักพัฒนา ให้คลิกปุ่มที่มีไอคอนด้านบนซึ่งดูเหมือนคอมพิวเตอร์ตั้งโต๊ะและสมาร์ทโฟนซ้อนทับกัน (ดูด้านขวาของภาพด้านล่าง)
+  - ใน Windows ปุ่มลัดคือ `Shift+Ctrl+m`
     ![Developer tool](../static/img/2nd/docs/developer_tool.png)
-- Select the terminal to you want to simulate from the menu at the top left of the screen (see the left side of the image above).
-  - Or you can adjust the size yourself in `Responsive` mode.
+- เลือกเทอร์มินัลที่คุณต้องการจำลองจากเมนูที่ด้านซ้ายบนของหน้าจอ (ดูด้านซ้ายของภาพด้านบน)
+  - หรือคุณสามารถปรับขนาดได้ด้วยตัวเองในโหมด "Responsive"
 
-When you make the size equivalent to a smartphone, make sure it has the following appearance
+เมื่อคุณทำให้ขนาดเทียบเท่ากับสมาร์ทโฟน ตรวจสอบให้แน่ใจว่ามีลักษณะดังต่อไปนี้
 
-- To be in the layout of the above capture.
-- The store's Card must be arranged vertically.
-  - `Sakura-tei`, `Aroy`, `Buono` in that order.
+- ต้องอยู่ในเลย์เอาต์ตามภาพที่แสดงข้างบน
+- บัตรของร้านค้าจะต้องจัดเรียงในแนวตั้ง
+  - `Sakura-tei`, `Aroy`, `Buono` ตามลำดับ
 
 คำแนะนำ:
-If it is tablet size, there are two columns.
+ถ้าเป็นขนาดแท็บเล็ตจะมีสองคอลัมน์
 
 #### Making the Navbar into a component
 
@@ -528,7 +528,7 @@ export default function Navbar() {
 }
 ```
 
-Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -618,7 +618,7 @@ Implement the Menu List screen that is displayed after a store is selected on th
 
 In the Menu List screen, first modify the Navbar component to display the store name and a link to the menu list (`MENUS` in the UI) in the Navbar.
 
-Open `dish-delight/frontend/components/Navbar.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/components/Navbar.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/components/Navbar.tsx
@@ -1091,7 +1091,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 **หมายเหตุ**:  
 There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend APIs are replaced, there are fewer changes.
 
-Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/page.tsx
@@ -1146,7 +1146,7 @@ export default async function Home() {
 }
 ```
 
-Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/stores/[storeId]/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1409,7 +1409,7 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
 
 Replace the error screen on each screen with the component just created.
 
-Open `dish-delight/frontend/app/stores/[storeId]/page.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/stores/[storeId]/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -1466,7 +1466,7 @@ export default async function StoreMenu({
 }
 ```
 
-Open `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1542,7 +1542,7 @@ Currently, the Next.js default title and favicon are as follows. Fix this.
 
 <img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
-Open `dish-delight/frontend/app/layout.tsx` and replace its contents with the following code:
+เปิด `dish-delight/frontend/app/layout.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 import "./globals.css";
@@ -1990,7 +1990,7 @@ Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`)
 
 Modify the frontend to get data from the backend API.
 
-Open `dish-delight/frontend/lib/api.ts` and replace its contents with the following code:
+เปิด `dish-delight/frontend/lib/api.ts` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```ts
 // dish-delight/frontend/lib/api.ts
