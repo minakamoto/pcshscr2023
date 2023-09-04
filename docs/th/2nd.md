@@ -1580,13 +1580,13 @@ export default function RootLayout({
 
   <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
-## 3. Connecting to the database and returning data
+## 3. การเชื่อมต่อกับฐานข้อมูลและการส่งคืนข้อมูล
 
-From here, it is time to implement the backend. Once the backend processing is implemented, modify the frontend and connect it to the backend.
+จากนี้ไปก็ถึงเวลา backend แล้ว เมื่อนำการประมวลผล backend ไปใช้แล้ว ให้แก้ไข frontend และเชื่อมต่อกับแบ็กเอนด์
 
-### Configure database connection settings
+### กำหนดการตั้งค่าการเชื่อมต่อฐานข้อมูล
 
-Connect to a SQLite database using ORM's SQLAlchemy.
+เชื่อมต่อกับฐานข้อมูล SQLite โดยใช้ SQLAlchemy ของ ORM
 
 สร้างไฟล์ `dish-delight/backend/src/backend/database.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1619,11 +1619,11 @@ Base = declarative_base()
 
 คำแนะนำ:
 
-- What is ORM?
+- ORM คืออะไร?
   - ORM stands for Object-Relational Mapping, a technology that automates the mapping between objects in a program and tables and records in a database. ORM is an object-oriented way of working with databases.
-- About SQLite
+- เกี่ยวกับ SQLite
   - SQLite is a lightweight, embedded relational database management system (RDBMS) that requires no server and runs as a single file on disk. SQLite is included in Python as a standard part of Python, so it can be used automatically when Python is installed.
-- About SQLAlchemy
+- เกี่ยวกับ SQLAlchemy
   - We use SQLAlchemy for our hands-on ORM, which is a Python SQL toolkit and ORM library. It simplifies database operations and allows database tables to be represented as Python classes. This allows database operations to be performed in Python's object-oriented programming style.
 - Code and explanations about databases and SQL are taken from [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases). If you want to know more details, please check there.
 
@@ -1973,15 +1973,15 @@ Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`)
 
 คำแนะนำ:
 
-- About API
+- เกี่ยวกับ API
 
   - APIs are communication interfaces between programs and are generally broadly divided into RestAPI and GraphQL.
     - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing share and communicating information between different applications and services.
   - The OpenAPI specification is intended to support the design, description, documentation, and testing of RestAPI.
   - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
 
-- About running FastAPI
-- Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
+- เกี่ยวกับ running FastAPI
+  - Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
 
   ```sh
   uvicorn main:app --reload
@@ -2074,7 +2074,7 @@ Try changing the store and the menu to check the operation. Try using the `Navba
 
 **หมายเหตุ**:
 
-- About the URL to connect to the backend
+- เกี่ยวกับ the URL to connect to the backend
   - In this hands-on, this is a simple implementation to work in the local environment only. For actual development, please define it in an `env` file. The same goes for the backend (FastAPI) (e.g., you need to configure `CORS` when deploying it).
 
 ## 4. At the end

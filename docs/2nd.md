@@ -1980,7 +1980,7 @@ TIPS:
   - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
 
 - About running FastAPI
-- Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
+  - Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
 
   ```sh
   uvicorn main:app --reload
