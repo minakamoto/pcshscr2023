@@ -353,7 +353,7 @@ npm run dev
 
 ### การสร้างหน้าจอ Home และ Menu List และหน้าจอ Menu Detail
 
-#### การสสร้างหน้าจอ Home
+#### การสร้างหน้าจอ Home
 
 วางไฟล์ภาพโลโก้ 4 ไฟล์ที่จะใช้บนหน้าจอใน `dish-delight/frontend/public`:
 
@@ -369,6 +369,7 @@ npm run dev
 
 - รูปภาพเหล่านี้สร้างขึ้นจากภายใน Bing โดยใช้ `Image Creator`(`DALL-E`).
 
+สร้างหน้าจอ Home
 เปิด `dish-delight/frontend/app/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
@@ -495,11 +496,11 @@ export default function Home() {
 คำแนะนำ:
 ถ้าเป็นขนาดแท็บเล็ตจะมีสองคอลัมน์
 
-#### Making the Navbar into a component
+#### ทำให้ Navbar เป็น component
 
-To use the same Navbar in the menu list and menu detail screens, make the Navbar into a component.
+เพื่อใช้ Navbar เดียวกันในหน้าจอ Menu List และ Menu Detail จงทำ Navbar เป็น component เดียวกัน
 
-Create the `dish-delight/frontend/components/Navbar.tsx` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/frontend/components/Navbar.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // components/Navbar.tsx
@@ -610,13 +611,13 @@ export default function Home() {
 }
 ```
 
-Open the browser and verify that the operation or appearance of the application has not changed.
+เปิดเบราว์เซอร์และตรวจสอบว่าการทำงานหรือรูปลักษณ์ของแอปพลิเคชันไม่มีการเปลี่ยนแปลง
 
-#### Implementing the Menu List screen
+#### การสสร้างหน้าจอ Menu List
 
-Implement the Menu List screen that is displayed after a store is selected on the Home screen.
+สร้างหน้าจอ Menu List ที่แสดงหลังจากเลือกร้านค้าบนหน้าจอ Home
 
-In the Menu List screen, first modify the Navbar component to display the store name and a link to the menu list (`MENUS` in the UI) in the Navbar.
+ทีแรก ให้แก้ไข Navbar comonent เพื่อแสดงชื่อร้านค้าและลิงก์ไปยัง Menu List (`MENUS` ใน UI) ใน Navbar บนหน้าจอ Menu List
 
 เปิด `dish-delight/frontend/components/Navbar.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -682,9 +683,9 @@ export default function Navbar({ storeName, storeId }: NavbarProps) {
 }
 ```
 
-Implement the Menu List screen
+สร้างหน้าจอ Menu List
 
-Create the `dish-delight/frontend/app/stores/[storeId]/page.tsx` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/frontend/app/stores/[storeId]/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/page.tsx
@@ -870,54 +871,54 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
-- Click on the `Sakura-tei` card on the Home screen to display the menu list screen.
-  - Four menus are displayed.
+- คลิกที่การ์ด `Sakura-tei` บนหน้าจอ Home เพื่อแสดงหน้าจอ Menu List
+  - สี่เมนูจะปรากฏขึ้น
     <img src="../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
-- Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
-- Clicking `CARD` on any of the menus on the Menu List screen should take you to the Menu Details screen.
-  - (Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
-- Clicking on the `Aroy` card on the Home screen will take you to the Menu List screen.
-  - A menu should appear.
-- Clicking the `Bohno` card on the Home screen, it should take you to the Menu list screen.
-  - An error message appears because there is no menu.
+- การกด `HOME` บน Navbar จะนำคุณไปที่หน้าจอ HOME และการกด `MENUS` จะนำคุณไปยังหน้าจอ Menu List
+- การคลิก `CARD` ในเมนูใดๆ บนหน้าจอ Menu List จะนำคุณไปยังหน้าจอ Menu Detail
+  - เนื่องจากยังไม่ได้สร้างหน้าจอนี้ คุณจะเห็นข้อความ "404 This page could not be found"
+- การคลิกที่การ์ด `Aroy` บนหน้าจอ Home จะนำคุณไปยังหน้าจอ Menu List
+  - เมนูควรปรากฏขึ้น
+- การคลิกที่การ์ด `Bohno` บนหน้าจอ Home จะนำคุณไปยังหน้าจอ Menu List
+  - ข้อความแสดงข้อผิดพลาดปรากฏขึ้นเนื่องจากไม่มีเมนู
     <img src="../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
-  - Add processing for cases where the store or menu does not exist to the implementation.
-    - The above is the case where the menu does not exist, but please check the operation even if the store does not exist.
-      - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
+  - เพิ่มการประมวลผลในกรณีที่ไม่มีร้านค้าหรือเมนู
+    - ข้างต้นเป็นกรณีที่ไม่มีเมนู แต่โปรดตรวจสอบว่าไม่มีร้านค้าด้วย
+      - เขียนโค้ดใหม่ชั่วคราว (เช่น ตั้งค่าข้อมูลที่ได้มาเป็น 0 ลบคำสั่ง if เป็นต้น) เพื่อดูว่าปรากฏขึ้นหรือไม่
 
 **หมายเหตุ**:
 
-- About Exception Handling in this Hands-on
-  - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
+- เกี่ยวกับการจัดการข้อยกเว้นใน hands-on นี้
+  - ใน hands-on ทั้ง frontend และ backend การจัดการข้อยกเว้นจะถูกนำไปใช้ในวิธีที่ง่ายขึ้น เนื่องจากมุ่งเน้นไปที่ประสบการณ์ในการพัฒนาแอปพลิเคชันเว็บ ในการพัฒนาจริง ๆ โปรดพัฒนาด้วยความเหมาะสมโดยใส่ใจถึงความต้องการและปัจจัยทางเทคนิคครับ
 
-TIPS:
+คำแนะนำ:
 
-- About Routing in Next.js(ver.13)
-  - Routing in Next.js(ver.13) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app' directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
-    - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing).
-    - If you want to create a route from dynamic data, you can do so by enclosing the folder name in `[]`.
-    - For the Menu List screen above, `[storeId]` (`storeId` is the store ID selected on the HOME screen) and the path is `app/stores/[storeId]/page.tsx`.
-      - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)
+- เกี่ยวกับการกำหนดเส้นทาง(routing)ใน Next.js (ver.13)
+  - การกำหนดเส้นทางใน Next.js (ver.13) เรียกว่า AppRouter และใช้เราเตอร์แบบไฟล์ซึ่งกำหนดเส้นทางตามลำดับชั้นของระบบไฟล์ มันใช้งานได้กับไดเร็กทอรี `app` โฟลเดอร์ (ไดเร็กทอรี) ใช้เพื่อกำหนดเส้นทาง รูท(root)คือพาธ(path)เดียวของโฟลเดอร์ที่ซ้อนกันจากโฟลเดอร์รูทไปยังโฟลเดอร์ลีฟ(leaf)สุดท้ายที่มีไฟล์ page.js ไฟล์ page.js กำหนด UI ที่จะปรากฏในส่วนราก
+    - สำหรับข้อมูลเพิ่มเติม โปรดดูที่ [เว็บไซต์ Next.js อย่างเป็นทางการ](https://nextjs.org/docs/app/building-your-application/routing).
+    - หากคุณต้องการสร้างเส้นทางจากข้อมูลไดนามิก คุณสามารถทำได้โดยใส่ชื่อโฟลเดอร์ไว้ใน `[]`
+    - สำหรับหน้าจอ Menu List ด้านบน `[storeId]` (`storeId` คือรหัสร้านค้าที่เลือกบนหน้าจอหน้า Home) และเส้นทางคือ `app/stores/[storeId]/page.tsx`
+      - สำหรับข้อมูลเพิ่มเติม โปรดดูที่ [เว็บไซต์ Next.js อย่างเป็นทางการ](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)
 
-#### Refactoring (preparing for backend API calls)
+#### การ Refactoring (การเตรียมการเรียก backend API)
 
-Currently, the frontend has fixed data, but we will change this to data by calling the backend API in a later step.
+ขณะนี้ frontend มีข้อมูลที่คงที่ แต่เราจะเปลี่ยนข้อมูลนี้เป็นข้อมูลโดยการเรียก backend API ในขั้นตอนต่อไป
 
-The flow (detailed steps) of the refactoring is as follows.  
-However, this flow only shows the steps. As before, the modified code is described by overwriting each file.  
-If you have more time, please follow this flow and refactor the code by yourself and compare it to the modified code.
+ขั้นตอน (ขั้นตอนโดยละเอียด) ของการ refactoring มีดังนี้
+อย่างไรก็ตาม ขั้นตอนนี้จะแสดงเฉพาะขั้นตอนเท่านั้น เช่นเดียวกับเมื่อก่อน โค้ดที่แก้ไขจะอธิบายโดยการเขียนทับแต่ละไฟล์  
+หากคุณมีเวลามาก โปรดทำตามขั้นตอนนี้และ refactorโค้ดด้วยตัวเอง และเปรียบเทียบกับโค้ดที่แก้ไข
 
-1. move the fixed store data from `dish-delight/frontend/app/page.tsx` to `dish-delight/frontend/lib/api.tsx`.
-1. create a `getStores` method in `dish-delight/frontend/lib/api.tx` to return all store data.
-1. call the `getStores` method in `dish-delight/frontend/lib/api.tx` instead of calling fixed store data in `dish-delight/frontend/app/page.tsx`.
-1. create a `getStore` method in `dish-delight/frontend/lib/api.tsx` to return only the specified stores.
-1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `stores` in `dish-delight/frontend/app/page.tsx` to `dish-delight/frontend/lib/api.tx` to call `getStore` method in `dish-delight/frontend/lib/api.tx`.
-1. move the menu fixed data from `dish-delight/frontend/app/stores/[storeId]/page.tsx` to `dish-delight/frontend/lib/api.tsx.
-1. create a `getMenus` method in `dish-delight/frontend/lib/api.tsx` to return all menus of the specified store.
-   - We want to specify the type of response, so we also define the type of menu.
-1. change `dish-delight/frontend/app/stores/[storeId]/page.tsx` from calling `menus` in `dish-delight/frontend/app/page.tsx` to calling `getMenus` method in `dish-delight/frontend/lib/api.tsx`
+1. ย้ายข้อมูลร้านค้าคงที่จาก `dish-delight/frontend/app/page.tsx` ไปที่ `dish-delight/frontend/lib/api.tsx`
+1. สร้างเมธอด `getStores` ใน `dish-delight/frontend/lib/api.tx` เพื่อส่งคืนข้อมูลร้านค้าทั้งหมด
+1. เรียกใช้เมธอด `getStores` ใน `dish-delight/frontend/lib/api.tx` แทนที่จะเรียกข้อมูลร้านค้าคงที่ใน `dish-delight/frontend/app/page.tsx`
+1. สร้างเมธอด `getStore` ใน `dish-delight/frontend/lib/api.tsx` เพื่อส่งคืนเฉพาะร้านค้าที่ระบุ
+1. เปลี่ยน `dish-delight/frontend/app/stores/[storeId]/page.tsx` จากการเรียก `stores` ใน `dish-delight/frontend/app/page.tsx` เป็น `dish-delight/frontend/lib/api.tx` เพื่อเรียกใช้เมธอด `getStore` ใน `dish-delight/frontend/lib/api.tx`
+1. ย้ายข้อมูลคงที่ของเมนูจาก `dish-delight/frontend/app/stores/[storeId]/page.tsx` ไปที่ `dish-delight/frontend/lib/api.tsx`
+1. สร้างเมธอด `getMenus` ใน `dish-delight/frontend/lib/api.tsx` เพื่อส่งคืนเมนูทั้งหมดของร้านค้าที่ระบุ
+   - เราต้องการระบุประเภทการตอบกลับดังนั้นเราจึงกำหนดประเภทเมนูด้วย
+1. เปลี่ยน `dish-delight/frontend/app/stores/[storeId]/page.tsx` จากการเรียก `menus` ใน `dish-delight/frontend/app/page.tsx` เป็นการเรียกเมธอด `getMenus` ใน `dish-delight/frontend/lib/api.tsx`
 
-Create the `dish-delight/frontend/lib/api.tsx` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/frontend/lib/api.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/lib/api.tsx
@@ -1089,7 +1090,7 @@ export async function getMenus(storeId: number): Promise<Menu[]> {
 ```
 
 **หมายเหตุ**:  
-There is no need at all to add async/await for asynchronous processing to get fixed data. The async/await is added so that when the backend APIs are replaced, there are fewer changes.
+ไม่จำเป็นต้องเพิ่ม async/await สำหรับการประมวลผลแบบ asynchronous เพื่อรับข้อมูลคงที่เลย มีการเพิ่ม async/await เพื่อให้เมื่อมีการแทนที่ backend API จะมีการเปลี่ยนแปลงน้อยลง
 
 เปิด `dish-delight/frontend/app/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1219,13 +1220,13 @@ export default async function StoreMenu({
 }
 ```
 
-Verify that there are no changes in behavior or appearance.  
+ตรวจสอบว่าไม่มีการเปลี่ยนแปลงพฤติกรรมหรือรูปลักษณ์  
 
-#### Implementing the Menu Detail screen
+#### การสร้างหน้าจอ Menu Detail
 
-This section implements the menu detail screen that is displayed after a menu item is selected from the menu list screen.
+ส่วนนี้จะสร้างหน้าจอ Menu Detail ที่แสดงหลังจากเลือกรายการเมนูจากหน้าจอ Menu List
 
-The directory structure of the Menu Detail screen is as follows (only relevant files are quoted).
+โครงสร้างไดเรกทอรีของหน้าจอ Menu Detail มีดังนี้ (อ้างอิงเฉพาะไฟล์ที่เกี่ยวข้องเท่านั้น)
 
 ```sh
 dish-delight/frontend
@@ -1253,8 +1254,8 @@ dish-delight/frontend
 └── tailwind.config.js
 ```
 
-To display the menu details screen, first implement the menu get function.
-Open the `dish-delight/frontend/lib/api.tsx` file and add the following code at the bottom:
+เพื่อแสดงหน้าจอ Menu Detail ให้เพิ่มฟังก์ชันเพื่อรับเมนูก่อน
+เปิดไฟล์ `dish-delight/frontend/lib/api.tsx` และเพิ่มโค้ดต่อไปนี้ที่ด้านล่าง:
 
 ```tsx
 // lib/api.tsx
@@ -1266,8 +1267,8 @@ export async function getMenu(
 }
 ```
 
-Implement the Menu Detail screen.
-Create the `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` file and replace its contents with the following code:
+การสร้างหน้าจอ Menu Detail
+สร้างไฟล์ `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx
@@ -1352,26 +1353,26 @@ export default async function Menu({
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
-- Clicking on any of the menu cards in the menu list screen should take the user to the menu details screen.
-  - The appropriate menu image, description and option should be displayed.
-    - Example: `Khao Soi` at the `Aroy` store (without Option)
+- การคลิกที่การ์ดเมนูใดๆ ในหน้าจอ Menu List จะนำผู้ใช้ไปยังหน้าจอ Menu Detail
+  - ควรแสดงรูปภาพเมนู คำอธิบาย และตัวเลือกที่เหมาะสม
+    - ตัวอย่าง: `Khao Soi` ที่ร้าน `Aroy` (ไม่มีตัวเลือก)
     <img src="../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
-    - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
+    - ตัวอย่าง: `Sanuki Udon` ที่ร้าน `Sakura-tei` (มีตัวเลือก)
     <img src="../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
-- Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
-- Error screen if store or menu does not exist
-  - The image is the same as the menu list screen
+- การกด `HOME` บน Navbar จะนำคุณไปที่หน้าจอ HOME และการกด 'MENUS` จะนำคุณไปยังหน้าจอ Menu List
+- หน้าจอแสดงข้อผิดพลาดหากไม่มีร้านค้าหรือเมนู
+  - ภาพจะเหมือนกับหน้าจอ Menu List
 
-#### Refactoring (componentization of error screen for data fetching)
+#### Refactoring (ทำให้หน้าจอข้อผิดพลาดเป็น component เมื่อไม่มีการดึงข้อมูล)
 
-The screen for store and menu data get when it does not exist is redundant and should be made into a component.
+โค้ดเมื่อไม่มีข้อมูลร้านค้าหรือเมนูนั้นซ้ำซ้อนและควรถูกทำให้เป็น component
 
-The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be componentized.
+การ refactoring มีเป้าหมายไปที่หน้าจอสองหน้าจอต่อไปนี้ แต่ละไฟล์มีหน้าจอในกรณีที่ไม่มีร้านค้าหรือเมนูเมื่อดึงข้อมูล สิ่งเหล่านี้จะถูกจัดเป็น component
 
 - `dish-delight/frontend/app/stores/[storeId]/page.tsx`
 - `dish-delight/frontend/app/stores/[storeId]/menus/[menuId]/page.tsx`
 
-To store fixed messages, Create the `dish-delight/frontend/lib/constants.ts` file and replace its contents with the following code:
+เพื่อจัดเก็บข้อความคงที่, สร้างไฟล์ `dish-delight/frontend/lib/constants.ts` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```ts
 // dish-delight/frontend/lib/constants.ts
@@ -1382,8 +1383,8 @@ export const DATA_NOT_FOUND_MESSAGE = {
 };
 ```
 
-Componentize error screen.
-Create the `dish-delight/frontend/components/DataNotFound.tsx` file and replace its contents with the following code:
+ทำให้หน้าจอข้อผิดพลาดเป็น component
+สร้างไฟล์ `dish-delight/frontend/components/DataNotFound.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```tsx
 // dish-delight/frontend/components/DataNotFound.tsx
@@ -1407,7 +1408,7 @@ export default function DataNotFound({ message }: DataNotFoundProps) {
 }
 ```
 
-Replace the error screen on each screen with the component just created.
+แทนที่หน้าจอข้อผิดพลาดในแต่ละหน้าจอด้วย component ที่เพิ่งสร้างขึ้น
 
 เปิด `dish-delight/frontend/app/stores/[storeId]/page.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1532,13 +1533,13 @@ export default async function Menu({
 }
 ```
 
-Verify that there are no changes in behavior or appearance.
+ตรวจสอบว่าไม่มีการเปลี่ยนแปลงพฤติกรรมหรือรูปลักษณ์
 
-#### Setting the site title and favicon
+#### การตั้งชื่อเว็บไซต์และ favicon
 
-The above is the end of the frontend part, but the last step is to change only the site title and favicon.
+ด้านบนคือจุดสิ้นสุดของ frontend แต่ขั้นตอนสุดท้ายคือการเปลี่ยนชื่อไซต์และ favicon เท่านั้น
 
-Currently, the Next.js default title and favicon are as follows. Fix this.
+ปัจจุบัน ชื่อและ favicon เป็นค่าเริ่มต้นของ Nextjs แก้ไขปัญหานี้
 
 <img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
@@ -1569,13 +1570,13 @@ export default function RootLayout({
 }
 ```
 
-Replace `dish-delight/frontend/app/favicon.ico`:
+แทนที่ `dish-delight/frontend/app/favicon.ico`:
 
-Target images should be obtained from [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
+ควรได้รับภาพเป้าหมายจาก [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
-- Make sure the site title and favicon are the same as in the following image.
+- ตรวจสอบให้แน่ใจว่าชื่อไซต์และ favicon เหมือนกับในภาพต่อไปนี้
 
   <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
@@ -1587,7 +1588,7 @@ From here, it is time to implement the backend. Once the backend processing is i
 
 Connect to a SQLite database using ORM's SQLAlchemy.
 
-Create the `dish-delight/backend/src/backend/database.py` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/backend/src/backend/database.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```py
 # dish-delight/backend/src/backend/database.py
@@ -1637,7 +1638,7 @@ Base = declarative_base()
 
 Define the tables (database model) using SQLAlchemy.
 
-Create the `dish-delight/backend/src/backend/models.py` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/backend/src/backend/models.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```py
 # dish-delight/backend/src/backend/models.py
@@ -1728,7 +1729,7 @@ Create the APIs to retrieve store lists and store details, and menu lists and me
 
 First, create a data model (Pydantic's model) for the APIs.
   
-Create the `dish-delight/backend/src/backend/schemas.py` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/backend/src/backend/schemas.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```py
 # dish-delight/backend/src/backend/schemas.py
@@ -1774,7 +1775,7 @@ class Menu(BaseModel):
 ```
 
 Create the APIs.  
-Create the `dish-delight/backend/src/backend/main.py` file and replace its contents with the following code:
+สร้างไฟล์ `dish-delight/backend/src/backend/main.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```py
 from fastapi import FastAPI, Depends, HTTPException

@@ -368,6 +368,7 @@ The svg file is the logo used in Navbar, and the jpeg file is the logo of each s
 
 - These images were created from within Bing using `Image Creator` (`DALL-E`).
 
+Implement the Home screen.
 Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
@@ -468,7 +469,7 @@ export default function Home() {
 
 - Verify that the appearance is as follows
   ![PC Home](./static/img/2nd/docs/home_pc.png)
-- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the menu list screen.
+- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the Menu List screen.
   - Since the screen has not been created yet, "404 This page could not be found" will be displayed.
 
 This hands-on layout will focus on mobile-first UI design. From this point on, we will assume that the display is confirmed to be smartphone size.
@@ -496,7 +497,7 @@ If it is tablet size, there are two columns.
 
 #### Making the Navbar into a component
 
-To use the same Navbar in the menu list and menu detail screens, make the Navbar into a component.
+To use the same Navbar in the Menu List and menu detail screens, make the Navbar into a component.
 
 Create the `dish-delight/frontend/components/Navbar.tsx` file and replace its contents with the following code:
 
@@ -615,7 +616,7 @@ Open the browser and verify that the operation or appearance of the application 
 
 Implement the Menu List screen that is displayed after a store is selected on the Home screen.
 
-In the Menu List screen, first modify the Navbar component to display the store name and a link to the menu list (`MENUS` in the UI) in the Navbar.
+First modify the Navbar component to display the store name and a link to the Menu List (`MENUS` in the UI) in the Navbar on the Menu List screen.
 
 Open `dish-delight/frontend/components/Navbar.tsx` and replace its contents with the following code:
 
@@ -869,19 +870,19 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 Check to see how this works and looks.
 
-- Click on the `Sakura-tei` card on the Home screen to display the menu list screen.
+- Click on the `Sakura-tei` card on the Home screen to display the Menu List screen.
   - Four menus are displayed.
     <img src="./static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
 - Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
 - Clicking `CARD` on any of the menus on the Menu List screen should take you to the Menu Details screen.
-  - (Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
+  - Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
 - Clicking on the `Aroy` card on the Home screen will take you to the Menu List screen.
   - A menu should appear.
 - Clicking the `Bohno` card on the Home screen, it should take you to the Menu list screen.
   - An error message appears because there is no menu.
     <img src="./static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
-  - Add processing for cases where the store or menu does not exist to the implementation.
-    - The above is the case where the menu does not exist, but please check the operation even if the store does not exist.
+  - Added processing for cases where the store or menu does not exist.
+    - The above is the case where the menu does not exist, but please also check if the store does not exist.
       - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
 
 **NOTE**:
@@ -892,7 +893,7 @@ Check to see how this works and looks.
 TIPS:
 
 - About Routing in Next.js(ver.13)
-  - Routing in Next.js(ver.13) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app' directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
+  - Routing in Next.js(ver.13) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app` directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
     - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing).
     - If you want to create a route from dynamic data, you can do so by enclosing the folder name in `[]`.
     - For the Menu List screen above, `[storeId]` (`storeId` is the store ID selected on the HOME screen) and the path is `app/stores/[storeId]/page.tsx`.
@@ -1222,7 +1223,7 @@ Verify that there are no changes in behavior or appearance.
 
 #### Implementing the Menu Detail screen
 
-This section implements the menu detail screen that is displayed after a menu item is selected from the menu list screen.
+This section implements the Menu Detail screen that is displayed after a menu item is selected from the Menu List screen.
 
 The directory structure of the Menu Detail screen is as follows (only relevant files are quoted).
 
@@ -1351,7 +1352,7 @@ export default async function Menu({
 
 Check to see how this works and looks.
 
-- Clicking on any of the menu cards in the menu list screen should take the user to the menu details screen.
+- Clicking on any of the menu cards in the Menu List screen should take the user to the Menu Detail screen.
   - The appropriate menu image, description and option should be displayed.
     - Example: `Khao Soi` at the `Aroy` store (without Option)
     <img src="./static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
@@ -1359,11 +1360,11 @@ Check to see how this works and looks.
     <img src="./static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
 - Error screen if store or menu does not exist
-  - The image is the same as the menu list screen
+  - The image is the same as the Menu List screen
 
 #### Refactoring (componentization of error screen for data fetching)
 
-The screen for store and menu data get when it does not exist is redundant and should be made into a component.
+The code when store or menu data did not exist is redundant and should be made into a component.
 
 The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be componentized.
 
@@ -1537,7 +1538,7 @@ Verify that there are no changes in behavior or appearance.
 
 The above is the end of the frontend part, but the last step is to change only the site title and favicon.
 
-Currently, the Next.js default title and favicon are as follows. Fix this.
+Currently, the title and favicon are Next.js defaults. Fix this.
 
 <img src="./static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
