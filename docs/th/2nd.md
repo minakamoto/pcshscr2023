@@ -1620,23 +1620,23 @@ Base = declarative_base()
 คำแนะนำ:
 
 - ORM คืออะไร?
-  - ORM stands for Object-Relational Mapping, a technology that automates the mapping between objects in a program and tables and records in a database. ORM is an object-oriented way of working with databases.
+  - ORM ย่อมาจาก Object-Relational Mapping ซึ่งเป็นเทคโนโลยีที่ทำให้การแมประหว่างวัตถุในโปรแกรมกับตารางและบันทึกในฐานข้อมูลเป็นไปโดยอัตโนมัติ ORM เป็นวิธีการทำงานกับฐานข้อมูลเชิงวัตถุ(object-oriented)
 - เกี่ยวกับ SQLite
-  - SQLite is a lightweight, embedded relational database management system (RDBMS) that requires no server and runs as a single file on disk. SQLite is included in Python as a standard part of Python, so it can be used automatically when Python is installed.
+  - SQLite เป็นระบบจัดการฐานข้อมูลเชิงสัมพันธ์แบบฝังตัวน้ำหนักเบา (RDBMS) ที่ไม่ต้องใช้เซิร์ฟเวอร์และทำงานเป็นไฟล์เดียวบนดิสก์ SQLite รวมอยู่ใน Python โดยเป็นส่วนมาตรฐานของ Python ดังนั้นจึงสามารถใช้งานได้โดยอัตโนมัติเมื่อติดตั้ง Python
 - เกี่ยวกับ SQLAlchemy
-  - We use SQLAlchemy for our hands-on ORM, which is a Python SQL toolkit and ORM library. It simplifies database operations and allows database tables to be represented as Python classes. This allows database operations to be performed in Python's object-oriented programming style.
-- Code and explanations about databases and SQL are taken from [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases). If you want to know more details, please check there.
+  - เราใช้ SQLAlchemy สำหรับ ORM ที่ hands-on ซึ่งเป็นชุดเครื่องมือ Python SQL และไลบรารี ORM ช่วยให้การดำเนินงานฐานข้อมูลง่ายขึ้นและอนุญาตให้แสดงตารางฐานข้อมูลเป็นคลาส Python ซึ่งช่วยให้การดำเนินการฐานข้อมูลสามารถดำเนินการในรูปแบบการเขียนโปรแกรมเชิงวัตถุ(object-oriented)ของ Python
+- โค้ดและคำอธิบายเกี่ยวกับฐานข้อมูล และ SQL นำมาจาก [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) หากคุณต้องการทราบรายละเอียดเพิ่มเติม โปรดตรวจสอบที่นั่น
 
 **หมายเหตุ**:
 
-- What to do if Pylance does not recognize the rye auto-built virtual environment and warns on import
-  - If you get the warning shown in the screenshot below, please try the following actions.
+- จะทำอย่างไรถ้า Pylance ไม่รู้จักสภาพแวดล้อมเสมือน rye ที่สร้างขึ้นอัตโนมัติและเตือนเกี่ยวกับการนำเข้า
+  - หากคุณได้รับคำเตือนตามภาพหน้าจอด้านล่าง โปรดลองดำเนินการดังต่อไปนี้
     ![Import Warning](../static/img/2nd/docs/import_warning.png)
-  - In the command palette (press Ctrl+Shift+P), select `Python: Select Interpreter`, on Windows: `{absolute path to your working directory}/dish-delight/backend/.venv/Scripts/python .exe)`, on Mac: `{absolute path of your working directory}/dish-delight/backend/.venv/bin/python)`.
+  - ในชุดคำสั่ง (command palette) (กด Ctrl+Shift+P) เลือก `Python: Select Interpreter` บน Windows: `{เส้นทางสัมบูรณ์ของไดเร็กทอรีการทำงานของคุณ}/dish-delight/backend/.venv/Scripts/python .exe)` บน Mac: `{เส้นทางสัมบูรณ์ของไดเร็กทอรีการทำงานของคุณ}/dish-delight/backend/.venv/bin/python)`
 
-### Define the tables (database model)
+### กำหนดตารางฐานข้อมูล (database model)
 
-Define the tables (database model) using SQLAlchemy.
+กำหนดตารางฐานข้อมูล (database model) โดยใช้ SQLAlchemy
 
 สร้างไฟล์ `dish-delight/backend/src/backend/models.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1694,40 +1694,40 @@ class Option(Base):
 
 ```
 
-### Register initial data in the database
+### ลงทะเบียนข้อมูลเริ่มต้นในฐานข้อมูล
 
-Register initial data in the local database. A simple script is provided for registering initial data in the local database.  
-Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/ backend`.
+ลงทะเบียนข้อมูลเริ่มต้นในฐานข้อมูลท้องถิ่น มีสคริปต์อย่างง่ายสำหรับการลงทะเบียนข้อมูลเริ่มต้นในฐานข้อมูลท้องถิ่น  
+ดาวน์โหลดไฟล์ทั้งหมดจาก [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) และวางไว้ใต้ `dish-delight/backend/src/backend`
 
-The target files are the following four.
+ไฟล์เป้าหมายมีสี่ไฟล์ต่อไปนี้
 
 - data.json
 - insert_data.py
 - insert_initial_data.py
 - read_json.py
 
-Run the following command in `dish-delight/backend/src/backend`.
+เรียกใช้คำสั่งต่อไปนี้ใน `dish-delight/backend/src/backend`
 
 ```sh
 python insert_initial_data.py
 ```
 
-If the `university.db` file is created in `dish-delight/backend/src/backend`, you have succeeded.
+หากไฟล์ `university.db` ถูกสร้างขึ้นใน `dish-delight/backend/src/backend` แสดงว่าคุณทำสำเร็จแล้ว
 
 คำแนะนำ:
 
-- If you want to change the data and register it to the database again, delete the `university.db` file and run it again.
-- The models created in `models.py` are SQLAlchemy models and are for the database.
+- หากคุณต้องการเปลี่ยนแปลงข้อมูลและลงทะเบียนลงในฐานข้อมูลอีกครั้ง ให้ลบไฟล์ `university.db` และรันอีกครั้ง
+- โมเดลที่สร้างใน `models.py` เป็นโมเดล SQLAlchemy และใช้สำหรับฐานข้อมูล
 
 **หมายเหตุ**:
 
-- The purpose of the initial data registration script is only for the one-time initial data registration for this hands-on. In actual development, please consider installing a migration tool (for FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) when dealing with databases.
+- วัตถุประสงค์ของสคริปต์การลงทะเบียนข้อมูลเริ่มต้นมีไว้เพื่อการลงทะเบียนข้อมูลเริ่มต้นเพียงครั้งเดียวสำหรับ hands-on นี้เท่านั้น ในการพัฒนาจริง โปรดพิจารณาติดตั้งเครื่องมือการย้ายข้อมูล (สำหรับ FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) เมื่อต้องจัดการกับฐานข้อมูล
 
-### Create the APIs that retrieves and returns store list, menu list, and menu detail data from a database
+### สร้าง API ที่ดึงและส่งคืนรายการร้านค้า รายละเอียดร้านค้า รายการเมนู และข้อมูลรายละเอียดเมนูจากฐานข้อมูล
 
-Create the APIs to retrieve store lists and store details, and menu lists and menu details from the database.
+สร้าง API เพื่อดึงข้อมูลรายการร้านค้า รายละเอียดร้านค้า รายการเมนู และข้อมูลรายละเอียดเมนูจากฐานข้อมูล
 
-First, create a data model (Pydantic's model) for the APIs.
+ขั้นแรก สร้างโมเดลข้อมูล (Pydantic's model) สำหรับ API
   
 สร้างไฟล์ `dish-delight/backend/src/backend/schemas.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1774,7 +1774,7 @@ class Menu(BaseModel):
 
 ```
 
-Create the APIs.  
+สร้าง API  
 สร้างไฟล์ `dish-delight/backend/src/backend/main.py` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
 ```py
@@ -1882,62 +1882,62 @@ def read_menu(store_id: int, menu_id: int, db: Session = Depends(get_db)):
 
 คำแนะนำ:
 
-- Pydantic models are used to read and create data in the API.
-- Differences between hands-on and [FastAPI's official website](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)
-  - The [official website of FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) explains that a Pydantic model consists of a `Base` class for each model class (e.g. `UserBase` for `User`), a `Create` class (e.g. `UserCreate`) and a `Read` class that inherit from the `Base` class (e.g. `UserBase` for `User`) of each model class. The reason for this is that the information required for `Create` and `Read` is different, as well as the information you do not want to pass on (e.g. `password`).
-    - In this hands-on, only `R(read)` of the `CRUD` function is created. So, only one class is created.
-      - CRUD comes from: Create, Read, Update, and Delete.
-  - On [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases), they create a Util module for the `CRUD` functions and call them in each API function. This is for code reusability, ease of testing, and maintainability.
-    - This hands-on session is a simple implementation to give priority to experience in developing web applications. For actual development, please design and implement taking care of requirements, etc.
+- โมเดล Pydantic ใช้เพื่ออ่านและสร้างข้อมูลใน API
+- ความแตกต่างระหว่าง hands-on และ [เว็บไซต์อย่างเป็นทางการของ FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases)
+  - [เว็บไซต์อย่างเป็นทางการของ FastAPI](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) อธิบายว่าโมเดล Pydantic ประกอบด้วยคลาส `Base` สำหรับแต่ละคลาสโมเดล (เช่น `UserBase` สำหรับ `User`) คลาส `Create` (เช่น `UserCreate`) และคลาส `Read` ที่สืบทอดมาจากคลาส `Base` (เช่น `UserBase` สำหรับ `User`) ของแต่ละคลาสโมเดล เหตุผลก็คือข้อมูลที่จำเป็นสำหรับ `Create` และ `Read` นั้นแตกต่างกัน และมีข้อมูลที่คุณไม่ต้องการส่งต่อ (เช่น `password`)
+    - ใน hands-on นี้ เฉพาะฟังก์ชัน `R(read)` ของ `CRUD` เท่านั้นที่ถูกสร้างขึ้น ดังนั้นจึงมีการสร้างคลาสเดียวเท่านั้น
+      - CRUD มาจาก: สร้าง(Create) อ่าน(Read) อัปเดต(Update) และลบ(Delete)
+  - ใน [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) พวกเขาสร้างโมดูล Util สำหรับฟังก์ชัน `CRUD` และเรียกใช้ฟังก์ชันเหล่านี้ในแต่ละฟังก์ชัน API สิ่งนี้มีไว้สำหรับการนำโค้ดกลับมาใช้ซ้ำได้ ความง่ายในการทดสอบ และการบำรุงรักษา
+    - hands-on นี้เป็นการนำไปปฏิบัติที่เรียบง่ายเพื่อให้ความสำคัญกับประสบการณ์ในการพัฒนาเว็บแอปพลิเคชัน สำหรับการพัฒนาจริง โปรดออกแบบและดำเนินการดูแลข้อกำหนด ฯลฯ
 
 **หมายเหตุ**:
 
-- The above implementation is based on [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) at the time of this writing. At the time of this writing, the following is described below, and some implementations are different from the description in order to support `Pydantic v2`.
-  - In addition, the materials used as references when preparing the hands-on materials may have changed to a newer version of the materials that are compatible with `Pydantic v2` at the time of the hands-on.
+- การใช้งานข้างต้นอ้างอิงจาก [เว็บไซต์ FastAPI อย่างเป็นทางการ](https://fastapi.tiangolo.com/ja/tutorial/sql-databases) ในขณะที่เขียนบทความนี้ ในขณะที่เขียนบทความนี้ มีการอธิบายสิ่งต่อไปนี้ไว้ด้านล่าง และการนำไปปฏิบัติบางอย่างแตกต่างจากคำอธิบายเพื่อรองรับ `Pydantic v2`
+  - นอกจากนี้ วัสดุที่ใช้เป็นข้อมูลอ้างอิงในการเตรียมวัสดุ hands-on อาจเปลี่ยนเป็นวัสดุเวอร์ชันใหม่กว่าที่เข้ากันได้กับ `Pydantic v2` ณ เวลาที่ลงมือจริง
     > These docs are about to be updated. 🎉
     >
     > The current version assumes Pydantic v1, and SQLAlchemy versions less than 2.0.
     >
     > The new docs will include Pydantic v2 and will use SQLModel (which is also based on SQLAlchemy) once it is updated to use Pydantic v2 as well.
 
-### Use Swagger UI to check API behavior
+### ใช้ Swagger UI เพื่อตรวจสอบพฤติกรรมของ API
 
-By default, FastAPI automatically generates API documentation based on the OpenAPI specification that can be viewed in a web browser using the Swagger UI.
-Run FastAPI.
+ตามค่าเริ่มต้น FastAPI จะสร้างเอกสาร API โดยอัตโนมัติตามข้อกำหนด OpenAPI ที่สามารถดูได้ในเว็บเบราว์เซอร์โดยใช้ Swagger UI  
+รัน FastAPI
 
 ```sh
 rye run uvicorn main:app --reload
 ```
 
-Open a browser and go to <http://127.0.0.1:8000/docs> and verify that the following screen appears
+เปิดเบราว์เซอร์และไปที่ <http://127.0.0.1:8000/docs> และตรวจสอบว่าหน้าจอต่อไปนี้ปรากฏขึ้น
 
 ![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
 
 **หมายเหตุ**:
 
-If the port is in use, you will receive the following error message. Please make sure that no other application is running.
+หากมีการใช้งานพอร์ต คุณจะได้รับข้อความแสดงข้อผิดพลาดต่อไปนี้ โปรดตรวจสอบให้แน่ใจว่าไม่มีแอปพลิเคชันอื่นทำงานอยู่
 
 ```sh
 ERROR:    [Errno 48] Address already in use
 ```
 
-Open each API and enter `Parameters` as needed to see how it works.
+เปิด API แต่ละรายการแล้วป้อน `Parameters` ตามต้องการเพื่อดูวิธีการทำงาน
 
-Testing Procedure
+ขั้นตอนการทดสอบ
 
-- Open the API you want to check
-- Press the Try button.
-- Enter `Parameters` according to what you want to check.
-- Press the 'Execute' button.
-- Verify that `Code` is 200 and that the contents of `Details` are the intended data.
-  - The data registered in the database is more data than the fixed data in the frontend. Please check the `data.json` downloaded in `dish-delight/backend/src/backend` for the content of the registered data.
+- เปิด API ที่คุณต้องการตรวจสอบ
+- กดปุ่ม `Try it out`
+- ป้อน `Parameters` ตามสิ่งที่คุณต้องการตรวจสอบ
+- กดปุ่ม `Execute`
+- ตรวจสอบว่า `Code` คือ 200 และเนื้อหาของ `Details` เป็นข้อมูลที่มุ่งหมาย
+  - ข้อมูลที่ลงทะเบียนในฐานข้อมูลมีข้อมูลมากกว่าข้อมูลคงที่ใน frontend โปรดตรวจสอบ `data.json` ที่ดาวน์โหลดใน `dish-delight/backend/src/backend` เพื่อดูเนื้อหาของข้อมูลที่ลงทะเบียน
 
-Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`) is shown below.
+ตัวอย่าง: การรับเมนูของ API ร้านค้าที่ระบุ (`/stores/{store_id}/menus`) แสดงอยู่ด้านล่าง
 
-- Assign `3` to `store_id` in `Parameters`.
+- กำหนด `3` ให้กับ `store_id` ใน `Parameters`
   ![Swagger UI menus](../static/img/2nd/docs/swagger_ui_store_menus.png)
-- Press the `Execute` button.
-- Verify that the `Code` is 200 and the contents of the `Details` are as follows
+- กดปุ่ม `Execute`
+- ตรวจสอบว่า `Code` คือ 200 และเนื้อหาของ `Details` มีดังนี้
 
   ```sh
   [
@@ -1975,13 +1975,13 @@ Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`)
 
 - เกี่ยวกับ API
 
-  - APIs are communication interfaces between programs and are generally broadly divided into RestAPI and GraphQL.
-    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing share and communicating information between different applications and services.
-  - The OpenAPI specification is intended to support the design, description, documentation, and testing of RestAPI.
-  - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
+  - API เป็นอินเทอร์เฟซการสื่อสารระหว่างโปรแกรม และโดยทั่วไปจะแบ่งออกเป็น RestAPI และ GraphQL อย่างกว้างๆ
+    - RestAPI เป็นรูปแบบสำหรับจัดการทรัพยากรผ่านโปรโตคอล HTTP ในขณะที่ GraphQL เป็นรูปแบบที่ให้ภาษาคิวรีและกลไกสำหรับการรับและจัดการข้อมูลที่ยืดหยุ่น ทั้งสองเป็นวิธีทั่วไปในการแบ่งปันข้อมูลและการสื่อสารระหว่างแอปพลิเคชันและบริการต่างๆ
+  - ข้อกำหนด OpenAPI มีวัตถุประสงค์เพื่อรองรับการออกแบบ คำอธิบาย เอกสาร และการทดสอบ RestAPI
+  - Swagger UI เป็นเครื่องมือสำหรับตรวจสอบเอกสาร API ด้วยภาพและทดสอบ API ตามข้อกำหนดของ OpenAPI
 
-- เกี่ยวกับ running FastAPI
-  - Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
+- เกี่ยวกับ รัน FastAPI
+  - เนื่องจากคราวนี้เราใช้ rye เราจะใส่คำว่า `rye run` แต่ถ้าคุณไม่ได้ใช้ rye จะเป็นดังนี้
 
   ```sh
   uvicorn main:app --reload

@@ -1696,7 +1696,7 @@ class Option(Base):
 ### Register initial data in the database
 
 Register initial data in the local database. A simple script is provided for registering initial data in the local database.  
-Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/ backend`.
+Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/backend`.
 
 The target files are the following four.
 
@@ -1722,9 +1722,9 @@ TIPS:
 
 - The purpose of the initial data registration script is only for the one-time initial data registration for this hands-on. In actual development, please consider installing a migration tool (for FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) when dealing with databases.
 
-### Create the APIs that retrieves and returns store list, menu list, and menu detail data from a database
+### Create the APIs that retrieve and return store lists, store detail, menu list, and menu detail data from the database
 
-Create the APIs to retrieve store lists and store details, and menu lists and menu details from the database.
+Create the APIs to retrieve store lists, store detail, menu list, and menu detail data from the database.
 
 First, create a data model (Pydantic's model) for the APIs.
   
@@ -1925,9 +1925,9 @@ Open each API and enter `Parameters` as needed to see how it works.
 Testing Procedure
 
 - Open the API you want to check
-- Press the Try button.
+- Press the `Try it out` button.
 - Enter `Parameters` according to what you want to check.
-- Press the 'Execute' button.
+- Press the `Execute` button.
 - Verify that `Code` is 200 and that the contents of `Details` are the intended data.
   - The data registered in the database is more data than the fixed data in the frontend. Please check the `data.json` downloaded in `dish-delight/backend/src/backend` for the content of the registered data.
 
@@ -1975,7 +1975,7 @@ TIPS:
 - About API
 
   - APIs are communication interfaces between programs and are generally broadly divided into RestAPI and GraphQL.
-    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing share and communicating information between different applications and services.
+    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing information and communicating between different applications and services.
   - The OpenAPI specification is intended to support the design, description, documentation, and testing of RestAPI.
   - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
 
