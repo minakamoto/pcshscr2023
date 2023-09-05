@@ -1987,9 +1987,9 @@ ERROR:    [Errno 48] Address already in use
   uvicorn main:app --reload
   ```
 
-### Modify the frontend to get data from the backend API
+### แก้ไข frontend เพื่อรับข้อมูลจาก backend API
 
-Modify the frontend to get data from the backend API.
+แก้ไข frontend เพื่อรับข้อมูลจาก backend API
 
 เปิด `dish-delight/frontend/lib/api.ts` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -2070,15 +2070,15 @@ export async function getMenu(
 ```
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร  
-Try changing the store and the menu to check the operation. Try using the `Navbar` button as well as the `Home` button.
+ลองเปลี่ยนร้านและเมนูเพื่อตรวจสอบการทำงาน ลองใช้ปุ่ม `Navbar` และปุ่ม `Home`
 
 **หมายเหตุ**:
 
-- เกี่ยวกับ the URL to connect to the backend
-  - In this hands-on, this is a simple implementation to work in the local environment only. For actual development, please define it in an `env` file. The same goes for the backend (FastAPI) (e.g., you need to configure `CORS` when deploying it).
+- เกี่ยวกับ URL ที่จะเชื่อมต่อกับ backend
+  - ใน hands-on นี้ นี่เป็นการนำไปปฏิบัติอย่างง่ายเพื่อทำงานในสภาพแวดล้อมท้องถิ่นเท่านั้น สำหรับการพัฒนาจริง โปรดกำหนดไว้ในไฟล์ `env` เช่นเดียวกับ backend (FastAPI) (เช่น คุณต้องกำหนดค่า `CORS` เมื่อใช้งาน)
 
-## 4. At the end
+## 4. ในปิดท้าย
 
-This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
+นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on ขอขอบคุณสำหรับเวลาของคุณ. สามารถดูรโค้ดทั้งหมดได้ [ที่นี่](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
-The VSCode configuration (for Workspace) is also committed for your reference. It is located in the `.vscode` directory.
+การกำหนดค่า VSCode (สำหรับ Workspace) มีไว้เพื่อเป็นข้อมูลอ้างอิงของคุณด้วย ตั้งอยู่ในไดเร็กทอรี `.vscode`
