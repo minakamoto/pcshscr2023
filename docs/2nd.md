@@ -20,12 +20,12 @@ TIPS:
 
 - About Next.js
   - Next.js is a React-based UI framework that provides features such as SSR/SSG, file-based routing, Fast Refresh, image optimization, and zero configuration. These features speed up the loading of web pages, provide SEO-friendly structures, and improve development efficiency. Next.js is a modern and powerful frontend framework with a variety of advantages.
-  - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support. Next.js is good for developing React apps of all sizes, and they recommend using Next.js.
+  - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support.
 - About FastAPI
   - FastAPI has the following features
     - Fast
       - FastAPI is based on Starlette and Uvicorn for extremely fast performance.
-        - Starlette is a lightweight ASGI framework written in Python that allows building fast asynchronous services; Uvicorn is an ASGI server implementation that is very fast; FastAPI is built on top of Starlette and can be run using Uvicorn. FastAPI is built on top of Starlette and can be run with Uvicorn.
+        - Starlette is a lightweight ASGI framework written in Python that allows building fast asynchronous services; Uvicorn is an ASGI server implementation that is very fast; FastAPI is built on top of Starlette and can be run using Uvicorn.
     - Easy
       - FastAPI uses a simple syntax that makes the code easy to read and write.
       - FastAPI can use Pydantic to perform request and response validation.
@@ -53,7 +53,7 @@ TIPS:
 - Code Editor (e.g., Visual Studio Code)
 
 **NOTE**:  
-The required software installation instructions listed here are intended for Windows users who do not also use WSL.
+The required software installation instructions listed here are intended for Windows users who do not use WSL.
 This is because the first target users of this hands-on are Windows users who do not use  WSL. Please follow the installation procedure for your environment when actually installing the software.
 
 ### Detailed procedure for Windows users
