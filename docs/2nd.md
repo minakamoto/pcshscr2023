@@ -20,12 +20,12 @@ TIPS:
 
 - About Next.js
   - Next.js is a React-based UI framework that provides features such as SSR/SSG, file-based routing, Fast Refresh, image optimization, and zero configuration. These features speed up the loading of web pages, provide SEO-friendly structures, and improve development efficiency. Next.js is a modern and powerful frontend framework with a variety of advantages.
-  - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support. Next.js is good for developing React apps of all sizes, and they recommend using Next.js.
+  - The [official React website](https://react.dev/learn/start-a-new-react-project#nextjs) also recommends Next.js for development of React apps of all sizes because of its rich features and community support.
 - About FastAPI
   - FastAPI has the following features
     - Fast
       - FastAPI is based on Starlette and Uvicorn for extremely fast performance.
-        - Starlette is a lightweight ASGI framework written in Python that allows building fast asynchronous services; Uvicorn is an ASGI server implementation that is very fast; FastAPI is built on top of Starlette and can be run using Uvicorn. FastAPI is built on top of Starlette and can be run with Uvicorn.
+        - Starlette is a lightweight ASGI framework written in Python that allows building fast asynchronous services; Uvicorn is an ASGI server implementation that is very fast; FastAPI is built on top of Starlette and can be run using Uvicorn.
     - Easy
       - FastAPI uses a simple syntax that makes the code easy to read and write.
       - FastAPI can use Pydantic to perform request and response validation.
@@ -37,7 +37,7 @@ TIPS:
     - Asynchronous Support
       - FastAPI supports asynchronous processing, making it easy to write asynchronous code.
 
-**Note**:
+**NOTE**:
 
 - About the Python Package Manager
   - The Python package manager used in this hands-on is [rye](https://github.com/mitsuhiko/rye). It is a useful tool that can install and uninstall dependencies and manage virtual environments.
@@ -52,8 +52,8 @@ TIPS:
 - Python 3.8 or above
 - Code Editor (e.g., Visual Studio Code)
 
-**Note**：  
-The required software installation instructions listed here are intended for Windows users who do not also use WSL.
+**NOTE**:  
+The required software installation instructions listed here are intended for Windows users who do not use WSL.
 This is because the first target users of this hands-on are Windows users who do not use  WSL. Please follow the installation procedure for your environment when actually installing the software.
 
 ### Detailed procedure for Windows users
@@ -115,7 +115,7 @@ This is because the first target users of this hands-on are Windows users who do
           ```
 
   - (Option)For Python development, it is recommended that you install the following extensions to enhance your web app development experience:
-    - Launch Visual Studio Code
+    - Launch VS Code
     - Open the Extensions sidebar by clicking on the square icon in the left sidebar or pressing Ctrl+Shift+X.
     - Search for the following extensions (all from Microsoft) and click the `Install` button next to each extension:
       - Python
@@ -127,7 +127,7 @@ This is because the first target users of this hands-on are Windows users who do
       - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
         - **If you do not want to use these settings outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
       - Find `python.languageServer` in the settings and set the value to `Pylance`.
-    - Set the Python file to automatically change the code in Black Formatter when you save it.
+    - Set Black Formatter to automatically modify code when saving Python files.
       - Press Ctrl+Shift+P to open the command palette.
       - Type and select `Preferences: Open User Settings(JSON)` to open the JSON file.
         - **If you do not want to use this setting outside of this hands-on, open `Preferences: Open Workspace Settings(JSON)`.**
@@ -210,7 +210,7 @@ Waiting for the debugger to disconnect...
 
 #### Initialize the backend project
 
-Run the following command
+Run the following command.
 
 ```sh
 cd ../backend
@@ -274,7 +274,7 @@ npm run dev
 
 Open a browser and go to <http://localhost:3000> and verify that the Next.js default screen appears.
 
-**Note**:  
+**NOTE**:  
 If port 3000 is already in use, a different port is specified. In this case, the following will appear on the command line.
 
 ```sh
@@ -287,7 +287,7 @@ Press Ctrl + c to stop.
 #### Modifying the globals.css settings
 
 Edit the default globals.css settings.  
-Open `dish-delight/frontend/app/globals.css' and replace its contents with the following code:
+Open `dish-delight/frontend/app/globals.css` and replace its contents with the following code:
 
 ```css
 @tailwind base;
@@ -368,6 +368,7 @@ The svg file is the logo used in Navbar, and the jpeg file is the logo of each s
 
 - These images were created from within Bing using `Image Creator` (`DALL-E`).
 
+Implement the Home screen.
 Open `dish-delight/frontend/app/page.tsx` and replace its contents with the following code:
 
 ```tsx
@@ -468,16 +469,16 @@ export default function Home() {
 
 - Verify that the appearance is as follows
   ![PC Home](./static/img/2nd/docs/home_pc.png)
-- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the menu list screen.
+- Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the Menu List screen.
   - Since the screen has not been created yet, "404 This page could not be found" will be displayed.
 
 This hands-on layout will focus on mobile-first UI design. From this point on, we will assume that the display is confirmed to be smartphone size.
 
 Please follow the instructions below and use the browser's developer tools to resize the screen to the size of a mobile phone or smartphone.
 
-- Open your browser and go to `Developer Tools
-  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools
-  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools
+- Open your browser and go to `Developer Tools`
+  - If you are using Chrome, go to "Menu" -> "Other Tools" -> "Developer Tools"
+  - If you are using Edge, go to "Menu" -> "Other Tools" -> "Developer Tools"
   - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
 - In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
   - In Windows, the shortcut key is `Shift+Ctrl+m`.
@@ -496,7 +497,7 @@ If it is tablet size, there are two columns.
 
 #### Making the Navbar into a component
 
-To use the same Navbar in the menu list and menu detail screens, make the Navbar into a component.
+To use the same Navbar in the Menu List and menu detail screens, make the Navbar into a component.
 
 Create the `dish-delight/frontend/components/Navbar.tsx` file and replace its contents with the following code:
 
@@ -615,7 +616,7 @@ Open the browser and verify that the operation or appearance of the application 
 
 Implement the Menu List screen that is displayed after a store is selected on the Home screen.
 
-In the Menu List screen, first modify the Navbar component to display the store name and a link to the menu list (`MENUS` in the UI) in the Navbar.
+First modify the Navbar component to display the store name and a link to the Menu List (`MENUS` in the UI) in the Navbar on the Menu List screen.
 
 Open `dish-delight/frontend/components/Navbar.tsx` and replace its contents with the following code:
 
@@ -869,25 +870,34 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 Check to see how this works and looks.
 
-- Click on the `Sakura-tei` card on the Home screen to display the menu list screen.
+- Click on the `Sakura-tei` card on the Home screen to display the Menu List screen.
   - Four menus are displayed.
     <img src="./static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
 - Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
 - Clicking `CARD` on any of the menus on the Menu List screen should take you to the Menu Details screen.
-  - (Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
+  - Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
 - Clicking on the `Aroy` card on the Home screen will take you to the Menu List screen.
   - A menu should appear.
 - Clicking the `Bohno` card on the Home screen, it should take you to the Menu list screen.
   - An error message appears because there is no menu.
     <img src="./static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
-  - Add processing for cases where the store or menu does not exist to the implementation.
-    - The above is the case where the menu does not exist, but please check the operation even if the store does not exist.
+  - Added processing for cases where the store or menu does not exist.
+    - The above is the case where the menu does not exist, but please also check if the store does not exist.
       - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
 
 **NOTE**:
 
 - About Exception Handling in this Hands-on
   - In this hands-on, both frontend and backend, exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
+
+TIPS:
+
+- About Routing in Next.js(ver.13)
+  - Routing in Next.js(ver.13) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app` directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
+    - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing).
+    - If you want to create a route from dynamic data, you can do so by enclosing the folder name in `[]`.
+    - For the Menu List screen above, `[storeId]` (`storeId` is the store ID selected on the HOME screen) and the path is `app/stores/[storeId]/page.tsx`.
+      - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes)
 
 #### Refactoring (preparing for backend API calls)
 
@@ -1213,7 +1223,7 @@ Verify that there are no changes in behavior or appearance.
 
 #### Implementing the Menu Detail screen
 
-This section implements the menu detail screen that is displayed after a menu item is selected from the menu list screen.
+This section implements the Menu Detail screen that is displayed after a menu item is selected from the Menu List screen.
 
 The directory structure of the Menu Detail screen is as follows (only relevant files are quoted).
 
@@ -1342,7 +1352,7 @@ export default async function Menu({
 
 Check to see how this works and looks.
 
-- Clicking on any of the menu cards in the menu list screen should take the user to the menu details screen.
+- Clicking on any of the menu cards in the Menu List screen should take the user to the Menu Detail screen.
   - The appropriate menu image, description and option should be displayed.
     - Example: `Khao Soi` at the `Aroy` store (without Option)
     <img src="./static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
@@ -1350,11 +1360,11 @@ Check to see how this works and looks.
     <img src="./static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
 - Error screen if store or menu does not exist
-  - The image is the same as the menu list screen
+  - The image is the same as the Menu List screen
 
 #### Refactoring (componentization of error screen for data fetching)
 
-The screen for store and menu data get when it does not exist is redundant and should be made into a component.
+The code when store or menu data did not exist is redundant and should be made into a component.
 
 The refactoring targets the following two screens. Each of them implements a screen for the case that the store or menu does not exist when data is fetched. These will be componentized.
 
@@ -1528,7 +1538,7 @@ Verify that there are no changes in behavior or appearance.
 
 The above is the end of the frontend part, but the last step is to change only the site title and favicon.
 
-Currently, the Next.js default title and favicon are as follows. Fix this.
+Currently, the title and favicon are Next.js defaults. Fix this.
 
 <img src="./static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
@@ -1686,7 +1696,7 @@ class Option(Base):
 ### Register initial data in the database
 
 Register initial data in the local database. A simple script is provided for registering initial data in the local database.  
-Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/ backend`.
+Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/backend`.
 
 The target files are the following four.
 
@@ -1712,9 +1722,9 @@ TIPS:
 
 - The purpose of the initial data registration script is only for the one-time initial data registration for this hands-on. In actual development, please consider installing a migration tool (for FastAPI, [Alembic](https://alembic.sqlalchemy.org/en/latest/)) when dealing with databases.
 
-### Create the APIs that retrieves and returns store list, menu list, and menu detail data from a database
+### Create the APIs that retrieve and return store lists, store detail, menu list, and menu detail data from the database
 
-Create the APIs to retrieve store lists and store details, and menu lists and menu details from the database.
+Create the APIs to retrieve store lists, store detail, menu list, and menu detail data from the database.
 
 First, create a data model (Pydantic's model) for the APIs.
   
@@ -1915,9 +1925,9 @@ Open each API and enter `Parameters` as needed to see how it works.
 Testing Procedure
 
 - Open the API you want to check
-- Press the Try button.
+- Press the `Try it out` button.
 - Enter `Parameters` according to what you want to check.
-- Press the 'Execute' button.
+- Press the `Execute` button.
 - Verify that `Code` is 200 and that the contents of `Details` are the intended data.
   - The data registered in the database is more data than the fixed data in the frontend. Please check the `data.json` downloaded in `dish-delight/backend/src/backend` for the content of the registered data.
 
@@ -1965,12 +1975,12 @@ TIPS:
 - About API
 
   - APIs are communication interfaces between programs and are generally broadly divided into RestAPI and GraphQL.
-    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing share and communicating information between different applications and services.
+    - RestAPI is a format for manipulating resources over the HTTP protocol, while GraphQL is a format that provides a query language and engine for flexible data acquisition and manipulation. Both are common means of sharing information and communicating between different applications and services.
   - The OpenAPI specification is intended to support the design, description, documentation, and testing of RestAPI.
   - Swagger UI is a tool for visually reviewing API documentation and testing APIs based on the OpenAPI specification.
 
 - About running FastAPI
-- Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
+  - Since we're using rye this time, we'll put `rye run`, but if you're not using rye, the following is the case.
 
   ```sh
   uvicorn main:app --reload

@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Web App
-      link: /README
+      link: /th/README
     - theme: alt
       text: TBD
 
