@@ -20,22 +20,23 @@
 - [Vite](https://vitejs.dev/)
 
 ---
+
 - TIPS:
-- 初心者向けハンズオンでTypeScriptが選ばれた理由、そしてJavaScript初心者でもTypeScriptをやるべき理由
+  - 初心者向けハンズオンでTypeScriptが選ばれた理由、そしてJavaScript初心者でもTypeScriptをやるべき理由
     - JavaScript初心者が、JavaScriptと一緒にTypeScriptを学ぶべき理由はいくつかあります。
       - TypeScriptはJavaScriptのスーパーセットなので、JavaScriptの知識があれば、すぐにTypeScriptを習得することができます。
       - TypeScriptは静的型付け言語であるため、JavaScriptよりもエラーを検出しやすいです。そのため、開発効率の向上やバグの防止が期待できます。
       - TypeScriptは型定義ファイルを利用することで、コードの再利用を容易にすることができます。そのため、コードの保守性を向上させることができます。
     - このように、TypeScriptは学習コストが低く、開発効率や保守性を向上させ、JavaScriptの初心者にも向いている優れた言語です。さらに、TypeScriptは現在、開発の現場ではデファクトスタンダードとなっています。
     - JavaScriptを学ぶなら、ぜひTypeScriptも学んでみてください。
-- UIフレームワーク/ライブラリ
+  - UIフレームワーク/ライブラリ
     - Reactは、UIフレームワーク/ライブラリの一つです。その他、[Vue.js](https://vuejs.org/)、[Svelte](https://svelte.dev/)、[Angular](https://angular.io/)があります。
     - Next.js、Nuxt.js、SvelteKitもUIフレームワーク/ライブラリの一つです。これらはそれぞれReact、Vue、Svelteをベースに、SSRや便利なツールなどの追加機能をパッケージ化したものです。
-  - Viteを使う理由
-    - Viteは、高速で効率的なフロントエンド開発を促進するビルドツールです。
-    - Viteは、高速な起動時間、ホットモジュールの即時置換、合理的なバンドルとリロードを提供することにより、高効率で楽しい開発者体験を提供し、スムーズで生産的な開発ワークフローを実現します。
-      - (当初、本ハンズオンはReactのみで作成しましたが、より快適に楽しんでもらうために、Viteを追加しました。)
-
+    - Viteを使う理由
+      - Viteは、高速で効率的なフロントエンド開発を促進するビルドツールです。
+      - Viteは、高速な起動時間、ホットモジュールの即時置換、合理的なバンドルとリロードを提供することにより、高効率で楽しい開発者体験を提供し、スムーズで生産的な開発ワークフローを実現します。
+        - (当初、本ハンズオンはReactのみで作成しましたが、より快適に楽しんでもらうために、Viteを追加しました。)
+  
 ## 1. Setup
 
 ### 前提条件
@@ -52,10 +53,12 @@
 - Node.jsのインストール
   - [Node.jsのウェブサイト](https://nodejs.org/en/)にアクセスし、最新のLTS（Long-Term Support）バージョンのWindows用のNode.jsをダウンロードします。インストーラーを実行し、プロンプトに従ってNode.jsをインストールします。
   - コマンドプロンプトを開き、以下のコマンドを実行して、Node.jsとnpm（Node Package Manager）が正しくインストールされていることを確認します：
-  ```sh
-  node --version
-  npm --version
-  ```
+
+    ```sh
+      node --version
+      npm --version
+    ```
+
   - どちらのコマンドも、お使いのシステムにインストールされているそれぞれのバージョンを表示するはずです。
 - Visual Studio Code(VS Code)のインストール
   - [Visual Studio Codeのウェブサイト](https://code.visualstudio.com/)にアクセスし、最新版のWindows用のVisual Studio Codeをダウンロードしてください。インストーラーを実行し、画面の指示に従ってVisual Studio Codeをインストールします。
