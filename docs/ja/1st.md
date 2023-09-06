@@ -53,10 +53,12 @@
 - Node.jsのインストール
   - [Node.jsのウェブサイト](https://nodejs.org/en/)にアクセスし、最新のLTS（Long-Term Support）バージョンのWindows用のNode.jsをダウンロードします。インストーラーを実行し、プロンプトに従ってNode.jsをインストールします。
   - コマンドプロンプトを開き、以下のコマンドを実行して、Node.jsとnpm（Node Package Manager）が正しくインストールされていることを確認します：
-  ```sh
-  node --version
-  npm --version
-  ```
+
+    ```sh
+      node --version
+      npm --version
+    ```
+
   - どちらのコマンドも、お使いのシステムにインストールされているそれぞれのバージョンを表示するはずです。
 - Visual Studio Code(VS Code)のインストール
   - [Visual Studio Codeのウェブサイト](https://code.visualstudio.com/)にアクセスし、最新版のWindows用のVisual Studio Codeをダウンロードしてください。インストーラーを実行し、画面の指示に従ってVisual Studio Codeをインストールします。
