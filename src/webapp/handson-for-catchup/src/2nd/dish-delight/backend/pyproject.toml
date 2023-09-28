@@ -6,9 +6,9 @@ authors = [
     { name = "Miho Nakamoto", email = "miho.nakamoto@esm.co.jp" }
 ]
 dependencies = [
-    "fastapi>=0.103.0",
+    "fastapi>=0.103.1",
     "uvicorn>=0.23.2",
-    "sqlalchemy>=2.0.20",
+    "sqlalchemy>=2.0.21",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -20,7 +20,7 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 dev-dependencies = [
-    "black>=23.7.0",
+    "black>=23.9.1",
     "flake8>=5.0.4",
 ]
 
