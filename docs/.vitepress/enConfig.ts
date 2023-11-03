@@ -10,14 +10,28 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 
     sidebar: [
       {
-        text: "Hands-on for catch-up",
+        text: "For Teachers",
         items: [
-          { text: "Introduction", link: "/README" },
-          { text: "Overview of web app technology stack", link: "/0th" },
-          { text: "Hands-on to develop simple & easy UI", link: "/1st" },
           {
-            text: "Hands-on to develop a slightly more complex UI & own API",
-            link: "/2nd",
+            text: "Hands-on for catch-up",
+            items: [
+              { text: "Introduction", link: "/README" },
+              { text: "Overview of web app technology stack", link: "/0th" },
+              { text: "Hands-on to develop simple & easy UI", link: "/1st" },
+              {
+                text: "Hands-on to develop a slightly more complex UI & own API",
+                link: "/2nd",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        text: "For Students",
+        items: [
+          {
+            text: "30-min experience with the latest web app dev tech",
+            items: [],
           },
         ],
       },
