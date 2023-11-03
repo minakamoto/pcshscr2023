@@ -31,7 +31,10 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         items: [
           {
             text: "30-min experience with the latest web app dev tech",
-            items: [],
+            items: [
+              { text: "Introduction", link: "/students/README" },
+              { text: "Todo List App", link: "/students/1st" },
+            ],
           },
         ],
       },

@@ -36,7 +36,10 @@ export const thConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         items: [
           {
             text: "30-min experience with the latest web app dev tech",
-            items: [],
+            items: [
+              { text: "บทนำ", link: "/th/students/README" },
+              { text: "Todo List App", link: "/th/students/1st" },
+            ],
           },
         ],
       },
