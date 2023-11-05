@@ -22,5 +22,5 @@
 
 ## Contents
 
-- [Todo List App](/students/1st.md)
+- [Todo List App](1st.md)
   - 初心者向けのお題によく使われるTodo Listアプリ
