@@ -11,7 +11,7 @@
 ## 主な技術スタック
 
 - [Next.js](https://nextjs.org/)
-  - UI framework
+  - React-based UI framework
   - Next.jsを導入する際に以下2つの技術スタックを選択すると自動で追加・設定されます。
 - [Typescript](https://www.typescriptlang.org/)
   - JavaScript with syntax for types

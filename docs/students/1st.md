@@ -11,7 +11,7 @@ We will develop a simple Todo List app with the following functions.
 ## Main Technology Stack
 
 - [Next.js](https://nextjs.org/)
-  - UI framework
+  - React-based UI framework
   - The following two technology stacks are automatically added and configured when you select them when installing Next.js.
 - [Typescript](https://www.typescriptlang.org/)
   - JavaScript with syntax for types
