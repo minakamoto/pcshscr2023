@@ -39,7 +39,7 @@ Next.jsインストール設定済みのブラウザベースのIDE [stackblitz�
 @tailwind utilities;
 ```
 
-### Todo listを実装する
+### Todo listアプリを実装する
 
 左のサイドバーにあるFilesの`app/page.tsx`ファイルを開き、その内容を以下のコードに置き換えます。
 
