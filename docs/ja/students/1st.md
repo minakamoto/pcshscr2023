@@ -25,7 +25,8 @@
 Next.jsインストール設定済みのブラウザベースのIDE [stackblitzのテンプレート](https://stackblitz.com/edit/nextjs)を開いてください。
 
 開くとインストールや設定が始まります。以下の右ペインの画面(Next.jsのデフォルト画面)になるまでしばらくお待ちください。
-(stackblitzは、左ペインにファイルのディレクトリ、真ん中はファイルの編集、右ペインはプレビュー画面の構成になっています。)
+
+stackblitzは、左ペインにファイルのディレクトリ、真ん中はファイルの編集、右ペインはプレビュー画面の構成になっています。
 
 ![Next.js default display on stackblitz](../../static/img/students/1st/nextjs_default_display.png)
 
@@ -152,5 +153,5 @@ export default function App() {
 
 ### 終わりに
 
-これでハンズオンは終わりです。
+これでハンズオンは終わりです。  
 もし、興味があれば、上に挙げたリンクをたどってコードの内容を調べたり、コードを好きに修正してみてください。

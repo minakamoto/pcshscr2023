@@ -25,7 +25,8 @@ We will develop a simple Todo List app with the following functions.
 Open the Next.js installation configured browser-based IDE [stackblitz template](https://stackblitz.com/edit/nextjs).
 
 Once opened, installation and configuration will begin. Please wait a moment until you see the screen in the right pane below (the default Next.js screen).
-(stackblitz consists of a directory of files in the left pane, file editing in the middle, and a preview screen in the right pane.)
+
+stackblitz consists of a directory of files in the left pane, file editing in the middle, and a preview screen in the right pane.
 
 ![Next.js default display on stackblitz](../static/img/students/1st/nextjs_default_display.png)
 
@@ -152,5 +153,5 @@ Please check the behavior of the Todo List app on the preview screen on the righ
 
 ### Wrap up
 
-This concludes the hands-on session.
+This concludes the hands-on session.  
 If you are interested, follow the links above to check out the code and modify it as you like.
