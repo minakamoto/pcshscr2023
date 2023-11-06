@@ -33,7 +33,10 @@ export const jaConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
         items: [
           {
             text: "30-min experience with the latest web app dev tech",
-            items: [],
+            items: [
+              { text: "Introduction", link: "/ja/students/README" },
+              { text: "Todo List App", link: "/ja/students/1st" },
+            ],
           },
         ],
       },
