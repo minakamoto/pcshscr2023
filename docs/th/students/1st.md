@@ -154,7 +154,6 @@ export default function App() {
 ### ในปิดท้าย
 
 นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on  
-โค้ดและลักษณะการทำงานสามารถดูได้ด้านล่าง  
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)  
+สามารถดูโค้ดได้[ที่นี่](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)  
 
 หากคุณสนใจ โปรดไปที่ลิงก์ด้านบนเพื่อตรวจสอบโค้ดและแก้ไขตามที่คุณต้องการ
