@@ -155,6 +155,6 @@ export default function App() {
 
 これでハンズオンは終わりです。  
 コードおよび動作は下記から確認できます。  
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/src/webapp/30min-exp-web-tech/1th/todo-list)  
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)  
 
 もし、興味があれば、上に挙げたリンクをたどってコードの内容を調べたり、コードを好きに修正してみてください。
