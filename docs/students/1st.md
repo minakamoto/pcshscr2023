@@ -154,7 +154,6 @@ Please check the behavior of the Todo List app on the preview screen on the righ
 ### Wrap up
 
 This concludes the hands-on session.  
-The code and behaviors can be viewed below.  
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/src/webapp/30min-exp-web-tech/1th/todo-list)  
+The code can be viewed [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list).  
 
 If you are interested, follow the links above to check out the code and modify it as you like.
