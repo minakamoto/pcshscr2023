@@ -4,7 +4,7 @@
 
 These contents are designed to provide a fun 30-minute experience with the latest web app development technology in a web app class for high school freshmen or junior high school students.
 
-As much as possible, the contents are designed to be completed in a. single session. Because the focus is on the experience of developing, there is almost no explanation of the technology or code. This is because it is best to learn by oneself by gaining interest through experience rather than learning from others.
+As much as possible, the contents are designed to be completed in a single session. Because the focus is on the experience of developing, there is almost no explanation of the technology or code. This is because it is best to learn by oneself by gaining interest through experience rather than learning from others.
 
 ## Tips
 
