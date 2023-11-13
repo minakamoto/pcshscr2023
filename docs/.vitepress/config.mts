@@ -16,7 +16,7 @@ export default defineConfigWithTheme({
     "Documents, resources and codes to be used in ICT subjects at Princess Chulabhorn Science High School Chiang Rai for the academic year 2023.",
   themeConfig: {
     socialLinks: [
-      { icon: "github", link: "https://github.com/minakamoto/pschs2023/" },
+      { icon: "github", link: "https://github.com/minakamoto/pcshscr2023/" },
     ],
 
     footer: {

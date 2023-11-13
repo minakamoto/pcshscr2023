@@ -95,7 +95,7 @@
 npm create vite@latest first-app -- --template react-ts
 ```
 
-#### 2. インストールが完了すると、プロジェクトにReact+Viteの標準テンプレートがセットアップされます。
+#### 2. インストールが完了すると、プロジェクトにReact+Viteの標準テンプレートがセットアップされます
 
 以下のコマンドを実行すると、プロジェクトが起動し、確認することができます。
 
@@ -111,7 +111,7 @@ npm run dev
 
 コマンドラインで「Ctrl + c」でReact+Viteアプリの実行を停止することができます。
 
-#### 3. HTTP リクエストを行うための axios ライブラリのインストール：
+#### 3. HTTP リクエストを行うための axios ライブラリのインストール
 
 ```sh
 npm install axios
@@ -121,8 +121,7 @@ Reactアプリの実行を止めずに、別のターミナルを開いて上記
 
 ### ランダムなポケモンを表示するコンポーネントの作成
 
-#### 1. src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
-
+#### 1. src/App.tsxファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 import { useState } from "react";
@@ -183,7 +182,7 @@ export default App;
     - Reactのコンポーネントを端的に説明すると、再利用可能なUI要素です。
     - コンポーネントという概念は、Vue.js、Svelte、Angularなど、他のモダンなUIフレームワークやライブラリでも共通する概念です。
 
-#### 2. ブラウザを開き、http://localhost:5173にアクセスし、アプリケーションを表示します。「Get Random Pokémon」ボタンをクリックすると、PokeAPIからランダムにポケモンを取得し、名前と画像を表示します。
+#### 2. ブラウザを開き、<http://localhost:5173にアクセスし、アプリケーションを表示します。「Get> Random Pokémon」ボタンをクリックすると、PokeAPIからランダムにポケモンを取得し、名前と画像を表示します
 
 アプリを停止している場合は、以下のコマンドを実行します。  。
 カレントディレクトリが、作成したReactプロジェクトの直下にあることを確認してください。
@@ -213,7 +212,7 @@ npm run dev
 コードをおいやすくするため（わかりやすいように）、リファクタリングは、同じファイル内で一度行います。  
 このステップは、次のステップまで省略することができます。
 
-##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // App.tsx
@@ -272,11 +271,11 @@ function App() {
 export default App;
 ```
 
-##### ブラウザを開き、アプリケーションの動作に変化がないかを確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないかを確認します
 
 #### 2. App.tsxからPokemonContainerコンポーネントを分割
 
-##### src/PokemonContainer.tsxファイルを作成し、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsxファイルを作成し、その内容を以下のコードに置き換えます
 
 ```jsx
 // PokemonContainer.tsx
@@ -325,7 +324,7 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // App.tsx
@@ -345,15 +344,15 @@ function App() {
 export default App;
 ```
 
-##### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認します
 
-#### 3. 画像や名前の表示に関する処理を、PokemonContainer.tsxから別コンポーネントとして分割します。
+#### 3. 画像や名前の表示に関する処理を、PokemonContainer.tsxから別コンポーネントとして分割します
 
 - **注意事項**：
   - コードをおいやすくするため（わかりやすいように）、リファクタリングは、同じファイル内で一度行います。このステップは、次のステップまで省略することができます
   - 実際のアプリケーションでここまでリファクタリングするかどうかは、アプリケーションの規模、コードの複雑さ、コンポーネントの再利用の有無などによって判断する必要があります。
 
-##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // PokemonContainer.tsx
@@ -417,12 +416,11 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-##### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認します
 
-#### 4. PokemonDisplayコンポーネントをPokemonContainer.tsxから分割します。
+#### 4. PokemonDisplayコンポーネントをPokemonContainer.tsxから分割します
 
-##### src/PokemonDisplay.tsxファイルを作成し、その内容を以下のコードに置き換えます：
-
+##### src/PokemonDisplay.tsxファイルを作成し、その内容を以下のコードに置き換えます
 
 ```jsx
 // PokemonDisplay.tsx
@@ -457,7 +455,7 @@ function PokemonDisplay({pokemon}: PokemonDisplayProps ) {
 export default PokemonDisplay;
 ```
 
-##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // PokemonContainer.tsx
@@ -496,13 +494,13 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-##### ブラウザを開き、アプリケーションの動作に変化がないか確認する。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認する
 
-#### 5. PokemonDisplayコンポーネントの名前を一般的な名前に変更します。
+#### 5. PokemonDisplayコンポーネントの名前を一般的な名前に変更します
 
 PokemonDisplayコンポーネントは、ポケモン以外のキャラクターでも使えるように、より一般的な名前にすることにします。
 
-##### src/PokemonDisplay.tsx を src/ItemDisplay.tsx にリネームして、その内容を以下のコードに変更します：
+##### src/PokemonDisplay.tsx を src/ItemDisplay.tsx にリネームして、その内容を以下のコードに変更します
 
 **注意事項:** ファイル名を変更した際、VS Codeからのインポートを変更するかどうか尋ねられます。今回の場合、「No」を選択します。
 
@@ -534,7 +532,7 @@ function ItemDisplay({ item }: ItemDisplayProps) {
 export default ItemDisplay;
 ```
 
-##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // PokemonContainer.tsx
@@ -573,7 +571,7 @@ function PokemonContainer() {
 export default PokemonContainer;
 ```
 
-##### ブラウザを開き、アプリケーションの動作に変化がないか確認します。
+##### ブラウザを開き、アプリケーションの動作に変化がないか確認します
 
 ### (オプション)デザインを適用する
 
@@ -601,7 +599,7 @@ npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-##### tailwind.config.jsファイルに、すべてのテンプレートファイルのパスを追加します。
+##### tailwind.config.jsファイルに、すべてのテンプレートファイルのパスを追加します
 
 src/tailwind.config.jsファイルを開き、その内容を以下のコードに置き換えます：
 
@@ -631,7 +629,7 @@ src/index.cssファイルを開き、その内容を以下のコードに置き�
 
 #### 2. CSSの適用
 
-##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます：
+##### src/PokemonContainer.tsx ファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // PokemonContainer.tsx
@@ -695,8 +693,7 @@ export default PokemonContainer;
 +      {pokemon && <ItemDisplay item={pokemon} />}
 ```
 
-##### src/ItemDisplay.tsx ファイルを開き、その内容を以下のコードに置き換えます：
-
+##### src/ItemDisplay.tsx ファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // ItemDisplay.tsx
@@ -739,7 +736,7 @@ export default ItemDisplay;
 +          <p className="text-sm text-gray-500 text-center mt-2">{item.name}</p>
 ```
 
-##### npm run dev でビルドプロセスを実行します。
+##### npm run dev でビルドプロセスを実行します
 
 カレントディレクトリが作成したReactプロジェクトの直下にあることを確認し、以下のコマンドを実行します：
 
@@ -747,7 +744,7 @@ export default ItemDisplay;
 npm run dev
 ```
 
-##### ブラウザを開いて、CSSが適用されたアプリケーションを確認してください。
+##### ブラウザを開いて、CSSが適用されたアプリケーションを確認してください
 
 **備考**： 表示は以下のように変化します。
 
@@ -758,7 +755,9 @@ npm run dev
 navbarを導入して、ポケモンだけでなく犬のメニューも追加して、もう少しSPAっぽくしてみましょう。
 
 #### 1. react-routerのセットアップ
+
 ##### react-routerのインストール
+
 カレントディレクトリが作成したReactプロジェクトの直下にあることを確認し、以下のコマンドを実行します：
 
 ```sh
@@ -772,14 +771,14 @@ npm install react-router-dom
     - ルーティングは、React以外にも様々なライブラリやフレームワークにも当てはまる概念です。
       - Web開発のコンテキストにおいて、ルーティングは、異なるURLやパスを処理し、アプリケーション内の特定のコンポーネントやアクションにマッピングすることを意味します。
 
-**注意事項:**   
+**注意事項:**
 執筆時点のReact routeのバージョンはv6です。上記のようにインストールすればv6を利用できるはずです。バージョンを指定してインストールする場合は、v5とv6で設定が異なるので注意してください。
 
 #### 2.navbarの導入
 
 メニューは今のところポケモンしかありませんが、navbarを導入します。
 
-##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // App.tsx
@@ -810,7 +809,7 @@ function App() {
 export default App;
 ```
 
-##### ファイルを保存し、ブラウザを開いて http://localhost:5173 にアクセスし、アプリケーションを表示します。上部navbarの「Pokemon」をクリックし、「Get Random Pokemon」画面が表示されることを確認します。
+##### ファイルを保存し、ブラウザを開いて <http://localhost:5173> にアクセスし、アプリケーションを表示します。上部navbarの「Pokemon」をクリックし、「Get Random Pokemon」画面が表示されることを確認します
 
 ![Implementation of a navbar](../static/img/1th/implementation_navbar.png)
 
@@ -818,7 +817,7 @@ export default App;
 
 ポケモンだけでなく、犬の画像をランダムに表示するメニューを追加します。
 
-##### src/DogContainer.tsx ファイルを作成し、その内容を以下のコードに置き換えます：
+##### src/DogContainer.tsx ファイルを作成し、その内容を以下のコードに置き換えます
 
 DogContainer.tsxでは、PokemonContainer.tsxと同様に犬の画像がランダムに取得されます。
 デザインも同じです。  。
@@ -866,7 +865,7 @@ function DogContainer() {
 export default DogContainer;
 ```
 
-##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます：
+##### src/App.tsxファイルを開き、その内容を以下のコードに置き換えます
 
 ```jsx
 // App.tsx
@@ -901,13 +900,14 @@ function App() {
 export default App;
 ```
 
-##### ファイルを保存し、ブラウザを開いて http://localhost:5173 にアクセスし、アプリケーションを表示します。
+##### ファイルを保存し、ブラウザを開いて <http://localhost:5173> にアクセスし、アプリケーションを表示します
 
 「Pokemon」の横のnavbarに「Dog」メニューが追加されました。「Dog」メニューを押して、「Pokemon」と同じように画面の表示や処理ができることを確認してください。
 
 ## 3. 終わりに
-これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)から確認できます。  
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)
+
+これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)から確認できます。  
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/1th/first-app)
 
 TOP画面がない、デザインが極端に悪い（ダサいデザインは意図的です！）など、修正すべき点は多々あります。ぜひ、あなたのアイデアでこのUIの改善や機能追加にチャレンジしてみてください。
 
@@ -932,4 +932,3 @@ TOP画面がない、デザインが極端に悪い（ダサいデザインは�
     - e.g.
       - [React tutorial](https://react.dev/learn/tutorial-tic-tac-toe)
       - [Svelte tutorial](https://svelte.dev/tutorial/basics)
-

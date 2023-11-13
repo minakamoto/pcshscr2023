@@ -154,6 +154,6 @@ export default function App() {
 ### 終わりに
 
 これでハンズオンは終わりです。  
-コードは[ここ](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)から確認できます。  
+コードは[ここ](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)から確認できます。  
 
 もし、興味があれば、上に挙げたリンクをたどってコードの内容を調べたり、コードを好きに修正してみてください。

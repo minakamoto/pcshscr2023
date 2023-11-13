@@ -357,7 +357,7 @@ npm run dev
 
 วางไฟล์ภาพโลโก้ 4 ไฟล์ที่จะใช้บนหน้าจอใน `dish-delight/frontend/public`:
 
-ภาพเป้าหมายทั้งหมดควรได้รับจาก [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo). มีสี่ไฟล์ต่อไปนี้  
+ภาพเป้าหมายทั้งหมดควรได้รับจาก [Github Repository](https://github.com/minakamoto/pcshscr2023/tree/main/docs/static/img/2nd/logo). มีสี่ไฟล์ต่อไปนี้  
 ไฟล์ svg คือโลโก้ที่ใช้ใน Navbar และไฟล์ jpeg คือโลโก้ของแต่ละร้าน โลโก้ของแต่ละร้านค้าระบุไว้ใน img ของ store data
 
 - aroy_logo.jpeg
@@ -1572,7 +1572,7 @@ export default function RootLayout({
 
 แทนที่ `dish-delight/frontend/app/favicon.ico`:
 
-ควรได้รับภาพเป้าหมายจาก [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
+ควรได้รับภาพเป้าหมายจาก [Github Repository](https://github.com/minakamoto/pcshscr2023/tree/main/docs/static/img/2nd/favicon.ico).
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
@@ -1697,7 +1697,7 @@ class Option(Base):
 ### ลงทะเบียนข้อมูลเริ่มต้นในฐานข้อมูล
 
 ลงทะเบียนข้อมูลเริ่มต้นในฐานข้อมูลท้องถิ่น มีสคริปต์อย่างง่ายสำหรับการลงทะเบียนข้อมูลเริ่มต้นในฐานข้อมูลท้องถิ่น  
-ดาวน์โหลดไฟล์ทั้งหมดจาก [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) และวางไว้ใต้ `dish-delight/backend/src/backend`
+ดาวน์โหลดไฟล์ทั้งหมดจาก [Github repository](https://github.com/minakamoto/pcshscr2023/tree/main/src/script/2nd) และวางไว้ใต้ `dish-delight/backend/src/backend`
 
 ไฟล์เป้าหมายมีสี่ไฟล์ต่อไปนี้
 
@@ -2079,6 +2079,6 @@ export async function getMenu(
 
 ## 4. ในปิดท้าย
 
-นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on ขอขอบคุณสำหรับเวลาของคุณ. สามารถดูรโค้ดทั้งหมดได้ [ที่นี่](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
+นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on ขอขอบคุณสำหรับเวลาของคุณ. สามารถดูรโค้ดทั้งหมดได้ [ที่นี่](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
 การกำหนดค่า VSCode (สำหรับ Workspace) มีไว้เพื่อเป็นข้อมูลอ้างอิงของคุณด้วย ตั้งอยู่ในไดเร็กทอรี `.vscode`

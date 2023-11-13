@@ -357,7 +357,7 @@ npm run dev
 
 `dish-delight/frontend/public`に画面で使用するロゴの画像ファイルを4つを配置します:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。  
+対象の画像は[Github Repository](https://github.com/minakamoto/pcshscr2023/tree/main/docs/static/img/2nd/logo)からすべて取得してください。以下の4つのファイルです。  
 なお、svgファイルはNavbarで使うロゴで、jpegファイルのロゴは各店舗のロゴです。各店舗のロゴはstoreデータのimgで指定されています。
 
 - aroy_logo.jpeg
@@ -1572,7 +1572,7 @@ export default function RootLayout({
 
 `dish-delight/frontend/app/favicon.ico`を置き換えます:
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
+対象の画像は[Github Repository](https://github.com/minakamoto/pcshscr2023/tree/main/docs/static/img/2nd/favicon.ico)から取得してください。
 
 動作や見た目を確認します。
 
@@ -1696,7 +1696,7 @@ class Option(Base):
 ### データベースに初期データを登録する
 
 ローカルのデータベースに初期データを登録します。初期データ登録用に簡単なスクリプトを用意しています。  
-[Github リポジトリ](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
+[Github リポジトリ](https://github.com/minakamoto/pcshscr2023/tree/main/src/script/2nd)にあるファイルをすべてダウンロードし、`dish-delight/backend/src/backend`配下に置きます。
 
 対象のファイルは以下の 4 つです。
 
@@ -2076,6 +2076,6 @@ export async function getMenu(
 
 ## 4. 終わりに
 
-これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
+これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
 
 参考にVSCodeの設定(Workspace用)もコミットしてあります。`.vscode`ディレクトリ内にあります。
