@@ -11,7 +11,11 @@ hero:
       text: Web App
       link: /ja/README
     - theme: alt
-      text: TBD
+      text: IoT
+      link: /ja/iot/README
+    - theme: alt
+      text: XR
+      link: /ja/xr/README
 
 features:
   - title: Web App Hands-On
