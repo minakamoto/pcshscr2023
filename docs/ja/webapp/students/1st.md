@@ -28,7 +28,7 @@ Next.jsインストール設定済みのブラウザベースのIDE [stackblitz�
 
 stackblitzは、左ペインにファイルのディレクトリ、真ん中はファイルの編集、右ペインはプレビュー画面の構成になっています。
 
-![Next.js default display on stackblitz](../../static/img/students/1st/nextjs_default_display.png)
+![Next.js default display on stackblitz](../../../static/img/students/1st/nextjs_default_display.png)
 
 ### 不要なCSS設定を消す
 
@@ -145,7 +145,7 @@ export default function App() {
 
 実装後は、以下の画面になっています(初期の何もTodoのない状態からTodoを追加しています)。
 
-![Screen after development on stackblitz](../../static/img/students/1st/screen_after_development.png)
+![Screen after development on stackblitz](../../../static/img/students/1st/screen_after_development.png)
 
 ### 動作確認
 
