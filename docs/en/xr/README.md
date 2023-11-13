@@ -1,11 +1,11 @@
-# IoT
+# XR
 
-Materials related to IoT are placed here.
+Materials related to XR are placed here.
 
 ## Structure of the materials
 
-- For students.
-  - [IoT Case Study](./students/README.md)
+- For students
+  - TBD
 
 ## Notes
 

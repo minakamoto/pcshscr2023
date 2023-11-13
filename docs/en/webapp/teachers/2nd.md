@@ -250,7 +250,7 @@ Below is a UI image using Figma. It is provided here for reference only.
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="./static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="./static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="./static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
+| <img src="../../../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../../../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../../../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
 **NOTE**:  
 The above is a draft design from the hands-on conceptual phase. It may differ in some points from the hands-on implementation.
@@ -468,7 +468,7 @@ export default function Home() {
 ```
 
 - Verify that the appearance is as follows
-  ![PC Home](./static/img/2nd/docs/home_pc.png)
+  ![PC Home](../../../static/img/2nd/docs/home_pc.png)
 - Clicking on the `Sakura-tei`, `Aroy` or `Buono` card should take you to the Menu List screen.
   - Since the screen has not been created yet, "404 This page could not be found" will be displayed.
 
@@ -482,7 +482,7 @@ Please follow the instructions below and use the browser's developer tools to re
   - If you are on Windows, the shortcut is the same for all browsers: `Shift+Ctrl+i`.
 - In Developer Tools, click the button with the icon at the top that looks like a PC and a smartphone overlapped (see the right side of the image below).
   - In Windows, the shortcut key is `Shift+Ctrl+m`.
-    ![Developer tool](./static/img/2nd/docs/developer_tool.png)
+    ![Developer tool](../../../static/img/2nd/docs/developer_tool.png)
 - Select the terminal to you want to simulate from the menu at the top left of the screen (see the left side of the image above).
   - Or you can adjust the size yourself in `Responsive` mode.
 
@@ -872,7 +872,7 @@ Check to see how this works and looks.
 
 - Click on the `Sakura-tei` card on the Home screen to display the Menu List screen.
   - Four menus are displayed.
-    <img src="./static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
+    <img src="../../../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
 - Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
 - Clicking `CARD` on any of the menus on the Menu List screen should take you to the Menu Details screen.
   - Since this screen has not yet been created, you will see the  "404 This page could not be found" message.
@@ -880,7 +880,7 @@ Check to see how this works and looks.
   - A menu should appear.
 - Clicking the `Bohno` card on the Home screen, it should take you to the Menu list screen.
   - An error message appears because there is no menu.
-    <img src="./static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
+    <img src="../../../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
   - Added processing for cases where the store or menu does not exist.
     - The above is the case where the menu does not exist, but please also check if the store does not exist.
       - Temporarily rewrite the code (e.g., set the acquired data to 0, remove the if statement, etc.) to see if it appears.
@@ -1355,9 +1355,9 @@ Check to see how this works and looks.
 - Clicking on any of the menu cards in the Menu List screen should take the user to the Menu Detail screen.
   - The appropriate menu image, description and option should be displayed.
     - Example: `Khao Soi` at the `Aroy` store (without Option)
-    <img src="./static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    <img src="../../../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
     - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
-    <img src="./static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+    <img src="../../../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - Pressing `HOME` on the Navbar should take you to the HOME screen, and pressing `MENUS` should take you to the Menu List screen.
 - Error screen if store or menu does not exist
   - The image is the same as the Menu List screen
@@ -1540,7 +1540,7 @@ The above is the end of the frontend part, but the last step is to change only t
 
 Currently, the title and favicon are Next.js defaults. Fix this.
 
-<img src="./static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
+<img src="../../../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
 Open `dish-delight/frontend/app/layout.tsx` and replace its contents with the following code:
 
@@ -1577,7 +1577,7 @@ Check to see how this works and looks.
 
 - Make sure the site title and favicon are the same as in the following image.
 
-  <img src="./static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
+  <img src="../../../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
 ## 3. Connecting to the database and returning data
 
@@ -1630,7 +1630,7 @@ TIPS:
 
 - What to do if Pylance does not recognize the rye auto-built virtual environment and warns on import
   - If you get the warning shown in the screenshot below, please try the following actions.
-    ![Import Warning](./static/img/2nd/docs/import_warning.png)
+    ![Import Warning](../../../static/img/2nd/docs/import_warning.png)
   - In the command palette (press Ctrl+Shift+P), select `Python: Select Interpreter`, on Windows: `{absolute path to your working directory}/dish-delight/backend/.venv/Scripts/python .exe)`, on Mac: `{absolute path of your working directory}/dish-delight/backend/.venv/bin/python)`.
 
 ### Define the tables (database model)
@@ -1910,7 +1910,7 @@ rye run uvicorn main:app --reload
 
 Open a browser and go to <http://127.0.0.1:8000/docs> and verify that the following screen appears
 
-![Swagger UI](./static/img/2nd/docs/swagger_ui_default.png)
+![Swagger UI](../../../static/img/2nd/docs/swagger_ui_default.png)
 
 **NOTE**:
 
@@ -1934,7 +1934,7 @@ Testing Procedure
 Example: Getting the menus of a specified store API (`/stores/{store_id}/menus`) is shown below.
 
 - Assign `3` to `store_id` in `Parameters`.
-  ![Swagger UI menus](./static/img/2nd/docs/swagger_ui_store_menus.png)
+  ![Swagger UI menus](../../../static/img/2nd/docs/swagger_ui_store_menus.png)
 - Press the `Execute` button.
 - Verify that the `Code` is 200 and the contents of the `Details` are as follows
 

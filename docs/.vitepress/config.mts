@@ -7,7 +7,7 @@ import { jaConfig } from "./jaConfig.mts";
 export default defineConfigWithTheme({
   ignoreDeadLinks: "localhostLinks",
   locales: {
-    root: { label: "English", lang: "en-US", link: "/", ...enConfig },
+    root: { label: "English", lang: "en-US", link: "/en/", ...enConfig },
     th: { label: "ไทย", lang: "th", link: "/th/", ...thConfig },
     ja: { label: "日本語", lang: "ja", link: "/ja/", ...jaConfig },
   },
