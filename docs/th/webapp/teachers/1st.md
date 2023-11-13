@@ -107,7 +107,7 @@ npm run dev
 
 คำสั่งนี้จะเริ่มต้นเซิร์ฟเวอร์ Node.js และเปิดหน้าต่างเบราว์เซอร์ใหม่เพื่อแสดงแอปของคุณ
 
-![React+Vite template](../static/img/1th/vite_default.png)
+![React+Vite template](../../../static/img/1th/vite_default.png)
 
 คุณสามารถใช้ Ctrl + c เพื่อหยุดการทำงานของแอป React+Vite ใน command line ของคุณ
 
@@ -191,7 +191,7 @@ export default App;
 npm run dev
 ```
 
-![Random Pokemon initial display](../static/img/1th/random_pokemon_initial_display.png)
+![Random Pokemon initial display](../../../static/img/1th/random_pokemon_initial_display.png)
 
 - **หมายเหตุ**:
   - ได้ปรับใช้ CSS ของเทมเพลตแล้ว เราจะปรับใช้การออกแบบเล็กน้อยในขั้นตอนต่อไป ดังนั้นเราจะปล่อยไว้ตามที่เป็นอยู่
@@ -748,7 +748,7 @@ npm run dev
 
 **หมายเหตุ**: การแสดงผลเปลี่ยนแปลงเป็นดังต่อไปนี้
 
-![Random Pokemon with CSS applied](../static/img/1th/random_pokemon_with_css.png)
+![Random Pokemon with CSS applied](../../../static/img/1th/random_pokemon_with_css.png)
 
 ### (ตัวเลือก) เหมือน SPA มากขึ้น
 
@@ -811,7 +811,7 @@ export default App;
 
 ##### บันทึกไฟล์และเปิดเบราว์เซอร์ของคุณแล้วไปที่ <http://localhost:5173> เพื่อดูแอปพลิเคชัน คลิกที่ "Pokemon" ในเมนูบาร์ด้านบนและตรวจสอบว่าหน้า "Get Random Pokemon" ปรากฏขึ้น
 
-![Implementation of a navbar](../static/img/1th/implementation_navbar.png)
+![Implementation of a navbar](../../../static/img/1th/implementation_navbar.png)
 
 #### 3. เพิ่มเมนูสุนัข
 

@@ -4,13 +4,13 @@ export const thConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/th/" },
-      { text: "Web App", link: "/th/README" },
+      { text: "Web App", link: "/th/webapp/README" },
       { text: "IoT", link: "/th/iot/README" },
       { text: "XR", link: "/th/xr/README" },
     ],
 
     sidebar: {
-      "/th": { base: "/th/", items: sidebarWebApp() },
+      "/th/webapp/": { base: "/th/webapp/", items: sidebarWebApp() },
       "/th/iot/": { base: "/th/iot/", items: sidebarIot() },
       "/th/xr/": { base: "/th/xr/", items: sidebarXr() },
     },
@@ -29,15 +29,15 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
             { text: "บทนำ", link: "README" },
             {
               text: "ภาพรวมเกี่ยวกับเทคโนโลยีสำหรับพัฒนาเว็บแอปพลิเคชัน",
-              link: "0th",
+              link: "teachers/0th",
             },
             {
               text: "ภาคปฏิบัติ(hands-on)เพื่อพัฒนา UI ที่ง่ายและสะดวก",
-              link: "1st",
+              link: "teachers/1st",
             },
             {
               text: "ภาคปฏิบัติ(hands-on)เพื่อพัฒนา UI ที่ซับซ้อนขึ้นเล็กน้อยและ API ของตัวเอง",
-              link: "2nd",
+              link: "teachers/2nd",
             },
           ],
         },

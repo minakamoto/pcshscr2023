@@ -28,7 +28,7 @@
 
 stackblitz ประกอบด้วยไดเร็กทอรีของไฟล์ในบานหน้าต่างด้านซ้าย การแก้ไขไฟล์ตรงกลาง และหน้าจอแสดงตัวอย่างในบานหน้าต่างด้านขวา
 
-![Next.js default display on stackblitz](../../static/img/students/1st/nextjs_default_display.png)
+![Next.js default display on stackblitz](../../../static/img/students/1st/nextjs_default_display.png)
 
 ### ลบการตั้งค่า CSS ที่ไม่จำเป็น
 
@@ -145,7 +145,7 @@ export default function App() {
 
 หลังจากการพัฒนา หน้าจอต่อไปนี้จะแสดงขึ้น (Todoจะถูกเพิ่มจากสถานะเริ่มต้นโดยไม่มีTodo)
 
-![Screen after development on stackblitz](../../static/img/students/1st/screen_after_development.png)
+![Screen after development on stackblitz](../../../static/img/students/1st/screen_after_development.png)
 
 ### การตรวจสอบพฤติกรรม
 
