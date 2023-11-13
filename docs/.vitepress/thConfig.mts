@@ -6,11 +6,13 @@ export const thConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
       { text: "Home", link: "/th/" },
       { text: "Web App", link: "/th/README" },
       { text: "IoT", link: "/th/iot/README" },
+      { text: "XR", link: "/th/xr/README" },
     ],
 
     sidebar: {
       "/th": { base: "/th/", items: sidebarWebApp() },
       "/th/iot/": { base: "/th/iot/", items: sidebarIot() },
+      "/th/xr/": { base: "/th/xr/", items: sidebarXr() },
     },
   },
 };
@@ -67,6 +69,18 @@ function sidebarIot(): DefaultTheme.SidebarItem[] {
           text: "บทนำเกี่ยวกับกรณี IoT ต่างๆ",
           items: [{ text: "Introduction", link: "students/README" }],
         },
+      ],
+    },
+  ];
+}
+
+function sidebarXr(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "For Students",
+      collapsed: false,
+      items: [
+        // add content for students here
       ],
     },
   ];
