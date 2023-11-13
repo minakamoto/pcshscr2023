@@ -356,7 +356,7 @@ Please leave the development server running. If you want to stop it, you can use
 
 Place 4 logo image files to be used on the screens in `dish-delight/frontend/public`:
 
-All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/logo). The following four files are available.  
+All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pcshscr2023/tree/main/docs/static/img/2nd/logo). The following four files are available.  
 The svg file is the logo used in Navbar, and the jpeg file is the logo of each store. The logo of each store is specified in the img of the store data.
 
 - aroy_logo.jpeg
@@ -1571,7 +1571,7 @@ export default function RootLayout({
 
 Replace `dish-delight/frontend/app/favicon.ico`:
 
-Target images should be obtained from [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/2nd/favicon.ico).
+Target images should be obtained from [Github Repository](https://github.com/minakamoto/pcshscr2023/tree/main/docs/static/img/2nd/favicon.ico).
 
 Check to see how this works and looks.
 
@@ -1696,7 +1696,7 @@ class Option(Base):
 ### Register initial data in the database
 
 Register initial data in the local database. A simple script is provided for registering initial data in the local database.  
-Download all the files from [Github repository](https://github.com/minakamoto/pschs2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/backend`.
+Download all the files from [Github repository](https://github.com/minakamoto/pcshscr2023/tree/main/src/script/2nd) and put them under `dish-delight/backend/src/backend`.
 
 The target files are the following four.
 
@@ -2078,6 +2078,6 @@ Try changing the store and the menu to check the operation. Try using the `Navba
 
 ## 4. At the end
 
-This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
+This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
 The VSCode configuration (for Workspace) is also committed for your reference. It is located in the `.vscode` directory.

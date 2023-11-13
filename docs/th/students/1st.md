@@ -154,6 +154,6 @@ export default function App() {
 ### ในปิดท้าย
 
 นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on  
-สามารถดูโค้ดได้[ที่นี่](https://github.com/minakamoto/pschs2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)  
+สามารถดูโค้ดได้[ที่นี่](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)  
 
 หากคุณสนใจ โปรดไปที่ลิงก์ด้านบนเพื่อตรวจสอบโค้ดและแก้ไขตามที่คุณต้องการ
