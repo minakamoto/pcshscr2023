@@ -6,10 +6,12 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     nav: [
       { text: "Home", link: "/" },
       { text: "Web App", link: "/README" },
+      { text: "IoT", link: "/iot/README" },
     ],
 
     sidebar: {
       "/": { base: "/", items: sidebarWebApp() },
+      "/iot/": { base: "/iot/", items: sidebarIot() },
     },
   },
 };
@@ -44,6 +46,21 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
             { text: "Introduction", link: "students/README" },
             { text: "Todo List App", link: "students/1st" },
           ],
+        },
+      ],
+    },
+  ];
+}
+
+function sidebarIot(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "For Students",
+      collapsed: false,
+      items: [
+        {
+          text: "Introduction of various IoT cases",
+          items: [{ text: "Introduction", link: "students/README" }],
         },
       ],
     },

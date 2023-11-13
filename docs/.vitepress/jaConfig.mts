@@ -5,10 +5,12 @@ export const jaConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     nav: [
       { text: "Home", link: "/ja/" },
       { text: "Web App", link: "/ja/README" },
+      { text: "IoT", link: "/ja/iot/README" },
     ],
 
     sidebar: {
       "/ja": { base: "/ja/", items: sidebarWebApp() },
+      "/ja/iot/": { base: "/ja/iot/", items: sidebarIot() },
     },
   },
 };
@@ -46,6 +48,21 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
             { text: "Introduction", link: "students/README" },
             { text: "Todo List App", link: "students/1st" },
           ],
+        },
+      ],
+    },
+  ];
+}
+
+function sidebarIot(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "For Students",
+      collapsed: false,
+      items: [
+        {
+          text: "さまざまなIoT事例の紹介",
+          items: [{ text: "Introduction", link: "students/README" }],
         },
       ],
     },

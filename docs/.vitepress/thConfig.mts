@@ -5,10 +5,12 @@ export const thConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     nav: [
       { text: "Home", link: "/th/" },
       { text: "Web App", link: "/th/README" },
+      { text: "IoT", link: "/th/iot/README" },
     ],
 
     sidebar: {
       "/th": { base: "/th/", items: sidebarWebApp() },
+      "/th/iot/": { base: "/th/iot/", items: sidebarIot() },
     },
   },
 };
@@ -49,6 +51,21 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
             { text: "บทนำ", link: "students/README" },
             { text: "Todo List App", link: "students/1st" },
           ],
+        },
+      ],
+    },
+  ];
+}
+
+function sidebarIot(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: "For Students",
+      collapsed: false,
+      items: [
+        {
+          text: "บทนำเกี่ยวกับกรณี IoT ต่างๆ",
+          items: [{ text: "Introduction", link: "students/README" }],
         },
       ],
     },
