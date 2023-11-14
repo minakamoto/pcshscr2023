@@ -251,7 +251,7 @@ rye sync
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
+| <img src="../../../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../../../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../../../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
 **หมายเหตุ**:  
 ข้างต้นเป็นการออกแบบร่างจากระยะแนวความคิดแบบลงมือปฏิบัติจริง อาจแตกต่างไปจากการปฏิบัติจริงในบางจุด
@@ -469,7 +469,7 @@ export default function Home() {
 ```
 
 - ตรวจสอบว่าลักษณะที่ปรากฏมีดังนี้
-  ![PC Home](../static/img/2nd/docs/home_pc.png)
+  ![PC Home](../../../static/img/2nd/docs/home_pc.png)
 - การคลิกที่การ์ด `Sakura-tei`, `Aroy` หรือ `Buono` จะนำคุณไปยังหน้าจอ Menu List
   - เนื่องจากยังไม่ได้สร้างหน้าจอ ข้อความ "404 This page could not be found" จะปรากฏขึ้น
 
@@ -483,7 +483,7 @@ export default function Home() {
   - หากคุณใช้ Windows ทางลัดจะเหมือนกันสำหรับเบราว์เซอร์ทั้งหมด: `Shift+Ctrl+i`
 - ในเครื่องมือสำหรับนักพัฒนา ให้คลิกปุ่มที่มีไอคอนด้านบนซึ่งดูเหมือนคอมพิวเตอร์ตั้งโต๊ะและสมาร์ทโฟนซ้อนทับกัน (ดูด้านขวาของภาพด้านล่าง)
   - ใน Windows ปุ่มลัดคือ `Shift+Ctrl+m`
-    ![Developer tool](../static/img/2nd/docs/developer_tool.png)
+    ![Developer tool](../../../static/img/2nd/docs/developer_tool.png)
 - เลือกเทอร์มินัลที่คุณต้องการจำลองจากเมนูที่ด้านซ้ายบนของหน้าจอ (ดูด้านซ้ายของภาพด้านบน)
   - หรือคุณสามารถปรับขนาดได้ด้วยตัวเองในโหมด "Responsive"
 
@@ -873,7 +873,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 - คลิกที่การ์ด `Sakura-tei` บนหน้าจอ Home เพื่อแสดงหน้าจอ Menu List
   - สี่เมนูจะปรากฏขึ้น
-    <img src="../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
+    <img src="../../../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
 - การกด `HOME` บน Navbar จะนำคุณไปที่หน้าจอ HOME และการกด `MENUS` จะนำคุณไปยังหน้าจอ Menu List
 - การคลิก `CARD` ในเมนูใดๆ บนหน้าจอ Menu List จะนำคุณไปยังหน้าจอ Menu Detail
   - เนื่องจากยังไม่ได้สร้างหน้าจอนี้ คุณจะเห็นข้อความ "404 This page could not be found"
@@ -881,7 +881,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
   - เมนูควรปรากฏขึ้น
 - การคลิกที่การ์ด `Bohno` บนหน้าจอ Home จะนำคุณไปยังหน้าจอ Menu List
   - ข้อความแสดงข้อผิดพลาดปรากฏขึ้นเนื่องจากไม่มีเมนู
-    <img src="../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
+    <img src="../../../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
   - เพิ่มการประมวลผลในกรณีที่ไม่มีร้านค้าหรือเมนู
     - ข้างต้นเป็นกรณีที่ไม่มีเมนู แต่โปรดตรวจสอบว่าไม่มีร้านค้าด้วย
       - เขียนโค้ดใหม่ชั่วคราว (เช่น ตั้งค่าข้อมูลที่ได้มาเป็น 0 ลบคำสั่ง if เป็นต้น) เพื่อดูว่าปรากฏขึ้นหรือไม่
@@ -1356,9 +1356,9 @@ export default async function Menu({
 - การคลิกที่การ์ดเมนูใดๆ ในหน้าจอ Menu List จะนำผู้ใช้ไปยังหน้าจอ Menu Detail
   - ควรแสดงรูปภาพเมนู คำอธิบาย และตัวเลือกที่เหมาะสม
     - ตัวอย่าง: `Khao Soi` ที่ร้าน `Aroy` (ไม่มีตัวเลือก)
-    <img src="../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    <img src="../../../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
     - ตัวอย่าง: `Sanuki Udon` ที่ร้าน `Sakura-tei` (มีตัวเลือก)
-    <img src="../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+    <img src="../../../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - การกด `HOME` บน Navbar จะนำคุณไปที่หน้าจอ HOME และการกด 'MENUS` จะนำคุณไปยังหน้าจอ Menu List
 - หน้าจอแสดงข้อผิดพลาดหากไม่มีร้านค้าหรือเมนู
   - ภาพจะเหมือนกับหน้าจอ Menu List
@@ -1541,7 +1541,7 @@ export default async function Menu({
 
 ปัจจุบัน ชื่อและ favicon เป็นค่าเริ่มต้นของ Nextjs แก้ไขปัญหานี้
 
-<img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
+<img src="../../../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
 เปิด `dish-delight/frontend/app/layout.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1578,7 +1578,7 @@ export default function RootLayout({
 
 - ตรวจสอบให้แน่ใจว่าชื่อไซต์และ favicon เหมือนกับในภาพต่อไปนี้
 
-  <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
+  <img src="../../../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
 ## 3. การเชื่อมต่อกับฐานข้อมูลและการส่งคืนข้อมูล
 
@@ -1631,7 +1631,7 @@ Base = declarative_base()
 
 - จะทำอย่างไรถ้า Pylance ไม่รู้จักสภาพแวดล้อมเสมือน rye ที่สร้างขึ้นอัตโนมัติและเตือนเกี่ยวกับการนำเข้า
   - หากคุณได้รับคำเตือนตามภาพหน้าจอด้านล่าง โปรดลองดำเนินการดังต่อไปนี้
-    ![Import Warning](../static/img/2nd/docs/import_warning.png)
+    ![Import Warning](../../../static/img/2nd/docs/import_warning.png)
   - ในชุดคำสั่ง (command palette) (กด Ctrl+Shift+P) เลือก `Python: Select Interpreter` บน Windows: `{เส้นทางสัมบูรณ์ของไดเร็กทอรีการทำงานของคุณ}/dish-delight/backend/.venv/Scripts/python .exe)` บน Mac: `{เส้นทางสัมบูรณ์ของไดเร็กทอรีการทำงานของคุณ}/dish-delight/backend/.venv/bin/python)`
 
 ### กำหนดตารางฐานข้อมูล (database model)
@@ -1911,7 +1911,7 @@ rye run uvicorn main:app --reload
 
 เปิดเบราว์เซอร์และไปที่ <http://127.0.0.1:8000/docs> และตรวจสอบว่าหน้าจอต่อไปนี้ปรากฏขึ้น
 
-![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
+![Swagger UI](../../../static/img/2nd/docs/swagger_ui_default.png)
 
 **หมายเหตุ**:
 
@@ -1935,7 +1935,7 @@ ERROR:    [Errno 48] Address already in use
 ตัวอย่าง: การรับเมนูของ API ร้านค้าที่ระบุ (`/stores/{store_id}/menus`) แสดงอยู่ด้านล่าง
 
 - กำหนด `3` ให้กับ `store_id` ใน `Parameters`
-  ![Swagger UI menus](../static/img/2nd/docs/swagger_ui_store_menus.png)
+  ![Swagger UI menus](../../../static/img/2nd/docs/swagger_ui_store_menus.png)
 - กดปุ่ม `Execute`
 - ตรวจสอบว่า `Code` คือ 200 และเนื้อหาของ `Details` มีดังนี้
 

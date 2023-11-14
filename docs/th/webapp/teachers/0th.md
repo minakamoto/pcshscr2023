@@ -12,24 +12,23 @@
 
 ### ความแตกต่างระหว่างเทคโนโลยีเว็บแอปเมื่อ 20 ปีที่แล้วกับปัจจุบัน
 
-#### ให้ความสนใจกับเรื่องของหน้า HTML หลายหน้า กับแอปพลิเคชันหน้าเดียว:
+#### ให้ความสนใจกับเรื่องของหน้า HTML หลายหน้า กับแอปพลิเคชันหน้าเดียว
 
 ดูแผนภาพต่อไปนี้เพื่อทำความเข้าใจวิธีการทำงาน รายละเอียดเพิ่มเติมจะอธิบายในบทต่อไป
 
-![multiple HTML pages vs. single-page apps](../static/img/0th/mpa_vs_spa.jpg)
+![multiple HTML pages vs. single-page apps](../../../static/img/0th/mpa_vs_spa.jpg)
 
 #### ความแตกต่างโดยรวมระหว่างสแต็กเทคโนโลยีเว็บแอปเมื่อ 20 ปีที่แล้วกับปัจจุบัน
 
 ตารางนี้สรุปความแตกต่างสำคัญระหว่างการพัฒนาเว็บแอปเมื่อ 20 ปีที่แล้วกับปัจจุบัน:
 
-
 |          Aspect         | 20 Years Ago | Today                      |
 |:-----------------------:|:------------:|:--------------------------:|
 |    Application Architecture | Multiple HTML pages | Single-page apps |
-|       Backend Architecture | Monolithic	| Monolithic, Microservices|
+|       Backend Architecture | Monolithic | Monolithic, Microservices|
 |    Frontend Technology Stack | Simple HTML, CSS, JavaScript | Advanced HTML, CSS, JavaScript(include library/framework like React, Angular, Vue.js, etc.) |
 |       Backend Technology Stack | PHP, Perl, etc. |  JavaScript(Node.js), Python, Go, Rust, etc.|
-|         Database           | RDB	| RDB, NoSQL| 
+|         Database           | RDB | RDB, NoSQL|
 |        User Interface     | Static, page-based | Dynamic, interactive |
 |        User Experience    | Not a priority | Responsive, intuitive, user-friendly |
 |     Mobile-first approach | Not common | Optimized for mobile devices first |
@@ -45,9 +44,9 @@
 
 - multiple HTML pages vs. single-page apps:
   - มาตรฐานการพัฒนาเว็บแอปประมาณ 20 ปีที่ผ่านมาเป็นการใช้หน้า HTML หลายหน้า โดยแต่ละหน้าจะเป็นไฟล์ HTML แยกต่างหาก และผู้ใช้ต้องโหลดหน้าเว็บทั้งหมดใหม่เมื่อต้องการเปลี่ยนหน้า ส่งผลให้เวลาในการโหลดช้าลงและประสบการณ์การใช้งานที่ลื่นไหลน้อยลง ในทางตรงกันข้าม แอปหน้าเดียว (SPA) ได้รับความนิยมมากขึ้นในการพัฒนาเว็บแอปสมัยใหม่ SPA เร็วกว่า มอบประสบการณ์ผู้ใช้ที่ราบรื่นยิ่งขึ้น และประสิทธิภาพที่ดีขึ้น แต่อาจซับซ้อนกว่าในการพัฒนาและต้องการเทคโนโลยีขั้นสูง เช่น React, Vue หรือ Angular สปาอาจมีปัญหากับ SEO การเปลี่ยนไปสู่ SPA สะท้อนให้เห็นถึงแนวโน้มที่มากขึ้นในการสร้างเว็บแอปที่ให้ความสำคัญกับประสบการณ์และประสิทธิภาพของผู้ใช้ แต่ยังต้องการทักษะและการพิจารณาในการพัฒนาที่ซับซ้อนมากขึ้นด้วย
-- AJAX: 
+- AJAX:
   - AJAX (Asynchronous JavaScript and XML) เป็นเทคโนโลยีที่ช่วยให้เว็บแอปพลิเคชันสามารถอัปเดตเนื้อหาได้โดยไม่ต้องโหลดหน้าเว็บทั้งหมดใหม่  AJAX เป็นเทคนิคที่มีประสิทธิภาพที่ช่วยปรับปรุงประสบการณ์ของผู้ใช้บนหน้าเว็บได้  AJAX เป็นเทคโนโลยีที่สำคัญสำหรับการพัฒนาเว็บแอปพลิเคชันสมัยใหม่
-- Responsive design: 
+- Responsive design:
   - ในอดีต เว็บแอปพลิเคชันได้รับการออกแบบด้วยรูปแบบตายตัวที่ไม่ได้ปรับตามขนาดหน้าจอที่แตกต่างกัน ในปัจจุบัน การออกแบบที่ตอบสนองตามอุปกรณ์ถือเป็นเรื่องปกติ และเว็บแอปพลิเคชันคาดว่าจะดูดีและทำงานได้ดีบนอุปกรณ์ต่างๆ รวมถึงเดสก์ท็อป แท็บเล็ต และสมาร์ทโฟน
 - Mobile-first design:
   - ด้วยการเพิ่มขึ้นของสมาร์ทโฟนและแท็บเล็ต เว็บแอปพลิเคชันจำนวนมากในปัจจุบันจึงได้รับการออกแบบโดยคำนึงถึงอุปกรณ์เคลื่อนที่เป็นอันดับแรก ซึ่งหมายความว่าการออกแบบได้รับการปรับให้เหมาะกับอุปกรณ์พกพา โดยมีเค้าโครงเดสก์ท็อปและแท็บเล็ตที่สร้างขึ้นเหนือการออกแบบอุปกรณ์พกพา
@@ -63,18 +62,18 @@
 สแต็กเทคโนโลยีที่จำเป็นสำหรับเว็บแอปสมัยใหม่ประกอบด้วยเลเยอร์ต่างๆรวมถึง frontend, backend, mobile, UI/UX และ เทคโนโลยีinfrastructure ซึ่งทำงานร่วมกันเพื่อสร้างประสบการณ์ผู้ใช้ที่ราบรื่น แม้ว่าองค์ประกอบของทีมอาจแตกต่างกันไปขึ้นอยู่กับขนาดขององค์กรและปัจจัยอื่นๆ การพัฒนาและปรับใช้แอปพลิเคชันให้ประสบความสำเร็จจำเป็นต้องอาศัยการทำงานร่วมกันและการสื่อสารที่มีประสิทธิภาพระหว่างสมาชิกในทีมและผู้มีส่วนได้ส่วนเสียภายนอก เช่น ลูกค้าและผู้ใช้ Agile, XP, TDD, Git และเครื่องมือการจัดการโครงการต่างๆ เช่น Jira, Asana และ Trello สามารถช่วยในการทำงานร่วมกันและการจัดการนี้ได้
 
 <div align="center">
-<img src="../static/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
+<img src="../../../static/img/0th/correlation_tech_stack.jpg" alt="correlation of the technology stack" width="60%">
 </div>
 
-#### คำอธิบายสั้น ๆ ของแต่ละเลเยอร์เทคโนโลยีในสแต็กการพัฒนาเว็บแอปสมัยใหม่:
+#### คำอธิบายสั้น ๆ ของแต่ละเลเยอร์เทคโนโลยีในสแต็กการพัฒนาเว็บแอปสมัยใหม่
 
-- Frontend: 
+- Frontend:
   - เลเยอร์นี้มีหน้าที่สร้าง user interface และ user experience ของแอปพลิเคชัน โดยใช้เทคโนโลยีเช่น HTML, CSS, JavaScript และfrontend frameworksต่างๆ เช่น React, Vue และ Angular
 - Backend:
   - เลเยอร์นี้มีหน้าที่จัดการตรรกะทางธุรกิจและการจัดเก็บข้อมูลของแอปพลิเคชัน โดยใช้เทคโนโลยีserver-side เช่น ภาษาการเขียนโปรแกรม เช่น Node.js, Python, Ruby และ Java และframeworkต่างๆ เช่น Express.js, Nest.js, Django, FastAPI, Spring, Ruby on Rails
 - Mobile:
   - เลเยอร์นี้มีหน้าที่ในการพัฒนาแอปพลิเคชันมือถือที่ทำงานควบคู่กับเว็บแอป ใช้ framework การพัฒนาแอพแบบเนทีฟเช่น Swift, Kotlin และ Java หรือ framework การพัฒนา cross-platform เช่น React Native และ Flutter
-- UI/UX: 
+- UI/UX:
   - เลเยอร์นี้มีหน้าที่สร้างประสบการณ์ผู้ใช้ที่ดึงดูดสายตาและราบรื่นสำหรับแอปพลิเคชัน โดยใช้เครื่องมือออกแบบ เช่น Sketch, Figma และ Adobe XD
 - Infrastructure:
   - เลเยอร์นี้มีหน้าที่การปรับใช้ การปรับขนาด และการจัดการแอปพลิเคชัน ใช้ cloud platform เช่น AWS, Azure และ GCP และเครื่องมือ DevOps เช่น Docker, Kubernetes, Ansible และ Terraform
@@ -85,9 +84,10 @@
 
 ชื่อโดยละเอียดของสแต็คเทคโนโลยีที่จำเป็นสำหรับการพัฒนาเว็บแอปพลิเคชันสมัยใหม่แสดงอยู่ในตัวอย่างบนสติกกี่ นี่เป็นเพียงตัวอย่างเท่านั้น ผู้เขียนได้โพสต์สติกกี่พร้อมชื่อสแต็กเทคโนโลยีที่คิดขึ้นได้อย่างรวดเร็วในเวลาที่เขียน โปรดทราบว่าเทคโนโลยีมีการพัฒนาอย่างต่อเนื่อง และข้อมูลนี้อาจล้าสมัยได้ทุกเมื่อ
 
-![the detailed names of the technology stacks examples](../static/img/0th/technology_stack_name_examples.jpg)
+![the detailed names of the technology stacks examples](../../../static/img/0th/technology_stack_name_examples.jpg)
 
 ## 3. Links
+
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Learn)
   - มีการรวบรวมข้อมูลเกี่ยวกับเทคโนโลยีเว็บ นอกจากนี้ยังมีแบบฝึกหัดสำหรับผู้เริ่มต้น
 - [microsoft/Web-Dev-For-Beginners](https://microsoft.github.io/Web-Dev-For-Beginners/#/)

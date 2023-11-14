@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Web App
-      link: /ja/README
+      link: /ja/webapp/README
     - theme: alt
       text: IoT
       link: /ja/iot/README

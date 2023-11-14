@@ -251,7 +251,7 @@ Next.jsとTailwind CSSを使用して、Homeとメニュー一覧とメニュー
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
-| <img src="../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
+| <img src="../../../static/img/2nd/docs/figma_1.png" alt="Figma image1" width="300"> | <img src="../../../static/img/2nd/docs/figma_2.png" alt="Figma image2" width="300"> | <img src="../../../static/img/2nd/docs/figma_3.png" alt="Figma image3" width="300"> |
 
 **注意事項**:  
 上記はハンズオン構想段階でのドラフトのデザインです。ハンズオンの実装とは異なる点もあります。
@@ -469,7 +469,7 @@ export default function Home() {
 ```
 
 - 見た目が以下となっていることを確認します。
-  ![PC Home](../static/img/2nd/docs/home_pc.png)
+  ![PC Home](../../../static/img/2nd/docs/home_pc.png)
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 
@@ -483,7 +483,7 @@ export default function Home() {
   - Windowsであれば、どのブラウザでも共通で、ショートカットキーは`Shift+Ctrl+i`
 - 開発者ツールにて上部にあるPCとスマホが重なったようなアイコン(下記画像の右側を参照)のボタンをクリックします。
   - Windowsであれば、ショートカットキーは`Shift+Ctrl+m`
-    ![Developer tool](../static/img/2nd/docs/developer_tool.png)
+    ![Developer tool](../../../static/img/2nd/docs/developer_tool.png)
 - 画面の左上のメニューでシミュレートする端末を選びます(上記の画像の左側を参照)。
   - もしくは`Responsive`状態で自分で大きさを調整します。
 
@@ -873,7 +873,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 - Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューが4つ表示されること
-    <img src="../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
+    <img src="../../../static/img/2nd/docs/menu_list_sakura_tei.png" alt="Menu list" width="300">
 - Navbarの`HOME`を押すとHOME画面に遷移すること、`MENUS`を押すとメニュー一覧画面のままであること
 - メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
@@ -881,7 +881,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
   - メニューが1つ表示されること
 - Home画面にて`Bohno`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューがないため、エラーメッセージがでること
-    <img src="../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
+    <img src="../../../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
   - 実装に店舗やメニューが存在しない場合の処理を加えました。
     - 上記は、メニューが存在していない場合ですが、店舗が存在していない場合も動作確認をしてみてください。
       - 一時的にコードを書き換えてみる(例: 取得データを0にする、if文を外すなど)などで表示されます。
@@ -1356,9 +1356,9 @@ export default async function Menu({
 - メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
   - 該当のメニュー画像や説明、Optionなどが表示されること
     - 例: 店舗`Aroy`の`Khao Soi`(Optionなし)
-    <img src="../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    <img src="../../../static/img/2nd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
     - 例: 店舗`Sakura-tei`の`Sanuki Udon`(Optionあり)
-    <img src="../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+    <img src="../../../static/img/2nd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - Navbarの`HOME`を押すとHOME画面に、`MENUS`を押すとメニュー一覧画面に遷移すること
 - 店舗やメニューが存在しない場合のエラー画面
   - イメージはメニュー一覧画面と同じ
@@ -1541,7 +1541,7 @@ export default async function Menu({
 
 現状、以下のとおりNext.jsデフォルトのタイトルとfaviconになっています。これを修正します。
 
-<img src="../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
+<img src="../../../static/img/2nd/docs/default_title_favicon.png" alt="Default Title And favicon" width="300">
 
 `dish-delight/frontend/app/layout.tsx`を開き、その内容を以下のコードに置き換えます。
 
@@ -1577,7 +1577,7 @@ export default function RootLayout({
 動作や見た目を確認します。
 
 - サイトのタイトルとfaviconが以下のキャプチャと同じであることを確認する
-  <img src="../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
+  <img src="../../../static/img/2nd/docs/jojo_title_favicon.png" alt="Jojo Title And favicon" width="300">
 
 ## 3. データベースに接続してデータを返す
 
@@ -1630,7 +1630,7 @@ TIPS:
 
 - Pylanceがrye自動構築の仮想環境を認識できておらず、importで警告がでる場合の対処
   - 下記キャプチャーの警告が出る場合、以下の対応をしてみてください。
-    ![Import Warning](../static/img/2nd/docs/import_warning.png)
+    ![Import Warning](../../../static/img/2nd/docs/import_warning.png)
   - コマンドパレットにて(Ctrl+Shift+Pを押す)、`Python: Select Interpreter`を選択、Windowsの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/Scripts/python.exe)`、Macの場合:`{各自の作業ディレクトリの絶対パス}/dish-delight/backend/.venv/bin/python)`を指定する
 
 ### テーブル(データベースモデル)定義を行う
@@ -1909,7 +1909,7 @@ rye run uvicorn main:app --reload
 
 ブラウザを開いて <http://127.0.0.1:8000/docs> にアクセスし、以下の画面が表示されることを確認してください。
 
-![Swagger UI](../static/img/2nd/docs/swagger_ui_default.png)
+![Swagger UI](../../../static/img/2nd/docs/swagger_ui_default.png)
 
 **注意事項**:
 
@@ -1933,7 +1933,7 @@ ERROR:    [Errno 48] Address already in use
 例:指定した店舗のメニューを取得 API(`/stores/{store_id}/menus`)の動作確認は以下になります。
 
 - `Parameters`の`store_id`に`3`を代入する
-  ![Swagger UI menus](../static/img/2nd/docs/swagger_ui_store_menus.png)
+  ![Swagger UI menus](../../../static/img/2nd/docs/swagger_ui_store_menus.png)
 - `Execute`ボタンを押す
 - `Code`が 200 であることを確認し、`Details`の中身が以下であること
 

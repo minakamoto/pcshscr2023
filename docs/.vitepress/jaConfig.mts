@@ -4,13 +4,13 @@ export const jaConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/ja/" },
-      { text: "Web App", link: "/ja/README" },
+      { text: "Web App", link: "/ja/webapp/README" },
       { text: "IoT", link: "/ja/iot/README" },
       { text: "XR", link: "/ja/xr/README" },
     ],
 
     sidebar: {
-      "/ja": { base: "/ja/", items: sidebarWebApp() },
+      "/ja/webapp/": { base: "/ja/webapp/", items: sidebarWebApp() },
       "/ja/iot/": { base: "/ja/iot/", items: sidebarIot() },
       "/ja/xr/": { base: "/ja/xr/", items: sidebarXr() },
     },
@@ -26,15 +26,18 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
         {
           text: "Hands-on for catch-up",
           items: [
-            { text: "はじめに", link: "README" },
-            { text: "Webアプリに関わる技術スタックの概要", link: "0th" },
+            { text: "はじめに", link: "teachers/README" },
+            {
+              text: "Webアプリに関わる技術スタックの概要",
+              link: "teachers/0th",
+            },
             {
               text: "シンプルかつ簡単なUIを開発するハンズオン",
-              link: "1st",
+              link: "teachers/1st",
             },
             {
               text: "ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン",
-              link: "2nd",
+              link: "teachers/2nd",
             },
           ],
         },

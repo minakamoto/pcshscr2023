@@ -4,7 +4,7 @@ Materials related to XR are placed here.
 
 ## Structure of the materials
 
-- For students.
+- For students
   - TBD
 
 ## Notes

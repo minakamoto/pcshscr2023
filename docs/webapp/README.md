@@ -1,11 +1,13 @@
-# IoT
+# WebApp
 
-Materials related to IoT are placed here.
+Materials related to WebApp are placed here.
 
 ## Structure of the materials
 
+- For teachers
+  - [Hands-on for catch-up](./teachers/README.md)
 - For students
-  - [IoT Case Study](./students/README.md)
+  - [30-min experience with the latest web app dev tech](./students/README.md)
 
 ## Notes
 

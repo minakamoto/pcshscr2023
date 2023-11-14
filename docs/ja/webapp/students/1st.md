@@ -1,38 +1,38 @@
-# Hands-on to developing a simple Todo List app
+# シンプルなTodo Listアプリを作るハンズオン
 
-## What we make
+## 作るもの
 
-We will develop a simple Todo List app with the following functions.
+以下の機能を持つシンプルなTodo Listアプリを実装します。
 
-- Create new todo, check completion, and delete todo.
-- Only one screen and no modal.
-- No backend, just a simple development of the frontend.
+- 機能はTodoの新規作成、完了のチェック、削除のみ
+- 画面は一画面のみで、モーダルも使わない
+- backendは作らず、frontendのみの簡易実装
 
-## Main Technology Stack
+## 主な技術スタック
 
 - [Next.js](https://nextjs.org/)
   - React-based UI framework
-  - The following two technology stacks are automatically added and configured when you select them when installing Next.js.
+  - Next.jsを導入する際に以下2つの技術スタックを選択すると自動で追加・設定されます。
 - [Typescript](https://www.typescriptlang.org/)
   - JavaScript with syntax for types
 - [tailwindcss](https://tailwindcss.com/)
   - CSS framework
 
-## Development
+## 実装
 
-### Open Next.js installation configured browser-based IDE
+### Next.jsインストール設定済みのブラウザベースのIDEを開く
 
-Open the Next.js installation configured browser-based IDE [stackblitz template](https://stackblitz.com/edit/nextjs).
+Next.jsインストール設定済みのブラウザベースのIDE [stackblitzのテンプレート](https://stackblitz.com/edit/nextjs)を開いてください。
 
-Once opened, installation and configuration will begin. Please wait a moment until you see the screen in the right pane below (the default Next.js screen).
+開くとインストールや設定が始まります。以下の右ペインの画面(Next.jsのデフォルト画面)になるまでしばらくお待ちください。
 
-stackblitz consists of a directory of files in the left pane, file editing in the middle, and a preview screen in the right pane.
+stackblitzは、左ペインにファイルのディレクトリ、真ん中はファイルの編集、右ペインはプレビュー画面の構成になっています。
 
-![Next.js default display on stackblitz](../static/img/students/1st/nextjs_default_display.png)
+![Next.js default display on stackblitz](../../../static/img/students/1st/nextjs_default_display.png)
 
-### Delete unnecessary CSS settings
+### 不要なCSS設定を消す
 
-Open the file `app/globals.css` in Files in the left sidebar and replace its contents with the following code.
+左のサイドバーにあるFilesの`app/globals.css`ファイルを開き、その内容を以下のコードに置き換えます。
 
 ```css
 @tailwind base;
@@ -40,9 +40,9 @@ Open the file `app/globals.css` in Files in the left sidebar and replace its con
 @tailwind utilities;
 ```
 
-### Developing Todo list App
+### Todo listアプリを実装する
 
-Open the file `app/page.tsx` in Files on the left sidebar and replace its contents with the following code.
+左のサイドバーにあるFilesの`app/page.tsx`ファイルを開き、その内容を以下のコードに置き換えます。
 
 ```tsx
 "use client";
@@ -143,17 +143,17 @@ export default function App() {
 }
 ```
 
-After development, the following screen is shown (Todo is added from the initial state with no Todo).
+実装後は、以下の画面になっています(初期の何もTodoのない状態からTodoを追加しています)。
 
-![Screen after development on stackblitz](../static/img/students/1st/screen_after_development.png)
+![Screen after development on stackblitz](../../../static/img/students/1st/screen_after_development.png)
 
-### Checking the behavior
+### 動作確認
 
-Please check the behavior of the Todo List app on the preview screen on the right.
+右側のプレビュー画面にて、Todo Listアプリの動作確認をしてみてください。
 
-### Wrap up
+### 終わりに
 
-This concludes the hands-on session.  
-The code can be viewed [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list).  
+これでハンズオンは終わりです。  
+コードは[ここ](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/1th/todo-list)から確認できます。  
 
-If you are interested, follow the links above to check out the code and modify it as you like.
+もし、興味があれば、上に挙げたリンクをたどってコードの内容を調べたり、コードを好きに修正してみてください。

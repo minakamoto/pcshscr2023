@@ -5,13 +5,13 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      { text: "Web App", link: "/README" },
+      { text: "Web App", link: "/webapp/README" },
       { text: "IoT", link: "/iot/README" },
       { text: "XR", link: "/xr/README" },
     ],
 
     sidebar: {
-      "/": { base: "/", items: sidebarWebApp() },
+      "/webapp/": { base: "/webapp/", items: sidebarWebApp() },
       "/iot/": { base: "/iot/", items: sidebarIot() },
       "/xr/": { base: "/xr/", items: sidebarXr() },
     },
@@ -27,12 +27,18 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
         {
           text: "Hands-on for catch-up",
           items: [
-            { text: "Introduction", link: "README" },
-            { text: "Overview of web app technology stack", link: "0th" },
-            { text: "Hands-on to develop simple & easy UI", link: "1st" },
+            { text: "Introduction", link: "teachers/README" },
+            {
+              text: "Overview of web app technology stack",
+              link: "teachers/0th",
+            },
+            {
+              text: "Hands-on to develop simple & easy UI",
+              link: "teachers/1st",
+            },
             {
               text: "Hands-on to develop a slightly more complex UI & own API",
-              link: "2nd",
+              link: "teachers/2nd",
             },
           ],
         },

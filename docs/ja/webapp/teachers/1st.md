@@ -107,7 +107,7 @@ npm run dev
 
 このコマンドは、Node.jsサーバーを起動し、アプリを表示する新しいブラウザウィンドウを起動します。
 
-![React+Vite template](../static/img/1th/vite_default.png)
+![React+Vite template](../../../static/img/1th/vite_default.png)
 
 コマンドラインで「Ctrl + c」でReact+Viteアプリの実行を停止することができます。
 
@@ -191,7 +191,7 @@ export default App;
 npm run dev
 ```
 
-![Random Pokemon initial display](../static/img/1th/random_pokemon_initial_display.png)
+![Random Pokemon initial display](../../../static/img/1th/random_pokemon_initial_display.png)
 
 - **注意事項**：
   - テンプレートCSSが適用されています。少し変ですが、後のステップで少しデザインを施しますので、そのままにしておきます。
@@ -748,7 +748,7 @@ npm run dev
 
 **備考**： 表示は以下のように変化します。
 
-![Random Pokemon with CSS applied](../static/img/1th/random_pokemon_with_css.png)
+![Random Pokemon with CSS applied](../../../static/img/1th/random_pokemon_with_css.png)
 
 ### (Option)もう少しSPAっぽくする
 
@@ -811,7 +811,7 @@ export default App;
 
 ##### ファイルを保存し、ブラウザを開いて <http://localhost:5173> にアクセスし、アプリケーションを表示します。上部navbarの「Pokemon」をクリックし、「Get Random Pokemon」画面が表示されることを確認します
 
-![Implementation of a navbar](../static/img/1th/implementation_navbar.png)
+![Implementation of a navbar](../../../static/img/1th/implementation_navbar.png)
 
 #### 3. 犬メニューの追加
 
