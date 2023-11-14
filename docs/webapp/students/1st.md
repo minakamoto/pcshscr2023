@@ -28,7 +28,7 @@ Once opened, installation and configuration will begin. Please wait a moment unt
 
 stackblitz consists of a directory of files in the left pane, file editing in the middle, and a preview screen in the right pane.
 
-![Next.js default display on stackblitz](../../../static/img/students/1st/nextjs_default_display.png)
+![Next.js default display on stackblitz](../../static/img/students/1st/nextjs_default_display.png)
 
 ### Delete unnecessary CSS settings
 
@@ -145,7 +145,7 @@ export default function App() {
 
 After development, the following screen is shown (Todo is added from the initial state with no Todo).
 
-![Screen after development on stackblitz](../../../static/img/students/1st/screen_after_development.png)
+![Screen after development on stackblitz](../../static/img/students/1st/screen_after_development.png)
 
 ### Checking the behavior
 
