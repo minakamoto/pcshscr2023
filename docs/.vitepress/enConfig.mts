@@ -4,16 +4,16 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Home", link: "/en/" },
-      { text: "Web App", link: "/en/webapp/README" },
-      { text: "IoT", link: "/en/iot/README" },
-      { text: "XR", link: "/en/xr/README" },
+      { text: "Home", link: "/" },
+      { text: "Web App", link: "/webapp/README" },
+      { text: "IoT", link: "/iot/README" },
+      { text: "XR", link: "/xr/README" },
     ],
 
     sidebar: {
-      "/en/webapp/": { base: "/en/webapp/", items: sidebarWebApp() },
-      "/en/iot/": { base: "/en/iot/", items: sidebarIot() },
-      "/en/xr/": { base: "/en/xr/", items: sidebarXr() },
+      "/webapp/": { base: "/webapp/", items: sidebarWebApp() },
+      "/iot/": { base: "/iot/", items: sidebarIot() },
+      "/xr/": { base: "/xr/", items: sidebarXr() },
     },
   },
 };
