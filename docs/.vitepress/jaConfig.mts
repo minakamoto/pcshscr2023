@@ -80,7 +80,10 @@ function sidebarXr(): DefaultTheme.SidebarItem[] {
       text: "For Students",
       collapsed: false,
       items: [
-        // add content for students here
+        {
+          text: "さまざまなXR事例の紹介",
+          items: [{ text: "Introduction", link: "students/README" }],
+        },
       ],
     },
   ];

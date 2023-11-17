@@ -80,7 +80,10 @@ function sidebarXr(): DefaultTheme.SidebarItem[] {
       text: "For Students",
       collapsed: false,
       items: [
-        // add content for students here
+        {
+          text: "บทนำเกี่ยวกับกรณี XR ต่างๆ",
+          items: [{ text: "Introduction", link: "students/README" }],
+        },
       ],
     },
   ];
