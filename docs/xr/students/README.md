@@ -38,10 +38,25 @@ Because of these features, WebXR is expected to contribute greatly to the spread
 
 ## XR Case Studies
 
-### Case Study 1
+### Case Study 1: XR in Education
 
-TBD
+XR technology is being used in a variety of ways in the education sector. XR is bringing about revolutionary changes to the education sector.
+XR enables a more direct and hands-on learning experience.
 
-### Case Study 2
+Some examples include
 
-TBD
+- Students can attend classes as if they were on site
+  - Re-enact historical events and explore geographic locations
+  - Conduct field research on earthquakes and disasters
+- Simulate an experiment
+  - Experience scientific experiments in a safe and realistic environment
+
+Below are related reference videos and websites.
+
+- Video demonstrating the use of XR in education
+  - ['Metaverse school' teaches students using VR](https://www.youtube.com/watch?v=4nwQ36m9aDE)
+    - UK schools using XR in science, history, art, geography, etc.
+  - [Learn Chemistry in VR? - FUTUCLASS](https://www.youtube.com/shorts/dxCw1NbXijs)
+    - Using XR to learn chemistry interactively.
+- [Example of teachers and students creating their own XR apps for learning](https://creator.cluster.mu/2023/07/11/interview-afrotty/)
+  - Above, [Cluster](https://cluster.mu) is used. It is one of the virtual social networking sites. You can not only participate in the prepared space, but also create your own XR space.
