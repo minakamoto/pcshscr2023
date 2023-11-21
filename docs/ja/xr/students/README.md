@@ -59,4 +59,4 @@ XRを使用することで、より直感的で実践的な学習体験を得る
   - [Learn Chemistry in VR?! - FUTUCLASS](https://www.youtube.com/shorts/dxCw1NbXijs)
     - インタラクティブに化学を学ぶためにXRを活用する様子
 - [教員や生徒が自ら学習のためXRのアプリを作った例](https://creator.cluster.mu/2023/07/11/interview-afrotty/)
-  - 上記で使用されているのは、[Cluster](https://cluster.mu)です。バーチャルSNSの1つです。用意された空間に参加するだけでなく、自分でXR空間を作ることができます。
+  - 上記で使用されているプラットフォームは、[Cluster](https://cluster.mu)です。バーチャルSNSの1つです。用意された空間に参加するだけでなく、自分でXR空間を作ることができます。

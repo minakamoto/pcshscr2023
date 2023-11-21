@@ -40,8 +40,8 @@ Because of these features, WebXR is expected to contribute greatly to the spread
 
 ### Case Study 1: XR in Education
 
-XR technology is being used in a variety of ways in the education sector. XR is bringing about revolutionary changes to the education sector.
-XR enables a more direct and hands-on learning experience.
+XR technology is being used in a variety of ways in the education sector. XR brings revolutionary changes to the education sector.
+XR enables a more direct and practical learning experience.
 
 Some examples include
 
@@ -59,4 +59,4 @@ Below are related reference videos and websites.
   - [Learn Chemistry in VR? - FUTUCLASS](https://www.youtube.com/shorts/dxCw1NbXijs)
     - Using XR to learn chemistry interactively.
 - [Example of teachers and students creating their own XR apps for learning](https://creator.cluster.mu/2023/07/11/interview-afrotty/)
-  - Above, [Cluster](https://cluster.mu) is used. It is one of the virtual social networking sites. You can not only participate in the prepared space, but also create your own XR space.
+  - The platform used above is [Cluster](https://cluster.mu). It is one of the virtual social networking sites. You can not only participate in the prepared space, but also create your own XR space.
