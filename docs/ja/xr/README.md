@@ -5,7 +5,7 @@
 ## 資料の構成
 
 - 生徒向け
-  - TBD
+  - [XR事例の紹介](./students/README.md)
 
 ## 注意事項
 

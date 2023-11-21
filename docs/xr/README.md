@@ -5,7 +5,7 @@ Materials related to XR are placed here.
 ## Structure of the materials
 
 - For students
-  - TBD
+  - [XR Case Study](./students/README.md)
 
 ## Notes
 
