@@ -68,6 +68,7 @@ td {
 外部APIで返却されたレスポンスに必要な型を定義します。
 
 左のサイドバーにあるFilesの右にあるファイルアイコンをクリックし、`types/weather.ts`ファイルを作成します。  
+
 ![Screen when creating file on stackblitz](../../../static/img/students/2nd/screen_file_creating.png)  
 `types/weather.ts`ファイルを開き、その内容を以下のコードに置き換えます。  
 内容を確実に保存するため、変更後`Ctrl + s`(Macなら`Command + s`)を押してください。

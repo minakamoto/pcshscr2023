@@ -68,6 +68,7 @@ td {
 Define the required type for the responses returned by the external API.
 
 Click on the file icon to the right of Files in the left sidebar and create the `types/weather.ts` file.  
+
 ![Screen when creating file on stackblitz](../../static/img/students/2nd/screen_file_creating.png)  
 Open the file `types/weather.ts` in Files in the left sidebar and replace its contents with the following code.  
 Press `Ctrl + s` (or `Command + s` on the Mac) after making changes to ensure that the content is saved.

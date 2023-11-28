@@ -68,6 +68,7 @@ td {
 กำหนดประเภทที่จำเป็นสำหรับการตอบกลับที่ส่งกลับโดย API ภายนอก
 
 คลิกไอคอนไฟล์ทางด้านขวาของไฟล์ในแถบด้านข้างซ้ายและสร้างไฟล์ `types/weather.ts`  
+
 ![Screen when creating file on stackblitz](../../../static/img/students/2nd/screen_file_creating.png)  
 เปิดไฟล์ `types/weather.ts` ใน Files ในแถบด้านข้างซ้าย และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้  
 กด `Ctrl + s` (หรือ `Command + s` บน Mac) หลังจากทำการเปลี่ยนแปลงเพื่อให้แน่ใจว่าเนื้อหาได้รับการบันทึก
