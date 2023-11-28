@@ -372,7 +372,7 @@ NOTE:
     - Error handling when retrieving location information is simplified.
 - Componentization
   - This hands-on is a simplified development. For actual development, it is recommended to design components appropriately.
-    - For more information about components, see [hands-on materials for teachers](./teachers/1st.md) explains a little about components.
+    - For more information about components, see [hands-on materials for teachers](../teachers/1st.md) explains a little about components.
 
 ### Checking the behavior
 
