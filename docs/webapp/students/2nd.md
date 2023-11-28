@@ -1,36 +1,36 @@
-# シンプルな天気予報アプリを作るハンズオン
+# Hands-on to developing a simple Weather Forecast app
 
-## 作るもの
+## What we make
 
-以下の機能を持つシンプルな天気予報アプリを実装します。
+We will develop a simple Weather Forecast app with the following functions.
 
-- ブラウザから現在地を取得して、外部APIを呼び出し、画面に表示する
-  - 外部APIにて現在の天気、当日の時間毎の天気予報を取得する
-  - 天気予報APIには、[Open-Meteo](https://open-meteo.com/)を使用しています。
-    - 非営利目的であればユーザ登録不要で、10,000回まで無料で使用できます。
-- 画面は一画面のみで、モーダルも使わない
-- 外部APIは呼び出しのみを行い、エラーハンドリングを行わない簡易実装。
+- Get current location from browser, call external API, and display on screen
+  - Get the current weather and hourly weather forecast for the current day with the external API
+  - The weather forecast API uses [Open-Meteo](https://open-meteo.com/).
+    - No user registration is required for non-commercial use, and it can be used up to 10,000 times for free.
+- Only one screen is used, and no modals are used.
+- External API is a simple implementation that only makes calls and does not handle errors.
 
-注意:  
-実際に開発する場合には要件に応じて、適切な外部APIを選定してください。  
-今回は気軽にWebアプリ開発を体験してもらうため、ハンズオン参加者の利便性(無料かつユーザ登録不要という点)を重視しています。
+NOTE:  
+When actually developing, please select an appropriate external API according to your requirements.  
+In order to provide a casual experience of web application development, we focus on the convenience of hands-on participants (free of charge and no user registration required).
 
-## 主な技術スタック
+## Main Technology Stack
 
-[1st](./1st.md#main-technology-stack)と同様。
+Same as [1st](./1st.md#main-technology-stack)
 
-## 実装
+## Development
 
-### Next.jsインストール設定済みのブラウザベースのIDEを開く
+### Open Next.js installation configured browser-based IDE
 
-Next.jsインストール設定済みのブラウザベースのIDE [stackblitzのテンプレート](https://stackblitz.com/edit/nextjs)を開いてください。
+Open the Next.js installation configured browser-based IDE [stackblitz template](https://stackblitz.com/edit/nextjs).
 
-stackblitzの画面の説明は[1st](./1st.md#nextjsインストール設定済みのブラウザベースのideを開く)を参照。
+For a description of the stackblitz screen, see [1st](./1st.md#open-nextjs-installation-configured-browser-based-ide).
 
-### CSSを設定する
+### Setting CSS
 
-左のサイドバーにあるFilesの`app/globals.css`ファイルを開き、その内容を以下のコードに置き換えます。  
-内容を確実に保存するため、変更後`Ctrl + s`(Macなら`Command + s`)を押してください。
+Open the file `app/globals.css` in Files in the left sidebar and replace its contents with the following code.  
+Press `Ctrl + s` (or `Command + s` on the Mac) after making changes to ensure that the content is saved.
 
 ```css
 @import 'tailwindcss/base';
@@ -63,14 +63,14 @@ td {
 }
 ```
 
-### 型を定義する
+### Define the type
 
-外部APIで返却されたレスポンスに必要な型を定義します。
+Define the required type for the responses returned by the external API.
 
-左のサイドバーにあるFilesの右にあるファイルアイコンをクリックし、`types/weather.ts`ファイルを作成します。  
-![Screen when creating file on stackblitz](../../../static/img/students/2nd/screen_file_creating.png)  
-`types/weather.ts`ファイルを開き、その内容を以下のコードに置き換えます。  
-内容を確実に保存するため、変更後`Ctrl + s`(Macなら`Command + s`)を押してください。
+Click on the file icon to the right of Files in the left sidebar and create the `types/weather.ts` file.  
+![Screen when creating file on stackblitz](../../static/img/students/2nd/screen_file_creating.png)  
+Open the file `types/weather.ts` in Files in the left sidebar and replace its contents with the following code.  
+Press `Ctrl + s` (or `Command + s` on the Mac) after making changes to ensure that the content is saved.
 
 ```ts
 // define type
@@ -116,13 +116,13 @@ export type WeatherData = {
 
 ```
 
-### Utilityを実装する
+### Define the utility
 
-外部APIで返却されたレスポンスの天気コードを絵文字に変換するために必要なオブジェクトを定義します。
+Define the objects needed to convert weather codes in responses returned by the external API to emoji.
 
-左のサイドバーにあるFilesの右にあるファイルアイコンをクリックし、`utils/weather.ts`ファイルを作成します。  
-`utils/weather.ts`ファイルを開き、その内容を以下のコードに置き換えます。  
-内容を確実に保存するため、変更後`Ctrl + s`(Macなら`Command + s`)を押してください。
+Click on the file icon to the right of Files in the left sidebar and create the `utils/weather.ts` file.  
+Open the file `utils/weather.ts` in Files in the left sidebar and replace its contents with the following code.  
+Press `Ctrl + s` (or `Command + s` on the Mac) after making changes to ensure that the content is saved.
 
 ```ts
 // mapping of weather codes returned in API responses and emojis
@@ -159,10 +159,10 @@ export const weatherCodeToEmoji: Record<number, string> = {
 
 ```
 
-### 天気予報アプリを実装する
+### Developing Weather Forecast App
 
-左のサイドバーにあるFilesの`app/page.tsx`ファイルを開き、その内容を以下のコードに置き換えます。  
-内容を確実に保存するため、変更後`Ctrl + s`(Macなら`Command + s`)を押してください。
+Open the file `app/page.tsx` in Files in the left sidebar and replace its contents with the following code.  
+Press `Ctrl + s` (or `Command + s` on the Mac) after making changes to ensure that the content is saved.
 
 ```tsx
 "use client";
@@ -356,39 +356,41 @@ export default Home;
 
 ```
 
-実装後は、以下の画面になっています。
+After development, the following screen is shown.
 
-![Screen after development on stackblitz](../../../static/img/students/2nd/screen_after_development.png)
+![Screen after development on stackblitz](../../static/img/students/2nd/screen_after_development.png)
 
-注意:  
+NOTE:  
 
-- 実装後も画面がNextjsのデフォルトの画面から変更がない場合は、プレビュー画面の更新ボタンを押してください。
-- 動作確認において、ブラウザの位置情報アクセスを許可してください。
-  - 動作確認時にポップアップで許可するか否かが表示されます。
-  - 許可しない場合、緯度・経度が取得できず、外部APIを呼び出せないため、簡易的なエラーメッセージが画面に表示されます。
-- APIのエラーハンドリングについて
-  - このハンズオンにおける、エラーハンドリングは簡易的なものです。実際の開発においては、適切なエラーハンドリング処理を行ってください。
-    - 簡易実装のため、外部API呼び出し時にエラーハンドリングを行っていません。
-    - 位置情報取得におけるエラーハンドリングは簡易的なものです。
-- コンポーネント化について
-  - このハンズオンは簡易実装となっています。実際に開発する場合には、適切にコンポーネント設計を行うことをおすすめします。
-    - コンポーネントについて、[教員向けのハンズオン資料](../teachers/1st.md)で少し説明しています。
+- If the screen remains the same as the default Nextjs screen after development, press the refresh button on the preview screen.
+- In the operation check, allow the browser to access location information.
+  - During the operation check, a pop-up window will appear asking if you want to allow it or not.
+  - If you do not allow it, a simple error message will appear on the screen because the latitude and longitude cannot be obtained and the external API cannot be called.
+- About API Error Handling
+  - Error handling is simplified in this hands-on session. For actual development, please use appropriate error handling.
+    - To simplify development, no error handling is performed when calling external APIs.
+    - Error handling when retrieving location information is simplified.
+- Componentization
+  - This hands-on is a simplified development. For actual development, it is recommended to design components appropriately.
+    - For more information about components, see [hands-on materials for teachers](./teachers/1st.md) explains a little about components.
 
-### 動作確認
+### Checking the behavior
 
-右側のプレビュー画面にて、天気予報アプリの動作確認をしてみてください。
+Please check the behavior of the Todo List app on the preview screen on the right.
 
-- 簡単な機能仕様
-  - 上部に現在地の緯度・経度が表示される
-  - 真ん中に現在の天気が表示される
-  - 下部に1時間毎の現在日付の天気予報が表示される
-    - 現在時刻に相当するカラムに自動でスクロールされる
+- Simple features
+  - Latitude and longitude of the current location are displayed at the top
+  - The current weather is displayed in the middle.
+  - Hourly weather forecast for the current date is displayed at the bottom
+    - Automatic scrolling to the column corresponding to the current time
 
 ### 終わりに
 
-これでハンズオンは終わりです。  
-コードは[ここ](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/2nd/weather-foecast)から確認できます。  
+### Wrap up
 
-もし、興味があれば、上に挙げたリンクをたどってコードの内容を調べたり、コードを好きに修正してみてください。  
-[Open-Meteo](https://open-meteo.com/)は、当日だけでなく、16日先までの予報を取得できます。自分で10日間天気予報など作ってみると良いかもしれません。  
-自分の好きなAPIを使い、天気予報アプリを作成してみるのも良いかもしれません。
+This concludes the hands-on session.  
+The code can be viewed [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/2nd/weather-foecast).  
+
+If you are interested, follow the links above to check out the code and modify it as you like.  
+[Open-Meteo](https://open-meteo.com/) allows you to get forecasts not only for the day, but also for the next 16 days. It might be a good idea to create your own 10-day weather forecast.  
+It might be a good idea to create your own weather forecast application using your favorite API.
