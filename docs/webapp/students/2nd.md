@@ -384,8 +384,6 @@ Please check the behavior of the Todo List app on the preview screen on the righ
   - Hourly weather forecast for the current date is displayed at the bottom
     - Automatic scrolling to the column corresponding to the current time
 
-### 終わりに
-
 ### Wrap up
 
 This concludes the hands-on session.  
