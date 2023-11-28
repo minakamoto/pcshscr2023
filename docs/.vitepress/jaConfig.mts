@@ -52,6 +52,7 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
           items: [
             { text: "Introduction", link: "students/README" },
             { text: "Todo List App", link: "students/1st" },
+            { text: "Weather Forecast App", link: "students/2nd" },
           ],
         },
       ],

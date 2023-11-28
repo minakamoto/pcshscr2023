@@ -24,3 +24,5 @@ The summary of the key points of the latest web app technologies and trends:
 
 - [Todo List App](1st.md)
   - A todo list app is a very common choise for beginning web development.
+- [Weather Forecat App](2nd.md)
+  - Simple weather forecast app
