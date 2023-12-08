@@ -377,7 +377,7 @@ NOTE:
 
 ### Checking the behavior
 
-Please check the behavior of the Todo List app on the preview screen on the right.
+Please check the behavior of the Weather Forecast app on the preview screen on the right.
 
 - Simple features
   - Latitude and longitude of the current location are displayed at the top
