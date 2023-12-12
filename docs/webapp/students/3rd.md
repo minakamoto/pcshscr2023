@@ -19,7 +19,7 @@ The functionality, look, conditions and notes are almost the same.
 
 ### Open React Native/Expo configured browser-based IDE
 
-Open  configured browser-based IDE [Snack](https://stackblitz.com/edit/nextjs).
+Open  configured browser-based IDE [Snack](https://snack.expo.dev/).
 
 Snack consists of a directory of files in the left pane, file editing in the middle, and a preview screen in the right pane. At the top of the right pane, you can select the emulator of the device you want to test.
 

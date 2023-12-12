@@ -19,7 +19,7 @@
 
 ### React Native/Expo設定済みのブラウザベースのIDEを開く
 
-React Native/Expo設定済みのブラウザベースのIDE [Snack](https://stackblitz.com/edit/nextjs)を開いてください。
+React Native/Expo設定済みのブラウザベースのIDE [Snack](https://snack.expo.dev/)を開いてください。
 
 Snackは、左ペインにファイルのディレクトリ、真ん中はファイルの編集、右ペインはプレビュー画面の構成になっています。右ペインの上部で確認するデバイスのエミュレータを選ぶことができます。
 
