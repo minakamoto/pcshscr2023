@@ -1,51 +1,51 @@
 # Hands-on to developing a simple Weather Forecast Mobile app
 
-## What we make
+## สิ่งที่เราจะสร้าง
 
-Develop a mobile version of a simple weather forecasting application created in [2nd](2nd.md).  
-The functionality, look, conditions and notes are almost the same.
+พัฒนาแอปพยากรณ์อากาศเวอร์ชันมือถือของแอปพลิเคชันที่สร้างไว้ใน [2nd](2nd.md)  
+โดยฟังก์ชัน รูปลักษณ์ เงื่อนไข และหมายเหตุ จะเหมือนกันเลย
 
-## Main Technology Stack
+## สแต็คเทคโนโลยีหลัก
 
 - [Reac Native](https://reactnative.dev/)
-  - Cross-platform (Android/iOS/Web, etc.) development framework with React applied to native UI
-    - Mobile apps can be developed using knowledge and experience in web development.
+  - เฟรมเวิร์กการพัฒนา cross-platform (Android/iOS/เว็บ ฯลฯ) พร้อม React ที่นำไปใช้กับ native UI
+    - แอปพลิเคชันมือถือสามารถพัฒนาได้โดยใช้ความรู้และประสบการณ์ในการพัฒนาเว็บ
 - [EXPO](https://expo.dev/)
-  - Tools to make React Native development easier and faster
+  - เครื่องมือที่ทำให้การพัฒนา React Native ง่ายขึ้นและเร็วขึ้น
 - [Typescript](https://www.typescriptlang.org/)
   - JavaScript with syntax for types
 
-## Development
+## การพัฒนา
 
-### Open React Native/Expo configured browser-based IDE
+### เปิด IDE บนเบราว์เซอร์ที่กำหนดค่า React Native/Expo
 
-Open React Native/Expo configured browser-based IDE [Snack](https://snack.expo.dev/).
+เปิด IDE บนเบราว์เซอร์ที่กำหนดค่า React Native/Expo [Snack](https://snack.expo.dev/)
 
-Snack consists of a directory of files in the left pane, file editing in the middle, and a preview screen in the right pane. At the top of the right pane, you can select the emulator of the device you want to test.
+Snack ประกอบด้วยไดเร็กทอรีของไฟล์ในบานหน้าต่างด้านซ้าย การแก้ไขไฟล์ตรงกลาง และหน้าจอแสดงตัวอย่างในบานหน้าต่างด้านขวา ที่ด้านบนของบานหน้าต่างด้านขวา คุณสามารถเลือกโปรแกรมจำลองของอุปกรณ์ที่คุณต้องการทดสอบได้
 
-![Default display on snack](../../static/img/students/3rd/default_display.png)  
+![Default display on snack](../../../static/img/students/3rd/default_display.png)  
 
-For reference, the case of the Android emulator is as follows.
-![Default display on android emulator](../../static/img/students/3rd/default_display_android.png)  
-Select the Android emulator and press `Tap to play` to start the installation and launch. (If you see the message `Queue...` message, please wait a moment for the installation and launch to begin)
+สำหรับการอ้างอิง กรณีของโปรแกรมจำลอง Android มีดังนี้
+![Default display on android emulator](../../../static/img/students/3rd/default_display_android.png)  
+เลือกโปรแกรมจำลอง Android แล้วกด `Tap to play` เพื่อเริ่มการติดตั้งและเปิดใช้งาน (หากคุณเห็นข้อความ `Queue...` โปรดรอสักครู่เพื่อให้การติดตั้งและเริ่มใช้งานได้)
 
-TIPS/NOTE:  
+คำแนะนำ/หมายเหตุ:  
 
-- About Snack
-  - Snack is a browser-based IDE, so there is no need to install or configure an IDE or emulator (a virtual execution environment for devices like Android) on your PC.
-  - This service is designed for easy and immediate development experience, and is not suitable for full-spec feature development.
-    - For actual development, please set up a development environment on your PC.
-    - To build the environment, it is recommended to visit the [React Native official website](https://reactnative.dev/docs/environment-setup) or the [Expo official website](https://docs.expo.dev/get-started/installation/).
+- เกี่ยวกับSnack
+  - Snack เป็น IDE ที่ใช้เบราว์เซอร์ ดังนั้นจึงไม่จำเป็นต้องติดตั้งหรือกำหนดค่า IDE หรือโปรแกรมจำลอง (สภาพแวดล้อมการทำงานเสมือนสำหรับอุปกรณ์เช่น Android) บนคอมพิวเตอร์ของคุณ
+  - บริการนี้ออกแบบมาเพื่อประสบการณ์การพัฒนาที่ง่ายและทันที และไม่เหมาะสำหรับการพัฒนาฟีเจอร์แบบเต็ม
+    - สำหรับการพัฒนาจริง โปรดตั้งค่าสภาพแวดล้อมการพัฒนาบนคอมพิวเตอร์ของคุณ
+    - เพื่อสร้างสภาพแวดล้อม ขอแนะนำให้ไปที่ [เว็บไซต์อย่างเป็นทางการของ React Native](https://reactnative.dev/docs/environment-setup) หรือ [เว็บไซต์อย่างเป็นทางการของ Expo](https://docs.expo.dev/get-started/installation/)
 
-### Define the type
+### กำหนดประเภท
 
-Define the required type for the responses returned by the external API.
-(This is exactly the same code as [2nd](2nd.md#define-the-type).)
+กำหนดประเภทที่จำเป็นสำหรับการตอบกลับที่ส่งกลับโดย API ภายนอก
+(นี่เป็นโค้ดเดียวกับ [2nd](2nd.md#กำหนดประเภท))
 
-Click on the file icon to the right of Project in the left sidebar and create the `types/weather.ts` file.  
+คลิกไอคอนไฟล์ทางด้านขวาของโปรเจ็คท์ในแถบด้านข้างซ้ายและสร้างไฟล์ `types/weather.ts`
 
-![Screen when creating file on snack](../../static/img/students/3rd/screen_file_creating.png)  
-Open the file `types/weather.ts` in Files in the left sidebar and replace its contents with the following code.  
+![Screen when creating file on snack](../../../static/img/students/3rd/screen_file_creating.png)  
+เปิดไฟล์ `types/weather.ts` ใน Files ในแถบด้านข้างซ้าย และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้  
 
 ```ts
 // define type
@@ -91,13 +91,13 @@ export type WeatherData = {
 
 ```
 
-### Define the utility
+### กำหนด utility
 
-Define the objects needed to convert weather codes in responses returned by the external API to emoji.  
-(This is exactly the same code as [2nd](2nd.md#define-the-utility).)
+กำหนด object ที่จำเป็นในการแปลงรหัสสภาพอากาศในการตอบกลับที่ API ภายนอกส่งคืนเป็นอิโมจิ  
+(นี่เป็นโค้ดเดียวกับ [2nd](2nd.md#กำหนด-utility))
 
-Click on the file icon to the right of Project in the left sidebar and create the `utils/weather.ts` file.  
-Open the file `utils/weather.ts` in Files in the left sidebar and replace its contents with the following code.
+คลิกไอคอนไฟล์ทางด้านขวาของ Project ในแถบด้านข้างซ้ายและสร้างไฟล์ `utils/weather.ts`  
+เปิดไฟล์ `utils/weather.ts` ใน Project ในแถบด้านข้างซ้าย และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```ts
 // mapping of weather codes returned in API responses and emojis
@@ -134,9 +134,9 @@ export const weatherCodeToEmoji: Record<number, string> = {
 
 ```
 
-### Developing Weather Forecast App
+### การพัฒนาแอปพยากรณ์อากาศ
 
-Open the three-dot menu to the left of the `App.js` file in Project on the left sidebar, press `Rename to App.tsx` and rename the file. After renaming the file, replace its contents with the following code
+เปิดเมนูสามจุดทางด้านซ้ายของไฟล์ `App.js` ใน Project ที่แถบด้านข้างซ้าย กด `Rename to App.tsx` แล้วเปลี่ยนชื่อไฟล์ หลังจากเปลี่ยนชื่อไฟล์แล้ว ให้แทนที่เนื้อหาด้วยโค้ดต่อไปนี้
 
 ```tsx
 import React, { useEffect, useState, useRef } from "react";
@@ -388,20 +388,20 @@ const styles = StyleSheet.create({
 
 ```
 
-You will get an error message (error that `expo-location` is not defined in the dependency settings) as shown in the following screen. Follow the message and press `Add dependency`.
+คุณจะได้รับข้อความแสดงข้อผิดพลาด (ข้อผิดพลาดที่ไม่ได้กำหนด `expo-location` ในการตั้งค่าการพึ่งพา) ดังที่แสดงในหน้าจอต่อไปนี้ ปฏิบัติตามข้อความและกด `Add dependency`
 
-![Dependency Error Message on snack](../../static/img/students/3rd/dependency_error_message.png)
+![Dependency Error Message on snack](../../../static/img/students/3rd/dependency_error_message.png)
 
-In the case of the Android emulator, the following screen will be displayed after development.  
+ในกรณีของโปรแกรมจำลอง Android หน้าจอต่อไปนี้จะปรากฏขึ้นหลังจากการพัฒนา  
 
-![Screen after development on snack](../../static/img/students/3rd/screen_after_development.png)
+![Screen after development on snack](../../../static/img/students/3rd/screen_after_development.png)
 
-NOTE:  
+หมายเหตุ:  
 
-- The emulator on Snack is a virtual device and may differ from your current location and time.
-  - The current location and time can be found in the emulator's time, map, and settings.
-  - If you want to check it in your environment, please install [Expo Go](https://expo.dev/client) on your device (Android/iOS etc.) and scan the QR code for `My Device` in Snack.
-    - If you are checking on your own device and want to get a more accurate current position, you can change the code as follows.
+- โปรแกรมจำลองบน Snack เป็นอุปกรณ์เสมือนและอาจแตกต่างจากตำแหน่งและเวลาปัจจุบันของคุณ
+  - สามารถดูตำแหน่งและเวลาปัจจุบันได้ในเวลา แผนที่ และการตั้งค่าของโปรแกรมจำลอง
+  - หากคุณต้องการตรวจสอบในสภาพแวดล้อมของคุณ โปรดติดตั้ง [Expo Go](https://expo.dev/client) บนอุปกรณ์ของคุณ (Android/iOS ฯลฯ) และสแกนโค้ด QR สำหรับ `My Device` ใน Snack.
+    - หากคุณกำลังตรวจสอบบนอุปกรณ์ของคุณเองและต้องการได้รับตำแหน่งปัจจุบันที่แม่นยำยิ่งขึ้น คุณสามารถเปลี่ยนโค้ดได้ดังนี้
       - before
 
         ```ts
@@ -419,20 +419,20 @@ NOTE:
         const { latitude, longitude } = location?.coords;
         ```
 
-- In the operation check, allow the browser to access location information.
-  - Same as [2nd](2nd.md#developing-weather-forecast-app), so omitted.
-- About API Error Handling, Componentization
-  - Same as [2nd](2nd.md#developing-weather-forecast-app), so omitted.
+- ในการตรวจสอบการทำงาน อนุญาตให้เบราว์เซอร์เข้าถึงข้อมูลตำแหน่ง
+  - เหมือนกับ [2nd](2nd.md#การพัฒนาแอปพยากรณ์อากาศ) ดังนั้นจึงละเว้น
+- เกี่ยวกับการจัดการข้อผิดพลาด API, Componentization
+  - เหมือนกับ [2nd](2nd.md#การพัฒนาแอปพยากรณ์อากาศ) ดังนั้นจึงละเว้น
 
-### Checking the behavior
+### การตรวจสอบพฤติกรรม
 
-Please check the behavior of the Weather Forecast app on the preview screen on the right.
+โปรดตรวจสอบการทำงานของแอปพยากรณ์อากาศ บนหน้าจอแสดงตัวอย่างทางด้านขวา
 
-- Simple features
-  - Same as [2nd](2nd.md#checking-the-behavior), so omitted.
+- คุณสมบัติที่เรียบง่าย
+  - เหมือนกับ [2nd](2nd.md#การตรวจสอบพฤติกรรม) ดังนั้นจึงละเว้น
 
-### Wrap up
+### ในปิดท้าย
 
-This concludes the hands-on session.  
-The code can be viewed [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/3rd/weather-forecast).  
-It can also be seen on [Snack](https://snack.expo.dev/1KahnBN9w).
+นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on  
+สามารถดูโค้ดได้[ที่นี่](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/30min-exp-web-tech/3rd/weather-forecast).  
+สามารถดูได้ใน [Snack](https://snack.expo.dev/1KahnBN9w)
