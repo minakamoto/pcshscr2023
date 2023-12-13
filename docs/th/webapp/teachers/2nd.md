@@ -48,8 +48,8 @@
 
 ### ข้อกำหนดเบื้องต้น
 
-- Node.js 16 หรือสูงกว่า
-- Python 3.8 หรือสูงกว่า
+- Node.js 18.17 or above
+- Python 3.8 or above
 - Code Editor (เช่น Visual Studio Code)
 
 **หมายเหตุ**:  

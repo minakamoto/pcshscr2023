@@ -48,7 +48,7 @@ TIPS:
 
 ### Prerequisites
 
-- Node.js 16 or above
+- Node.js 18.17 or above
 - Python 3.8 or above
 - Code Editor (e.g., Visual Studio Code)
 
