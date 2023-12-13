@@ -41,7 +41,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 
 ### Prerequisites
 
-- Node.js 16 or above
+- Node.js 18+ or 20+
 - Code Editor (e.g., Visual Studio Code)
 
 **Note**:  

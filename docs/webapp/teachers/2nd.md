@@ -48,7 +48,7 @@ TIPS:
 
 ### Prerequisites
 
-- Node.js 16 or above
+- Node.js 18.17 or above
 - Python 3.8 or above
 - Code Editor (e.g., Visual Studio Code)
 
@@ -892,8 +892,8 @@ Check to see how this works and looks.
 
 TIPS:
 
-- About Routing in Next.js(ver.13)
-  - Routing in Next.js(ver.13) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app` directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
+- About Routing in Next.js(ver.13 or above)
+  - Routing in Next.js(ver.13 or above) is called AppRouter and uses a file-based router that defines routes based on the file system hierarchy. It works with `app` directories. Folders (directories) are used to define routes. The root is a single path of nested folders from the root folder to the last leaf folder containing the page.js file. page.js file defines the UI that will appear in the root segment.
     - For more information, see the [official Next.js website](https://nextjs.org/docs/app/building-your-application/routing).
     - If you want to create a route from dynamic data, you can do so by enclosing the folder name in `[]`.
     - For the Menu List screen above, `[storeId]` (`storeId` is the store ID selected on the HOME screen) and the path is `app/stores/[storeId]/page.tsx`.
