@@ -893,8 +893,8 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
 
 TIPS:
 
-- Next.js(ver.13)のRoutingについて
-  - Next.js(ver.13)のRoutingは、AppRouterという名前であり、ファイルシステムの階層に基づいてルートを定義するファイルベースのルーターを使用しています。`app`ディレクトリで動作します。フォルダ(ディレクトリ)はルートを定義するために使われます。ルートはルートフォルダーからpage.jsファイルを含む最終的なリーフフォルダーまでの入れ子になったフォルダーの単一パスです。page.jsファイルは、ルートセグメントに表示されるUIを定義します。
+- Next.js(ver.13 or above)のRoutingについて
+  - Next.js(ver.13 or above)のRoutingは、AppRouterという名前であり、ファイルシステムの階層に基づいてルートを定義するファイルベースのルーターを使用しています。`app`ディレクトリで動作します。フォルダ(ディレクトリ)はルートを定義するために使われます。ルートはルートフォルダーからpage.jsファイルを含む最終的なリーフフォルダーまでの入れ子になったフォルダーの単一パスです。page.jsファイルは、ルートセグメントに表示されるUIを定義します。
     - 詳しくは[Next.js公式サイト](https://nextjs.org/docs/app/building-your-application/routing)を確認してください。
     - 動的なデータからルートを作成したい場合は、フォルダ名を`[]`で囲むことで作成できます。
       - 上記のメニュー一覧画面であれば、`[storeId]`(`storeId`はHOME画面で選択された店舗ID)、パスは`app/stores/[storeId]/page.tsx`です。
