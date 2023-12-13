@@ -41,7 +41,7 @@ API ภายนอกสำหรับ hands-on นี้ คือ [PokéAPI]
 
 ### ข้อกำหนดเบื้องต้น
 
-- Node.js 16 หรือสูงกว่า
+- Node.js 18+ or 20+
 - Code Editor (เช่น Visual Studio Code)
 
 **หมายเหตุ**:  

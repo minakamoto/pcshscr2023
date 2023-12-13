@@ -41,7 +41,7 @@
 
 ### 前提条件
 
-- Node.js 16 or above
+- Node.js 18+ or 20+
 - Code Editor (e.g., Visual Studio Code)
 
 **注意事項**：  
