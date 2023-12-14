@@ -2,13 +2,13 @@
 
 ## 0. はじめに
 
-このハンズオンでは、1stと2ndで使用したWebアプリ開発技術(主にJavaScript/TypeScript, React)を利用して、モバイルアプリを体験してみるハンズオンです。[1st](./1st.md)や[2nd](./2nd.md)と同様、開発体験を楽しみ、Webアプリ開発技術に興味を持ってもらうことを主眼にしています。
+このハンズオンでは、1stと2ndで使用したWebアプリ開発技術(主にJavaScript/TypeScript, React)を利用して、モバイルアプリを体験してみるハンズオンです。[1st](1st.md)や[2nd](2nd.md)と同様、開発体験を楽しみ、Webアプリ開発技術に興味を持ってもらうことを主眼にしています。
 
 そのため、あまり詳しい解説は行っていません。また、簡易な実装にとどめています。必要に応じて、TIPSや参考となるWebサイトのリンクを提供しています。
 
 ### 作るもの
 
-[2nd](./2nd.md)で作成したAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](./2nd.md)で作成したWebアプリと同じです。
+[2nd](2nd.md)で作成したAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](2nd.md)で作成したWebアプリと同じです。
 
 ### 主な技術スタック
 
@@ -29,7 +29,7 @@ TIPS:
 
 - Node.js 18+ or 20+
 - Code Editor (e.g., Visual Studio Code)
-- [2nd](./2nd.md#3-データベースに接続してデータを返す)のバックエンドAPIをローカルに実装済みであること
+- [2nd](2nd.md#3-データベースに接続してデータを返す)のバックエンドAPIをローカルに実装済みであること
 
 **注意事項**：  
 ここに記載されている必要なソフトウェアのインストール手順は、Windowsユーザーを対象としています。
@@ -42,7 +42,7 @@ TIPS:
 - Visual Studio Code(VS Code)のインストール
   - [1st](./1st.md#1-setup)参照
 - VS Codeの拡張機能のインストール・設定
-  - [2st](./2nd.md#1-setup)参照
+  - [2st](2nd.md#1-setup)参照
 - Expo Goのインストール
   - TODO
 
@@ -50,7 +50,7 @@ TIPS:
 
 ### Expoプロジェクトの作成
 
-ターミナルでカレントディレクトリが[2nd](./2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+ターミナルでカレントディレクトリが[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
 npx create-expo-app -t expo-template-blank-typescript mobile
@@ -91,7 +91,7 @@ TODO: 画像のキャプチャ
 
 ### Splash Screen等の画像をカスタマイズ
 
-アプリ起動時に表示されるSplash Screenやアプリのロゴ等をこのhands-on用に変更します。合わせて、各店舗のロゴも取得・配置しておきます([2nd](./2nd.md#2-フロントエンドのみのhomeとメニュー一覧と詳細画面の実装)と同様の画像ファイルです)。
+アプリ起動時に表示されるSplash Screenやアプリのロゴ等をこのhands-on用に変更します。合わせて、各店舗のロゴも取得・配置しておきます([2nd](2nd.md#2-フロントエンドのみのhomeとメニュー一覧と詳細画面の実装)と同様の画像ファイルです)。
 
 対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/3rd/assets)からすべて取得してください。以下の7つのファイルです。  
 
