@@ -9,9 +9,13 @@ hero:
   actions:
     - theme: brand
       text: Web App
-      link: /ja/README
+      link: /ja/webapp/README
     - theme: alt
-      text: TBD
+      text: IoT
+      link: /ja/iot/README
+    - theme: alt
+      text: XR
+      link: /ja/xr/README
 
 features:
   - title: Web App Hands-On
