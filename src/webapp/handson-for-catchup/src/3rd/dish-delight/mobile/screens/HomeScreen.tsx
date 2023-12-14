@@ -26,7 +26,6 @@ export default function HomeScreen({ navigation }: HomeProps) {
   const getStoreList = async () => {
     try {
       const data = await getStores();
-      console.log(data);
       setStores(data);
     } catch (error) {
       console.error(error);
