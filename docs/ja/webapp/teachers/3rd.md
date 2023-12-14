@@ -83,11 +83,11 @@ TODO: TIPS
 npm run start
 ```
 
-Expo GoアプリをインストールしたiOSまたはAndroidに作業しているPCと同じワイヤレスネットワークに接続します。Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリの内蔵QRコードスキャナーを使用します。
+Expo GoアプリをインストールしたiOSまたはAndroidを作業しているPCと同じワイヤレスネットワークに接続します。Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリの内蔵QRコードスキャナーを使用します。
 
 Expoのデフォルト画面が表示されることを確認してください。
 
-TODO: 画像のキャプチャ
+<img src="../../../static/img/3rd/docs/expo_default_screen.png" alt="Expo default screen" width="300">
 
 ### Splash Screen等の画像をカスタマイズ
 
@@ -110,8 +110,8 @@ TODO: 画像のキャプチャ
 ```json
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Jojo University Cafeteria",
+    "slug": "jojoUnivCafe",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -139,7 +139,8 @@ TODO: 画像のキャプチャ
 ```
 
 お手持ちのスマホで起動時のSplash Screenが変更されることを確認してください。
-TODO：キャプチャ画像
+
+<img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
 TODO：TIPS
 
@@ -165,9 +166,15 @@ TODO: キャプチャ画像
 
 ### Home画面を固定のデータで表示する
 
+[2nd](2nd.md)と同じく、APIからデータを取得する前にfrontend上で保持する固定データを表示するようにします。
+
 ### メニューリスト画面を固定のデータで表示する
 
+[2nd](2nd.md)と同じく、APIからデータを取得する前にfrontend上で保持する固定データを表示するようにします。
+
 ### メニュー詳細画面を固定のデータで表示する
+
+[2nd](2nd.md)と同じく、APIからデータを取得する前にfrontend上で保持する固定データを表示するようにします。
 
 ### 作業しているPCのIPアドレスを確認し、バックエンドAPIを起動する
 
