@@ -27,7 +27,7 @@ TIPS:
 
 ### 前提条件
 
-- Node.js 16 or above
+- Node.js 18+ or 20+
 - Code Editor (e.g., Visual Studio Code)
 - [2nd](./2nd.md#3-データベースに接続してデータを返す)のバックエンドAPIをローカルに実装済みであること
 
