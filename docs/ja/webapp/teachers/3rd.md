@@ -8,7 +8,7 @@
 
 ### 作るもの
 
-[2nd](2nd.md)で作成したAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](2nd.md)で作成したWebアプリと同じです。
+[2nd](2nd.md)で作成したAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](2nd.md)で作成したWebアプリとほぼ同じです。
 
 ### 主な技術スタック
 
@@ -58,7 +58,10 @@ npx create-expo-app -t expo-template-blank-typescript mobile
 
 ### 必要なライブラリのインストール
 
+必要なライブラリのインストールをします。  
 以下のコマンドを実行してください。
+
+TODO: 必要なライブラリを再度確認
 
 ```sh
 cd mobile
@@ -71,7 +74,12 @@ npm install react-native-paper
 TODO: TIPS
 
 - about React Navigation
+  - TODO Expo Routerにする
 - about React Native Paper
+
+### 設定の修正
+
+TODO Expo Router にした場合の設定周り
 
 ### 開発サーバーの起動
 
@@ -82,6 +90,8 @@ TODO: TIPS
 ```sh
 npm run start
 ```
+
+TODO `npm run start -c`の方が良さそう
 
 Expo GoアプリをインストールしたiOSまたはAndroidを作業しているPCと同じワイヤレスネットワークに接続します。Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリの内蔵QRコードスキャナーを使用します。
 
@@ -154,6 +164,7 @@ TODO：TIPS
 `dish-delight/mobile/App.tsx`を開き、その内容を以下のコードに置き換えます：
 
 TODO
+タイトル＆Textを固定文字にして、遷移させるくらいで良さそう
 
 ```tsx
 
@@ -163,6 +174,12 @@ Expo Goを開いて、以下の画面が表示されることを確認してく�
 TODO: キャプチャ画像
 
 ### Home画面のヘッダーを変更する
+
+TODO Jojo仕様にする
+
+### 固定のデータでmobile側のAPI呼び出しを実装する
+
+[2nd](2nd.md)では、まず各画面コンポーネントで固定のデータや型を持ち、リファクタリング後にAPI呼び出しコンポーネントを作成しました。しかし、今回は先に固定データでのAPI呼び出しコンポーネントを作成します。
 
 ### Home画面を固定のデータで表示する
 
@@ -182,7 +199,10 @@ TODO: キャプチャ画像
 rye run uvicorn main:app --reload --host xxx.xxx.xxx.xxx
 ```
 
-`xxx.xxx.xxx.xxx`は調べたあなたのPCのIPアドレス
+`xxx.xxx.xxx.xxx`はあなたのPCのIPアドレス
+
+TODO
+調べ方: Windows版＆Mac版→Expo起動時に自分のアドレスが出ているはずだから、それでもOK
 
 ### mobile側のAPI呼び出しを実装する
 
