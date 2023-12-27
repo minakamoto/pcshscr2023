@@ -20,30 +20,6 @@ export const thConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 function sidebarWebApp(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: "For Teachers",
-      collapsed: false,
-      items: [
-        {
-          text: "Hands-on for catch-up",
-          items: [
-            { text: "บทนำ", link: "README" },
-            {
-              text: "ภาพรวมเกี่ยวกับเทคโนโลยีสำหรับพัฒนาเว็บแอปพลิเคชัน",
-              link: "teachers/0th",
-            },
-            {
-              text: "ภาคปฏิบัติ(hands-on)เพื่อพัฒนา UI ที่ง่ายและสะดวก",
-              link: "teachers/1st",
-            },
-            {
-              text: "ภาคปฏิบัติ(hands-on)เพื่อพัฒนา UI ที่ซับซ้อนขึ้นเล็กน้อยและ API ของตัวเอง",
-              link: "teachers/2nd",
-            },
-          ],
-        },
-      ],
-    },
-    {
       text: "For Students",
       collapsed: false,
       items: [

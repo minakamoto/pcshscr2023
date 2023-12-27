@@ -4,8 +4,6 @@
 
 ## โครงสร้างของวัสดุ
 
-- สำหรับครู
-  - [Hands-on for catch-up](./teachers/README.md)
 - สำหรับนักเรียน
   - [30-min experience with the latest web app dev tech](./students/README.md)
 

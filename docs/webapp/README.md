@@ -4,8 +4,6 @@ Materials related to WebApp are placed here.
 
 ## Structure of the materials
 
-- For teachers
-  - [Hands-on for catch-up](./teachers/README.md)
 - For students
   - [30-min experience with the latest web app dev tech](./students/README.md)
 

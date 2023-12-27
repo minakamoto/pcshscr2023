@@ -4,8 +4,6 @@
 
 ## 資料の構成
 
-- 教員向け
-  - [Hands-on for catch-up](./teachers/README.md)
 - 生徒向け
   - [30-min experience with the latest web app dev tech](./students/README.md)
 

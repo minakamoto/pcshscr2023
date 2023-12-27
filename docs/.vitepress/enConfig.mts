@@ -21,30 +21,6 @@ export const enConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 function sidebarWebApp(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: "For Teachers",
-      collapsed: false,
-      items: [
-        {
-          text: "Hands-on for catch-up",
-          items: [
-            { text: "Introduction", link: "teachers/README" },
-            {
-              text: "Overview of web app technology stack",
-              link: "teachers/0th",
-            },
-            {
-              text: "Hands-on to develop simple & easy UI",
-              link: "teachers/1st",
-            },
-            {
-              text: "Hands-on to develop a slightly more complex UI & own API",
-              link: "teachers/2nd",
-            },
-          ],
-        },
-      ],
-    },
-    {
       text: "For Students",
       collapsed: false,
       items: [

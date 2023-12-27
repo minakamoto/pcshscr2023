@@ -20,30 +20,6 @@ export const jaConfig: LocaleSpecificConfig<DefaultTheme.Config> = {
 function sidebarWebApp(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: "For Teachers",
-      collapsed: false,
-      items: [
-        {
-          text: "Hands-on for catch-up",
-          items: [
-            { text: "はじめに", link: "teachers/README" },
-            {
-              text: "Webアプリに関わる技術スタックの概要",
-              link: "teachers/0th",
-            },
-            {
-              text: "シンプルかつ簡単なUIを開発するハンズオン",
-              link: "teachers/1st",
-            },
-            {
-              text: "ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン",
-              link: "teachers/2nd",
-            },
-          ],
-        },
-      ],
-    },
-    {
       text: "For Students",
       collapsed: false,
       items: [
