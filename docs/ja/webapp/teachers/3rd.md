@@ -8,7 +8,7 @@
 
 ### 作るもの
 
-[2nd](2nd.md)で作成したAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](2nd.md)で作成したWebアプリとほぼ同じです。
+[2nd](2nd.md)で作成したバックエンドAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](2nd.md)で作成したWebアプリとほぼ同じです。
 
 ### 主な技術スタック
 
@@ -53,21 +53,20 @@ TIPS:
 ターミナルでカレントディレクトリが[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
-npx create-expo-app -t expo-template-blank-typescript mobile
+npx create-expo-app mobile  -t blank-typescript@49 
 ```
+
+**注意事項**：  
+このハンズオンではExpo SDK49を使用します。Expo SDKは年に3回更新されます。次のバージョンのSDK50はbreaking changeや新機能もたくさんあるため、実際に開発する場合には最新の公式サイトを参照してください。
 
 ### 必要なライブラリのインストール
 
 必要なライブラリのインストールをします。  
 以下のコマンドを実行してください。
 
-TODO: 必要なライブラリを再度確認
-
 ```sh
 cd mobile
-npm install @react-navigation/native
-npx expo install react-native-screens react-native-safe-area-context
-npm install @react-navigation/native-stack
+npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar react-native-gesture-handler
 npm install react-native-paper
 ```
 
@@ -77,9 +76,112 @@ TODO: TIPS
   - TODO Expo Routerにする
 - about React Native Paper
 
+注意事項:  
+今回は必要なライブラリをマニュアルでインストールする方法を採用しています。  
+Quick Startという方法もあります。必要なライブラリのインストールや次の手順の設定も自動で行われます。ただし、使用しないライブラリがインストールされたり、不要なファイルが作成されたりします。  
+今回は開発する機能に対して、マニュアルインストールの方が手間や影響が少ないと判断したため、マニュアルインストールを採用しています。インストール方法について、詳しく知りたい場合は[公式サイト](https://docs.expo.dev/router/installation/)をご確認ください。
+
 ### 設定の修正
 
-TODO Expo Router にした場合の設定周り
+Expo Routerを導入したことに必要な設定の修正を行います。
+
+注意事項:  
+このハンズオンで必要な箇所のみ修正しています。実際の開発の場合、必要な設定を[公式サイト](https://docs.expo.dev/router/installation/)で確認してください。
+
+#### エントリーポイントの修正
+
+エントリーポイントの修正をします。`dish-delight/mobile/package.json`を開き、4行目の`"main"`の値を以下に修正します。
+
+```json
+  "main": "expo-router/entry",
+```
+
+`dish-delight/mobile/package.json`全体では以下のようになります。
+
+注意事項:  
+インストールのタイミングによって、ライブラリのマイナーバージョン(例: `"expo"`の`49.XX.XX`の部分)が異なるため、まったく同一の値にはなりません。
+
+```json
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "~49.0.18",
+    "expo-status-bar": "~1.6.0",
+    "react": "18.2.0",
+    "react-native": "0.72.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@types/react": "~18.2.14",
+    "typescript": "^5.1.3"
+  },
+  "private": true
+}
+```
+
+#### プロジェクト設定の修正
+
+`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます。  
+(`scheme`の定義を追加しているだけです。)
+
+```json
+{
+  "expo": {
+    "name": "mobile",
+    "slug": "mobile",
+    "scheme": "dish-delight",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-router"]
+  }
+}
+```
+
+#### babel.config.jsの修正
+
+`dish-delight/mobile/babel.config.js`を開き、その内容を以下のコードに置き換えます。
+
+```js
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['expo-router/babel'],
+  };
+};
+```
+
+TIPS:
+
+- babel.config.jsとは？ TODO
 
 ### 開発サーバーの起動
 
@@ -88,16 +190,21 @@ TODO Expo Router にした場合の設定周り
 以下のコマンドを実行してください。
 
 ```sh
-npm run start
+npm run start -c
 ```
-
-TODO `npm run start -c`の方が良さそう
 
 Expo GoアプリをインストールしたiOSまたはAndroidを作業しているPCと同じワイヤレスネットワークに接続します。Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリの内蔵QRコードスキャナーを使用します。
 
-Expoのデフォルト画面が表示されることを確認してください。
+下記のExpo Routerのデフォルト画面が表示されることを確認してください。表示されたら、下部にある`touch app/index.js`ボタンを押してください。
 
-<img src="../../../static/img/3rd/docs/expo_default_screen.png" alt="Expo default screen" width="300">
+<img src="../../../static/img/3rd/docs/expo_router_default_screen.png" alt="Expo default screen" width="300">
+
+`touch app/index.js`ボタンを押すと、以下になることを確認してください。
+
+- 下記の画面に変わること
+- VSCodeに戻ると、`dish-delight/mobile/app/index.tsx`が作成されていること
+
+<img src="../../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
 
 ### Splash Screen等の画像をカスタマイズ
 
