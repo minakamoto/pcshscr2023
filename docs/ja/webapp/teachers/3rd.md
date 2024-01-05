@@ -215,10 +215,10 @@ Expo GoアプリをインストールしたiOSまたはAndroidを作業してい
 - adaptive-icon.png
 - aroy_logo.jpeg
 - buono_logo.jpeg
-- icon.png
+- icon_jojo.png
 - logo_jojo.png
 - sakura_tei_logo.jpeg
-- splash.png
+- splash_jojo.png
 
 `dish-delight/mobile/assets`に配置(上書き)してください。  
 
