@@ -229,12 +229,13 @@ Expo GoアプリをインストールしたiOSまたはAndroidを作業してい
   "expo": {
     "name": "Jojo University Cafeteria",
     "slug": "jojoUnivCafe",
+    "scheme": "dish-delight",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon_jojo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash_jojo.png",
       "resizeMode": "contain",
       "backgroundColor": "#000000"
     },
@@ -250,7 +251,8 @@ Expo GoアプリをインストールしたiOSまたはAndroidを作業してい
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": ["expo-router"]
   }
 }
 ```
