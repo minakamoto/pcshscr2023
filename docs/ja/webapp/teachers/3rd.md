@@ -268,18 +268,126 @@ TODO：TIPS
 
 ### 固定文字を表示する3画面とそれらの画面遷移を実装する
 
-このhands-onで構築する画面は[2nd](2nd.md)と同様、Homeとメニュー一覧とメニュー詳細画面の3つです。APIからデータを取得したり、それに合わせた画面を実装する前に、まずは、固定文字のみを表示させ、3画面の画面遷移を実装します。
+このhands-onで構築する画面は[2nd](2nd.md)と同様、Homeとメニュー一覧とメニュー詳細画面の3つです。まずは、モバイルの画面遷移の開発を体験してみます。APIからデータを取得したり、それに合わせた画面を実装する前に、固定文字のみを表示させ、3画面の画面遷移を実装します。
 
-`dish-delight/mobile/App.tsx`を開き、その内容を以下のコードに置き換えます：
-
-TODO
-タイトル＆Textを固定文字にして、遷移させるくらいで良さそう
+`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
+import { Link } from "expo-router";
+import { StyleSheet, View } from "react-native";
+
+export default function Home() {
+  return (
+    <View style={styles.container}>
+      <Link
+        style={styles.title}
+        href={{
+          pathname: "/stores/[storeId]",
+          // Fixed values are passed to params for the only purpose of experiencing screen transitions.
+          params: { storeName: "Sakura-tei", storeId: "1" },
+        }}
+      >
+        Sakura-tei
+      </Link>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
 
 ```
 
 Expo Goを開いて、以下の画面が表示されることを確認してください。
+<img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
+
+また、`Sakura-tei`をタップすると、デフォルトのエラー画面(`Unmached Route`)が表示されることを確認してください。
+<img src="../../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
+
+エラー画面の表示後、左スワイプで`Sakura-tei`が表示されるHome画面に戻ってください。
+
+`dish-delight/mobile/app/stores/[storeId]/index.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```tsx
+import { Link } from "expo-router";
+import { StyleSheet, View } from "react-native";
+
+export default function StoreMenu() {
+  return (
+    <View style={styles.container}>
+      <Link
+        style={styles.title}
+        href={{
+          pathname: "/stores/[storeId]/menus/[menuId]",
+          params: { storeId: "1", menuName: "ramen", menuId: "1" },
+        }}
+      >
+        Soy sauce ramen
+      </Link>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
+
+```
+
+`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```tsx
+import { StyleSheet, Text, View } from "react-native";
+
+export default function Menu() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Menu Detail</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
+```
+
+以下の3画面が表示および遷移(固定文字のタップもしくはスワイプ)できるようになっているか確認してください。
+
+| Home  | メニュー一覧  | メニュー詳細 |
+| --- | --- | --- |
+| <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Figma image2" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Figma image3" width="300"> |
+
+TODO
+`dish-delight/mobile/App.tsx`を消すタイミング
 TODO: キャプチャ画像
 
 ### Home画面のヘッダーを変更する
