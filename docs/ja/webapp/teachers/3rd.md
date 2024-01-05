@@ -384,13 +384,169 @@ const styles = StyleSheet.create({
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
-| <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Figma image2" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Figma image3" width="300"> |
+| <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
 
 TODO
 `dish-delight/mobile/App.tsx`を消すタイミング
-TODO: キャプチャ画像
 
-### Home画面のヘッダーを変更する
+Expo Goを開いて、以下の画面が表示されることを確認してください。
+
+### 固定文字を表示するNavbarを実装する
+
+さきほど実装した固定文字を表示する3画面に対応するNavbarを実装します。
+
+`dish-delight/mobile/app/_layout.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```tsx
+import { Stack } from "expo-router";
+
+export default function Layout() {
+  return (
+    <Stack
+      initialRouteName="Home"
+      // common setting
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: "#0284c7",
+        },
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+      }}
+    />
+  );
+}
+```
+
+`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
+
+```tsx
+import { Link, Stack } from "expo-router";
+import { StyleSheet, View } from "react-native";
+
+export default function Home() {
+  return (
+    <View style={styles.container}>
+      <Stack.Screen options={{ title: "Home" }} />
+      <Link
+        style={styles.title}
+        href={{
+          pathname: "/stores/[storeId]",
+          // 画面遷移を体験するためだけのため、paramsには固定値を渡している
+          params: { storeName: "Sakura-tei", storeId: "1" },
+        }}
+      >
+        Sakura-tei
+      </Link>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
+```
+
+TIPS:
+各Screenのindex.tsxの差分は以下の部分だけです。
+
+```tsx
+<Stack.Screen options={{ ... }} />
+```
+
+`dish-delight/mobile/app/stores/[storeId]/index.tsx`ファイルを開き、その内容を以下のコードに置き換えます:
+
+```tsx
+import { Link, Stack } from "expo-router";
+import { StyleSheet, View } from "react-native";
+
+export default function StoreMenu() {
+  return (
+    <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: "Sakura-tei",
+        }}
+      />
+      <Link
+        style={styles.title}
+        href={{
+          pathname: "/stores/[storeId]/menus/[menuId]",
+          params: { storeId: "1", menuName: "ramen", menuId: "1" },
+        }}
+      >
+        Soy sauce ramen
+      </Link>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
+
+```
+
+`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`ファイルを開き、その内容を以下のコードに置き換えます:
+
+```tsx
+import { Stack } from "expo-router";
+import { StyleSheet, Text, View } from "react-native";
+
+export default function Menu() {
+  return (
+    <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: "Soy sauce ramen",
+        }}
+      />
+      <Text style={styles.title}>Menu Detail</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 24,
+  },
+  title: {
+    fontSize: 36,
+    fontWeight: "bold",
+  },
+});
+
+```
+
+3つの画面が以下になっているか確認してください。
+
+| Home  | メニュー一覧  | メニュー詳細 |
+| --- | --- | --- |
+| <img src="../../../static/img/3rd/docs/text_and nabvar_home_screen.png" alt="Home with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_list_screen.png" alt="Menu List with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_detail_screen.png" alt="Menu Detail with text & navbar" width="300"> |
+
+### Home画面のNavbarを変更する
 
 TODO Jojo仕様にする
 
