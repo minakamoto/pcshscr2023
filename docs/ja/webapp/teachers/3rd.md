@@ -635,12 +635,242 @@ Expo Goを開いて、以下の画面が表示されることを確認してく�
 
 ### 固定のデータでmobile側のAPI呼び出しを実装する
 
-[2nd](2nd.md)では、まず各画面コンポーネントで固定のデータや型を持ち、リファクタリング後にAPI呼び出しコンポーネントを作成しました。しかし、今回は説明の簡略化のため、先に固定データでのAPI呼び出しコンポーネントを作成します。
+[2nd](2nd.md)では、まず各画面コンポーネントで固定のデータや型を持ち、リファクタリング後にAPI呼び出しコンポーネントを作成しました。しかし、今回は先に固定データでのAPI呼び出しコンポーネントを作成します([2nd](2nd.md)と同じコードです)。  
+リファクタリングまでの流れがわからない場合は、[2nd](2nd.md)で復習してみてください。
 
-### TODO データが存在しない場合のコンポーネントを実装する
+`dish-delight/mobile/lib/api.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```tsx
+// dish-delight/frontend/lib/api.tsx
+
+type Store = {
+  id: number;
+  name: string;
+  img: string;
+  category: string;
+};
+
+export const stores: Store[] = [
+  {
+    id: 1,
+    name: "Sakura-tei",
+    img: "/sakura_tei_logo.jpeg",
+    category: "Japanese",
+  },
+  {
+    id: 2,
+    name: "Aroy",
+    img: "/aroy_logo.jpeg",
+    category: "Thai",
+  },
+  {
+    id: 3,
+    name: "Buono",
+    img: "/buono_logo.jpeg",
+    category: "Italian",
+  },
+];
+
+// type definition of menu
+type Menu = {
+  id: number;
+  storeId: number;
+  name: string;
+  img: string;
+  author: string;
+  price: string;
+  description: string;
+  options?: Option[];
+};
+
+// type definition of menu's option
+type Option = {
+  name: string;
+  price: string;
+};
+
+export const menus = [
+  {
+    id: 1,
+    storeId: 1,
+    name: "Soy sauce ramen",
+    img: "https://images.unsplash.com/photo-1632709810780-b5a4343cebec",
+    author: "@5amramen",
+    price: "900 yen",
+    description:
+      "A classic Japanese ramen noodle soup that is made with a soy sauce-based broth.",
+    options: [
+      {
+        name: "Extra noodles",
+        price: "100 yen",
+      },
+      {
+        name: "Extra char siu",
+        price: "100 yen",
+      },
+      {
+        name: "Barikata(very hard noodles)",
+        price: "0 yen",
+      },
+    ],
+  },
+  {
+    id: 2,
+    storeId: 1,
+    name: "Sanuki Udon",
+    img: "https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3",
+    author: "@jinomono",
+    price: "800 yen",
+    description:
+      "A type of thick, chewy udon noodle that is made in Kagawa Prefecture, Japan.",
+    options: [
+      {
+        name: "Chicken tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Squid tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Vegetable tempura",
+        price: "100 yen",
+      },
+      {
+        name: "Large size",
+        price: "100 yen",
+      },
+      {
+        name: "Small size",
+        price: "-50 yen",
+      },
+    ],
+  },
+  {
+    id: 3,
+    storeId: 1,
+    name: "Zaru soba",
+    img: "https://images.unsplash.com/photo-1519984388953-d2406bc725e1",
+    author: "@gaspanik",
+    price: "1,000 yen",
+    description: "A cold soba noodle dish served with a dipping sauce.",
+    options: [
+      {
+        name: "Large size",
+        price: "200 yen",
+      },
+    ],
+  },
+  {
+    id: 4,
+    storeId: 1,
+    name: "Spicy Miso Ramen",
+    img: "https://images.unsplash.com/photo-1637024696628-02cb19cc1829",
+    author: "@5amramen",
+    price: "900 yen",
+    description: "A spicy miso ramen with a rich and flavorful broth.",
+    options: [
+      {
+        name: "Large size",
+        price: "100 yen",
+      },
+      {
+        name: "Extra char siu",
+        price: "100 yen",
+      },
+      {
+        name: "Seasoned egg",
+        price: "100 yen",
+      },
+    ],
+  },
+  {
+    id: 8,
+    storeId: 2,
+    name: "Khao soi",
+    img: "https://images.unsplash.com/photo-1569562211093-4ed0d0758f12",
+    author: "@ural_8_low",
+    price: "60 baht",
+    description:
+      "Khao Soi is a Northern Thai curry noodle soup with a rich and flavorful broth.",
+  },
+];
+
+export async function getStores(): Promise<Store[]> {
+  return stores;
+}
+
+export async function getStore(storeId: number): Promise<Store | undefined> {
+  return stores.find((store) => store.id === storeId);
+}
+
+export async function getMenus(storeId: number): Promise<Menu[]> {
+  return menus.filter((menu) => menu.storeId === storeId);
+}
+
+export async function getMenu(
+  storeId: number,
+  menuId: number
+): Promise<Menu | undefined> {
+  return menus.find((menu) => menu.storeId === storeId && menu.id === menuId);
+}
+```
+
+### データが存在しない場合のコンポーネントを実装する
 
 API呼び出しと同様、[2nd](2nd.md)ではリファクタリング後に行っていましたが、コンポーネント化を先に実施します。  
 リファクタリングまでの流れがわからない場合は、[2nd](2nd.md)で復習してみてください。
+
+`dish-delight/mobile/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```ts
+// dish-delight/mobile/lib/constants.ts
+
+export const DATA_NOT_FOUND_MESSAGE = {
+  // This message is not used because frontend and data are not executed on each Screen, but are passed between screens (difference between Next.js and React Native/Expo).
+  STORE: "The store does not exist, please select the store again from HOME.",
+  MENU: "The menu for that store does not exist, please select the store again from HOME.",
+};
+```
+
+`dish-delight/mobile/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+
+```tsx
+// dish-delight/mobile/components/DataNotFound.tsx
+
+import { StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
+
+type DataNotFoundProps = {
+  message: string;
+};
+
+// The message will be passed on from the caller.
+export default function DataNotFound({ message }: DataNotFoundProps) {
+  return (
+    <View style={styles.notFoundContainer}>
+      <Text variant="titleLarge" style={styles.notFoundText}>
+        {message}
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  notFoundContainer: {
+    flex: 1,
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  notFoundText: {
+    textAlign: "center",
+    color: "#fff",
+    marginHorizontal: 10,
+  },
+});
+
+```
 
 ### Home画面を固定のデータで表示する
 
