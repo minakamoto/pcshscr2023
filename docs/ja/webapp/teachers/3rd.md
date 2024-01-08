@@ -553,7 +553,85 @@ Expo Goを開いて、3つの画面が以下になっているか確認してく
 
 ### Home画面のNavbarを変更する
 
-TODO Jojo仕様にする
+`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
+
+```tsx
+import { Stack } from "expo-router";
+import { Image, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
+
+function LogoTitle() {
+  return (
+    <View style={styles.logoContainer}>
+      <Image
+        style={styles.logoImage}
+        source={require("./../assets/logo_jojo.png")}
+      />
+      <Text style={styles.logoText}>Jojo University Cafeteria</Text>
+    </View>
+  );
+}
+
+export default function Home() {
+  return (
+    <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          // refs. https://reactnavigation.org/docs/headers#setting-the-header-title
+          title: "Jojs Univ Cafeteria's Home",
+          // refs. https://reactnavigation.org/docs/headers#replacing-the-title-with-a-custom-component
+          headerTitle: () => <LogoTitle />,
+        }}
+      />
+      <Text variant="headlineMedium" style={styles.title}>
+        Welcome to Jojo University Cafeteria!
+      </Text>
+      <Text variant="titleMedium" style={styles.subTitle}>
+        Select the store where you would like to see the menu
+      </Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
+  title: {
+    textAlign: "center",
+    marginTop: 32,
+    color: "#fff",
+  },
+  subTitle: {
+    textAlign: "center",
+    marginTop: 10,
+    marginBottom: 20,
+    marginHorizontal: 6,
+    color: "#6b7280",
+  },
+  logoContainer: {
+    flexDirection: "row",
+    width: "100%",
+  },
+  logoImage: {
+    width: 50,
+    height: 50,
+    alignSelf: "flex-start",
+  },
+  logoText: {
+    textAlignVertical: "center",
+    marginVertical: 10, // for iOS
+    paddingStart: 8,
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#fff",
+  },
+});
+```
+
+Expo Goを開いて、以下の画面が表示されることを確認してください(Navbarと固定のテキストのみ表示しています)。  
+<img src="../../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
 
 ### 固定のデータでmobile側のAPI呼び出しを実装する
 
