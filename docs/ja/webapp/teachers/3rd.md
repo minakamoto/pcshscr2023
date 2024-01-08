@@ -643,14 +643,14 @@ Expo Goを開いて、以下の画面が表示されることを確認してく�
 ```tsx
 // dish-delight/frontend/lib/api.tsx
 
-type Store = {
+export type Store = {
   id: number;
   name: string;
   img: string;
   category: string;
 };
 
-export const stores: Store[] = [
+const stores: Store[] = [
   {
     id: 1,
     name: "Sakura-tei",
@@ -672,7 +672,7 @@ export const stores: Store[] = [
 ];
 
 // type definition of menu
-type Menu = {
+export type Menu = {
   id: number;
   storeId: number;
   name: string;
@@ -689,7 +689,7 @@ type Option = {
   price: string;
 };
 
-export const menus = [
+const menus = [
   {
     id: 1,
     storeId: 1,
