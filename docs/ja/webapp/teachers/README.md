@@ -31,3 +31,10 @@
       - Next.js/React
       - Python
       - FastAPI
+- [3rd](3rd.md)
+  - Webアプリ開発技術を利用してモバイルアプリを開発するハンズオン
+    - いままで体験したWebアプリ開発技術を利用し、[2nd](2nd.md)とほぼ同じUIや機能を持つモバイルアプリを開発します。
+      - APIは[2nd](2nd.md)で実装したものを使用します。
+    - 主な技術スタック
+      - Javascript/Typescript
+      - Expo/React Native
