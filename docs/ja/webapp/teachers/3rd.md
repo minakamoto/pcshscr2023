@@ -257,7 +257,7 @@ Expo GoアプリをインストールしたiOSまたはAndroidを作業してい
 }
 ```
 
-お手持ちのスマホで起動時のSplash Screenが変更されることを確認してください。
+お手持ちのスマホでExpo Goを起動しなおし、アプリ起動時のSplash Screenが変更されることを確認してください。
 
 <img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-以下の3画面が表示および遷移(固定文字のタップもしくはスワイプ)できるようになっているか確認してください。
+Expo Goを開いて、以下の3画面が表示および遷移(固定文字のタップもしくはスワイプ)できるようになっているか確認してください。
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
@@ -388,8 +388,6 @@ const styles = StyleSheet.create({
 
 TODO
 `dish-delight/mobile/App.tsx`を消すタイミング
-
-Expo Goを開いて、以下の画面が表示されることを確認してください。
 
 ### 固定文字を表示するNavbarを実装する
 
@@ -457,7 +455,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-TIPS:
+TIPS:  
 各Screenのindex.tsxの差分は以下の部分だけです。
 
 ```tsx
@@ -540,7 +538,7 @@ const styles = StyleSheet.create({
 
 ```
 
-3つの画面が以下になっているか確認してください。
+Expo Goを開いて、3つの画面が以下になっているか確認してください。
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
