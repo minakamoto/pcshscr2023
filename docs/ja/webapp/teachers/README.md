@@ -37,4 +37,4 @@
       - APIは[2nd](2nd.md)で実装したものを使用します。
     - 主な技術スタック
       - Javascript/Typescript
-      - Expo/React Native
+      - React Native/Expo

@@ -114,9 +114,16 @@ Expo Routerを導入したことに必要な設定の修正を行います。
   },
   "dependencies": {
     "expo": "~49.0.18",
+    "expo-constants": "~14.4.2",
+    "expo-linking": "~5.0.2",
+    "expo-router": "^2.0.0",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-native": "0.72.6"
+    "react-native": "0.72.6",
+    "react-native-gesture-handler": "~2.12.0",
+    "react-native-paper": "^5.11.6",
+    "react-native-safe-area-context": "4.6.3",
+    "react-native-screens": "~3.22.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
