@@ -50,7 +50,7 @@ TIPS:
 
 ### Expoプロジェクトの作成
 
-ターミナルでカレントディレクトリが[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+ターミナルで[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
@@ -200,7 +200,8 @@ TIPS:
 npm run start -c
 ```
 
-Expo GoアプリをインストールしたiOSまたはAndroidを作業しているPCと同じワイヤレスネットワークに接続します。Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリの内蔵QRコードスキャナーを使用します。
+Expo GoアプリをインストールしたiOSまたはAndroidを作業しているPCと同じワイヤレスネットワークに接続します。  
+Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリを使用し、QRコードをスキャンして、プロジェクトを開きます。
 
 下記のExpo Routerのデフォルト画面が表示されることを確認してください。表示されたら、下部にある`touch app/index.js`ボタンを押してください。
 
@@ -578,7 +579,7 @@ export default function Home() {
       <Stack.Screen
         options={{
           // refs. https://reactnavigation.org/docs/headers#setting-the-header-title
-          title: "Jojs Univ Cafeteria's Home",
+          title: "Jojo Univ Cafeteria's Home",
           // refs. https://reactnavigation.org/docs/headers#replacing-the-title-with-a-custom-component
           headerTitle: () => <LogoTitle />,
         }}
@@ -887,7 +888,6 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { Store, getStores } from "../lib/api";
 
-// TODO あとでちゃんと見直し
 const assetLogoImages = [
   { name: "Sakura-tei", source: require("./../assets/sakura_tei_logo.jpeg") },
   { name: "Aroy", source: require("./../assets/aroy_logo.jpeg") },
@@ -898,7 +898,7 @@ function getStoreImage(storeName: string) {
   const imageSource = assetLogoImages.find((image) => image.name === storeName);
   return imageSource
     ? imageSource.source
-    : require("./../assets/icon_jojo.png");
+    : require("./../assets/icon_jojo.png"); // If no matching image is found
 }
 
 function LogoTitle() {
@@ -935,7 +935,7 @@ export default function Home() {
       <Stack.Screen
         options={{
           // refs. https://reactnavigation.org/docs/headers#setting-the-header-title
-          title: "Jojs Univ Cafeteria's Home",
+          title: "Jojo Univ Cafeteria's Home",
           // refs. https://reactnavigation.org/docs/headers#replacing-the-title-with-a-custom-component
           headerTitle: () => <LogoTitle />,
         }}
@@ -1049,7 +1049,162 @@ const styles = StyleSheet.create({
 
 ### メニューリスト画面を固定のデータで表示する
 
-[2nd](2nd.md)と同じく、APIからデータを取得する前にfrontend上で保持する固定データを表示するようにします。
+Home画面と同じく、メニューリスト画面もfrontend上で保持する固定データを表示するようにします。
+
+`dish-delight/mobile/app/stores/[storeId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
+
+```tsx
+// dish-delight/mobile/app/stores/[storeId]/index.tsx
+
+import { Stack, router, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+import { Menu, getMenus } from "../../../lib/api";
+import { ActivityIndicator, Card } from "react-native-paper";
+import DataNotFound from "../../../components/DataNotFound";
+import { DATA_NOT_FOUND_MESSAGE } from "../../../lib/constants";
+
+export default function StoreMenu() {
+  // Get the parameter specified at router push.
+  const params = useLocalSearchParams();
+  const storeName = params.storeName as string;
+  const storeId = Number(params.storeId);
+
+  const [isLoading, setLoading] = useState(true);
+  const [menus, setMenus] = useState<Menu[]>([]);
+
+  const getMenuList = async () => {
+    try {
+      const data = await getMenus(storeId);
+      setMenus(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMenuList();
+  }, [storeId]);
+
+  // This function is provided to Flatlist's "renderItem".
+  // "renderItem" is a function that defines how each item in the list should be drawn.
+  // In other words, it determines how each item in the list will look like.
+  const renderCard = (item: Menu) => (
+    <>
+      <Card
+        key={item.id}
+        accessible={true}
+        accessibilityLabel={`Card for${item.name}`}
+        style={styles.cardContainer}
+        onPress={() =>
+          router.push({
+            pathname: "/stores/[storeId]/menus/[menuId]",
+            params: { storeId: storeId, menuName: item.name, menuId: item.id },
+          })
+        }
+      >
+        <Card.Cover
+          accessible={true}
+          accessibilityLabel={`Cover image for${item.name}`}
+          alt={`Card image for${item.name}`}
+          source={{ uri: item.img }}
+          style={styles.cardCover}
+        />
+        <Card.Title
+          title={item.name}
+          subtitle={item.price}
+          titleVariant="headlineSmall"
+          subtitleVariant="titleLarge"
+          titleStyle={styles.cardTitle}
+          subtitleStyle={styles.cardSubTitle}
+          style={styles.cardTitleContainer}
+        ></Card.Title>
+      </Card>
+    </>
+  );
+
+  // If data does not exist, an error screen is displayed
+  if (!isLoading && menus.length === 0) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: storeName,
+        }}
+      />
+      {isLoading ? (
+        // Display Loading until data is available
+        <ActivityIndicator
+          size={"large"}
+          color="#0284c7"
+          style={styles.indicator}
+        />
+      ) : (
+        // FlatList is a component for efficient display of long lists. It is a tool for creating scrollable lists, which is especially useful when dealing with large amounts of data.
+        <FlatList
+          style={styles.container}
+          data={menus}
+          renderItem={({ item }) => renderCard(item)}
+        ></FlatList>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
+  indicator: {
+    flex: 1,
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cardContainer: {
+    alignItems: "center",
+    marginHorizontal: 20,
+    marginTop: 28,
+    height: 350,
+    backgroundColor: "black",
+  },
+  cardCover: {
+    height: 280,
+    width: 370,
+  },
+  cardTitleContainer: {
+    backgroundColor: "black",
+  },
+  cardTitle: {
+    textAlign: "center",
+    color: "#fff",
+  },
+  cardSubTitle: {
+    textAlign: "center",
+    color: "#6b7280",
+  },
+});
+
+```
+
+動作や見た目を確認します。
+
+- Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
+  - メニューが4つ表示されること
+    <img src="../../../static/img/3rd/docs/menu_list_sakura_tei.png" alt="Sakura-tei Menu list" width="300">
+- メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
+  - 固定文字を表示する画面のままなので、どれをクリックしても"Menu Detail"と表示されます
+- Home画面にて`Aroy`のCardをクリックすると、メニュー一覧画面に遷移すること
+  - メニューが1つ表示されること
+- Home画面にて`Buono`のCardをクリックすると、メニュー一覧画面に遷移すること
+  - メニューがないため、エラーメッセージがでること
+    <img src="../../../static/img/3rd/docs/menu_not_found.png" alt="Menu Not Found" width="300">
 
 ### メニュー詳細画面を固定のデータで表示する
 
