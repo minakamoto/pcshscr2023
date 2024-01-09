@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
 ```tsx
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Menu() {
+export default function MenuDetail() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Menu Detail</Text>
@@ -518,7 +518,7 @@ const styles = StyleSheet.create({
 import { Stack } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Menu() {
+export default function MenuDetail() {
   return (
     <View style={styles.container}>
       <Stack.Screen
@@ -1047,9 +1047,9 @@ const styles = StyleSheet.create({
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - メニュー一覧画面の実装はまだ変えていないので、どの店舗をクリックしても固定文字`Soy sauce ramen`のみが表示されます
 
-### メニューリスト画面を固定のデータで表示する
+### メニュー一覧画面を固定のデータで表示する
 
-Home画面と同じく、メニューリスト画面もfrontend上で保持する固定データを表示するようにします。
+Home画面と同じく、メニュー一覧画面もfrontend上で保持する固定データを表示するようにします。
 
 `dish-delight/mobile/app/stores/[storeId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1208,7 +1208,171 @@ const styles = StyleSheet.create({
 
 ### メニュー詳細画面を固定のデータで表示する
 
-[2nd](2nd.md)と同じく、APIからデータを取得する前にfrontend上で保持する固定データを表示するようにします。
+Homeやメニュー一覧画面と同じく、メニュー詳細画面もfrontend上で保持する固定データを表示するようにします。
+
+`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
+
+```tsx
+// dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx
+
+import { Stack, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { Menu, getMenu } from "../../../../../lib/api";
+import DataNotFound from "../../../../../components/DataNotFound";
+import { DATA_NOT_FOUND_MESSAGE } from "../../../../../lib/constants";
+import { Card, Text } from "react-native-paper";
+
+export default function MenuDetail() {
+  // Get the parameter specified at router push.
+  const params = useLocalSearchParams();
+  const menuName = params.menuName as string;
+  const menuId = Number(params.menuId);
+  const storeId = Number(params.storeId);
+  const [menu, setMenu] = useState<Menu>();
+  // Since there is only one data item in the menu detail screen, Loading process would be skipped.
+
+  const getMenuDetail = async () => {
+    try {
+      const data = await getMenu(storeId, menuId);
+      setMenu(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getMenuDetail();
+  }, [storeId, menuId]);
+
+  // If data does not exist, an error screen is displayed
+  if (!menu) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: menuName,
+        }}
+      />
+      <Card
+        key={menu?.id}
+        style={styles.cardContainer}
+        accessible={true}
+        accessibilityLabel={`Card for${menu?.name}`}
+      >
+        <Card.Cover
+          accessible={true}
+          accessibilityLabel={`Cover image for${menu?.name}`}
+          alt={`Card image for${menu?.name}`}
+          source={{ uri: menu?.img }}
+          style={styles.cardCover}
+        />
+        <Card.Title
+          title={menu?.name}
+          subtitle={menu?.price}
+          titleVariant="headlineSmall"
+          subtitleVariant="titleLarge"
+          titleStyle={styles.cardTitle}
+          subtitleStyle={styles.cardSubTitle}
+          style={styles.cardTitleContainer}
+        ></Card.Title>
+      </Card>
+      <Text variant="titleLarge" style={styles.menuDescription}>
+        {menu?.description}
+      </Text>
+      {menu?.options && menu.options.length > 0 && (
+        <View style={styles.menuOptionContainer}>
+          <Text variant="headlineSmall" style={styles.menuOptionTitle}>
+            Option
+          </Text>
+          {menu.options.map((option) => (
+            // If there are options in the menu, display the number of options
+            <View
+              key={option.name}
+              style={styles.menuOptionInnerContainer}
+              accessible={true}
+            >
+              <Text variant="titleLarge" style={styles.menuOptionName}>
+                {option.name}
+              </Text>
+              <Text variant="titleLarge" style={styles.menuOptionPrice}>
+                {option.price}
+              </Text>
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
+  cardContainer: {
+    alignItems: "center",
+    marginHorizontal: 20,
+    marginVertical: 20,
+    height: 350,
+    backgroundColor: "black",
+  },
+  cardCover: {
+    height: 280,
+    width: 370,
+  },
+  cardTitleContainer: {
+    backgroundColor: "black",
+  },
+  cardTitle: {
+    textAlign: "center",
+    color: "#fff",
+  },
+  cardSubTitle: {
+    textAlign: "center",
+    color: "#6b7280",
+  },
+  menuDescription: {
+    color: "white",
+    marginHorizontal: 42,
+  },
+  menuOptionContainer: {
+    marginHorizontal: 42,
+    marginTop: 28,
+  },
+  menuOptionTitle: {
+    color: "#6b7280",
+  },
+  menuOptionInnerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: 20,
+    marginTop: 8,
+  },
+  menuOptionName: {
+    color: "white",
+  },
+  menuOptionPrice: {
+    color: "#6b7280",
+    marginLeft: 10,
+  },
+});
+```
+
+動作や見た目を確認します。
+
+- メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
+  - 該当のメニュー画像や説明、Optionなどが表示されること
+    - 例: 店舗`Aroy`の`Khao Soi`(Optionなし)
+    <img src="../../../static/img/3rd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    - 例: 店舗`Sakura-tei`の`Sanuki Udon`(Optionあり)
+    <img src="../../../static/img/3rd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+- 店舗やメニューが存在しない場合のエラー画面
+  - イメージはメニュー一覧画面と同じ
 
 ### mobile側のAPI呼び出しを修正する
 
