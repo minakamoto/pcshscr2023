@@ -1374,15 +1374,36 @@ const styles = StyleSheet.create({
 - 店舗やメニューが存在しない場合のエラー画面
   - イメージはメニュー一覧画面と同じ
 
-### mobile側のAPI呼び出しを修正する
-
-固定データを返していた実装をbackendを呼び出すように変更します。
-
-### 各Screenの実装をバックエンドAPIから取得したデータに変更する
-
-TODO: 要らないはず
-
 ### 作業しているPCのIPアドレスを確認し、バックエンドAPIを起動する
+
+作業しているPCのIPアドレスを確認し、バックエンドAPIを起動します。
+
+まず、作業しているPCのIPアドレスを確認します。  
+IPアドレスの確認方法は、コントロールパネルやターミナルでコマンドを実行する方法などがあります。  
+今回はモバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上にご自身のIPアドレス(`Metro waiting on exp://xxx.xxx.xxx.xxx:8081`の`xxx.xxx.xxx.xxx`部分)が以下のように表示されていると思いますので、そちらを確認してみてください。
+
+```sh
+› Metro waiting on exp://xxx.xxx.xxx.xxx:8081
+› Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
+
+› Using Expo Go
+› Press s │ switch to development build
+
+› Press a │ open Android
+› Press i │ open iOS simulator
+› Press w │ open web
+
+› Press j │ open debugger
+› Press r │ reload app
+› Press m │ toggle menu
+› Press o │ open project code in your editor
+
+› Press ? │ show all commands
+```
+
+次にバックエンドAPIを起動します。  
+バックエンドの
+ターミナルで[2nd](2nd.md#1-setup)で各自作成した`dish-delight/backend`ディレクトリに移動してください。`dish-delight/backend`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
 rye run uvicorn main:app --reload --host xxx.xxx.xxx.xxx
@@ -1390,7 +1411,8 @@ rye run uvicorn main:app --reload --host xxx.xxx.xxx.xxx
 
 `xxx.xxx.xxx.xxx`はあなたのPCのIPアドレス
 
-TODO
-調べ方: Windows版＆Mac版→Expo起動時に自分のアドレスが出ているはずだから、それでもOK
+### mobile側のAPI呼び出しを修正する
+
+固定データを返していた実装をbackendを呼び出すように変更します。
 
 ## 終わりに
