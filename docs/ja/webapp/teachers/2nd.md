@@ -880,7 +880,7 @@ export default function StoreMenu({ params }: { params: { storeId: string } }) {
   - 画面はまだ作っていないので、"404 This page could not be found"と表示されます
 - Home画面にて`Aroy`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューが1つ表示されること
-- Home画面にて`Bohno`のCardをクリックすると、メニュー一覧画面に遷移すること
+- Home画面にて`Buono`のCardをクリックすると、メニュー一覧画面に遷移すること
   - メニューがないため、エラーメッセージがでること
     <img src="../../../static/img/2nd/docs/store_not_found.png" alt="Store Not Found" width="300">
   - 実装に店舗やメニューが存在しない場合の処理を加えました。
