@@ -1,17 +1,24 @@
-import { FlatList, StyleSheet, View } from "react-native";
-import { ActivityIndicator, Card, Text } from "react-native-paper";
-import { MenuListProps } from "../App";
-import { Menu, getMenus } from "../lib/api";
-import { useEffect, useState } from "react";
+// dish-delight/mobile/app/stores/[storeId]/index.tsx
 
-export default function MenuListScreen({ route, navigation }: MenuListProps) {
-  const storeId = route.params.storeId;
+import { Stack, router, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+import { Menu, getMenus } from "../../../lib/api";
+import { ActivityIndicator, Card } from "react-native-paper";
+import DataNotFound from "../../../components/DataNotFound";
+import { DATA_NOT_FOUND_MESSAGE } from "../../../lib/constants";
+
+export default function StoreMenu() {
+  // Get the parameter specified at router push.
+  const params = useLocalSearchParams();
+  const storeName = params.storeName as string;
+  const storeId = Number(params.storeId);
+
   const [isLoading, setLoading] = useState(true);
   const [menus, setMenus] = useState<Menu[]>([]);
 
   const getMenuList = async () => {
     try {
-      // Next.jsと異なり、ServerComponentsは利用できないので、propsで渡したStoreをそのまま使う
       const data = await getMenus(storeId);
       setMenus(data);
     } catch (error) {
@@ -23,8 +30,11 @@ export default function MenuListScreen({ route, navigation }: MenuListProps) {
 
   useEffect(() => {
     getMenuList();
-  }, []);
+  }, [storeId]);
 
+  // This function is provided to Flatlist's "renderItem".
+  // "renderItem" is a function that defines how each item in the list should be drawn.
+  // In other words, it determines how each item in the list will look like.
   const renderCard = (item: Menu) => (
     <>
       <Card
@@ -33,8 +43,9 @@ export default function MenuListScreen({ route, navigation }: MenuListProps) {
         accessibilityLabel={`Card for${item.name}`}
         style={styles.cardContainer}
         onPress={() =>
-          navigation.navigate("MenuDetail", {
-            menu: item,
+          router.push({
+            pathname: "/stores/[storeId]/menus/[menuId]",
+            params: { storeId: storeId, menuName: item.name, menuId: item.id },
           })
         }
       >
@@ -58,55 +69,47 @@ export default function MenuListScreen({ route, navigation }: MenuListProps) {
     </>
   );
 
+  // If data does not exist, an error screen is displayed
   if (!isLoading && menus.length === 0) {
-    return (
-      <View style={styles.notFoundContainer}>
-        <Text variant="titleLarge" style={styles.notFoundText}>
-          The menu for that store does not exist, please select the store again
-          from HOME.
-        </Text>
-      </View>
-    );
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
   }
 
   return (
-    <>
+    <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: storeName,
+        }}
+      />
       {isLoading ? (
+        // Display Loading until data is available
         <ActivityIndicator
           size={"large"}
           color="#0284c7"
           style={styles.indicator}
         />
       ) : (
+        // FlatList is a component for efficient display of long lists. It is a tool for creating scrollable lists, which is especially useful when dealing with large amounts of data.
         <FlatList
           style={styles.container}
           data={menus}
           renderItem={({ item }) => renderCard(item)}
         ></FlatList>
       )}
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  indicator: {
+  container: {
     flex: 1,
     backgroundColor: "black",
   },
-  container: {
+  indicator: {
+    flex: 1,
     backgroundColor: "black",
-  },
-  title: {
-    textAlign: "center",
-    marginTop: 32,
-    color: "#fff",
-  },
-  subTitle: {
-    textAlign: "center",
-    marginTop: 10,
-    marginBottom: 20,
-    marginHorizontal: 6,
-    color: "#6b7280",
+    alignItems: "center",
+    justifyContent: "center",
   },
   cardContainer: {
     alignItems: "center",
@@ -129,18 +132,5 @@ const styles = StyleSheet.create({
   cardSubTitle: {
     textAlign: "center",
     color: "#6b7280",
-  },
-  notFoundContainer: {
-    flex: 1,
-    backgroundColor: "black",
-    // Next.js版とレイアウト(UI)が違うが、真ん中の方が良さそう。TODO あとで考える
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  notFoundText: {
-    // こっちもレイアウトが違う
-    textAlign: "center",
-    color: "#fff",
-    marginHorizontal: 10,
   },
 });

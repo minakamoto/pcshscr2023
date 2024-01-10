@@ -137,7 +137,6 @@ Expo Routerを導入したことに必要な設定の修正を行います。
 #### プロジェクト設定の修正
 
 `dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます。  
-(`scheme`の定義を追加しているだけです。)
 
 ```json
 {
@@ -1045,7 +1044,7 @@ const styles = StyleSheet.create({
 - Expo Goを開いて、以下の画面が表示されること  
 <img src="../../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニュー一覧画面の実装はまだ変えていないので、どの店舗をクリックしても固定文字`Soy sauce ramen`のみが表示されます
+  - メニュー一覧画面の実装はまだ変えていないので、どの店舗をクリックしても固定文字`Soy sauce ramen`が表示されます
 
 ### メニュー一覧画面を固定のデータで表示する
 

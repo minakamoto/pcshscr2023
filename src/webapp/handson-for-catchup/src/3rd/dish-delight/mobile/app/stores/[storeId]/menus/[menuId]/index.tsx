@@ -1,28 +1,63 @@
+// dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx
+
+import { Stack, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { MenuDetailProps } from "../App";
+import { Menu, getMenu } from "../../../../../lib/api";
+import DataNotFound from "../../../../../components/DataNotFound";
+import { DATA_NOT_FOUND_MESSAGE } from "../../../../../lib/constants";
 import { Card, Text } from "react-native-paper";
 
-export default function MenuDetailScreen({ route }: MenuDetailProps) {
-  const menu = route.params.menu;
+export default function MenuDetail() {
+  // Get the parameter specified at router push.
+  const params = useLocalSearchParams();
+  const menuName = params.menuName as string;
+  const menuId = Number(params.menuId);
+  const storeId = Number(params.storeId);
+  const [menu, setMenu] = useState<Menu>();
+  // Since there is only one data item in the menu detail screen, Loading process would be skipped.
+
+  const getMenuDetail = async () => {
+    try {
+      const data = await getMenu(storeId, menuId);
+      setMenu(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getMenuDetail();
+  }, [storeId, menuId]);
+
+  // If data does not exist, an error screen is displayed
+  if (!menu) {
+    return <DataNotFound message={DATA_NOT_FOUND_MESSAGE.MENU} />;
+  }
 
   return (
     <View style={styles.container}>
+      <Stack.Screen
+        options={{
+          title: menuName,
+        }}
+      />
       <Card
-        key={menu.id}
+        key={menu?.id}
         style={styles.cardContainer}
         accessible={true}
-        accessibilityLabel={`Card for${menu.name}`}
+        accessibilityLabel={`Card for${menu?.name}`}
       >
         <Card.Cover
           accessible={true}
-          accessibilityLabel={`Cover image for${menu.name}`}
-          alt={`Card image for${menu.name}`}
-          source={{ uri: menu.img }}
+          accessibilityLabel={`Cover image for${menu?.name}`}
+          alt={`Card image for${menu?.name}`}
+          source={{ uri: menu?.img }}
           style={styles.cardCover}
         />
         <Card.Title
-          title={menu.name}
-          subtitle={menu.price}
+          title={menu?.name}
+          subtitle={menu?.price}
           titleVariant="headlineSmall"
           subtitleVariant="titleLarge"
           titleStyle={styles.cardTitle}
@@ -31,15 +66,15 @@ export default function MenuDetailScreen({ route }: MenuDetailProps) {
         ></Card.Title>
       </Card>
       <Text variant="titleLarge" style={styles.menuDescription}>
-        {menu.description}
+        {menu?.description}
       </Text>
-      {menu.options && menu.options.length > 0 && (
+      {menu?.options && menu.options.length > 0 && (
         <View style={styles.menuOptionContainer}>
           <Text variant="headlineSmall" style={styles.menuOptionTitle}>
             Option
           </Text>
-          {/* If there are options in the menu, display the number of options */}
           {menu.options.map((option) => (
+            // If there are options in the menu, display the number of options
             <View
               key={option.name}
               style={styles.menuOptionInnerContainer}
@@ -63,18 +98,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "black",
-  },
-  title: {
-    textAlign: "center",
-    marginTop: 32,
-    color: "#fff",
-  },
-  subTitle: {
-    textAlign: "center",
-    marginTop: 10,
-    marginBottom: 20,
-    marginHorizontal: 6,
-    color: "#6b7280",
   },
   cardContainer: {
     alignItems: "center",
@@ -121,18 +144,5 @@ const styles = StyleSheet.create({
   menuOptionPrice: {
     color: "#6b7280",
     marginLeft: 10,
-  },
-  notFoundContainer: {
-    flex: 1,
-    backgroundColor: "black",
-    // Next.js版とレイアウト(UI)が違うが、真ん中の方が良さそう。TODO あとで考える
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  notFoundText: {
-    // こっちもレイアウトが違う
-    textAlign: "center",
-    color: "#fff",
-    marginHorizontal: 10,
   },
 });

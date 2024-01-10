@@ -1,11 +1,11 @@
-import { StyleSheet, ScrollView } from "react-native";
-import { HomeProps } from "../App";
-import { Card, Text } from "react-native-paper";
-import { getStores, Store } from "../lib/api";
-import { useEffect, useState } from "react";
+// dish-delight/mobile/app/index.tsx
 
-// 動的画像ファイルの読み込みがデフォルトでは難しいもようなので、一旦この形で進める
-// TODO あとでちゃんと見直し
+import { Stack, router } from "expo-router";
+import { useEffect, useState } from "react";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { Card, Text } from "react-native-paper";
+import { Store, getStores } from "../lib/api";
+
 const assetLogoImages = [
   { name: "Sakura-tei", source: require("./../assets/sakura_tei_logo.jpeg") },
   { name: "Aroy", source: require("./../assets/aroy_logo.jpeg") },
@@ -16,10 +16,22 @@ function getStoreImage(storeName: string) {
   const imageSource = assetLogoImages.find((image) => image.name === storeName);
   return imageSource
     ? imageSource.source
-    : require("./../assets/sakura_tei_logo.jpeg"); // TODO 一致するデータがないときの画像データを探す
+    : require("./../assets/icon_jojo.png"); // If no matching image is found
 }
 
-export default function HomeScreen({ navigation }: HomeProps) {
+function LogoTitle() {
+  return (
+    <View style={styles.logoContainer}>
+      <Image
+        style={styles.logoImage}
+        source={require("./../assets/logo_jojo.png")}
+      />
+      <Text style={styles.logoText}>Jojo University Cafeteria</Text>
+    </View>
+  );
+}
+
+export default function Home() {
   const [stores, setStores] = useState<Store[]>([]);
 
   // see. https://reactnative.dev/docs/next/network#using-fetch
@@ -38,6 +50,14 @@ export default function HomeScreen({ navigation }: HomeProps) {
 
   return (
     <ScrollView style={styles.container}>
+      <Stack.Screen
+        options={{
+          // refs. https://reactnavigation.org/docs/headers#setting-the-header-title
+          title: "Jojo Univ Cafeteria's Home",
+          // refs. https://reactnavigation.org/docs/headers#replacing-the-title-with-a-custom-component
+          headerTitle: () => <LogoTitle />,
+        }}
+      />
       <Text variant="headlineMedium" style={styles.title}>
         Welcome to Jojo University Cafeteria!
       </Text>
@@ -51,9 +71,10 @@ export default function HomeScreen({ navigation }: HomeProps) {
           accessibilityLabel={`Card for${store.name}`}
           style={styles.cardContainer}
           onPress={() =>
-            navigation.navigate("MenuList", {
-              storeName: store.name,
-              storeId: store.id,
+            router.push({
+              pathname: "/stores/[storeId]",
+              // 固定データもしくはAPIで取得するため、storeIdのみで良いが、一旦Nameも渡す
+              params: { storeName: store.name, storeId: store.id },
             })
           }
         >
@@ -83,6 +104,7 @@ export default function HomeScreen({ navigation }: HomeProps) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "black",
   },
   title: {
@@ -96,6 +118,23 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginHorizontal: 6,
     color: "#6b7280",
+  },
+  logoContainer: {
+    flexDirection: "row",
+    width: "100%",
+  },
+  logoImage: {
+    width: 50,
+    height: 50,
+    alignSelf: "flex-start",
+  },
+  logoText: {
+    textAlignVertical: "center",
+    marginVertical: 10, // for iOS
+    paddingStart: 8,
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "#fff",
   },
   cardContainer: {
     alignSelf: "center",

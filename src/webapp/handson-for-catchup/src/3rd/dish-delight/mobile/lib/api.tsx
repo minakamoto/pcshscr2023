@@ -1,4 +1,4 @@
-// dish-delight/mobile/lib/api.ts
+// dish-delight/mobile/lib/api.tsx
 
 export type Store = {
   id: number;
@@ -23,8 +23,8 @@ type Option = {
   price: string;
 };
 
-// FIXEDME 各自のローカルPCのIPアドレスにしてください
-const url = "http://127.0.0.1:8000";
+// FIXME Please set the IP address of your local PC.
+const url = "http://xxx.xxx.xxx.xxx:8000";
 
 export async function getStores(): Promise<Store[]> {
   const res = await fetch(`${url}/stores`);
