@@ -50,7 +50,7 @@ TIPS:
 
 ### Expoプロジェクトの作成
 
-ターミナルで[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+ターミナル(コマンドプロンプト、PowerShell、WSLのbash)で[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
@@ -1401,7 +1401,7 @@ IPアドレスの確認方法は、コントロールパネルやターミナル
 › Press ? │ show all commands
 ```
 
-次にバックエンドのAPIを起動します。  
+次にバックエンドAPIを起動します。  
 モバイルアプリの開発サーバを起動しているターミナルとは別のターミナルを開き、[2nd](2nd.md#1-setup)で各自作成した`dish-delight/backend`ディレクトリに移動してください。`dish-delight/backend`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
@@ -1498,7 +1498,7 @@ export async function getMenu(
 動作や見た目を確認します。  
 店舗やメニューを変えてひとしきり動作確認を行なってみてください。データベースから取得を使用しているため、先ほど確認したフロントエンドで保持した固定データの内容よりも増えているはずです。(例: 店舗`Buono`にもメニューがあります。)
 
-## 終わりに
+## 3.終わりに
 
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)から確認できます。  
 モバイルアプリもWebアプリと同じような雰囲気で開発できることを少し体験できたと思います。興味があれば、紹介したリンクのサイトを確認したり、ご自分のアイデアでアプリを開発してみてください。
