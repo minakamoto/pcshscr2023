@@ -18,7 +18,10 @@
 TIPS:
 
 - React Nativeについて
-  - TODO
+  - React Nativeはクロスプラットフォームのモバイルアプリ開発フレームワークで、JavaScript(TypeScript)を使用します。一つのコードでiOSとAndroidの両方のアプリを開発できます。また、Webアプリケーション向けUI構築ライブラリーのReact.jsをモバイル端末向けアプリケーション開発用に使えるように作られたものです。React NativeとReact.jsは、役割は異なるもののコード表記法やコンポーネントの考え方など、多くの共通点があります。
+  - クロスプラットフォームのモバイルアプリ開発フレームワークには、React Nativeのほかに[Flutter](https://flutter.dev/)が有名です。
+    - FlutterはReact Nativeよりも後発のフレームワークであり、主な違いは使用する言語、デザインの自由度です。
+  - クロスプラットフォームアプリでは、[Swift(iOS)](https://www.swift.org/)や[Kotlin(Android)](https://kotlinlang.org/)によるネイティブアプリに比べ、OSの最新機能や凝ったアプリが開発できないといったデメリットがあります。
   -
 - Expoについて
   - TODO
