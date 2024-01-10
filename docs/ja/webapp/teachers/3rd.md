@@ -875,7 +875,7 @@ const styles = StyleSheet.create({
 
 ### Home画面を固定のデータで表示する
 
-[2nd](2nd.md)と同じく、backendのAPIからデータを取得する前にfrontend上で保持する固定データを表示するようにします。
+[2nd](2nd.md)と同じく、バックエンドのAPIからデータを取得する前にフロントエンド上で保持する固定データを表示するようにします。
 
 `dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1049,7 +1049,7 @@ const styles = StyleSheet.create({
 
 ### メニュー一覧画面を固定のデータで表示する
 
-Home画面と同じく、メニュー一覧画面もfrontend上で保持する固定データを表示するようにします。
+Home画面と同じく、メニュー一覧画面もフロントエンド上で保持する固定データを表示するようにします。
 
 `dish-delight/mobile/app/stores/[storeId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1208,7 +1208,7 @@ const styles = StyleSheet.create({
 
 ### メニュー詳細画面を固定のデータで表示する
 
-Homeやメニュー一覧画面と同じく、メニュー詳細画面もfrontend上で保持する固定データを表示するようにします。
+Homeやメニュー一覧画面と同じく、メニュー詳細画面もフロントエンド上で保持する固定データを表示するようにします。
 
 `dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
@@ -1401,18 +1401,104 @@ IPアドレスの確認方法は、コントロールパネルやターミナル
 › Press ? │ show all commands
 ```
 
-次にバックエンドAPIを起動します。  
-バックエンドの
-ターミナルで[2nd](2nd.md#1-setup)で各自作成した`dish-delight/backend`ディレクトリに移動してください。`dish-delight/backend`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+次にバックエンドのAPIを起動します。  
+モバイルアプリの開発サーバを起動しているターミナルとは別のターミナルを開き、[2nd](2nd.md#1-setup)で各自作成した`dish-delight/backend`ディレクトリに移動してください。`dish-delight/backend`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
 
 ```sh
 rye run uvicorn main:app --reload --host xxx.xxx.xxx.xxx
 ```
 
-`xxx.xxx.xxx.xxx`はあなたのPCのIPアドレス
+`xxx.xxx.xxx.xxx`は先ほど調べたあなたのPCのIPアドレスに置き換えてください。
 
 ### mobile側のAPI呼び出しを修正する
 
-固定データを返していた実装をbackendを呼び出すように変更します。
+固定データを返していたAPI呼び出しコンポーネントをバックエンドのAPIを呼び出すように変更します。
+
+`dish-delight/mobile/lib/api.tsx`を開き、その内容を以下のコードに置き換えます:
+
+```tsx
+// dish-delight/mobile/lib/api.tsx
+
+export type Store = {
+  id: number;
+  name: string;
+  img: string;
+  category: string;
+};
+
+export type Menu = {
+  id: number;
+  storeId: number;
+  name: string;
+  img: string;
+  author: string;
+  price: string;
+  description: string;
+  options?: Option[];
+};
+
+type Option = {
+  name: string;
+  price: string;
+};
+
+// FIXME Please set the IP address of your local PC.
+const url = "http://xxx.xxx.xxx.xxx:8000";
+
+export async function getStores(): Promise<Store[]> {
+  const res = await fetch(`${url}/stores`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export async function getStore(storeId: number): Promise<Store | undefined> {
+  const res = await fetch(`${url}/stores/${storeId}`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export async function getMenus(storeId: number): Promise<Menu[]> {
+  const res = await fetch(`${url}/stores/${storeId}/menus`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+export async function getMenu(
+  storeId: number,
+  menuId: number
+): Promise<Menu | undefined> {
+  const res = await fetch(`${url}/stores/${storeId}/menus/${menuId}`);
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+```
+
+動作確認の前に、27行目の`xxx.xxx.xxx.xxx`を先ほど調べたあなたのPCのIPアドレスに置き換えてください。
+
+動作や見た目を確認します。  
+店舗やメニューを変えてひとしきり動作確認を行なってみてください。データベースから取得を使用しているため、先ほど確認したフロントエンドで保持した固定データの内容よりも増えているはずです。(例: 店舗`Buono`にもメニューがあります。)
 
 ## 終わりに
+
+これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)から確認できます。  
+モバイルアプリもWebアプリと同じような雰囲気で開発できることを少し体験できたと思います。興味があれば、紹介したリンクのサイトを確認したり、ご自分のアイデアでアプリを開発してみてください。
