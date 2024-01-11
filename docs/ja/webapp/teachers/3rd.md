@@ -403,9 +403,6 @@ Expo Goを開いて、以下の3画面が表示および遷移(固定文字の�
 | --- | --- | --- |
 | <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
 
-TODO
-`dish-delight/mobile/App.tsx`を消すタイミング
-
 ### 固定文字を表示するNavbarを実装する
 
 さきほど実装した固定文字を表示する3画面に対応するNavbarを実装します。
