@@ -82,9 +82,14 @@ npm install react-native-paper
 
 TODO: TIPS
 
-- about React Navigation
-  - TODO Expo Routerにする
-- about React Native Paper
+- [Expo Router](https://docs.expo.dev/router/introduction/)について
+  - 今回、RoutingにExpo Routerを採用しています。Expo Routerは、React NativeとWebアプリケーションのためのファイルベースのルーターです。
+    - これは、アプリのディレクトリにファイルを追加すると、そのファイルが自動的にナビゲーションのルートになるという概念を採用しています。[Next.js](https://nextjs.org/)の概念と同じです。
+  - Expo Routerは、[React Navigation](https://reactnavigation.org/)を基に作られており、同じコア機能を提供しますが、異なるアプローチを採用しています。
+  - 一方、React Navigationはモバイルアプリケーション向けに設計され、ネイティブのモバイルアプリナビゲーションと似たスタックベースのナビゲーションモデルを提供します。
+    - ファイルベースに慣れていると、React Navigationはルートを定義するためのコードが多い印象を持つかもしれません。
+- [React Native Paper](https://reactnativepaper.com/)について
+  - React Native Paperは、React NativeアプリのUIを作成するためのライブラリです。GoogleのMaterial Design原則に基づいており、簡単に見た目が良く、使いやすいアプリを作成するのに役立ちます。
 
 注意事項:  
 今回は必要なライブラリをマニュアルでインストールする方法を採用しています。  
