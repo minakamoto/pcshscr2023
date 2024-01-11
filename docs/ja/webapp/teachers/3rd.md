@@ -98,7 +98,7 @@ Quick Startという方法もあります。必要なライブラリのインス
 
 ### 設定の修正
 
-Expo Routerを導入したことに必要な設定の修正を行います。
+Expo Routerを導入したことにより必要な設定の修正を行います。
 
 注意事項:  
 このハンズオンで必要な箇所のみ修正しています。実際の開発の場合、必要な設定を[公式サイト](https://docs.expo.dev/router/installation/)で確認してください。
@@ -244,7 +244,7 @@ Androidの場合、Expo Goアプリを使用してPCのターミナルに表示�
 - sakura_tei_logo.jpeg
 - splash_jojo.png
 
-`dish-delight/mobile/assets`に配置(上書き)してください。  
+`dish-delight/mobile/assets`に上記でダウンロードしたファイルを配置(上書き)してください。  
 
 `dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます：
 
