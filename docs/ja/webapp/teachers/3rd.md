@@ -80,7 +80,7 @@ npx expo install expo-router react-native-safe-area-context react-native-screens
 npm install react-native-paper
 ```
 
-TODO: TIPS
+TIPS
 
 - [Expo Router](https://docs.expo.dev/router/introduction/)について
   - 今回、RoutingにExpo Routerを採用しています。Expo Routerは、React NativeとWebアプリケーションのためのファイルベースのルーターです。
@@ -208,7 +208,7 @@ TIPS:
 
 ### 開発サーバーの起動
 
-デフォルトのアプリのまま開発サーバを起動し、お手持ちのスマホでアプリが起動できることを確認します。
+デフォルトのアプリのまま開発サーバを起動し、お手持ちのデバイスでアプリが起動できることを確認します。
 
 以下のコマンドを実行してください。
 
@@ -281,14 +281,18 @@ Androidの場合、Expo Goアプリを使用してPCのターミナルに表示�
 }
 ```
 
-お手持ちのスマホでExpo Goを起動しなおし、アプリ起動時のSplash Screenが変更されることを確認してください。
+お手持ちのデバイスでExpo GOでモバイルアプリを起動しなおし、アプリ起動時のSplash Screenが変更されることを確認してください。
 
 <img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
-TODO：TIPS
+TIPS
 
-- Expo GOの起動しなおし or DevToolの起動の仕方
-  - ターミナル上の`r`とスマホ版
+- Expo GO上のモバイルアプリのreload方法
+  1. モバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上で`r`を押す
+  1. モバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上で`j`を押し、Expo GOのDevTool(or debugger)を起動させ、`Reload`ボタンを押す
+  1. お手持ちのデバイスを振り(Android: 縦に振る、iOS: デバイスを少し振る or 3本の指で画面をタッチする)、Expo GOのDevTool(or debugger)を起動させ、`Reload`ボタンを押す
+  - 詳しくは[Expo公式サイト](https://docs.expo.dev/debugging/tools/#developer-menu)を確認してください。
+- Expo GOのDevToolにはChrome Devtoolでデバッグできたりなど、さまざまな機能があります。興味があれば、[Expo公式サイト](https://docs.expo.dev/debugging/tools/)をご確認ください。
 
 ### 固定文字を表示する3画面とそれらの画面遷移を実装する
 
@@ -332,7 +336,7 @@ const styles = StyleSheet.create({
 
 ```
 
-Expo Goを開いて、以下の画面が表示されることを確認してください。
+Expo GOでモバイルアプリを開いて、以下の画面が表示されることを確認してください。
 <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
 
 また、`Sakura-tei`をタップすると、デフォルトのエラー画面(`Unmached Route`)が表示されることを確認してください。
@@ -404,7 +408,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Expo Goを開いて、以下の3画面が表示および遷移(固定文字のタップもしくはスワイプ)できるようになっているか確認してください。
+Expo GOでモバイルアプリを開いて、以下の3画面が表示および遷移(固定文字のタップもしくはスワイプ)できるようになっているか確認してください。
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
@@ -559,7 +563,7 @@ const styles = StyleSheet.create({
 
 ```
 
-Expo Goを開いて、3つの画面が以下になっているか確認してください。
+Expo GOでモバイルアプリを開いて、3つの画面が以下になっているか確認してください。
 
 | Home  | メニュー一覧  | メニュー詳細 |
 | --- | --- | --- |
@@ -644,7 +648,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Expo Goを開いて、以下の画面が表示されることを確認してください(Navbarと固定のテキストのみ表示しています)。  
+Expo GOでモバイルアプリを開いて、以下の画面が表示されることを確認してください(Navbarと固定のテキストのみ表示しています)。  
 <img src="../../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
 
 ### 固定のデータでmobile側のAPI呼び出しを実装する
@@ -1060,7 +1064,7 @@ const styles = StyleSheet.create({
 
 以下を確認してください。
 
-- Expo Goを開いて、以下の画面が表示されること  
+- Expo GOでモバイルアプリを開いて、以下の画面が表示されること  
 <img src="../../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
 - `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
   - メニュー一覧画面の実装はまだ変えていないので、どの店舗をクリックしても固定文字`Soy sauce ramen`が表示されます
