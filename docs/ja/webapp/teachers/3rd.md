@@ -22,7 +22,7 @@ TIPS:
   - クロスプラットフォームのモバイルアプリ開発フレームワークには、React Nativeのほかに[Flutter](https://flutter.dev/)が有名です。
     - FlutterはReact Nativeよりも後発のフレームワークであり、主な違いは使用する言語、デザインの自由度です。
   - クロスプラットフォームアプリでは、[Swift(iOS)](https://www.swift.org/)や[Kotlin(Android)](https://kotlinlang.org/)によるネイティブアプリに比べ、OSの最新機能や凝ったアプリが開発できないといったデメリットがあります。
-  -
+
 - Expoについて
   - Expoは、React Nativeをベースにしたモバイルアプリを開発するためのツールセットです。Expoを使用すると、React Native単独で開発するよりも簡単にモバイルアプリを開発することができます。
   - Expoの主な特徴は以下の通りです：
