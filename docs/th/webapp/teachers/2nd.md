@@ -386,6 +386,7 @@ type Store = {
   category: string;
 };
 
+// Use fixed store data on frontend until connecting to backend
 export const stores: Store[] = [
   {
     id: 1,
