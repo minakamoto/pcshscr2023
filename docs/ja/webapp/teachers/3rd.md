@@ -54,7 +54,7 @@ TIPS:
 - VS Codeの拡張機能のインストール・設定
   - [2st](2nd.md#1-setup)参照
 - Expo Goのインストール
-  - TODO
+  - モバイルアプリの動作確認のために、[Expo Go](https://expo.dev/client)を使用します。Expo Goによって、お持ちのデバイス(Android, iOS)で開発しているモバイルアプリを即座に実行できます。お持ちのデバイスに応じて、Google PlayもしくはApp Storeにて、ダウンロードしてください([Expo Goの公式サイト](https://expo.dev/client)にリンクがあります)。
 
 ## 2. モバイルアプリ作成
 
