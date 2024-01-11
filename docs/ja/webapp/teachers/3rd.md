@@ -24,7 +24,14 @@ TIPS:
   - クロスプラットフォームアプリでは、[Swift(iOS)](https://www.swift.org/)や[Kotlin(Android)](https://kotlinlang.org/)によるネイティブアプリに比べ、OSの最新機能や凝ったアプリが開発できないといったデメリットがあります。
   -
 - Expoについて
-  - TODO
+  - Expoは、React Nativeをベースにしたモバイルアプリを開発するためのツールセットです。Expoを使用すると、React Native単独で開発するよりも簡単にモバイルアプリを開発することができます。
+  - Expoの主な特徴は以下の通りです：
+    - Expo SDK
+      - Expo SDKは、カメラ、加速度計、地図などのネイティブデバイス機能にアクセスするためのJavaScript APIを提供します。
+    - Expo Go
+      - Expo Goは、開発中のアプリをテストするためのモバイルクライアントアプリです。
+    - Snack
+      - Snackは、ブラウザ上でExpoプロジェクトを作成し、実行するためのオンラインエディタです。
 
 ## 1. Setup
 
