@@ -202,7 +202,9 @@ module.exports = function (api) {
 
 TIPS:
 
-- babel.config.jsとは？ TODO
+- babel.config.jsとは？
+  - [Babel](https://babeljs.io/docs/)は、最新のJavaScript（ES2015+）を古いブラウザでも実行できる形式に変換するツール（トランスパイラ）です。
+  - [babel.config.js](https://babeljs.io/docs/configuration)は、Babelの設定ファイルで、どのようにJavaScriptコードを変換するかを指示する設定が記述されています。これにより、最新のJavaScriptの機能を使用しながらも、古いブラウザでもそのコードを実行できます。
 
 ### 開発サーバーの起動
 
