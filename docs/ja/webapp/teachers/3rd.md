@@ -151,7 +151,7 @@ Expo Routerを導入したことにより必要な設定の修正を行います
 
 #### プロジェクト設定の修正
 
-`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます。  
+`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます：  
 
 ```json
 {
@@ -188,7 +188,7 @@ Expo Routerを導入したことにより必要な設定の修正を行います
 
 #### babel.config.jsの修正
 
-`dish-delight/mobile/babel.config.js`を開き、その内容を以下のコードに置き換えます。
+`dish-delight/mobile/babel.config.js`を開き、その内容を以下のコードに置き換えます：
 
 ```js
 module.exports = function (api) {
