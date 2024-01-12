@@ -73,7 +73,6 @@ export default function Home() {
           onPress={() =>
             router.push({
               pathname: "/stores/[storeId]",
-              // 固定データもしくはAPIで取得するため、storeIdのみで良いが、一旦Nameも渡す
               params: { storeName: store.name, storeId: store.id },
             })
           }

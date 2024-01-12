@@ -80,7 +80,7 @@ npx expo install expo-router react-native-safe-area-context react-native-screens
 npm install react-native-paper
 ```
 
-TIPS
+TIPS:
 
 - [Expo Router](https://docs.expo.dev/router/introduction/)について
   - 今回、RoutingにExpo Routerを採用しています。Expo Routerは、React NativeとWebアプリケーションのためのファイルベースのルーターです。
@@ -93,7 +93,7 @@ TIPS
 
 注意事項:  
 今回は必要なライブラリをマニュアルでインストールする方法を採用しています。  
-Quick Startという方法もあります。必要なライブラリのインストールや次の手順の設定も自動で行われます。ただし、使用しないライブラリがインストールされたり、不要なファイルが作成されたりします。  
+`Quick Start`という方法もあります。必要なライブラリのインストールや次の手順の設定も自動で行われます。ただし、使用しないライブラリがインストールされたり、不要なファイルが作成されたりします。  
 今回は開発する機能に対して、マニュアルインストールの方が手間や影響が少ないと判断したため、マニュアルインストールを採用しています。インストール方法について、詳しく知りたい場合は[公式サイト](https://docs.expo.dev/router/installation/)をご確認ください。
 
 ### 設定の修正
@@ -151,7 +151,7 @@ Expo Routerを導入したことにより必要な設定の修正を行います
 
 #### プロジェクト設定の修正
 
-`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます：  
+`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます:  
 
 ```json
 {
@@ -188,7 +188,7 @@ Expo Routerを導入したことにより必要な設定の修正を行います
 
 #### babel.config.jsの修正
 
-`dish-delight/mobile/babel.config.js`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/mobile/babel.config.js`を開き、その内容を以下のコードに置き換えます:
 
 ```js
 module.exports = function (api) {
@@ -246,7 +246,7 @@ Androidの場合、Expo Goアプリを使用してPCのターミナルに表示�
 
 `dish-delight/mobile/assets`に上記でダウンロードしたファイルを配置(上書き)してください。  
 
-`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます：
+`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます:
 
 ```json
 {
@@ -285,7 +285,7 @@ Androidの場合、Expo Goアプリを使用してPCのターミナルに表示�
 
 <img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
-TIPS
+TIPS:
 
 - Expo GO上のモバイルアプリのreload方法
   1. モバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上で`r`を押す
@@ -487,7 +487,7 @@ TIPS:
 <Stack.Screen options={{ ... }} />
 ```
 
-`dish-delight/mobile/app/stores/[storeId]/index.tsx`ファイルを開き、その内容を以下のコードに置き換えます:
+`dish-delight/mobile/app/stores/[storeId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 import { Link, Stack } from "expo-router";
@@ -529,7 +529,7 @@ const styles = StyleSheet.create({
 
 ```
 
-`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`ファイルを開き、その内容を以下のコードに置き換えます:
+`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
 
 ```tsx
 import { Stack } from "expo-router";
@@ -977,7 +977,6 @@ export default function Home() {
           onPress={() =>
             router.push({
               pathname: "/stores/[storeId]",
-              // 固定データもしくはAPIで取得するため、storeIdのみで良いが、一旦Nameも渡す
               params: { storeName: store.name, storeId: store.id },
             })
           }
@@ -1518,9 +1517,9 @@ export async function getMenu(
 動作確認の前に、27行目の`xxx.xxx.xxx.xxx`を先ほど調べたあなたのPCのIPアドレスに置き換えてください。
 
 動作や見た目を確認します。  
-店舗やメニューを変えてひとしきり動作確認を行なってみてください。データベースから取得を使用しているため、先ほど確認したフロントエンドで保持した固定データの内容よりも増えているはずです。(例: 店舗`Buono`にもメニューがあります。)
+店舗やメニューを変えてひとしきり動作確認を行なってみてください。データベースからデータを取得しているため、先ほど確認したフロントエンドで保持した固定データの内容よりも増えているはずです。(例: 店舗`Buono`にもメニューがあります。)
 
-## 3.終わりに
+## 3. 終わりに
 
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)から確認できます。  
 モバイルアプリもWebアプリと同じような雰囲気で開発できることを少し体験できたと思います。興味があれば、紹介したリンクのサイトを確認したり、ご自分のアイデアでアプリを開発してみてください。
