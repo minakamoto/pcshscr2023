@@ -30,3 +30,10 @@
       - Next.js/React
       - Python
       - FastAPI
+- [3rd](3rd.md)
+  - Hands-on mobile app development with web app technology stack
+    - Using the web app development techniques you have learned so far, you will develop a mobile app with almost the same UI and functionality as [2nd](2nd.md).
+      - Use the API implemented in [2nd](2nd.md).
+    - Main Technology Stack
+      - Javascript/Typescript
+      - React Native/Expo
