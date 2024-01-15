@@ -40,6 +40,10 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
               text: "Hands-on to develop a slightly more complex UI & own API",
               link: "teachers/2nd",
             },
+            {
+              text: "Hands-on mobile app development with web app technology stack",
+              link: "teachers/3rd",
+            },
           ],
         },
       ],

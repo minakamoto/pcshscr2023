@@ -1,78 +1,78 @@
-# 1stと2ndで体験したWebアプリ開発技術を利用してモバイルアプリを開発してみるハンズオン
+# Hands-on mobile app development using web app technology stacks experienced in the 1st and 2nd
 
-## 0. はじめに
+## 0. Introduction
 
-このハンズオンでは、1stと2ndで使用したWebアプリ開発技術(主にJavaScript/TypeScript, React)を利用して、モバイルアプリを体験してみるハンズオンです。[1st](1st.md)や[2nd](2nd.md)と同様、開発体験を楽しみ、Webアプリ開発技術に興味を持ってもらうことを主眼にしています。
+In this hands-on, you will experience mobile app development using the web app development technologies (mainly JavaScript/TypeScript and React) used in the 1st and 2nd hands-on sessions. Similar to [1st](1st.md) and [2nd](2nd.md), the main goal is to enjoy the development experience and get participants interested in web app development technologies.
 
-そのため、あまり詳しい解説は行っていません。また、簡易な実装にとどめています。必要に応じて、TIPSや参考となるWebサイトのリンクを提供しています。
+For this reason, it is not explained in much detail. Also, only a simple implementation is provided. TIPS and links to reference sites are provided where necessary.
 
-### 作るもの
+### What we make
 
-[2nd](2nd.md)で作成したバックエンドAPIを呼び出し、その情報をモバイルアプリに表示します。機能およびUIは[2nd](2nd.md)で作成したWebアプリとほぼ同じです。
+It calls the backend API created in [2nd](2nd.md) and displays the information in the mobile app. The functionality and UI are almost the same as the web app developed in [2nd](2nd.md).
 
-### 主な技術スタック
+### Main Technology Stack
 
 - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)/[Typescript](https://www.typescriptlang.org/)
 - [React Native](https://reactnative.dev/)/[Expo](https://expo.dev/)
 
 TIPS:
 
-- React Nativeについて
-  - React Nativeはクロスプラットフォームのモバイルアプリ開発フレームワークで、JavaScript(TypeScript)を使用します。一つのコードでiOSとAndroidの両方のアプリを開発できます。また、Webアプリケーション向けUI構築ライブラリーのReact.jsをモバイル端末向けアプリケーション開発用に使えるように作られたものです。React NativeとReact.jsは、役割は異なるもののコード表記法やコンポーネントの考え方など、多くの共通点があります。
-  - クロスプラットフォームのモバイルアプリ開発フレームワークには、React Nativeのほかに[Flutter](https://flutter.dev/)が有名です。
-    - FlutterはReact Nativeよりも後発のフレームワークであり、主な違いは使用する言語、デザインの自由度です。
-  - クロスプラットフォームアプリでは、[Swift(iOS)](https://www.swift.org/)や[Kotlin(Android)](https://kotlinlang.org/)によるネイティブアプリに比べ、OSの最新機能や凝ったアプリが開発できないといったデメリットがあります。
+- About React Native
+  - React Native is a cross-platform framework for developing mobile applications using JavaScript (TypeScript). A single piece of code can be used to develop both iOS and Android applications. While React Native and React.js play different roles, they share many similarities, such as code notation and the concept of components.
+  - In addition to React Native, [Flutter](https://flutter.dev/) is  a popular cross-platform framework for developing mobile applications.
+    - Flutter is a later framework than React Native, and the main differences are the language used and the design flexibility.
+  - Compared to native apps using [Swift(iOS)](https://www.swift.org/) or [Kotlin(Android)](https://kotlinlang.org/), cross-platform apps have the disadvantage of not being able to develop the latest OS features or sophisticated apps.
 
-- Expoについて
-  - Expoは、React Nativeをベースにしたモバイルアプリを開発するためのツールセットです。Expoを使用すると、React Native単独で開発するよりも簡単にモバイルアプリを開発することができます。
-  - Expoの主な特徴は以下の通りです：
+- About Expo
+  - Expo is a set of tools for developing mobile apps based on React Native; using Expo, you can develop mobile apps more easily than with React Native alone.
+  - The main features of Expo are as follows:
     - Expo SDK
-      - Expo SDKは、カメラ、加速度計、地図などのネイティブデバイス機能にアクセスするためのJavaScript APIを提供します。
+      - Expo SDK provides a JavaScript API to access native device features such as cameras, accelerometers, and maps.
     - Expo Go
-      - Expo Goは、開発中のアプリをテストするためのモバイルクライアントアプリです。
+      - Expo Go is a mobile client application for testing apps under development.
     - Snack
-      - Snackは、ブラウザ上でExpoプロジェクトを作成し、実行するためのオンラインエディタです。
+      - Snack is an online editor for creating and running Expo projects in your browser.
 
 ## 1. Setup
 
-### 前提条件
+### Prerequisites
 
 - Node.js 18+ or 20+
 - Code Editor (e.g., Visual Studio Code)
-- [2nd](2nd.md#3-データベースに接続してデータを返す)のバックエンドAPIをローカルに実装済みであること
+- [2nd](2nd.md#3-connecting-to-the-database-and-returning-data) backend API must be implemented locally
 
-**注意事項**：  
-ここに記載されている必要なソフトウェアのインストール手順は、Windowsユーザーを対象としています。
-これは、このハンズオンの最初のターゲットユーザーが、Windowsユーザーであるためです。実際にソフトウェアをインストールする際には、ご自身の環境に応じたインストール手順で行ってください。
+**NOTE**：  
+The required software installation instructions listed here are intended for Windows users.
+This is because the first target users of this hands-on are Windows users. Please follow the installation procedure for your environment when actually installing the software.
 
-### Windowsユーザー向けの詳細な手順
+### Detailed procedure for Windows users
 
-- Node.jsのインストール
-  - [1st](./1st.md#1-setup)参照
-- Visual Studio Code(VS Code)のインストール
-  - [1st](./1st.md#1-setup)参照
-- VS Codeの拡張機能のインストール・設定
-  - [2st](2nd.md#1-setup)参照
-- Expo Goのインストール
-  - モバイルアプリの動作確認のために、[Expo Go](https://expo.dev/client)を使用します。Expo Goによって、お持ちのデバイス(Android, iOS)で開発しているモバイルアプリを即座に実行できます。お持ちのデバイスに応じて、Google PlayもしくはApp Storeにて、ダウンロードしてください([Expo Goの公式サイト](https://expo.dev/client)にリンクがあります)。
+- Install Node.js
+  - See [1st](./1st.md#1-setup)
+- Install Visual Studio Code(VS Code)
+  - See [1st](./1st.md#1-setup)
+- Install and configure VS Code extensions
+  - See [2st](2nd.md#1-setup)
+- Install Expo Go
+  - [Expo Go](https://expo.dev/client) is used to test mobile apps. Expo Go allows you to immediately run the mobile app you are developing on your device (Android, iOS). Depending on the device you have, you can download it from Google Play or the App Store (you can find the link on the [official Expo Go website](https://expo.dev/client)).
 
-## 2. モバイルアプリ作成
+## 2. mobile app development
 
-### Expoプロジェクトの作成
+### Creating an Expo project
 
-ターミナル(コマンドプロンプト、PowerShell、WSLのbash)で[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+In a terminal (command prompt, PowerShell, WSL bash), move to the `dish-delight` directory that you created in [2nd](2nd.md#1-setup). Make sure that you are in the `dish-delight` directory, and then run the following command
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
 ```
 
-**注意事項**：  
-このハンズオンではExpo SDK49を使用します。Expo SDKは年に3回更新されます。次のバージョンのSDK50はbreaking changeや新機能もたくさんあるため、実際に開発する場合には最新の公式サイトを参照してください。
+**NOTE**：  
+This hands-on will use Expo SDK49, Expo SDK is updated 3 times a year. The next version, SDK50, has many breaking changes and new features, so please check to the latest official website for actual development.
 
-### 必要なライブラリのインストール
+### Install necessary libraries
 
-必要なライブラリのインストールをします。  
-以下のコマンドを実行してください。
+Install the necessary libraries.  
+Run the following commands.
 
 ```sh
 cd mobile
@@ -82,39 +82,39 @@ npm install react-native-paper
 
 TIPS:
 
-- [Expo Router](https://docs.expo.dev/router/introduction/)について
-  - 今回、RoutingにExpo Routerを採用しています。Expo Routerは、React NativeとWebアプリケーションのためのファイルベースのルーターです。
-    - これは、アプリのディレクトリにファイルを追加すると、そのファイルが自動的にナビゲーションのルートになるという概念を採用しています。[Next.js](https://nextjs.org/)の概念と同じです。
-  - Expo Routerは、[React Navigation](https://reactnavigation.org/)を基に作られており、同じコア機能を提供しますが、異なるアプローチを採用しています。
-  - 一方、React Navigationはモバイルアプリケーション向けに設計され、ネイティブのモバイルアプリナビゲーションと似たスタックベースのナビゲーションモデルを提供します。
-    - ファイルベースに慣れていると、React Navigationはルートを定義するためのコードが多い印象を持つかもしれません。
-- [React Native Paper](https://reactnativepaper.com/)について
-  - React Native Paperは、React NativeアプリのUIを作成するためのライブラリです。GoogleのMaterial Design原則に基づいており、簡単に見た目が良く、使いやすいアプリを作成するのに役立ちます。
+- About [Expo Router](https://docs.expo.dev/router/introduction/)
+  - In this hands-on, we will use Expo Router for routing; Expo Router is a file-based router for React Native and web applications.
+    - It uses the concept that when you add a file to the app's directory, that file automatically becomes the root of the navigation. This is the same concept used by [Next.js](https://nextjs.org/).
+  - Expo Router is based on [React Navigation](https://reactnavigation.org/) and offers the same core functionality, but with a different approach.
+  - React Navigation, on the other hand, is designed for mobile applications and provides a stack-based navigation model similar to native mobile app navigation.
+    - If you are used to file-based systems, you might think that React Navigation has a lot of code to define routes.
+- About [React Native Paper](https://reactnativepaper.com/)
+  - React Native Paper is a library for developing React Native app UIs, based on Google's Material Design principles to help you easily create great-looking, easy-to-use apps.
 
-注意事項:  
-今回は必要なライブラリをマニュアルでインストールする方法を採用しています。  
-`Quick Start`という方法もあります。必要なライブラリのインストールや次の手順の設定も自動で行われます。ただし、使用しないライブラリがインストールされたり、不要なファイルが作成されたりします。  
-今回は開発する機能に対して、マニュアルインストールの方が手間や影響が少ないと判断したため、マニュアルインストールを採用しています。インストール方法について、詳しく知りたい場合は[公式サイト](https://docs.expo.dev/router/installation/)をご確認ください。
+NOTE:  
+In this case, the necessary libraries are installed manually.  
+Another method is `Quick Start`. The installation of necessary libraries and the configuration to be done in the next step will be done automatically. However, unused libraries may be installed and unnecessary files may be created.  
+For the features to be developed this time, manual installation was chosen because it was judged to be less time-consuming and less impactful. If you would like to know more details about the installation method, please check the [official website](https://docs.expo.dev/router/installation/).
 
-### 設定の修正
+### Modify settings
 
-Expo Routerを導入したことにより必要な設定の修正を行います。
+Modify the settings required by the introduction of Expo Router.
 
-注意事項:  
-このハンズオンで必要な箇所のみ修正しています。実際の開発の場合、必要な設定を[公式サイト](https://docs.expo.dev/router/installation/)で確認してください。
+NOTE:  
+Only the necessary parts are modified for this hands-on. For actual development, please check [official website](https://docs.expo.dev/router/installation/) for necessary settings.
 
-#### エントリーポイントの修正
+#### Modify Entry Points
 
-エントリーポイントの修正をします。`dish-delight/mobile/package.json`を開き、4行目の`"main"`の値を以下に修正します。
+Modify the entry point. Open `dish-delight/mobile/package.json` and modify the value of `"main"` in line 4 as follows
 
 ```json
   "main": "expo-router/entry",
 ```
 
-`dish-delight/mobile/package.json`全体では以下のようになります。
+The entire `dish-delight/mobile/package.json` will look like below.
 
-注意事項:  
-インストールのタイミングによって、ライブラリのマイナーバージョン(例: `"expo"`の`49.XX.XX`の部分)が異なるため、まったく同一の値にはなりません。
+NOTE:  
+The minor version of the library (e.g. the `49.XX.XX` part of `"expo"`) varies depending on the time of installation, so the values will not be exactly the same.
 
 ```json
 {
@@ -149,9 +149,9 @@ Expo Routerを導入したことにより必要な設定の修正を行います
 }
 ```
 
-#### プロジェクト設定の修正
+#### Modify project settings
 
-`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます:  
+Open `dish-delight/mobile/app.json` and replace its contents with the following code:  
 
 ```json
 {
@@ -186,9 +186,9 @@ Expo Routerを導入したことにより必要な設定の修正を行います
 }
 ```
 
-#### babel.config.jsの修正
+#### Modify babel.config.js
 
-`dish-delight/mobile/babel.config.js`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/babel.config.js` and replace its contents with the following code:
 
 ```js
 module.exports = function (api) {
@@ -202,39 +202,39 @@ module.exports = function (api) {
 
 TIPS:
 
-- babel.config.jsとは？
-  - [Babel](https://babeljs.io/docs/)は、最新のJavaScript（ES2015+）を古いブラウザでも実行できる形式に変換するツール（トランスパイラ）です。
-  - [babel.config.js](https://babeljs.io/docs/configuration)は、Babelの設定ファイルで、どのようにJavaScriptコードを変換するかを指示する設定が記述されています。これにより、最新のJavaScriptの機能を使用しながらも、古いブラウザでもそのコードを実行できます。
+- What is babel.config.js?
+  - [Babel](https://babeljs.io/docs/) is a tool (transpiler) that converts the latest JavaScript (ES2015+) into a format that can be run on older browsers.
+  - The [babel.config.js](https://babeljs.io/docs/configuration) is a configuration file for Babel that contains settings that control how the JavaScript code is converted. This allows the code to run in older browsers while still using the latest JavaScript features.
 
-### 開発サーバーの起動
+### Start the development server
 
-デフォルトのアプリのまま開発サーバを起動し、お手持ちのデバイスでアプリが起動できることを確認します。
+Start the development server with the default app and verify that the app can be started on your device.
 
-以下のコマンドを実行してください。
+Run the following command
 
 ```sh
 npm run start -c
 ```
 
-Expo GoアプリをインストールしたiOSまたはAndroidを作業しているPCと同じワイヤレスネットワークに接続します。  
-Androidの場合、Expo Goアプリを使用してPCのターミナルに表示されるQRコードをスキャンし、プロジェクトを開きます。iOSの場合、デフォルトのiOSカメラアプリを使用し、QRコードをスキャンして、プロジェクトを開きます。
+Connect an iOS or Android device with the Expo Go app installed to the same wireless network as the PC you are working on.  
+For Android, use the Expo Go app to scan the QR code displayed on the PC terminal and open the project; for iOS, use the default iOS camera app, scan the QR code, and open the project.
 
-下記のExpo Routerのデフォルト画面が表示されることを確認してください。表示されたら、下部にある`touch app/index.js`ボタンを押してください。
+Verify that the Expo Router default screen shown below appears. When it appears, press the `touch app/index.js` button at the bottom.
 
-<img src="../../../static/img/3rd/docs/expo_router_default_screen.png" alt="Expo default screen" width="300">
+<img src="../../static/img/3rd/docs/expo_router_default_screen.png" alt="Expo default screen" width="300">
 
-`touch app/index.js`ボタンを押すと、以下になることを確認してください。
+Make sure that when you press the `touch app/index.js` button, you get the following
 
-- 下記の画面に変わること
-- VSCodeに戻ると、`dish-delight/mobile/app/index.tsx`が作成されていること
+- To change to the following screen
+- When you return to VSCode, `dish-delight/mobile/app/index.tx` should be created.
 
-<img src="../../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
+<img src="../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
 
-### Splash Screen等の画像をカスタマイズ
+### Customize images such as the splash screen
 
-アプリ起動時に表示されるSplash Screenやアプリのロゴ等をこのhands-on用に変更します。合わせて、各店舗のロゴも取得・配置しておきます([2nd](2nd.md#2-フロントエンドのみのhomeとメニュー一覧と詳細画面の実装)と同様の画像ファイルです)。
+Change the splash screen, app logo, etc. that are displayed when the app is launched to this hands-on version. Also, get and place the logo of each store (the same image files as in [2nd](2nd.md#2-frontend-only-home-and-menu-list-and-menu-detail-screen-implementation)).
 
-対象の画像は[Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/3rd/assets)からすべて取得してください。以下の7つのファイルです。  
+All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/3rd/assets). The following 7 files.  
 
 - adaptive-icon.png
 - aroy_logo.jpeg
@@ -244,9 +244,9 @@ Androidの場合、Expo Goアプリを使用してPCのターミナルに表示�
 - sakura_tei_logo.jpeg
 - splash_jojo.png
 
-`dish-delight/mobile/assets`に上記でダウンロードしたファイルを配置(上書き)してください。  
+Place (overwrite) the file downloaded above in `dish-delight/mobile/assets`.  
 
-`dish-delight/mobile/app.json`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app.json` and replace its contents with the following code:
 
 ```json
 {
@@ -281,24 +281,24 @@ Androidの場合、Expo Goアプリを使用してPCのターミナルに表示�
 }
 ```
 
-お手持ちのデバイスでExpo GOでモバイルアプリを起動しなおし、アプリ起動時のSplash Screenが変更されることを確認してください。
+Re-launch the mobile app with Expo GO on your device and verify that the Splash Screen changes when the app is launched.
 
-<img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
+<img src="../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
 TIPS:
 
-- Expo GO上のモバイルアプリのreload方法
-  1. モバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上で`r`を押す
-  1. モバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上で`j`を押し、Expo GOのDevTool(or debugger)を起動させ、`Reload`ボタンを押す
-  1. お手持ちのデバイスを振り(Android: 縦に振る、iOS: デバイスを少し振る or 3本の指で画面をタッチする)、Expo GOのDevTool(or debugger)を起動させ、`Reload`ボタンを押す
-  - 詳しくは[Expo公式サイト](https://docs.expo.dev/debugging/tools/#developer-menu)を確認してください。
-- Expo GOのDevToolにはChrome Devtoolでデバッグできたりなど、さまざまな機能があります。興味があれば、[Expo公式サイト](https://docs.expo.dev/debugging/tools/)をご確認ください。
+- How to reload mobile apps on Expo GO
+  1. Press `r` on the terminal during starting the mobile app development server (`npm run start`)
+  1. While the mobile app development server is running (`npm run start`), press `j` on the terminal to start Expo GO's DevTool (or debugger) and press `Reload` button.
+  1. Shake your device (Android: shake vertically, iOS: shake gently  or touch the screen with 3 fingers), launch the Expo GO DevTool (or debugger) and press the `Reload` button
+  - For more information, check the [official Expo website](https://docs.expo.dev/debugging/tools/#developer-menu).
+- Expo GO's DevTool has a variety of features, including the ability to debug with the Chrome Devtool. If you are interested, please check the [official Expo website](https://docs.expo.dev/debugging/tools/).
 
-### 固定文字を表示する3画面とそれらの画面遷移を実装する
+### Implement three screens displaying fixed text and their screen transitions
 
-このhands-onで構築する画面は[2nd](2nd.md)と同様、Homeとメニュー一覧とメニュー詳細画面の3つです。まずは、モバイルの画面遷移の開発を体験してみます。APIからデータを取得したり、それに合わせた画面を実装する前に、固定文字のみを表示させ、3画面の画面遷移を実装します。
+As with [2nd](2nd.md), there are three screens to be built with this hands-on: Home, Menu List, and Menu Details. First, let's experience the development of mobile screen transitions: before acquiring data from the API and implementing screens accordingly, we will implement screen transitions for the three screens, displaying only fixed text.
 
-`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/index.tsx` and replace its contents with the following code:
 
 ```tsx
 import { Link } from "expo-router";
@@ -336,15 +336,15 @@ const styles = StyleSheet.create({
 
 ```
 
-Expo GOでモバイルアプリを開いて、以下の画面が表示されることを確認してください。
-<img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
+Open the mobile app in Expo GO and verify that the following screen appears
+<img src="../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
 
-また、`Sakura-tei`をタップすると、デフォルトのエラー画面(`Unmached Route`)が表示されることを確認してください。
-<img src="../../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
+Also, make sure that the default error screen (`Unmached Route`) is displayed when you tap `Sakura-tei`.
+<img src="../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
 
-エラー画面の表示後、左スワイプで`Sakura-tei`が表示されるHome画面に戻ってください。
+After the error screen is displayed, swipe left to return to the Home screen where `Sakura-tei` is displayed.
 
-`dish-delight/mobile/app/stores/[storeId]/index.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/mobile/app/stores/[storeId]/index.tsx` file and replace its contents with the following code:
 
 ```tsx
 import { Link } from "expo-router";
@@ -381,7 +381,7 @@ const styles = StyleSheet.create({
 
 ```
 
-`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx` file and replace its contents with the following code:
 
 ```tsx
 import { StyleSheet, Text, View } from "react-native";
@@ -408,17 +408,17 @@ const styles = StyleSheet.create({
 });
 ```
 
-Expo GOでモバイルアプリを開いて、以下の3画面が表示および遷移(固定文字のタップもしくはスワイプ)できるようになっているか確認してください。
+Open the mobile app in Expo GO and verify that the following three screens can be displayed and transitioned (tapping fixed text or swiping).
 
-| Home  | メニュー一覧  | メニュー詳細 |
+| Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
+| <img src="../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
 
-### 固定文字を表示するNavbarを実装する
+### Implement Navbar to display fixed text
 
-さきほど実装した固定文字を表示する3画面に対応するNavbarを実装します。
+Implement the Navbar corresponding to the three screens that display the fixed text implemented earlier.
 
-`dish-delight/mobile/app/_layout.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/mobile/app/_layout.tsx` file and replace its contents with the following code:
 
 ```tsx
 import { Stack } from "expo-router";
@@ -442,7 +442,7 @@ export default function Layout() {
 }
 ```
 
-`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/index.tsx` and replace its contents with the following code:
 
 ```tsx
 import { Link, Stack } from "expo-router";
@@ -481,13 +481,13 @@ const styles = StyleSheet.create({
 ```
 
 TIPS:  
-各Screenのindex.tsxの差分は以下の部分だけです。
+The only difference in index.tsx for each screen is the following part.
 
 ```tsx
 <Stack.Screen options={{ ... }} />
 ```
 
-`dish-delight/mobile/app/stores/[storeId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/stores/[storeId]/index.tsx` and replace its contents with the following code:
 
 ```tsx
 import { Link, Stack } from "expo-router";
@@ -529,7 +529,7 @@ const styles = StyleSheet.create({
 
 ```
 
-`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx` and replace its contents with the following code:
 
 ```tsx
 import { Stack } from "expo-router";
@@ -563,15 +563,15 @@ const styles = StyleSheet.create({
 
 ```
 
-Expo GOでモバイルアプリを開いて、3つの画面が以下になっているか確認してください。
+Open the mobile app in Expo GO and verify the three screens are as follows
 
-| Home  | メニュー一覧  | メニュー詳細 |
+| Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="../../../static/img/3rd/docs/text_and nabvar_home_screen.png" alt="Home with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_list_screen.png" alt="Menu List with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_detail_screen.png" alt="Menu Detail with text & navbar" width="300"> |
+| <img src="../../static/img/3rd/docs/text_and nabvar_home_screen.png" alt="Home with text & navbar" width="300"> | <img src="../../static/img/3rd/docs/text_and nabvar_menu_list_screen.png" alt="Menu List with text & navbar" width="300"> | <img src="../../static/img/3rd/docs/text_and nabvar_menu_detail_screen.png" alt="Menu Detail with text & navbar" width="300"> |
 
-### Home画面のNavbarを変更する
+### Change the Navbar on the Home screen
 
-`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/index.tsx` and replace its contents with the following code:
 
 ```tsx
 import { Stack } from "expo-router";
@@ -648,15 +648,15 @@ const styles = StyleSheet.create({
 });
 ```
 
-Expo GOでモバイルアプリを開いて、以下の画面が表示されることを確認してください(Navbarと固定のテキストのみ表示しています)。  
-<img src="../../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
+Open the mobile app in Expo GO and verify that the following screen appears (only the Navbar and fixed text are shown).  
+<img src="../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
 
-### 固定のデータでmobile側のAPI呼び出しを実装する
+### Implement API calls on the mobile side with fixed data
 
-[2nd](2nd.md)では、まず各画面コンポーネントで固定のデータや型を持ち、リファクタリング後にAPI呼び出しコンポーネントを作成しました。しかし、今回は先に固定データでのAPI呼び出しコンポーネントを作成します([2nd](2nd.md)と同じコードです)。  
-リファクタリングまでの流れがわからない場合は、[2nd](2nd.md)で復習してみてください。
+In [2nd](2nd.md), each screen component first had fixed data and types, and after refactoring, an API call component was created. This time, however, we create the API call component with fixed data first (same code as in [2nd](2nd.md)).  
+If you do not understand the refactoring process, please refer to [2nd](2nd.md).
 
-`dish-delight/mobile/lib/api.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/mobile/lib/api.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/frontend/lib/api.tsx
@@ -834,12 +834,12 @@ export async function getMenu(
 }
 ```
 
-### データが存在しない場合のコンポーネントを実装する
+### Implement a component for when no data exists
 
-API呼び出しと同様、[2nd](2nd.md)ではリファクタリング後に行っていましたが、コンポーネント化を先に実施します。  
-リファクタリングまでの流れがわからない場合は、[2nd](2nd.md)で復習してみてください。
+As with API calls, the componentization is done first, although it was done after the refactoring in [2nd](2nd.md).  
+If you do not understand the refactoring process, please refer to [2nd](2nd.md).
 
-`dish-delight/mobile/lib/constants.ts`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/mobile/lib/constants.ts` file and replace its contents with the following code:
 
 ```ts
 // dish-delight/mobile/lib/constants.ts
@@ -851,7 +851,7 @@ export const DATA_NOT_FOUND_MESSAGE = {
 };
 ```
 
-`dish-delight/mobile/components/DataNotFound.tsx`ファイルを作成し、その内容を以下のコードに置き換えます:
+Create the `dish-delight/mobile/components/DataNotFound.tsx` file and replace its contents with the following code:
 
 ```tsx
 // dish-delight/mobile/components/DataNotFound.tsx
@@ -890,16 +890,16 @@ const styles = StyleSheet.create({
 
 ```
 
-**注意事項**:
+**NOTE**:
 
-- 例外処理について
-  - ほかのハンズオンと同様、このハンズオンでは、開発の体験を優先しているため、例外処理は簡易的に実装しています。実際の開発では、要件や技術要素を加味して適切に実装してください。
+- About Exception Handling
+  - As with other hands-on, in this hands-on,  exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
 
-### Home画面を固定のデータで表示する
+### Display the Home screen with fixed data
 
-[2nd](2nd.md)と同じく、バックエンドのAPIからデータを取得する前にフロントエンド上で保持する固定データを表示するようにします。
+Like [2nd](2nd.md), it displays fixed data held on the frontend before retrieving data from the backend API.
 
-`dish-delight/mobile/app/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/index.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/mobile/app/index.tsx
@@ -1061,18 +1061,18 @@ const styles = StyleSheet.create({
 });
 ```
 
-以下を確認してください。
+Verify the following
 
-- Expo GOでモバイルアプリを開いて、以下の画面が表示されること  
-<img src="../../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
-- `Sakura-tei`、`Aroy`、`Buono`のいずれかのCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニュー一覧画面の実装はまだ変えていないので、どの店舗をクリックしても固定文字`Soy sauce ramen`が表示されます
+- Open the mobile app in Expo GO and the following screen should appear  
+<img src="../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
+- Clicking on the `Sakura-tei`, `Aroy`, or `Buono` card will display the menu list screen.
+  - The implementation of the menu list screen has not been changed yet, so you will see the fixed text `Soy sauce ramen` when you click on any store.
 
-### メニュー一覧画面を固定のデータで表示する
+### Display the menu list screen with fixed data
 
-Home画面と同じく、メニュー一覧画面もフロントエンド上で保持する固定データを表示するようにします。
+Like the Home screen, the menu list screen should display fixed data held on the frontend.
 
-`dish-delight/mobile/app/stores/[storeId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/stores/[storeId]/index.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/mobile/app/stores/[storeId]/index.tsx
@@ -1214,24 +1214,24 @@ const styles = StyleSheet.create({
 
 ```
 
-動作や見た目を確認します。
+Check to see how this works and looks.
 
-- Home画面にて`Sakura-tei`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューが4つ表示されること
-    <img src="../../../static/img/3rd/docs/menu_list_sakura_tei.png" alt="Sakura-tei Menu list" width="300">
-- メニュー一覧画面のいずれかのメニューの Card をクリックすると、メニュー詳細画面に遷移すること
-  - 固定文字を表示する画面のままなので、どれをクリックしても"Menu Detail"と表示されます
-- Home画面にて`Aroy`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューが1つ表示されること
-- Home画面にて`Buono`のCardをクリックすると、メニュー一覧画面に遷移すること
-  - メニューがないため、エラーメッセージがでること
-    <img src="../../../static/img/3rd/docs/menu_not_found.png" alt="Menu Not Found" width="300">
+- Clicking on the `Sakura-tei` card on the Home screen will display the menu list screen.
+  - Four menus should appear.
+    <img src="../../static/img/3rd/docs/menu_list_sakura_tei.png" alt="Sakura-tei Menu list" width="300">
+- Clicking on the Card of any menu item in the menu list screen will display the menu details screen.
+  - The screen still displays the fixed text, so any click on it will display "Menu Detail".
+- Clicking on the `Aroy` card on the Home screen will display the menu list screen.
+  - One menu should appear.
+- Clicking on the `Buono` card on the Home screen will display the menu list screen.
+  - Error messages should be displayed due to lack of menus.
+    <img src="../../static/img/3rd/docs/menu_not_found.png" alt="Menu Not Found" width="300">
 
-### メニュー詳細画面を固定のデータで表示する
+### Display the menu detail screen with fixed data
 
-Homeやメニュー一覧画面と同じく、メニュー詳細画面もフロントエンド上で保持する固定データを表示するようにします。
+Like the Home and Menu List screens, the Menu Detail screen should display fixed data held on the frontend.
 
-`dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx
@@ -1384,24 +1384,24 @@ const styles = StyleSheet.create({
 });
 ```
 
-動作や見た目を確認します。
+Check to see how this works and looks.
 
-- メニュー一覧画面のいずれかのメニューのCardをクリックすると、メニュー詳細画面に遷移すること
-  - 該当のメニュー画像や説明、Optionなどが表示されること
-    - 例: 店舗`Aroy`の`Khao Soi`(Optionなし)
-    <img src="../../../static/img/3rd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
-    - 例: 店舗`Sakura-tei`の`Sanuki Udon`(Optionあり)
-    <img src="../../../static/img/3rd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
-- 店舗やメニューが存在しない場合のエラー画面
-  - イメージはメニュー一覧画面と同じ
+- Click any of the menu cards on the Menu List screen to go to the Menu Details screen.
+  - The appropriate menu image, description and option should be displayed.
+    - Example: `Khao Soi` at the `Aroy` store (without Option)
+    <img src="../../static/img/3rd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
+    <img src="../../static/img/3rd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+- Error screen if store or menu does not exist
+  - The image is the same as the Menu List screen
 
-### 作業しているPCのIPアドレスを確認し、バックエンドAPIを起動する
+### Check the IP address of the PC you are working on and launch the backend API
 
-作業しているPCのIPアドレスを確認し、バックエンドAPIを起動します。
+Check the IP address of the PC you are working on and launch the backend API.
 
-まず、作業しているPCのIPアドレスを確認します。  
-IPアドレスの確認方法は、コントロールパネルやターミナルでコマンドを実行する方法などがあります。  
-今回はモバイルアプリの開発サーバを起動している(`npm run start`)際にターミナル上にご自身のIPアドレス(`Metro waiting on exp://xxx.xxx.xxx.xxx:8081`の`xxx.xxx.xxx.xxx`部分)が以下のように表示されていると思いますので、そちらを確認してみてください。
+First, check the IP address of the PC you are working on.  
+There are several ways to check the IP address, including running commands in the control panel or terminal.  
+This time, when you start the mobile app development server (`npm run start`), your IP address (the `xxx.xxx.xxx.xxx.xxx.xxx` part of `Metro waiting on exp://xxx.xxx.xxx.xxx.8081`) should appear on the terminal as follows, please check it.
 
 ```sh
 › Metro waiting on exp://xxx.xxx.xxx.xxx:8081
@@ -1422,20 +1422,20 @@ IPアドレスの確認方法は、コントロールパネルやターミナル
 › Press ? │ show all commands
 ```
 
-次にバックエンドAPIを起動します。  
-モバイルアプリの開発サーバを起動しているターミナルとは別のターミナルを開き、[2nd](2nd.md#1-setup)で各自作成した`dish-delight/backend`ディレクトリに移動してください。`dish-delight/backend`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+Next, launch the backend API.  
+Open a terminal other than the one running the mobile app development server and move to the `dish-delight/backend` directory that you created in [2nd](2nd.md#1-setup). Verify that you have moved to the `dish-delight/backend` directory and run the following commands.
 
 ```sh
 rye run uvicorn main:app --reload --host xxx.xxx.xxx.xxx
 ```
 
-`xxx.xxx.xxx.xxx`は先ほど調べたあなたのPCのIPアドレスに置き換えてください。
+Replace `xxx.xxx.xxx.xxx.xxx` with the IP address of your PC that you have just checked.
 
-### mobile側のAPI呼び出しを修正する
+### Modify API calls on the mobile side
 
-固定データを返していたAPI呼び出しコンポーネントをバックエンドのAPIを呼び出すように変更します。
+Modify the API call component that was returning fixed data, to call the backend API.
 
-`dish-delight/mobile/lib/api.tsx`を開き、その内容を以下のコードに置き換えます:
+Open `dish-delight/mobile/lib/api.tsx` and replace its contents with the following code:
 
 ```tsx
 // dish-delight/mobile/lib/api.tsx
@@ -1514,12 +1514,12 @@ export async function getMenu(
 }
 ```
 
-動作確認の前に、27行目の`xxx.xxx.xxx.xxx`を先ほど調べたあなたのPCのIPアドレスに置き換えてください。
+Before checking the working, replace `xxx.xxx.xxx.xxx.xxx` in line 27 with the IP address of your PC that you have just checked.
 
-動作や見た目を確認します。  
-店舗やメニューを変えてひとしきり動作確認を行なってみてください。データベースからデータを取得しているため、先ほど確認したフロントエンドで保持した固定データの内容よりも増えているはずです。(例: 店舗`Buono`にもメニューがあります。)
+Check to see how this works and looks.  
+Try changing the store and the menu to check the operation. Since the data is being fetched from the database, it should be more than the fixed data content held in the frontend that we just checked. (e.g. the store `Buono` also has menu).
 
-## 3. 終わりに
+## 3. At the end
 
-これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)から確認できます。  
-モバイルアプリもWebアプリと同じような雰囲気で開発できることを少し体験できたと思います。興味があれば、紹介したリンクのサイトを確認したり、ご自分のアイデアでアプリを開発してみてください。
+This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight).
+You have experienced a bit that mobile apps can be developed in the same atmosphere as web apps. If you are interested, please check the sites of the links presented or develop your own application with your own ideas.
