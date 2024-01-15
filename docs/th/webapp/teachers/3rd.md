@@ -221,14 +221,14 @@ For Android, use the Expo Go app to scan the QR code displayed on the PC termina
 
 Verify that the Expo Router default screen shown below appears. When it appears, press the `touch app/index.js` button at the bottom.
 
-<img src="../../static/img/3rd/docs/expo_router_default_screen.png" alt="Expo default screen" width="300">
+<img src="../../../static/img/3rd/docs/expo_router_default_screen.png" alt="Expo default screen" width="300">
 
 Make sure that when you press the `touch app/index.js` button, you get the following
 
 - To change to the following screen
 - When you return to VSCode, `dish-delight/mobile/app/index.tx` should be created.
 
-<img src="../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
+<img src="../../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
 
 ### Customize images such as the splash screen
 
@@ -283,7 +283,7 @@ Place (overwrite) the file downloaded above in `dish-delight/mobile/assets`.
 
 Re-launch the mobile app with Expo GO on your device and verify that the Splash Screen changes when the app is launched.
 
-<img src="../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
+<img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
 คำแนะนำ:
 
@@ -337,10 +337,10 @@ const styles = StyleSheet.create({
 ```
 
 Open the mobile app in Expo GO and verify that the following screen appears
-<img src="../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
+<img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
 
 Also, make sure that the default error screen (`Unmached Route`) is displayed when you tap `Sakura-tei`.
-<img src="../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
+<img src="../../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
 
 After the error screen is displayed, swipe left to return to the Home screen where `Sakura-tei` is displayed.
 
@@ -412,7 +412,7 @@ Open the mobile app in Expo GO and verify that the following three screens can b
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
+| <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
 
 ### Implement Navbar to display fixed text
 
@@ -567,7 +567,7 @@ Open the mobile app in Expo GO and verify the three screens are as follows
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
-| <img src="../../static/img/3rd/docs/text_and nabvar_home_screen.png" alt="Home with text & navbar" width="300"> | <img src="../../static/img/3rd/docs/text_and nabvar_menu_list_screen.png" alt="Menu List with text & navbar" width="300"> | <img src="../../static/img/3rd/docs/text_and nabvar_menu_detail_screen.png" alt="Menu Detail with text & navbar" width="300"> |
+| <img src="../../../static/img/3rd/docs/text_and nabvar_home_screen.png" alt="Home with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_list_screen.png" alt="Menu List with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_detail_screen.png" alt="Menu Detail with text & navbar" width="300"> |
 
 ### Change the Navbar on the Home screen
 
@@ -649,7 +649,7 @@ const styles = StyleSheet.create({
 ```
 
 Open the mobile app in Expo GO and verify that the following screen appears (only the Navbar and fixed text are shown).  
-<img src="../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
+<img src="../../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
 
 ### Implement API calls on the mobile side with fixed data
 
@@ -1064,7 +1064,7 @@ const styles = StyleSheet.create({
 Verify the following
 
 - Open the mobile app in Expo GO and the following screen should appear  
-<img src="../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
+<img src="../../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
 - Clicking on the `Sakura-tei`, `Aroy`, or `Buono` card will display the menu list screen.
   - The implementation of the menu list screen has not been changed yet, so you will see the fixed text `Soy sauce ramen` when you click on any store.
 
@@ -1218,14 +1218,14 @@ Check to see how this works and looks.
 
 - Clicking on the `Sakura-tei` card on the Home screen will display the menu list screen.
   - Four menus should appear.
-    <img src="../../static/img/3rd/docs/menu_list_sakura_tei.png" alt="Sakura-tei Menu list" width="300">
+    <img src="../../../static/img/3rd/docs/menu_list_sakura_tei.png" alt="Sakura-tei Menu list" width="300">
 - Clicking on the Card of any menu item in the menu list screen will display the menu details screen.
   - The screen still displays the fixed text, so any click on it will display "Menu Detail".
 - Clicking on the `Aroy` card on the Home screen will display the menu list screen.
   - One menu should appear.
 - Clicking on the `Buono` card on the Home screen will display the menu list screen.
   - Error messages should be displayed due to lack of menus.
-    <img src="../../static/img/3rd/docs/menu_not_found.png" alt="Menu Not Found" width="300">
+    <img src="../../../static/img/3rd/docs/menu_not_found.png" alt="Menu Not Found" width="300">
 
 ### Display the menu detail screen with fixed data
 
@@ -1389,9 +1389,9 @@ Check to see how this works and looks.
 - Click any of the menu cards on the Menu List screen to go to the Menu Details screen.
   - The appropriate menu image, description and option should be displayed.
     - Example: `Khao Soi` at the `Aroy` store (without Option)
-    <img src="../../static/img/3rd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
+    <img src="../../../static/img/3rd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
     - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
-    <img src="../../static/img/3rd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
+    <img src="../../../static/img/3rd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
 - Error screen if store or menu does not exist
   - The image is the same as the Menu List screen
 
