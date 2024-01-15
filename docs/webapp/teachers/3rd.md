@@ -82,7 +82,7 @@ npm install react-native-paper
 
 TIPS:
 
-- [Expo Router](https://docs.expo.dev/router/introduction/)について
+- About [Expo Router](https://docs.expo.dev/router/introduction/)
   - In this hands-on, we will use Expo Router for routing; Expo Router is a file-based router for React Native and web applications.
     - It uses the concept that when you add a file to the app's directory, that file automatically becomes the root of the navigation. This is the same concept used by [Next.js](https://nextjs.org/).
   - Expo Router is based on [React Navigation](https://reactnavigation.org/) and offers the same core functionality, but with a different approach.
