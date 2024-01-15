@@ -186,7 +186,7 @@ Open `dish-delight/mobile/app.json` and replace its contents with the following 
 }
 ```
 
-#### babel.config.jsの修正
+#### Modify babel.config.js
 
 Open `dish-delight/mobile/babel.config.js` and replace its contents with the following code:
 
