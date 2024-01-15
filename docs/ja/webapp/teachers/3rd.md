@@ -456,7 +456,7 @@ export default function Home() {
         style={styles.title}
         href={{
           pathname: "/stores/[storeId]",
-          // 画面遷移を体験するためだけのため、paramsには固定値を渡している
+          // Fixed values are passed to params for the purpose of experiencing screen transitions only.
           params: { storeName: "Sakura-tei", storeId: "1" },
         }}
       >

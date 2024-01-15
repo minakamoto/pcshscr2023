@@ -408,7 +408,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Open the mobile app in Expo GO and verify that the following three screens can be displayed and transitioned (tapping or swiping fixed text).
+Open the mobile app in Expo GO and verify that the following three screens can be displayed and transitioned (tapping fixed text or swiping).
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
@@ -456,7 +456,7 @@ export default function Home() {
         style={styles.title}
         href={{
           pathname: "/stores/[storeId]",
-          // 画面遷移を体験するためだけのため、paramsには固定値を渡している
+          // Fixed values are passed to params for the purpose of experiencing screen transitions only.
           params: { storeName: "Sakura-tei", storeId: "1" },
         }}
       >
@@ -834,7 +834,7 @@ export async function getMenu(
 }
 ```
 
-### データが存在しない場合のコンポーネントを実装する
+### Implement a component for when no data exists
 
 As with API calls, the componentization is done first, although it was done after the refactoring in [2nd](2nd.md).  
 If you do not understand the refactoring process, please refer to [2nd](2nd.md).
