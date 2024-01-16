@@ -226,7 +226,7 @@ Verify that the Expo Router default screen shown below appears. When it appears,
 Make sure that when you press the `touch app/index.js` button, you get the following
 
 - To change to the following screen
-- When you return to VSCode, `dish-delight/mobile/app/index.tx` should be created.
+- When you return to VSCode, `dish-delight/mobile/app/index.tsx` should be created.
 
 <img src="../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
 
