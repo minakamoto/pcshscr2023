@@ -1,14 +1,14 @@
-# Hands-on mobile app development using web app technology stacks experienced in the 1st and 2nd
+# ภาคปฏิบัติ(hands-on) เพื่อพัฒนาแอพมือถือโดยใช้สแต็คเทคโนโลยีเว็บแอพที่มีประสบการณ์ใน hands-on ครั้งที่ 1 และ 2
 
 ## 0. บทนำ
 
-In this hands-on, you will experience mobile app development using the web app development technologies (mainly JavaScript/TypeScript and React) used in the 1st and 2nd hands-on sessions. Similar to [1st](1st.md) and [2nd](2nd.md), the main goal is to enjoy the development experience and get participants interested in web app development technologies.
+ใน hands-on นี้ คุณจะได้ประสบการณ์การพัฒนาแอปมือถือโดยใช้เทคโนโลยีการพัฒนาเว็บแอป (โดยเฉพาะ JavaScript/TypeScript และ React) ที่ใช้ในเซสชัน hands-on ครั้งที่ 1 และ 2 เช่นเดียวกับ [1st](1st.md) และ [2nd](2nd.md) เป้าหมายหลักคือการเพลิดเพลินไปกับประสบการณ์การพัฒนาและทำให้ผู้เข้าร่วมสนใจเทคโนโลยีการพัฒนาเว็บแอป
 
-For this reason, it is not explained in much detail. Also, only a simple implementation is provided. TIPS and links to reference sites are provided where necessary.
+ด้วยเหตุนี้จึงไม่ได้อธิบายให้ละเอียดมากนัก นอกจากนี้ยังมีให้เฉพาะการเขียนโปรแกรมอย่างง่ายเท่านั้น คำแนะนำและลิงก์ไปยังไซต์อ้างอิงมีให้ในกรณีที่จำเป็น
 
 ### สิ่งที่เราจะสร้าง
 
-It calls the backend API created in [2nd](2nd.md) and displays the information in the mobile app. The functionality and UI are almost the same as the web app developed in [2nd](2nd.md).
+โดยเรียก backend API ที่สร้างขึ้นใน [2nd](2nd.md) และแสดงข้อมูลในแอปมือถือ ฟังก์ชั่นและ UI เกือบจะเหมือนกับเว็บแอปที่พัฒนาใน [2nd](2nd.md)
 
 ### สแต็คเทคโนโลยีหลัก
 
@@ -18,20 +18,20 @@ It calls the backend API created in [2nd](2nd.md) and displays the information i
 คำแนะนำ:
 
 - เกี่ยวกับ React Native
-  - React Native is a cross-platform framework for developing mobile applications using JavaScript (TypeScript). A single piece of code can be used to develop both iOS and Android applications. While React Native and React.js play different roles, they share many similarities, such as code notation and the concept of components.
-  - In addition to React Native, [Flutter](https://flutter.dev/) is  a popular cross-platform framework for developing mobile applications.
-    - Flutter is a later framework than React Native, and the main differences are the language used and the design flexibility.
-  - Compared to native apps using [Swift(iOS)](https://www.swift.org/) or [Kotlin(Android)](https://kotlinlang.org/), cross-platform apps have the disadvantage of not being able to develop the latest OS features or sophisticated apps.
+  - React Native เป็น cross-platform framework สำหรับการพัฒนาแอปมือถือโดยใช้ JavaScript (TypeScript) โค้ดเพียงชิ้นเดียวสามารถใช้พัฒนาทั้งแอปพลิเคชัน iOS และ Android แม้ว่า React Native และ React.js จะมีบทบาทที่แตกต่างกัน แต่ก็มีความคล้ายคลึงกันหลายประการ เช่น สัญลักษณ์โค้ด(code notation)และแนวคิดของ component ต่างๆ
+  - นอกจาก React Native แล้ว [Flutter](https://flutter.dev/) ยังเป็น cross-platform framework ยอดนิยมสำหรับการพัฒนาแอปมือถือ
+    - Flutter เป็น framework ที่ใหม่กว่า React Native และความแตกต่างที่สำคัญคือภาษาโปรแกรมที่ใช้และความยืดหยุ่นในการออกแบบ
+  - เมื่อเปรียบเทียบกับ native app ใช้ [Swift(iOS)](https://www.swift.org/) หรือ [Kotlin(Android)](https://kotlinlang.org/) cross-platform app มีข้อเสียคือ สามารถพัฒนาฟีเจอร์ระบบปฏิบัติการล่าสุดหรือแอพที่ซับซ้อนได้
 
 - เกี่ยวกับ Expo
-  - Expo is a set of tools for developing mobile apps based on React Native; using Expo, you can develop mobile apps more easily than with React Native alone.
-  - The main features of Expo are as follows:
+  - Expo เป็นชุดเครื่องมือสำหรับการพัฒนาแอปมือถือที่โดยใช้ React Native เมื่อใช้ Expo คุณสามารถพัฒนาแอปมือถือที่ได้ง่ายกว่า React Native เพียงอย่างเดียว
+  - คุณสมบัติหลักของ Expo มีดังนี้:
     - Expo SDK
-      - Expo SDK provides a JavaScript API to access native device features such as cameras, accelerometers, and maps.
+      - Expo SDK มี JavaScript API เพื่อเข้าถึงฟีเจอร์ดั้งเดิมของอุปกรณ์ เช่น กล้อง มาตรความเร่ง(accelerometers) และแผนที่
     - Expo Go
-      - Expo Go is a mobile client application for testing apps under development.
+      - Expo Go เป็นแอปพลิเคชันไคลเอ็นต์บนมือถือสำหรับทดสอบแอปที่อยู่ระหว่างการพัฒนา
     - Snack
-      - Snack is an online editor for creating and running Expo projects in your browser.
+      - Snack เป็น online editor สำหรับการสร้างและดำเนินโครงการ Expo ในเบราว์เซอร์ของคุณ
 
 ## 1. การตั้งค่า
 
@@ -39,11 +39,12 @@ It calls the backend API created in [2nd](2nd.md) and displays the information i
 
 - Node.js 18+ or 20+
 - Code Editor (e.g., Visual Studio Code)
-- [2nd](2nd.md#3-connecting-to-the-database-and-returning-data) backend API must be implemented locally
+- [2nd](2nd.md#3-connecting-to-the-database-and-returning-data) backend API ต้องได้รับการพัฒนาในคอมพิวเตอร์ของคุณ
 
 **หมายเหตุ**:  
-The required software installation instructions listed here are intended for Windows users.
-This is because the first target users of this hands-on are Windows users. Please follow the installation procedure for your environment when actually installing the software.
+คำแนะนำในการติดตั้งซอฟต์แวร์ที่จำเป็นซึ่งระบุไว้ที่นี่มีไว้สำหรับผู้ใช้ Windows  
+เนื่องจากผู้ใช้เป้าหมายรายแรกของ hands-on นี้คือผู้ใช้ Windows  
+โปรดทำตามขั้นตอนการติดตั้งซอฟต์แวร์สำหรับสภาพแวดล้อมของคุณเมื่อติดตั้งซอฟต์แวร์จริง
 
 ### ขั้นตอนโดยละเอียดสำหรับผู้ใช้ Windows
 
@@ -54,7 +55,7 @@ This is because the first target users of this hands-on are Windows users. Pleas
 - ติดตั้งและกำหนดค่าส่วนขยาย VS Code
   - ดู [2st](2nd.md#1-setup)
 - ติดตั้ง Expo Go
-  - [Expo Go](https://expo.dev/client) is used to test mobile apps. Expo Go allows you to immediately run the mobile app you are developing on your device (Android, iOS). Depending on the device you have, you can download it from Google Play or the App Store (you can find the link on the [เว็บไซต์ Expo Go อย่างเป็นทางการ](https://expo.dev/client)).
+  - [Expo Go](https://expo.dev/client) ใช้เพื่อทดสอบแอปบนมือถือ Expo Go ช่วยให้คุณสามารถเรียกใช้แอพมือถือที่คุณกำลังพัฒนาบนอุปกรณ์ของคุณได้ทันที (Android, iOS)คุณสามารถดาวน์โหลดได้จาก Google Play หรือ App Store ทั้งนี้ขึ้นอยู่กับอุปกรณ์ที่คุณมี (คุณสามารถดูลิงก์ได้ที่ [เว็บไซต์ Expo Go อย่างเป็นทางการ](https://expo.dev/client))
 
 ## 2. mobile app development
 
@@ -892,7 +893,7 @@ const styles = StyleSheet.create({
 
 **หมายเหตุ**:
 
-- เกี่ยวกับ Exception Handling
+- เกี่ยวกับการจัดการข้อยกเว้น
   - As with other hands-on, in this hands-on,  exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
 
 ### Display the Home screen with fixed data
@@ -1214,7 +1215,7 @@ const styles = StyleSheet.create({
 
 ```
 
-Check to see how this works and looks.
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
 - Clicking on the `Sakura-tei` card on the Home screen will display the menu list screen.
   - Four menus should appear.
@@ -1384,7 +1385,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Check to see how this works and looks.
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
 - Click any of the menu cards on the Menu List screen to go to the Menu Details screen.
   - The appropriate menu image, description and option should be displayed.
@@ -1516,10 +1517,10 @@ export async function getMenu(
 
 Before checking the working, replace `xxx.xxx.xxx.xxx.xxx` in line 27 with the IP address of your PC that you have just checked.
 
-Check to see how this works and looks.  
+ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร  
 Try changing the store and the menu to check the operation. Since the data is being fetched from the database, it should be more than the fixed data content held in the frontend that we just checked. (e.g. the store `Buono` also has menu).
 
-## 3. At the end
+## 3. ในปิดท้าย
 
 This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight).
 You have experienced a bit that mobile apps can be developed in the same atmosphere as web apps. If you are interested, please check the sites of the links presented or develop your own application with your own ideas.
