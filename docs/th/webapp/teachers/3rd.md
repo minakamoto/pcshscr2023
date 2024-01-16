@@ -57,23 +57,23 @@
 - ติดตั้ง Expo Go
   - [Expo Go](https://expo.dev/client) ใช้เพื่อทดสอบแอปบนมือถือ Expo Go ช่วยให้คุณสามารถเรียกใช้แอพมือถือที่คุณกำลังพัฒนาบนอุปกรณ์ของคุณได้ทันที (Android, iOS)คุณสามารถดาวน์โหลดได้จาก Google Play หรือ App Store ทั้งนี้ขึ้นอยู่กับอุปกรณ์ที่คุณมี (คุณสามารถดูลิงก์ได้ที่ [เว็บไซต์ Expo Go อย่างเป็นทางการ](https://expo.dev/client))
 
-## 2. mobile app development
+## 2. การพัฒนาแอพมือถือ
 
-### Creating an Expo project
+### การสร้างโครงการ Expo
 
-In a terminal (command prompt, PowerShell, WSL bash), move to the `dish-delight` directory that you created in [2nd](2nd.md#1-setup). Make sure that you are in the `dish-delight` directory, and then run the following command
+ในเทอร์มินัล (command prompt, PowerShell, WSL bash) ให้ย้ายไปยังไดเร็กทอรี `dish-delight` ที่คุณสร้างใน [2nd](2nd.md#1-setup) ตรวจสอบให้แน่ใจว่าคุณอยู่ในไดเร็กทอรี 'dish-delight' จากนั้นเรียกใช้คำสั่งต่อไปนี้
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
 ```
 
 **หมายเหตุ**:  
-This hands-on will use Expo SDK49, Expo SDK is updated 3 times a year. The next version, SDK50, has many breaking changes and new features, so please check to the latest เว็บไซต์ อย่างเป็นทางการ for actual development.
+hands-on นี้จะใช้ Expo SDK49, Expo SDK ได้รับการอัปเดตปีละ 3 ครั้ง เวอร์ชันถัดไป SDK50 มีการเปลี่ยนแปลงล่าสุดและฟีเจอร์ใหม่มากมาย ดังนั้นโปรดตรวจสอบเว็บไซต์อย่างเป็นทางการล่าสุดเพื่อการพัฒนาจริง
 
-### Install necessary libraries
+### ติดตั้งไลบรารี่ที่จำเป็น
 
-Install the necessary libraries.  
-Run the following commands.
+ติดตั้งไลบรารี่ที่จำเป็น  
+รันคำสั่งต่อไปนี้
 
 ```sh
 cd mobile
@@ -84,38 +84,38 @@ npm install react-native-paper
 คำแนะนำ:
 
 - เกี่ยวกับ [Expo Router](https://docs.expo.dev/router/introduction/)
-  - In this hands-on, we will use Expo Router for routing; Expo Router is a file-based router for React Native and web applications.
-    - It uses the concept that when you add a file to the app's directory, that file automatically becomes the root of the navigation. This is the same concept used by [Next.js](https://nextjs.org/).
-  - Expo Router is based on [React Navigation](https://reactnavigation.org/) and offers the same core functionality, but with a different approach.
-  - React Navigation, on the other hand, is designed for mobile applications and provides a stack-based navigation model similar to native mobile app navigation.
-    - If you are used to file-based systems, you might think that React Navigation has a lot of code to define routes.
+  - ใน hands-on นี้ เราจะใช้ Expo Router สำหรับการกำหนดเส้นทาง(routing) Expo Router เป็นเราเตอร์แบบไฟล์สำหรับ React Native และเว็บแอป
+    - โดยใช้แนวคิดที่ว่าเมื่อคุณเพิ่มไฟล์ลงในไดเร็กทอรีของแอป ไฟล์นั้นจะกลายเป็นรากของการนำทางโดยอัตโนมัติ นี่เป็นแนวคิดเดียวกับที่ใช้โดย [Next.js](https://nextjs.org/)
+  - Expo Router ใช้ [React Navigation](https://reactnavigation.org/) และนำเสนอฟังก์ชันการทำงานหลักที่เหมือนกัน แต่มีแนวทางที่แตกต่างออกไป
+  - ในทางกลับกัน React Navigation ได้รับการออกแบบมาสำหรับแอปพลิเคชันมือถือ และนำเสนอโมเดลการนำทางแบบสแต็กที่คล้ายกับการนำทางในแอปมือถือแบบเนทีฟ
+    - หากคุณคุ้นเคยกับระบบแบบไฟล์ คุณอาจคิดว่า React Navigation มีโค้ดจำนวนมากในการกำหนดเส้นทาง
 - เกี่ยวกับ [React Native Paper](https://reactnativepaper.com/)
-  - React Native Paper is a library for developing React Native app UIs, based on Google's Material Design principles to help you easily create great-looking, easy-to-use apps.
+  - React Native Paper เป็นไลบรารีสำหรับการพัฒนา UI ของแอป React Native ตามหลักการออกแบบ Material ของ Google เพื่อช่วยให้คุณสร้างแอปที่ดูดีและใช้งานง่ายได้อย่างง่ายดาย
 
 หมายเหตุ:  
-In this case, the necessary libraries are installed manually.  
-Another method is `Quick Start`. The installation of necessary libraries and the configuration to be done in the next step will be done automatically. However, unused libraries may be installed and unnecessary files may be created.  
-For the features to be developed this time, manual installation was chosen because it was judged to be less time-consuming and less impactful. If you would like to know more details about the installation method, please check the [เว็บไซต์ อย่างเป็นทางการ](https://docs.expo.dev/router/installation/).
+ในกรณีนี้ ไลบรารีที่จำเป็นจะถูกติดตั้งด้วยตนเอง  
+อีกวิธีหนึ่งคือ `Quick Start` การติดตั้งไลบรารีที่จำเป็นและการกำหนดค่าที่จะดำเนินการในขั้นตอนถัดไปจะดำเนินการโดยอัตโนมัติ อย่างไรก็ตาม อาจมีการติดตั้งไลบรารีที่ไม่ได้ใช้ และสร้างไฟล์ที่ไม่จำเป็น  
+สำหรับคุณสมบัติที่จะพัฒนาในครั้งนี้ ให้เลือกการติดตั้งด้วยตนเองเนื่องจากถือว่าใช้เวลาน้อยกว่าและมีผลกระทบน้อยกว่า หากคุณต้องการทราบรายละเอียดเพิ่มเติมเกี่ยวกับวิธีการติดตั้ง โปรดตรวจสอบ [เว็บไซต์อย่างเป็นทางการ](https://docs.expo.dev/router/installation/)
 
-### Modify settings
+### ปรับเปลี่ยนการตั้งค่า
 
-Modify the settings required by the introduction of Expo Router.
+ปรับเปลี่ยนการตั้งค่าที่จำเป็นโดยการแนะนำ Expo Router
 
 หมายเหตุ:  
-Only the necessary parts are modified for this hands-on. For actual development, please check [เว็บไซต์ อย่างเป็นทางการ](https://docs.expo.dev/router/installation/) for necessary settings.
+เฉพาะส่วนที่จำเป็นเท่านั้นที่ได้รับการปรับเปลี่ยนสำหรับ hands-on นี้ สำหรับการพัฒนาจริง โปรดตรวจสอบ [เว็บไซต์อย่างเป็นทางการ](https://docs.expo.dev/router/installation/) เพื่อดูการตั้งค่าที่จำเป็น
 
-#### Modify Entry Points
+#### ปรับเปลี่ยนจุดเข้า(entry point)
 
-Modify the entry point. Open `dish-delight/mobile/package.json` and modify the value of `"main"` in line 4 as follows
+ปรับเปลี่ยนจุดเข้า เปิด `dish-delight/mobile/package.json` และแก้ไขค่าของ `"main"` ในบรรทัดที่ 4 ดังนี้
 
 ```json
   "main": "expo-router/entry",
 ```
 
-The entire `dish-delight/mobile/package.json` will look like below.
+`dish-delight/mobile/package.json` ทั้งหมดจะมีลักษณะดังนี้
 
 หมายเหตุ:  
-The minor version of the library (e.g. the `49.XX.XX` part of `"expo"`) varies depending on the time of installation, so the values will not be exactly the same.
+เวอร์ชันรองของไลบรารี (เช่น ส่วน `49.XX.XX` ของ `"expo"`) จะแตกต่างกันไปขึ้นอยู่กับเวลาในการติดตั้ง ดังนั้นค่าจะไม่เหมือนกันทุกประการ
 
 ```json
 {
@@ -150,7 +150,7 @@ The minor version of the library (e.g. the `49.XX.XX` part of `"expo"`) varies d
 }
 ```
 
-#### Modify project settings
+#### ปรับเปลี่ยนการตั้งค่าโครงการ
 
 เปิด `dish-delight/mobile/app.json` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:  
 
@@ -187,7 +187,7 @@ The minor version of the library (e.g. the `49.XX.XX` part of `"expo"`) varies d
 }
 ```
 
-#### Modify babel.config.js
+#### ปรับเปลี่ยน babel.config.js
 
 เปิด `dish-delight/mobile/babel.config.js` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -203,39 +203,39 @@ module.exports = function (api) {
 
 คำแนะนำ:
 
-- What is babel.config.js?
-  - [Babel](https://babeljs.io/docs/) is a tool (transpiler) that converts the latest JavaScript (ES2015+) into a format that can be run on older browsers.
-  - The [babel.config.js](https://babeljs.io/docs/configuration) is a configuration file for Babel that contains settings that control how the JavaScript code is converted. This allows the code to run in older browsers while still using the latest JavaScript features.
+- babel.config.js คืออะไร?
+  - [Babel](https://babeljs.io/docs/) เป็นเครื่องมือ (transpiler) ที่แปลง JavaScript ล่าสุด (ES2015+) ให้เป็นรูปแบบที่สามารถเรียกใช้บนเบราว์เซอร์รุ่นเก่าได้
+  - [babel.config.js](https://babeljs.io/docs/configuration) เป็นไฟล์การกำหนดค่าสำหรับ Babel ที่มีการตั้งค่าที่ควบคุมวิธีการแปลงโค้ด JavaScript ซึ่งช่วยให้โค้ดทำงานในเบราว์เซอร์รุ่นเก่าได้ในขณะที่ยังคงใช้คุณสมบัติ JavaScript ล่าสุด
 
-### Start the development server
+### เริ่มเซิร์ฟเวอร์การพัฒนา
 
-Start the development server with the default app and verify that the app can be started on your device.
+เริ่มต้นเซิร์ฟเวอร์การพัฒนาด้วยแอปเริ่มต้นและตรวจสอบว่าสามารถเริ่มแอปบนอุปกรณ์ของคุณได้
 
-Run the following command
+รันคำสั่งต่อไปนี้
 
 ```sh
 npm run start -c
 ```
 
-Connect an iOS or Android device with the Expo Go app installed to the same wireless network as the PC you are working on.  
-For Android, use the Expo Go app to scan the QR code displayed on the PC terminal and open the project; for iOS, use the default iOS camera app, scan the QR code, and open the project.
+เชื่อมต่ออุปกรณ์ iOS หรือ Android ที่ติดตั้งแอป Expo Go เข้ากับเครือข่ายไร้สายเดียวกันกับคอมพิวเตอร์ที่คุณใช้งานอยู่  
+สำหรับ Android ให้ใช้แอป Expo Go เพื่อสแกนโค้ด QR ที่แสดงบนเทอร์มินัลของคอมพิวเตอร์และเปิดโปรเจ็กต์ สำหรับ iOS ให้ใช้แอปกล้องเริ่มต้นของ iOS สแกนโค้ด QR และเปิดโปรเจ็กต์
 
-Verify that the Expo Router default screen shown below appears. When it appears, press the `touch app/index.js` button at the bottom.
+ตรวจสอบว่าหน้าจอเริ่มต้นของ Expo Router ที่แสดงด้านล่างปรากฏขึ้น เมื่อปรากฏขึ้น ให้กดปุ่ม `touch app/index.js` ที่ด้านล่าง
 
 <img src="../../../static/img/3rd/docs/expo_router_default_screen.png" alt="Expo default screen" width="300">
 
-Make sure that when you press the `touch app/index.js` button, you get the following
+ตรวจสอบให้แน่ใจว่าเมื่อคุณกดปุ่ม `touch app/index.js` คุณจะได้รับสิ่งต่อไปนี้
 
-- To change to the following screen
-- When you return to VSCode, `dish-delight/mobile/app/index.tx` should be created.
+- เปลี่ยนเป็นหน้าจอต่อไปนี้
+- เมื่อคุณกลับไปที่ VSCode ควรสร้าง `dish-delight/mobile/app/index.tsx`
 
 <img src="../../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
 
-### Customize images such as the splash screen
+### ปรับแต่งรูปภาพ เช่น หน้าจอเริ่มต้น(splash screen)
 
-Change the splash screen, app logo, etc. that are displayed when the app is launched to this hands-on version. Also, get and place the logo of each store (the same image files as in [2nd](2nd.md#2-frontend-only-home-and-menu-list-and-menu-detail-screen-implementation)).
+เปลี่ยนหน้าจอเริ่มต้น โลโก้แอป ฯลฯ ที่แสดงเมื่อเปิดแอปเป็นเวอร์ชัน hands-on นี้ นอกจากนี้ รับและวางโลโก้ของแต่ละร้าน (ไฟล์รูปภาพเดียวกันกับใน [2nd](2nd.md#2-frontend-only-home-and-menu-list-and-menu-detail-screen-implementation)).
 
-All target images should be obtained from the [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/3rd/assets). The following 7 files.  
+รูปภาพเป้าหมายทั้งหมดควรได้รับจาก [Github Repository](https://github.com/minakamoto/pschs2023/tree/main/docs/static/img/3rd/assets) 7 ไฟล์ต่อไปนี้  
 
 - adaptive-icon.png
 - aroy_logo.jpeg
@@ -245,7 +245,7 @@ All target images should be obtained from the [Github Repository](https://github
 - sakura_tei_logo.jpeg
 - splash_jojo.png
 
-Place (overwrite) the file downloaded above in `dish-delight/mobile/assets`.  
+วาง (เขียนทับ) ไฟล์ที่ดาวน์โหลดด้านบนใน `dish-delight/mobile/assets`  
 
 เปิด `dish-delight/mobile/app.json` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -282,18 +282,18 @@ Place (overwrite) the file downloaded above in `dish-delight/mobile/assets`.
 }
 ```
 
-Re-launch the mobile app with Expo GO on your device and verify that the Splash Screen changes when the app is launched.
+เปิดแอปมือถืออีกครั้งด้วย Expo GO บนอุปกรณ์ของคุณ และตรวจสอบว่าหน้าจอเริ่มต้น(splash screen) เปลี่ยนแปลงเมื่อเปิดแอป
 
 <img src="../../../static/img/3rd/docs/updated_splash_screen.png" alt="Updated Splash Screen" width="300">
 
 คำแนะนำ:
 
-- How to reload mobile apps on Expo GO
-  1. Press `r` on the terminal during starting the mobile app development server (`npm run start`)
-  1. While the mobile app development server is running (`npm run start`), press `j` on the terminal to start Expo GO's DevTool (or debugger) and press `Reload` button.
-  1. Shake your device (Android: shake vertically, iOS: shake gently  or touch the screen with 3 fingers), launch the Expo GO DevTool (or debugger) and press the `Reload` button
-  - For more information, check the [เว็บไซต์ Expo อย่างเป็นทางการ](https://docs.expo.dev/debugging/tools/#developer-menu).
-- Expo GO's DevTool has a variety of features, including the ability to debug with the Chrome Devtool. If you are interested, please check the [เว็บไซต์ Expo อย่างเป็นทางการ](https://docs.expo.dev/debugging/tools/).
+- วิธี reload แอพมือถือบน Expo GO
+  1. กด `r` บนเทอร์มินัลระหว่างการเริ่มต้นเซิร์ฟเวอร์การพัฒนาแอปมือถือ (`npm run start`)
+  1. ขณะที่เซิร์ฟเวอร์การพัฒนาแอปมือถือกำลังทำงาน (`npm run start`) ให้กด `j` บนเทอร์มินัลเพื่อเริ่ม DevTool ของ Expo GO (หรือ debugger) แล้วกดปุ่ม `Reload`
+  1. เขย่าอุปกรณ์ของคุณ (Android: เขย่าในแนวตั้ง, iOS: เขย่าเบา ๆ หรือสัมผัสหน้าจอด้วย 3 นิ้ว) เปิด Expo GO DevTool (หรือ debugger) แล้วกดปุ่ม `Reload`
+  - หากต้องการข้อมูลเพิ่มเติม โปรดดูที่ [เว็บไซต์ Expo อย่างเป็นทางการ](https://docs.expo.dev/debugging/tools/#developer-menu)
+- DevTool ของ Expo GO มีคุณสมบัติที่หลากหลาย รวมถึงความสามารถในการแก้ไขจุดบกพร่องด้วย Chrome Devtool หากคุณสนใจ โปรดดูที่ [เว็บไซต์ Expo อย่างเป็นทางการ](https://docs.expo.dev/debugging/tools/)
 
 ### Implement three screens displaying fixed text and their screen transitions
 
