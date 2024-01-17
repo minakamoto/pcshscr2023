@@ -1400,7 +1400,7 @@ Check to see how this works and looks.
 Check the IP address of the PC you are working on and launch the backend API.
 
 First, check the IP address of the PC you are working on.  
-There are several ways to check the IP address, including running commands in the control panel or terminal.  
+There are several ways to check the IP address. For example, check the control panel or run commands in terminal.  
 This time, when you start the mobile app development server (`npm run start`), your IP address (the `xxx.xxx.xxx.xxx.xxx.xxx` part of `Metro waiting on exp://xxx.xxx.xxx.xxx.8081`) should appear on the terminal as follows, please check it.
 
 ```sh
