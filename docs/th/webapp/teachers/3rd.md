@@ -295,9 +295,9 @@ npm run start -c
   - หากต้องการข้อมูลเพิ่มเติม โปรดดูที่ [เว็บไซต์ Expo อย่างเป็นทางการ](https://docs.expo.dev/debugging/tools/#developer-menu)
 - DevTool ของ Expo GO มีคุณสมบัติที่หลากหลาย รวมถึงความสามารถในการแก้ไขจุดบกพร่องด้วย Chrome Devtool หากคุณสนใจ โปรดดูที่ [เว็บไซต์ Expo อย่างเป็นทางการ](https://docs.expo.dev/debugging/tools/)
 
-### Implement three screens displaying fixed text and their screen transitions
+### การสร้างหน้าจอสามหน้าจอที่แสดงข้อความคงที่และการเปลี่ยนภาพ
 
-As with [2nd](2nd.md), there are three screens to be built with this hands-on: Home, Menu List, and Menu Details. First, let's experience the development of mobile screen transitions: before acquiring data from the API and implementing screens accordingly, we will implement screen transitions for the three screens, displaying only fixed text.
+เช่นเดียวกับ [2nd](2nd.md) มีสามหน้าจอที่สร้างขึ้นด้วย hands-on นี้: Home, Menu List, Menu Detail ตอนแรก เรามาสัมผัสประสบการณ์การพัฒนาการเปลี่ยนหน้าจอมือถือกันก่อน: ก่อนที่จะรับข้อมูลจาก API และ สร้างหน้าจอตามนั้น เราจะสร้างการเปลี่ยนหน้าจอสำหรับทั้งสามหน้าจอ แสดงเฉพาะข้อความคงที่
 
 เปิด `dish-delight/mobile/app/index.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -337,13 +337,13 @@ const styles = StyleSheet.create({
 
 ```
 
-Open the mobile app in Expo GO and verify that the following screen appears
+เปิดแอปมือถือใน Expo GO และตรวจสอบว่าหน้าจอต่อไปนี้ปรากฏขึ้น
 <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
 
-Also, make sure that the default error screen (`Unmached Route`) is displayed when you tap `Sakura-tei`.
+นอกจากนี้ ตรวจสอบให้แน่ใจว่าหน้าจอข้อผิดพลาดเริ่มต้น (`Unmatched Route`) ปรากฏขึ้นเมื่อคุณแตะ `Sakura-tei`
 <img src="../../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
 
-After the error screen is displayed, swipe left to return to the Home screen where `Sakura-tei` is displayed.
+หลังจากหน้าจอข้อผิดพลาดปรากฏขึ้น ให้ปัดไปทางซ้ายเพื่อกลับไปยังหน้าจอ Home ที่แสดง `Sakura-tei`
 
 สร้างไฟล์ `dish-delight/mobile/app/stores/[storeId]/index.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -409,15 +409,15 @@ const styles = StyleSheet.create({
 });
 ```
 
-Open the mobile app in Expo GO and verify that the following three screens can be displayed and transitioned (tapping fixed text or swiping).
+เปิดแอปมือถือใน Expo GO และตรวจสอบว่าสามหน้าจอต่อไปนี้สามารถแสดงและเปลี่ยนได้ (แตะข้อความคงที่หรือการปัด)
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
 | <img src="../../../static/img/3rd/docs/only_text_home_screen.png" alt="Home with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_list_screen.png" alt="Menu List with only text" width="300"> | <img src="../../../static/img/3rd/docs/only_text_menu_detail_screen.png" alt="Menu Detail with only text" width="300"> |
 
-### Implement Navbar to display fixed text
+### สร้าง Navbar ที่แสดงข้อความคงที่
 
-Implement the Navbar corresponding to the three screens that display the fixed text implemented earlier.
+สร้าง Navbar ที่สอดคล้องกับสามหน้าจอที่แสดงข้อความคงที่ที่สร้างก่อนหน้านี้
 
 สร้างไฟล์ `dish-delight/mobile/app/_layout.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -482,7 +482,7 @@ const styles = StyleSheet.create({
 ```
 
 คำแนะนำ:  
-The only difference in index.tsx for each screen is the following part.
+ความแตกต่างเพียงอย่างเดียวใน index.tsx สำหรับแต่ละหน้าจอคือส่วนต่อไปนี้
 
 ```tsx
 <Stack.Screen options={{ ... }} />
@@ -564,13 +564,13 @@ const styles = StyleSheet.create({
 
 ```
 
-Open the mobile app in Expo GO and verify the three screens are as follows
+เปิดแอปมือถือใน Expo GO แล้วตรวจสอบทั้งสามหน้าจอดังนี้
 
 | Home  | Menu List  | Menu Detail |
 | --- | --- | --- |
 | <img src="../../../static/img/3rd/docs/text_and nabvar_home_screen.png" alt="Home with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_list_screen.png" alt="Menu List with text & navbar" width="300"> | <img src="../../../static/img/3rd/docs/text_and nabvar_menu_detail_screen.png" alt="Menu Detail with text & navbar" width="300"> |
 
-### Change the Navbar on the Home screen
+### เปลี่ยน Navbar บนหน้าจอ Home
 
 เปิด `dish-delight/mobile/app/index.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -649,13 +649,13 @@ const styles = StyleSheet.create({
 });
 ```
 
-Open the mobile app in Expo GO and verify that the following screen appears (only the Navbar and fixed text are shown).  
+เปิดแอปมือถือใน Expo GO และตรวจสอบว่าหน้าจอต่อไปนี้ปรากฏขึ้น (แสดงเฉพาะ Navbar และข้อความคงที่)  
 <img src="../../../static/img/3rd/docs/jojo_nav_screen.png" alt="Jojo Navbar Screen" width="300">
 
-### Implement API calls on the mobile side with fixed data
+### สร้างการเรียก API บนฝั่งมือถือด้วยข้อมูลคงที่
 
-In [2nd](2nd.md), each screen component first had fixed data and types, and after refactoring, an API call component was created. This time, however, we create the API call component with fixed data first (same code as in [2nd](2nd.md)).  
-If you do not understand the refactoring process, please refer to [2nd](2nd.md).
+ใน [2nd](2nd.md) แต่ละ component หน้าจอมีข้อมูลและประเภทคงที่ก่อน และหลังจากการ refactoring component ที่เรียก API ถูกสร้างขึ้น อย่างไรก็ตาม ในครั้งนี้ เราสร้าง component การเรียก API ด้วยข้อมูลคงที่ก่อน (โค้ดเดียวกันกับใน [2nd](2nd.md))  
+หากคุณไม่เข้าใจกระบวน refactoring ดูที่ [2nd](2nd.md)
 
 สร้างไฟล์ `dish-delight/mobile/lib/api.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
