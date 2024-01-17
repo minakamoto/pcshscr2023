@@ -339,7 +339,7 @@ const styles = StyleSheet.create({
 Open the mobile app in Expo GO and verify that the following screen appears
 <img src="../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
 
-Also, make sure that the default error screen (`Unmached Route`) is displayed when you tap `Sakura-tei`.
+Also, make sure that the default error screen (`Unmatched Route`) is displayed when you tap `Sakura-tei`.
 <img src="../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
 
 After the error screen is displayed, swipe left to return to the Home screen where `Sakura-tei` is displayed.
