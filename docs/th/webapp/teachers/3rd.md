@@ -835,10 +835,11 @@ export async function getMenu(
 }
 ```
 
-### Implement a component for when no data exists
+### สร้าง component เมื่อไม่มีข้อมูล
 
-As with API calls, the componentization is done first, although it was done after the refactoring in [2nd](2nd.md).  
-If you do not understand the refactoring process, please refer to [2nd](2nd.md).
+เช่นเดียวกับการเรียก API componentization จะเสร็จสิ้นก่อน แม้ว่าเสร็จสิ้นหลังจาก refactoring ใน [2nd](2nd.md)
+  
+หากคุณไม่เข้าใจกระบวน refactoring ดูที่ [2nd](2nd.md)
 
 สร้างไฟล์ `dish-delight/mobile/lib/constants.ts` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -894,11 +895,11 @@ const styles = StyleSheet.create({
 **หมายเหตุ**:
 
 - เกี่ยวกับการจัดการข้อยกเว้น
-  - As with other hands-on, in this hands-on,  exception handling is implemented in a simplified way because the focus is on the experience of web application development. In actual development, please implement it appropriately, taking into account requirements and technical factors.
+  - เช่นเดียวกับการปฏิบัติจริงอื่นๆ ในทางปฏิบัตินี้ การจัดการข้อยกเว้นจะถูกนำไปใช้ในวิธีที่ง่ายขึ้น เนื่องจากมุ่งเน้นไปที่ประสบการณ์ของการพัฒนาแอปพลิเคชันเว็บ ในการพัฒนาจริง โปรดโค้ดอย่างเหมาะสม โดยคำนึงถึงข้อกำหนดและปัจจัยทางเทคนิค
 
-### Display the Home screen with fixed data
+### แสดงหน้าจอ Home ด้วยข้อมูลที่คงที่
 
-Like [2nd](2nd.md), it displays fixed data held on the frontend before retrieving data from the backend API.
+เช่นเดียวกับ [2nd](2nd.md) แสดงข้อมูลคงที่ที่เก็บไว้ที่ frontend ก่อนที่ดึงข้อมูลจาก backend API
 
 เปิด `dish-delight/mobile/app/index.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1062,16 +1063,16 @@ const styles = StyleSheet.create({
 });
 ```
 
-Verify the following
+ตรวจสอบสิ่งต่อไปนี้
 
-- Open the mobile app in Expo GO and the following screen should appear  
+- เปิดแอปมือถือใน Expo GO และหน้าจอต่อไปนี้ควรปรากฏขึ้น  
 <img src="../../../static/img/3rd/docs/home_screen.png" alt="Home Screen" width="300">
-- Clicking on the `Sakura-tei`, `Aroy`, or `Buono` card will display the menu list screen.
-  - The implementation of the menu list screen has not been changed yet, so you will see the fixed text `Soy sauce ramen` when you click on any store.
+- การคลิกที่การ์ด `Sakura-tei`, `Aroy` หรือ `Buono` จะแสดงหน้าจอ Menu List
+  - หน้าจอ Menu List ยังไม่มีการเปลี่ยนแปลง ดังนั้นคุณจะเห็นข้อความคงที่ `Soy sauce ramen` เมื่อคุณคลิกที่ร้านค้าใดๆ
 
-### Display the menu list screen with fixed data
+### แสดงหน้าจอ Menu List พร้อมข้อมูลคงที่
 
-Like the Home screen, the menu list screen should display fixed data held on the frontend.
+เช่นเดียวกับหน้าจอ Home หน้าจอ Menu List ควรแสดงข้อมูลคงที่ frontend
 
 เปิด `dish-delight/mobile/app/stores/[storeId]/index.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1217,20 +1218,20 @@ const styles = StyleSheet.create({
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
-- Clicking on the `Sakura-tei` card on the Home screen will display the menu list screen.
-  - Four menus should appear.
+- การคลิกที่การ์ด `Sakura-tei` บนหน้าจอห Home จะแสดงหน้าจอ Menu List
+  - สี่เมนูควรปรากฏขึ้น
     <img src="../../../static/img/3rd/docs/menu_list_sakura_tei.png" alt="Sakura-tei Menu list" width="300">
-- Clicking on the Card of any menu item in the menu list screen will display the menu details screen.
-  - The screen still displays the fixed text, so any click on it will display "Menu Detail".
-- Clicking on the `Aroy` card on the Home screen will display the menu list screen.
-  - One menu should appear.
-- Clicking on the `Buono` card on the Home screen will display the menu list screen.
-  - Error messages should be displayed due to lack of menus.
+- การคลิกที่การ์ดของรายการเมนูใดๆ ในหน้าจอ Menu List จะแสดงหน้าจอ Menu Detail
+  - หน้าจอยังคงแสดงข้อความคงที่ ดังนั้นการคลิกที่การ์ดใดๆ จะแสดง "Menu Detai"
+- การคลิกที่การ์ด `Aroy` บนหน้าจอ Home จะแสดงหน้าจอ Menu List
+  - เมนูเดียวควรปรากฏขึ้น
+- การคลิกที่การ์ด `Buono` บนหน้าจอห Home จะแสดงหน้าจอ Menu List
+  - ควรแสดงข้อความแสดงข้อผิดพลาดเนื่องจากไม่มีเมนู
     <img src="../../../static/img/3rd/docs/menu_not_found.png" alt="Menu Not Found" width="300">
 
-### Display the menu detail screen with fixed data
+### แสดงหน้าจอ Menu Detail พร้อมข้อมูลคงที่
 
-Like the Home and Menu List screens, the Menu Detail screen should display fixed data held on the frontend.
+เช่นเดียวกับหน้าจอ Home และ Menu List หน้าจอ Menu Detail ควรแสดงข้อมูลคงที่ที่เก็บไว้ frontend
 
 เปิด `dish-delight/mobile/app/stores/[storeId]/menus/[menuId]/index.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1387,22 +1388,22 @@ const styles = StyleSheet.create({
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร
 
-- Click any of the menu cards on the Menu List screen to go to the Menu Details screen.
-  - The appropriate menu image, description and option should be displayed.
-    - Example: `Khao Soi` at the `Aroy` store (without Option)
+- การคลิกการ์ดเมนูใดๆ ในรายการเมนูจะแสดงหน้าจอMenu Detail
+  - ควรแสดงรูปภาพเมนู คำอธิบาย และตัวเลือกที่เหมาะสม
+    - ตัวอย่าง: `Khao Soi` ที่ร้าน `Aroy` (ไม่มีตัวเลือก)
     <img src="../../../static/img/3rd/docs/menu_detail_khao_soi.png" alt="Menu detail for Khao Soi" width="300">
-    - Example: `Sanuki Udon` at the `Sakura-tei` store (with options)
+    - ตัวอย่าง: `Sanuki Udon` ที่ร้าน `Sakura-tei` (พร้อมตัวเลือก)
     <img src="../../../static/img/3rd/docs/menu_detail_udon.png" alt="Menu detail for Sanuki Udon" width="300">
-- Error screen if store or menu does not exist
-  - The image is the same as the Menu List screen
+- หน้าจอแสดงข้อผิดพลาดหากไม่มีร้านค้าหรือเมนู
+  - ภาพจะเหมือนกับหน้าจอ Menu List
 
-### Check the IP address of the PC you are working on and launch the backend API
+### ตรวจสอบที่อยู่ IP ของคอมพิวเตอร์ที่คุณกำลังทำงานอยู่และเปิด backend API
 
-Check the IP address of the PC you are working on and launch the backend API.
+ตรวจสอบที่อยู่ IP ของคอมพิวเตอร์ที่คุณกำลังทำงานอยู่และเปิด backend API
 
-First, check the IP address of the PC you are working on.  
-There are several ways to check the IP address, including running commands in the control panel or terminal.  
-This time, when you start the mobile app development server (`npm run start`), your IP address (the `xxx.xxx.xxx.xxx.xxx.xxx` part of `Metro waiting on exp://xxx.xxx.xxx.xxx.8081`) should appear on the terminal as follows, please check it.
+ทีแรก ตรวจสอบที่อยู่ IP ของคอมพิวเตอร์ที่คุณกำลังทำงานอยู่  
+มีหลายวิธีในการตรวจสอบที่อยู่ IP ตัวอย่างเช่น ตรวจสอบแผงควบคุม(control panel)หรือรันคำสั่งในเทอร์มินัล  
+คราวนี้ เมื่อคุณเริ่มเซิร์ฟเวอร์การพัฒนาแอปมือถือ (`npm run start`) ที่อยู่ IP ของคุณ (ส่วน `xxx.xxx.xxx.xxx.xxx.xxx` ของ `Metro waiting on exp://xxx.xxx.xxx.xxx.8081`) ควรปรากฏบน Terminal ดังต่อไปนี้ โปรดตรวจสอบ
 
 ```sh
 › Metro waiting on exp://xxx.xxx.xxx.xxx:8081
@@ -1423,18 +1424,18 @@ This time, when you start the mobile app development server (`npm run start`), y
 › Press ? │ show all commands
 ```
 
-Next, launch the backend API.  
-Open a terminal other than the one running the mobile app development server and move to the `dish-delight/backend` directory that you created in [2nd](2nd.md#1-setup). Verify that you have moved to the `dish-delight/backend` directory and run the following commands.
+ต่อไป รัน backend API  
+เปิดเทอร์มินัลอื่นที่ไม่ใช่เทอร์มินัลที่รันเซิร์ฟเวอร์การพัฒนาแอปมือถือ และย้ายไปยังไดเร็กทอรี `dish-delight/backend` ที่คุณสร้างใน [2nd](2nd.md#1-setup) ตรวจสอบว่าคุณได้ย้ายไปยังไดเร็กทอรี `dish-delight/backend` แล้ว และเรียกรันคำสั่งต่อไปนี้
 
 ```sh
 rye run uvicorn main:app --reload --host xxx.xxx.xxx.xxx
 ```
 
-Replace `xxx.xxx.xxx.xxx.xxx` with the IP address of your PC that you have just checked.
+แทนที่ `xxx.xxx.xxx.xxx.xxx` ด้วยที่อยู่ IP ของคอมพิวเตอร์ของคุณที่คุณเพิ่งตรวจสอบ
 
-### Modify API calls on the mobile side
+### แก้ไขการเรียก API บนฝั่งมือถือ
 
-Modify the API call component that was returning fixed data, to call the backend API.
+แก้ไข component การเรียก API ที่ส่งคืนข้อมูลคงที่เพื่อเรียก backend API
 
 เปิด `dish-delight/mobile/lib/api.tsx` และแทนที่เนื้อหาด้วยโค้ดต่อไปนี้:
 
@@ -1515,12 +1516,12 @@ export async function getMenu(
 }
 ```
 
-Before checking the working, replace `xxx.xxx.xxx.xxx.xxx` in line 27 with the IP address of your PC that you have just checked.
+ก่อนตรวจสอบการทำงาน ให้แทนที่ `xxx.xxx.xxx.xxx.xxx` ในบรรทัด 27 ด้วยที่อยู่ IP ของคอมพิวเตอร์ของคุณที่คุณเพิ่งตรวจสอบ
 
 ตรวจสอบเพื่อดูว่าสิ่งนี้ทำงานและมีลักษณะอย่างไร  
-Try changing the store and the menu to check the operation. Since the data is being fetched from the database, it should be more than the fixed data content held in the frontend that we just checked. (e.g. the store `Buono` also has menu).
+ลองเปลี่ยนร้านและเมนูเพื่อตรวจสอบการทำงาน เนื่องจากข้อมูลกำลังถูกดึงมาจากฐานข้อมูล จึงควรมากกว่าเนื้อหาข้อมูลคงที่ที่เก็บไว้ใน frontend ที่เราเพิ่งตรวจสอบ (เช่น ร้าน `Buono` ก็มีเมนูด้วย)
 
 ## 3. ในปิดท้าย
 
-This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight).
-You have experienced a bit that mobile apps can be developed in the same atmosphere as web apps. If you are interested, please check the sites of the links presented or develop your own application with your own ideas.
+นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on ขอขอบคุณสำหรับเวลาของคุณ. สามารถดูรโค้ดทั้งหมดได้ [ที่นี่](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)
+คุณมีประสบการณ์มาบ้างแล้วว่าแอพมือถือสามารถพัฒนาได้ในบรรยากาศเดียวกับเว็บแอพ หากคุณสนใจโปรดตรวจสอบเว็บไซต์ของลิงก์หรือพัฒนาแอปพลิเคชันของคุณเองด้วยแนวคิดของคุณเอง
