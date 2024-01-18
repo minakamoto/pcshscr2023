@@ -162,7 +162,12 @@ TIPS:
 
 #### プロジェクトディレクトリの作成
 
-`dish-delight`ディレクトリを作成し、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。
+まず、VSCodeを起動します。  
+`File`メニューの`Open Folder`を実行し、作業するディレクトリ(例: `Documents`)を選択してください。  
+`Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。  
+
+次に、`dish-delight`ディレクトリの作成および、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。  
+**これ以降、コマンドの実行はVSCode上のターミナルを使用してください。**
 
 ```sh
 mkdir dish-delight/backend

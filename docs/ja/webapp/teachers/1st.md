@@ -89,7 +89,11 @@
 
 #### 1. create-viteコマンドを使用して新しいReactプロジェクトの作成
 
-以下のコマンドを実行し、Create Viteツールを使用して新しいReactプロジェクトを初期化します：
+まず、VSCodeを起動します。  
+`File`メニューの`Open Folder`を実行し、作業するディレクトリ(例: `Documents`)を選択してください。  
+`Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。  
+次に、以下のコマンドを実行し、Create Viteツールを使用して新しいReactプロジェクトを初期化します。  
+**これ以降、コマンドの実行はVSCode上のターミナルを使用してください。**
 
 ```sh
 npm create vite@latest first-app -- --template react-ts
