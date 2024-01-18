@@ -60,8 +60,8 @@ TIPS:
 
 ### Expoプロジェクトの作成
 
-VSCodeを起動します。`File`メニューの`Open Folder`を実行し、[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリを選択してください。  
-`Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。以下のコマンドを実行します。  
+まず、VSCodeを起動します。`File`メニューの`Open Folder`を実行し、[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリを選択してください。  
+次に、`Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。以下のコマンドを実行します。  
 **これ以降、コマンドの実行はVSCode上のターミナルを使用してください。**
 
 ```sh
