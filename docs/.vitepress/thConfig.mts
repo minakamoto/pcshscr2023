@@ -39,6 +39,10 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
               text: "ภาคปฏิบัติ(hands-on)เพื่อพัฒนา UI ที่ซับซ้อนขึ้นเล็กน้อยและ API ของตัวเอง",
               link: "teachers/2nd",
             },
+            {
+              text: "ภาคปฏิบัติ(hands-on) เพื่อพัฒนาแอพมือถือด้วยสแต็คเทคโนโลยีเว็บแอพ",
+              link: "teachers/3rd",
+            },
           ],
         },
       ],

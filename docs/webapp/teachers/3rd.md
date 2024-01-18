@@ -226,7 +226,7 @@ Verify that the Expo Router default screen shown below appears. When it appears,
 Make sure that when you press the `touch app/index.js` button, you get the following
 
 - To change to the following screen
-- When you return to VSCode, `dish-delight/mobile/app/index.tx` should be created.
+- When you return to VSCode, `dish-delight/mobile/app/index.tsx` should be created.
 
 <img src="../../static/img/3rd/docs/expo_router_first_screen.png" alt="Expo default screen" width="300">
 
@@ -339,10 +339,10 @@ const styles = StyleSheet.create({
 Open the mobile app in Expo GO and verify that the following screen appears
 <img src="../../static/img/3rd/docs/only_text_home_screen.png" alt="Updated Splash Screen" width="300">
 
-Also, make sure that the default error screen (`Unmached Route`) is displayed when you tap `Sakura-tei`.
+Also, make sure that the default error screen (`Unmatched Route`) is displayed when you tap `Sakura-tei`.
 <img src="../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
 
-After the error screen is displayed, swipe left to return to the Home screen where `Sakura-tei` is displayed.
+After the error screen is displayed, swipe right(swipe from the left edge to the right) to return to the Home screen where `Sakura-tei` is displayed.
 
 Create the `dish-delight/mobile/app/stores/[storeId]/index.tsx` file and replace its contents with the following code:
 
@@ -1400,7 +1400,7 @@ Check to see how this works and looks.
 Check the IP address of the PC you are working on and launch the backend API.
 
 First, check the IP address of the PC you are working on.  
-There are several ways to check the IP address, including running commands in the control panel or terminal.  
+There are several ways to check the IP address. For example, check the control panel or run commands in terminal.  
 This time, when you start the mobile app development server (`npm run start`), your IP address (the `xxx.xxx.xxx.xxx.xxx.xxx` part of `Metro waiting on exp://xxx.xxx.xxx.xxx.8081`) should appear on the terminal as follows, please check it.
 
 ```sh
