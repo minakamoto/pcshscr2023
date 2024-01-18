@@ -42,7 +42,7 @@ The external API for this hands-on is [PokéAPI](https://pokeapi.co/). It is ava
 ### Prerequisites
 
 - Node.js 18+ or 20+
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 
 **Note**:  
 The required software installation instructions listed here are intended for Windows users who do not also use Powershell or WSL.

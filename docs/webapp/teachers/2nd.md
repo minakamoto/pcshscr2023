@@ -50,7 +50,7 @@ TIPS:
 
 - Node.js 18.17 or above
 - Python 3.8 or above
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 
 **NOTE**:  
 The required software installation instructions listed here are intended for Windows users who do not use WSL.

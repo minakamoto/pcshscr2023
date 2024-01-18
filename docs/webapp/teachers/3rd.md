@@ -38,7 +38,7 @@ TIPS:
 ### Prerequisites
 
 - Node.js 18+ or 20+
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 - [2nd](2nd.md#3-connecting-to-the-database-and-returning-data) backend API must be implemented locally
 
 **NOTE**：  

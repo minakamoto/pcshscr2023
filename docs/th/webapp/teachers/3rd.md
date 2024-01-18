@@ -38,7 +38,7 @@
 ### ข้อกำหนดเบื้องต้น
 
 - Node.js 18+ or 20+
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 - [2nd](2nd.md#3-connecting-to-the-database-and-returning-data) backend API ต้องได้รับการพัฒนาในคอมพิวเตอร์ของคุณ
 
 **หมายเหตุ**:  
