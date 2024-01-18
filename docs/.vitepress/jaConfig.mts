@@ -39,6 +39,10 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
               text: "ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン",
               link: "teachers/2nd",
             },
+            {
+              text: "Webアプリ開発技術を利用してモバイルアプリを開発するハンズオン",
+              link: "teachers/3rd",
+            },
           ],
         },
       ],
