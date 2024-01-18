@@ -88,11 +88,20 @@ This is because the first target users of this hands-on are Windows users who do
 
 #### 1. Create a new React project using the create-vite command
 
-run the following command to initialize a new React project using the Create Vite tool:
+First, start VSCode.  
+From the `File` menu, select `Open Folder` and choose a directory (e.g. `Documents`) in you want to work.
+
+If, after selecting a directory in which to work in, you get a dialog with the message `Do you trust the authors of the files in this folder?`, click `Yes, I trust the authors`.
+
+Run `New Terminal` from the `Terminal` menu to start the terminal.  
+Then run the following command to initialize a new React project using the Create Vite tool.  
+**From now on, use the terminal on VSCode to execute the commands.**
 
 ```sh
 npm create vite@latest first-app -- --template react-ts
 ```
+
+When the message `OK to proceed? (y)` appears, enter `y`.
 
 #### 2. Once the installation is finished, your project will be set up with the basic React+Vite template
 
@@ -588,6 +597,8 @@ We'll install a CSS library to make it look a little better.
 ##### Stop app
 
 You can use Ctrl + c to stop running the React+Vite app in your command line.
+
+If you get the message `Terminate batch job (Y/N)? , type`Y` and press `Enter`.
 
 ##### Install Tailwind CSS
 

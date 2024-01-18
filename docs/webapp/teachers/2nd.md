@@ -161,7 +161,15 @@ This is because the first target users of this hands-on are Windows users who do
 
 #### Creating a project directory
 
-Create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. Run the following commands.
+First, start VSCode.  
+From the `File` menu, select `Open Folder` and choose a directory (e.g. `Documents`) in you want to work.
+
+If, after selecting a directory in which to work in, you get a dialog with the message `Do you trust the authors of the files in this folder?`, click `Yes, I trust the authors`.
+
+Run `New Terminal` from the `Terminal` menu to start the terminal.
+
+Then create a `dish-delight` directory and create a `frontend` directory and a `backend` directory in it. Run the following commands.  
+**From now on, use the terminal on VSCode to execute the commands.**
 
 ```sh
 mkdir dish-delight/backend
@@ -178,7 +186,9 @@ cd frontend
 npx create-next-app .
 ```
 
-When you run the above commands, you will be asked a question at the command prompt. Answer the questions as follows
+When the message `OK to proceed? (y)` appears, enter `y`.
+
+When you run the above commands, you will be asked a question at the command prompt. Answer the questions as follows(You can change your answer with the left and right arrow keys.)
 
 ```sh
 ✔ Would you like to use TypeScript? … Yes
@@ -283,6 +293,8 @@ If port 3000 is already in use, a different port is specified. In this case, the
 ```
 
 Press Ctrl + c to stop.
+
+If you get the message `Terminate batch job (Y/N)? , type`Y` and press `Enter`.
 
 #### Modifying the globals.css settings
 
