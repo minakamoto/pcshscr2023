@@ -163,7 +163,10 @@ TIPS:
 #### プロジェクトディレクトリの作成
 
 まず、VSCodeを起動します。  
-`File`メニューの`Open Folder`を実行し、作業するディレクトリ(例: `Documents`)を選択してください。  
+`File`メニューの`Open Folder`を実行し、作業するディレクトリ(例: `Documents`)を選択してください。
+
+もし、作業するディレクトリを選択したあと、`Do you trust the authors of the files in this folder?`というメッセージのダイアログが出たら、`Yes, I trust the authors`を押してください。
+
 `Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。  
 
 次に、`dish-delight`ディレクトリの作成および、その中に`frontend`ディレクトリと`backend`ディレクトリを作成します。以下のコマンドを実行します。  
@@ -184,7 +187,9 @@ cd frontend
 npx create-next-app .
 ```
 
-上記コマンドを実行すると、プロンプト上で質問されます。以下のとおり、質問に回答してください。
+`OK to proceed? (y)`というメッセージが表示されたら、`y`を入力してください。
+
+上記コマンドを実行すると、プロンプト上で質問されます。以下のとおり、質問に回答してください(左右の矢印キーで回答を変更できます)。
 
 ```sh
 ✔ Would you like to use TypeScript? … Yes
@@ -289,6 +294,8 @@ npm run dev
 ```
 
 Ctrl + cで停止してください。
+
+もし、`Terminate batch job (Y/N)?`というメッセージが出たら、`Y`を入力して`Enter`を押してください。
 
 #### globals.css の設定修正
 
