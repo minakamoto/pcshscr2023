@@ -342,7 +342,7 @@ Open the mobile app in Expo GO and verify that the following screen appears
 Also, make sure that the default error screen (`Unmatched Route`) is displayed when you tap `Sakura-tei`.
 <img src="../../static/img/3rd/docs/default_unmatched_route_screen.png" alt="Updated Splash Screen" width="300">
 
-After the error screen is displayed, swipe left to return to the Home screen where `Sakura-tei` is displayed.
+After the error screen is displayed, swipe right(swipe from the left edge to the right) to return to the Home screen where `Sakura-tei` is displayed.
 
 Create the `dish-delight/mobile/app/stores/[storeId]/index.tsx` file and replace its contents with the following code:
 
