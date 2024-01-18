@@ -42,7 +42,7 @@
 ### 前提条件
 
 - Node.js 18+ or 20+
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 
 **注意事項**：  
 ここに記載されている必要なソフトウェアのインストール手順は、PowershellやWSLも使用しないWindowsユーザーを対象としています。
