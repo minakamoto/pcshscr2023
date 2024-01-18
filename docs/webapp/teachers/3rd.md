@@ -60,11 +60,19 @@ This is because the first target users of this hands-on are Windows users. Pleas
 
 ### Creating an Expo project
 
-In a terminal (command prompt, PowerShell, WSL bash), move to the `dish-delight` directory that you created in [2nd](2nd.md#1-setup). Make sure that you are in the `dish-delight` directory, and then run the following command
+First, start VSCode.  
+From the `File` menu, select `Open Folder` and choose the `dish-delight` directory that you created in [2nd](2nd.md#1-setup).
+
+If, after selecting a directory in which to work in, you get a dialog with the message `Do you trust the authors of the files in this folder?`, click `Yes, I trust the authors`.
+
+Run `New Terminal` from the `Terminal` menu to start the terminal. And then run the following command  
+**From now on, use the terminal on VSCode to execute the commands.**
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
 ```
+
+When the message `OK to proceed? (y)` appears, enter `y`.
 
 **NOTE**：  
 This hands-on will use Expo SDK49, Expo SDK is updated 3 times a year. The next version, SDK50, has many breaking changes and new features, so please check to the latest official website for actual development.
