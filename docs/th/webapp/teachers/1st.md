@@ -42,7 +42,7 @@ API ภายนอกสำหรับ hands-on นี้ คือ [PokéAPI]
 ### ข้อกำหนดเบื้องต้น
 
 - Node.js 18+ or 20+
-- Code Editor (เช่น Visual Studio Code)
+- Code Editor (Visual Studio Code)
 
 **หมายเหตุ**:  
 คำแนะนำในการติดตั้งซอฟต์แวร์ที่จำเป็นซึ่งระบุไว้ที่นี่มีไว้สำหรับผู้ใช้ Windows ที่ไม่ได้ใช้ Powershell หรือ WSL  
@@ -89,11 +89,20 @@ API ภายนอกสำหรับ hands-on นี้ คือ [PokéAPI]
 
 #### 1. สร้างโปรเจกต์ React ใหม่โดยใช้คำสั่ง create-vite
 
-เรียกใช้คำสั่งต่อไปนี้เพื่อเริ่มต้นโครงการ React ใหม่โดยใช้ Create Vite tool:
+ตอนแรกให้เริ่ม VSCode  
+จากเมนู `File` ให้เลือก `Open Folder` และเลือกไดเร็กทอรี (เช่น `Documents`) ที่คุณต้องการใช้งาน
+
+หลังจากเลือกไดเร็กทอรีที่จะใช้ทำงานแล้ว หากได้รับข้อความว่า `Do you trust the authors of the files in this folder?` ให้คลิก `Yes, I trust the authors`
+
+เรียกใช้ `New Terminal` จากเมนู `Terminal` เพื่อเริ่มเทอร์มินัล  
+จากนั้นรันคำสั่งต่อไปนี้เพื่อเริ่มต้นโปรเจ็กต์ React ใหม่โดยใช้ Create Vite tool  
+**จากนี้ ให้ใช้ Terminal บน VSCode เพื่อดำเนินการคำสั่ง**
 
 ``` sh
 npm create vite@latest first-app -- --template react-ts
 ```
+
+เมื่อข้อความ `OK to proceed? (y)` ปรากฏขึ้น ให้ป้อน `y`
 
 #### 2. เมื่อการติดตั้งเสร็จสิ้น โปรเจกต์ของคุณจะถูกตั้งค่าด้วยพื้นฐาน React+Vite template
 
@@ -589,6 +598,8 @@ export default PokemonContainer;
 ##### หยุดแอป
 
 คุณสามารถใช้ Ctrl + c เพื่อหยุดการเรียกใช้แอป React+Vite ใน Command Line ของคุณ
+
+หากคุณได้รับข้อความ `Terminate batch job (Y/N)?` พิมพ์ `Y` แล้วกด `Enter`
 
 ##### ติดตั้ง Tailwind CSS
 

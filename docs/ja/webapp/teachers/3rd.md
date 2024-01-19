@@ -38,7 +38,7 @@ TIPS:
 ### 前提条件
 
 - Node.js 18+ or 20+
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 - [2nd](2nd.md#3-データベースに接続してデータを返す)のバックエンドAPIをローカルに実装済みであること
 
 **注意事項**：  
@@ -60,11 +60,18 @@ TIPS:
 
 ### Expoプロジェクトの作成
 
-ターミナル(コマンドプロンプト、PowerShell、WSLのbash)で[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリに移動してください。`dish-delight`ディレクトリへ移動したことを確認し、以下のコマンドを実行します。
+まず、VSCodeを起動します。`File`メニューの`Open Folder`を実行し、[2nd](2nd.md#1-setup)で各自作成した`dish-delight`ディレクトリを選択してください。
+
+もし、作業するディレクトリを選択したあと、`Do you trust the authors of the files in this folder?`というメッセージのダイアログが出たら、`Yes, I trust the authors`を押してください。
+
+次に、`Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。以下のコマンドを実行します。  
+**これ以降、コマンドの実行はVSCode上のターミナルを使用してください。**
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
 ```
+
+`OK to proceed? (y)`というメッセージが表示されたら、`y`を入力してください。
 
 **注意事項**：  
 このハンズオンではExpo SDK49を使用します。Expo SDKは年に3回更新されます。次のバージョンのSDK50はbreaking changeや新機能もたくさんあるため、実際に開発する場合には最新の公式サイトを参照してください。

@@ -42,7 +42,7 @@
 ### 前提条件
 
 - Node.js 18+ or 20+
-- Code Editor (e.g., Visual Studio Code)
+- Code Editor (Visual Studio Code)
 
 **注意事項**：  
 ここに記載されている必要なソフトウェアのインストール手順は、PowershellやWSLも使用しないWindowsユーザーを対象としています。
@@ -89,11 +89,20 @@
 
 #### 1. create-viteコマンドを使用して新しいReactプロジェクトの作成
 
-以下のコマンドを実行し、Create Viteツールを使用して新しいReactプロジェクトを初期化します：
+まず、VSCodeを起動します。  
+`File`メニューの`Open Folder`を実行し、作業するディレクトリ(例: `Documents`)を選択してください。
+
+もし、作業するディレクトリを選択したあと、`Do you trust the authors of the files in this folder?`というメッセージのダイアログが出たら、`Yes, I trust the authors`を押してください。
+
+`Terminal`メニューの`New Terminal`を実行し、ターミナルを起動します。  
+次に、以下のコマンドを実行し、Create Viteツールを使用して新しいReactプロジェクトを初期化します。  
+**これ以降、コマンドの実行はVSCode上のターミナルを使用してください。**
 
 ```sh
 npm create vite@latest first-app -- --template react-ts
 ```
+
+`OK to proceed? (y)`というメッセージが表示されたら、`y`を入力してください。
 
 #### 2. インストールが完了すると、プロジェクトにReact+Viteの標準テンプレートがセットアップされます
 
@@ -588,7 +597,8 @@ CSSライブラリを導入して、ほんの少し見栄えを良くします�
 
 ##### アプリの停止
 
-コマンドラインで「Ctrl + c」を使い、React+Viteアプリの実行を停止します。
+コマンドラインで「Ctrl + c」を使い、React+Viteアプリの実行を停止します。  
+もし、`Terminate batch job (Y/N)?`というメッセージが出たら、`Y`を入力して`Enter`を押してください。
 
 ##### Tailwind CSSのインストール
 

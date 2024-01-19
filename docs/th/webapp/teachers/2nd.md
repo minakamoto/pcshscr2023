@@ -50,7 +50,7 @@
 
 - Node.js 18.17 or above
 - Python 3.8 or above
-- Code Editor (เช่น Visual Studio Code)
+- Code Editor (Visual Studio Code)
 
 **หมายเหตุ**:  
 คำแนะนำในการติดตั้งซอฟต์แวร์ที่จำเป็นซึ่งระบุไว้ที่นี่มีไว้สำหรับผู้ใช้ Windows ที่ไม่ได้ใช้ WSL  
@@ -162,7 +162,15 @@
 
 #### การสร้างไดเร็กทอรีโครงการ
 
-สร้างไดเร็กทอรี `dish-delight` และสร้างไดเร็กทอรี `frontend` และไดเร็กทอรี `backend` ในนั้น รันคำสั่งต่อไปนี้
+ตอนแรกให้เริ่ม VSCode  
+จากเมนู `File` ให้เลือก `Open Folder` และเลือกไดเร็กทอรี (เช่น `Documents`) ที่คุณต้องการใช้งาน
+
+หลังจากเลือกไดเร็กทอรีที่จะใช้ทำงานแล้ว หากได้รับข้อความว่า `Do you trust the authors of the files in this folder?` ให้คลิก `Yes, I trust the authors`
+
+เรียกใช้ `New Terminal` จากเมนู `Terminal` เพื่อเริ่มเทอร์มินัล  
+
+จากนั้นสร้างไดเร็กทอรี `dish-delight` และสร้างไดเร็กทอรี `frontend` และไดเร็กทอรี `backend` ในนั้น รันคำสั่งต่อไปนี้  
+**จากนี้ ให้ใช้ Terminal บน VSCode เพื่อดำเนินการคำสั่ง**
 
 ```sh
 mkdir dish-delight/backend
@@ -179,7 +187,9 @@ cd frontend
 npx create-next-app .
 ```
 
-เมื่อคุณรันคำสั่งข้างต้น คุณจะถูกถามคำถามที่พรอมต์คำสั่ง ตอบคำถามดังนี้
+เมื่อข้อความ `OK to proceed? (y)` ปรากฏขึ้น ให้ป้อน `y`
+
+เมื่อคุณรันคำสั่งข้างต้น คุณจะถูกถามคำถามที่พรอมต์คำสั่ง ตอบคำถามดังนี้(คุณสามารถเปลี่ยนคำตอบได้ด้วยปุ่มลูกศรซ้ายและขวา)
 
 ```sh
 ✔ Would you like to use TypeScript? … Yes
@@ -284,6 +294,8 @@ npm run dev
 ```
 
 กด Ctrl + c เพื่อหยุด
+
+หากคุณได้รับข้อความ `Terminate batch job (Y/N)?` พิมพ์ `Y` แล้วกด `Enter`
 
 #### การปรับเปลี่ยนการตั้งค่า globals.css
 
