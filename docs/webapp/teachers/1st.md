@@ -598,7 +598,7 @@ We'll install a CSS library to make it look a little better.
 
 You can use Ctrl + c to stop running the React+Vite app in your command line.
 
-If you get the message `Terminate batch job (Y/N)? , type`Y` and press `Enter`.
+If you get the message `Terminate batch job (Y/N)?` , type`Y` and press `Enter`.
 
 ##### Install Tailwind CSS
 

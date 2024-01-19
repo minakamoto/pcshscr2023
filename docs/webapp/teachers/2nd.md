@@ -294,7 +294,7 @@ If port 3000 is already in use, a different port is specified. In this case, the
 
 Press Ctrl + c to stop.
 
-If you get the message `Terminate batch job (Y/N)? , type`Y` and press `Enter`.
+If you get the message `Terminate batch job (Y/N)?` , type`Y` and press `Enter`.
 
 #### Modifying the globals.css settings
 
