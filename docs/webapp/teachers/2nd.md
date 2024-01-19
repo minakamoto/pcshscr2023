@@ -133,6 +133,7 @@ This is because the first target users of this hands-on are Windows users who do
       - Type and select `Preferences: Open User Settings(JSON)` to open the JSON file.
         - **If you do not want to use this setting outside of this hands-on, open `Preferences: Open Workspace Settings(JSON)`.**
       - Add the following code to the end of the JSON
+        - If you are not sure how to add this, see the other example below, which has other settings.
 
         ```js
           "[python]": {
@@ -141,7 +142,9 @@ This is because the first target users of this hands-on are Windows users who do
           }
         ```
 
-        - If other settings are also in place, the following applies.
+        - If you have other settings, the following example will apply.
+          - Do not forget to put `,` at the end of the setting item above the one you have added.
+            - In the example below, `"python.languageServer": "Pylance"` -> `"python.languageServer": "Pylance",`
 
           ```js
           {

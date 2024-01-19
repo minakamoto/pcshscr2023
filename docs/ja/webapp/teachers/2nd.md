@@ -134,6 +134,7 @@ TIPS:
       - `Preferences: Open User Settings(JSON)`を入力、選択して、JSONファイルを開きます。
         - **このハンズオン以外でこの設定を使用したくない場合は`Preferences: Open Workspace Settings(JSON)`開いてください。**
       - 以下のコードをJSONの最後に設定します。
+        - どう追加したら良いかわからない場合は、もうひとつ下に記載した例(ほかの設定もあわせて定義)を参考にしてください。
 
         ```js
           "[python]": {
@@ -142,7 +143,9 @@ TIPS:
           }
         ```
 
-        - ほかの設定も行なっている場合には以下のようになります。
+        - ほかの設定も行なっている場合には以下の例のようになります。
+          - 追加した一つ上の設定項目の最後に`,`を忘れずに付与してください。
+            - 下の例だと、`"python.languageServer": "Pylance"` -> `"python.languageServer": "Pylance",`
 
           ```js
           {
