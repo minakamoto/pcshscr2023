@@ -127,7 +127,7 @@
     - การเปลี่ยนการตั้งค่าของ `Python: Language Server`
       - เปิดการตั้งค่า VSCode (File > Preferences > Settings) หรือใช้ทางลัด (Ctrl+,)
         - **หากคุณไม่ต้องการใช้การตั้งค่านี้นอกเหนือจาก hands-on นี้ ให้เปลี่ยนจากแท็บ `User` เป็นแท็บ `Workspace`**
-      - ค้นหา `python. languageServer` ในการตั้งค่า และตั้งค่าเป็น `Pylance`
+      - ค้นหา `python.languageServer` ในการตั้งค่า และตั้งค่าเป็น `Pylance`
         - **หากคุณไม่เห็นการตั้งค่า Python ให้รีสตาร์ท VSCode**
     - ตั้งค่า Black Formatter ให้แก้ไขโค้ดโดยอัตโนมัติเมื่อบันทึกไฟล์ Python
       - กด Ctrl+Shift+P เพื่อเปิด Command palette
