@@ -61,11 +61,19 @@
 
 ### การสร้างโครงการ Expo
 
-ในเทอร์มินัล (command prompt, PowerShell, WSL bash) ให้ย้ายไปยังไดเร็กทอรี `dish-delight` ที่คุณสร้างใน [2nd](2nd.md#1-setup) ตรวจสอบให้แน่ใจว่าคุณอยู่ในไดเร็กทอรี `dish-delight` จากนั้นเรียกใช้คำสั่งต่อไปนี้
+ตอนแรกให้เริ่ม VSCode  
+จากเมนู `File` ให้เลือก `Open Folder` และเลือกไดเร็กทอรี `dish-delight` ที่คุณสร้างใน [2nd](2nd.md#1-setup)
+
+หลังจากเลือกไดเร็กทอรีที่จะใช้ทำงานแล้ว หากได้รับข้อความว่า `Do you trust the authors of the files in this folder?` ให้คลิก `Yes, I trust the authors`
+
+เรียกใช้ `New Terminal` จากเมนู `Terminal` เพื่อเริ่มเทอร์มินัล จากนั้นรันคำสั่งต่อไปนี้  
+**จากนี้ ให้ใช้ Terminal บน VSCode เพื่อดำเนินการคำสั่ง**
 
 ```sh
 npx create-expo-app mobile  -t blank-typescript@49 
 ```
+
+เมื่อข้อความ `OK to proceed? (y)` ปรากฏขึ้น ให้ป้อน `y`
 
 **หมายเหตุ**:  
 hands-on นี้จะใช้ Expo SDK49, Expo SDK ได้รับการอัปเดตปีละ 3 ครั้ง เวอร์ชันถัดไป SDK50 มีการเปลี่ยนแปลงล่าสุดและฟีเจอร์ใหม่มากมาย ดังนั้นโปรดตรวจสอบเว็บไซต์อย่างเป็นทางการล่าสุดเพื่อการพัฒนาจริง
