@@ -128,11 +128,13 @@ TIPS:
       - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
       - 設定の中で`python.languageServer`を検索し、値を`Pylance`にします。
+        - **もし、Pythonの設定が表示されない場合、VSCodeを再起動してください。**
     - Pythonファイルの保存時に自動的にBlack Formatterでコードを修正するように設定します。
       - Ctrl+Shift+Pを押して、コマンドパレットを開きます。
       - `Preferences: Open User Settings(JSON)`を入力、選択して、JSONファイルを開きます。
         - **このハンズオン以外でこの設定を使用したくない場合は`Preferences: Open Workspace Settings(JSON)`開いてください。**
       - 以下のコードをJSONの最後に設定します。
+        - どう追加したら良いかわからない場合は、もうひとつ下に記載した例(ほかの設定もあわせて定義)を参考にしてください。
 
         ```js
           "[python]": {
@@ -141,7 +143,9 @@ TIPS:
           }
         ```
 
-        - ほかの設定も行なっている場合には以下のようになります。
+        - ほかの設定も行なっている場合には以下の例のようになります。
+          - 追加した一つ上の設定項目の最後に`,`を忘れずに付与してください。
+            - 下の例だと、`"python.languageServer": "Pylance"` -> `"python.languageServer": "Pylance",`
 
           ```js
           {
