@@ -127,6 +127,7 @@ This is because the first target users of this hands-on are Windows users who do
       - Open the VSCode settings (File > Preferences > Settings) or use the shortcut (Ctrl+,).
         - **If you do not want to use these settings outside of this hands-on, switch from the `User` tab to the `Workspace` tab.**
       - Find `python.languageServer` in the settings and set the value to `Pylance`.
+        - **If you do not see the Python settings, restart VSCode.**
     - Set Black Formatter to automatically modify code when saving Python files.
       - Press Ctrl+Shift+P to open the command palette.
       - Type and select `Preferences: Open User Settings(JSON)` to open the JSON file.

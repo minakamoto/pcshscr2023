@@ -128,6 +128,7 @@ TIPS:
       - VSCode の設定（File > Preferences > Settings）を開くか、ショートカット（Ctrl+,）を使用します。
       - **このハンズオン以外でこの設定を使用したくない場合は`User`タブから`Workspace`タブに切り替えて設定してください。**
       - 設定の中で`python.languageServer`を検索し、値を`Pylance`にします。
+        - **もし、Pythonの設定が表示されない場合、VSCodeを再起動してください。**
     - Pythonファイルの保存時に自動的にBlack Formatterでコードを修正するように設定します。
       - Ctrl+Shift+Pを押して、コマンドパレットを開きます。
       - `Preferences: Open User Settings(JSON)`を入力、選択して、JSONファイルを開きます。
