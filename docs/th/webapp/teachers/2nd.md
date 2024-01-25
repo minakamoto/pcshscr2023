@@ -2100,7 +2100,7 @@ export async function getMenu(
 
 การกำหนดค่า VSCode (สำหรับ Workspace) มีไว้เพื่อเป็นข้อมูลอ้างอิงของคุณด้วย ตั้งอยู่ในไดเร็กทอรี `.vscode`
 
-## 4. Links
+## 5. Links
 
 - [เว็บไซต์การเรียนรู้อย่างเป็นทางการของ Next.js](https://nextjs.org/learn)
   - เว็บไซต์การเรียนรู้อย่างเป็นทางการของ Next.js มี [tutorial](https://nextjs.org/learn/dashboard-app)

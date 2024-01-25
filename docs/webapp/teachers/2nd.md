@@ -2099,7 +2099,7 @@ This concludes the hands-on session. Thank you for your time. The complete code 
 
 The VSCode configuration (for Workspace) is also committed for your reference. It is located in the `.vscode` directory.
 
-## 4. Links
+## 5. Links
 
 - [Next.js official learning site](https://nextjs.org/learn)
   - The official Next.js learning site offers [Tutorial](https://nextjs.org/learn/dashboard-app).

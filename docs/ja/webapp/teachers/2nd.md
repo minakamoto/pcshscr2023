@@ -2097,7 +2097,7 @@ export async function getMenu(
 
 参考にVSCodeの設定(Workspace用)もコミットしてあります。`.vscode`ディレクトリ内にあります。
 
-## 4. Links
+## 5. Links
 
 - [Next.js公式学習サイト](https://nextjs.org/learn)
   - Next.js公式の学習サイトでは、[チュートリアル](https://nextjs.org/learn/dashboard-app)が用意されています。
