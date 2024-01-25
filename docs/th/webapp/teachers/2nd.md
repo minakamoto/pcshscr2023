@@ -2099,3 +2099,12 @@ export async function getMenu(
 นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on ขอขอบคุณสำหรับเวลาของคุณ. สามารถดูรโค้ดทั้งหมดได้ [ที่นี่](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
 การกำหนดค่า VSCode (สำหรับ Workspace) มีไว้เพื่อเป็นข้อมูลอ้างอิงของคุณด้วย ตั้งอยู่ในไดเร็กทอรี `.vscode`
+
+## 4. Links
+
+- [เว็บไซต์การเรียนรู้อย่างเป็นทางการของ Next.js](https://nextjs.org/learn)
+  - เว็บไซต์การเรียนรู้อย่างเป็นทางการของ Next.js มี [tutorial](https://nextjs.org/learn/dashboard-app)
+    - อย่างไรก็ตาม [tutorial](https://nextjs.org/learn/dashboard-app) นี้ถือว่าคุณมีความรู้พื้นฐานเกี่ยวกับ React และ JavaScript
+    - หากคุณไม่มั่นใจในความรู้เกี่ยวกับ React คุณอาจต้องการลองใช้ [React Foundations](https://nextjs.org/learn/react-foundations) บนเว็บไซต์นี้
+  - นอกจากนี้ยังมีแหล่งข้อมูลอื่นๆ สำหรับการเรียนรู้ Next.js และนำไปพัฒนาต่อยอด
+- [tutorial อย่างเป็นทางการของ FastAPI](https://fastapi.tiangolo.com/tutorial/)

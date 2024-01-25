@@ -2096,3 +2096,12 @@ export async function getMenu(
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight)から確認できます。  
 
 参考にVSCodeの設定(Workspace用)もコミットしてあります。`.vscode`ディレクトリ内にあります。
+
+## 4. Links
+
+- [Next.js公式学習サイト](https://nextjs.org/learn)
+  - Next.js公式の学習サイトでは、[チュートリアル](https://nextjs.org/learn/dashboard-app)が用意されています。
+    - ただし、この[チュートリアル](https://nextjs.org/learn/dashboard-app)はReactとJavaScriptの基本知識を持っていることを前提とされています。
+    - Reactの知識に自信がない方は、このサイト上の[React Foundations](https://nextjs.org/learn/react-foundations)を実施してみると良いかもしれません。
+  - ほかにもNext.jsの学習やさらに踏み込んだ内容も掲載されています。
+- [FastAPI公式チュートリアル](https://fastapi.tiangolo.com/tutorial/)
