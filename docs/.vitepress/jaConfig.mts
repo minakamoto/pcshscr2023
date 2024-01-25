@@ -28,19 +28,19 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
           items: [
             { text: "はじめに", link: "teachers/README" },
             {
-              text: "Webアプリに関わる技術スタックの概要",
+              text: "0th Webアプリに関わる技術スタックの概要",
               link: "teachers/0th",
             },
             {
-              text: "シンプルかつ簡単なUIを開発するハンズオン",
+              text: "1st シンプルかつ簡単なUIを開発するハンズオン",
               link: "teachers/1st",
             },
             {
-              text: "ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン",
+              text: "2nd ほんの少しだけ複雑なUI＆独自APIを開発するハンズオン",
               link: "teachers/2nd",
             },
             {
-              text: "Webアプリ開発技術を利用してモバイルアプリを開発するハンズオン",
+              text: "3rd Webアプリ開発技術を利用してモバイルアプリを開発するハンズオン",
               link: "teachers/3rd",
             },
           ],
@@ -55,9 +55,9 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
           text: "30-min experience with the latest web app dev tech",
           items: [
             { text: "Introduction", link: "students/README" },
-            { text: "Todo List App", link: "students/1st" },
-            { text: "Weather Forecast App", link: "students/2nd" },
-            { text: "Weather Forecast Mobile App", link: "students/3rd" },
+            { text: "1st Todo List App", link: "students/1st" },
+            { text: "2nd Weather Forecast App", link: "students/2nd" },
+            { text: "3rd Weather Forecast Mobile App", link: "students/3rd" },
           ],
         },
       ],

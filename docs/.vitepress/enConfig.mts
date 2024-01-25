@@ -29,19 +29,19 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
           items: [
             { text: "Introduction", link: "teachers/README" },
             {
-              text: "Overview of web app technology stack",
+              text: "0th Overview of web app technology stack",
               link: "teachers/0th",
             },
             {
-              text: "Hands-on to develop simple & easy UI",
+              text: "1st Hands-on to develop simple & easy UI",
               link: "teachers/1st",
             },
             {
-              text: "Hands-on to develop a slightly more complex UI & own API",
+              text: "2nd Hands-on to develop a slightly more complex UI & own API",
               link: "teachers/2nd",
             },
             {
-              text: "Hands-on mobile app development with web app technology stack",
+              text: "3rd Hands-on mobile app development with web app technology stack",
               link: "teachers/3rd",
             },
           ],
@@ -56,9 +56,9 @@ function sidebarWebApp(): DefaultTheme.SidebarItem[] {
           text: "30-min experience with the latest web app dev tech",
           items: [
             { text: "Introduction", link: "students/README" },
-            { text: "Todo List App", link: "students/1st" },
-            { text: "Weather Forecast App", link: "students/2nd" },
-            { text: "Weather Forecast Mobile App", link: "students/3rd" },
+            { text: "1st Todo List App", link: "students/1st" },
+            { text: "2nd Weather Forecast App", link: "students/2nd" },
+            { text: "3rd Weather Forecast Mobile App", link: "students/3rd" },
           ],
         },
       ],
