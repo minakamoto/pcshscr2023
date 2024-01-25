@@ -1533,3 +1533,7 @@ export async function getMenu(
 
 นี่เป็นการสิ้นสุดเซสชั่นภาค hands-on ขอขอบคุณสำหรับเวลาของคุณ. สามารถดูรโค้ดทั้งหมดได้ [ที่นี่](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)
 คุณมีประสบการณ์มาบ้างแล้วว่าแอพมือถือสามารถพัฒนาได้ในบรรยากาศเดียวกับเว็บแอพ หากคุณสนใจโปรดตรวจสอบเว็บไซต์ของลิงก์หรือพัฒนาแอปพลิเคชันของคุณเองด้วยแนวคิดของคุณเอง
+
+## 4. Links
+
+- [tutorial บนเว็บไซต์อย่างเป็นทางการของ Expo](https://docs.expo.dev/tutorial/introduction/)

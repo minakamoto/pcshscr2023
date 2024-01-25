@@ -2098,3 +2098,12 @@ Try changing the store and the menu to check the operation. Try using the `Navba
 This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/2nd/dish-delight).  
 
 The VSCode configuration (for Workspace) is also committed for your reference. It is located in the `.vscode` directory.
+
+## 5. Links
+
+- [Next.js official learning site](https://nextjs.org/learn)
+  - The official Next.js learning site offers [Tutorial](https://nextjs.org/learn/dashboard-app).
+    - However, this [tutorial](https://nextjs.org/learn/dashboard-app) assumes that you have basic knowledge of React and JavaScript.
+    - If you are not confident in your knowledge of React, you may want to try [React Foundations](https://nextjs.org/learn/react-foundations) on this site.
+  - There are also other resources available for learning Next.js and taking it further.
+- [FastAPI Official Tutorial](https://fastapi.tiangolo.com/tutorial/)

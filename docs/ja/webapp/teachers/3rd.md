@@ -1530,3 +1530,7 @@ export async function getMenu(
 
 これでハンズオンは終了です。お疲れ様でした。完全なコードは[こちら](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight)から確認できます。  
 モバイルアプリもWebアプリと同じような雰囲気で開発できることを少し体験できたと思います。興味があれば、紹介したリンクのサイトを確認したり、ご自分のアイデアでアプリを開発してみてください。
+
+## 4. Links
+
+- [Expo公式サイトのチュートリアル](https://docs.expo.dev/tutorial/introduction/)
