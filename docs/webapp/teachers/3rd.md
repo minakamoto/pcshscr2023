@@ -1531,3 +1531,7 @@ Try changing the store and the menu to check the operation. Since the data is be
 
 This concludes the hands-on session. Thank you for your time. The complete code can be found [here](https://github.com/minakamoto/pcshscr2023/tree/main/src/webapp/handson-for-catchup/src/3rd/dish-delight).
 You have experienced a bit that mobile apps can be developed in the same atmosphere as web apps. If you are interested, please check the sites of the links presented or develop your own application with your own ideas.
+
+## 4. Links
+
+- [Tutorial on the official Expo website](https://docs.expo.dev/tutorial/introduction/)
