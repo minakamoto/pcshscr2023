@@ -349,6 +349,33 @@ module.exports = nextConfig;
 
 **หมายเหตุ**:
 
+- หากไฟล์ที่สร้างขึ้นไม่ใช่ `next.config.js` แต่เป็น `next.config.mjs` โปรดดำเนินการอย่างใดอย่างหนึ่งต่อไปนี้
+  - เปลี่ยนชื่อ `next.config.mjs` เป็น `next.config.js`
+  - แทนที่เนื้อหาของไฟล์ `next.config.mjs` ด้วยเนื้อหาต่อไปนี้
+
+    ```js
+    // @ts-check
+
+    export default (phase, { defaultConfig }) => {
+      /**
+       * @type {import('next').NextConfig}
+       */
+      const nextConfig = {
+        reactStrictMode: true,
+        images: {
+          remotePatterns: [
+            {
+              protocol: "https",
+              hostname: "images.unsplash.com",
+              pathname: "/**",
+            },
+          ],
+        },
+      };
+      return nextConfig;
+    };
+    ```
+
 - `Parsing error: Cannot find module 'next/babel'` ใน `next.config.js` สิ่งนี้ไม่ส่งผลกระทบต่อพฤติกรรม แต่หากคุณต้องการแก้ไข ให้เปลี่ยน `.eslintrc.json` เป็นดังต่อไปนี้
 
   ```js

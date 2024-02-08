@@ -348,6 +348,33 @@ module.exports = nextConfig;
 
 **NOTE**:
 
+- If the file created is not `next.config.js` but `next.config.mjs`, please do one of the following
+  - Rename `next.config.mjs` to `next.config.js`
+  - Replace the contents of the `next.config.mjs` file with the following
+
+    ```js
+    // @ts-check
+
+    export default (phase, { defaultConfig }) => {
+      /**
+       * @type {import('next').NextConfig}
+       */
+      const nextConfig = {
+        reactStrictMode: true,
+        images: {
+          remotePatterns: [
+            {
+              protocol: "https",
+              hostname: "images.unsplash.com",
+              pathname: "/**",
+            },
+          ],
+        },
+      };
+      return nextConfig;
+    };
+    ```
+
 - `Parsing error: Cannot find module 'next/babel'` in `next.config.js`. This does not affect the behavior, but if you want to fix it, change `.eslintrc.json` to the following.
 
   ```js

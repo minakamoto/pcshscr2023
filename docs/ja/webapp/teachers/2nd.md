@@ -349,6 +349,33 @@ module.exports = nextConfig;
 
 **注意事項**:
 
+- もし作成されたファイルが、`next.config.js`ではなく、`next.config.mjs`だった場合、以下のいずれかの対応を行なってください。
+  - `next.config.mjs`から`next.config.js`にファイル名をRenameする。
+  - `next.config.mjs`ファイルの内容を以下のコードに置き換える。
+
+    ```js
+    // @ts-check
+
+    export default (phase, { defaultConfig }) => {
+      /**
+       * @type {import('next').NextConfig}
+       */
+      const nextConfig = {
+        reactStrictMode: true,
+        images: {
+          remotePatterns: [
+            {
+              protocol: "https",
+              hostname: "images.unsplash.com",
+              pathname: "/**",
+            },
+          ],
+        },
+      };
+      return nextConfig;
+    };
+    ```
+
 - `next.config.js`にて、`Parsing error: Cannot find module 'next/babel'`が出ます。このままでも動作に影響しませんが、解消したい場合は`.eslintrc.json`を以下に変更してください。
 
   ```js
